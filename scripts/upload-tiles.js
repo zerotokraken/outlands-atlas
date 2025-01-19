@@ -17,8 +17,8 @@ const execAsync = promisify(exec);
 const s3Client = new S3Client({
   region: 'us-east-1',
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    accessKeyId: process.env.CLOUDCUBE_ACCESS_KEY_ID,
+    secretAccessKey: process.env.CLOUDCUBE_SECRET_ACCESS_KEY
   }
 });
 
@@ -55,10 +55,21 @@ async function downloadAllTiles() {
     const tempDir = path.join(__dirname, '../temp');
     await fs.mkdir(tempDir, { recursive: true });
 
-    for (const object of response.Contents || []) {
+    const files = response.Contents || [];
+    const totalFiles = files.length;
+    console.log(`Found ${totalFiles} files to download`);
+
+    for (let i = 0; i < files.length; i++) {
+      const object = files[i];
       const localPath = path.join(tempDir, object.Key.replace(`${cubeName}/`, ''));
-      await downloadFromS3(object.Key.replace(`${cubeName}/`, ''), localPath);
-      console.log(`Downloaded ${object.Key}`);
+      const progress = ((i + 1) / totalFiles * 100).toFixed(1);
+      try {
+        await downloadFromS3(object.Key.replace(`${cubeName}/`, ''), localPath);
+        console.log(`[${i + 1}/${totalFiles}] (${progress}%) Downloaded ${object.Key}`);
+      } catch (error) {
+        console.error(`Failed to download ${object.Key}:`, error.message);
+        throw error;
+      }
     }
 
     return tempDir;
@@ -78,18 +89,44 @@ async function uploadToHeroku(localPath, remotePath) {
   }
 }
 
-async function uploadDirectory(localPath, remotePath) {
+async function uploadDirectory(localPath, remotePath, totalFiles = null, currentFile = { count: 0 }) {
   try {
     const files = await fs.readdir(localPath, { withFileTypes: true });
     
+    // Count total files on first call
+    if (totalFiles === null) {
+      totalFiles = 0;
+      const queue = [localPath];
+      while (queue.length > 0) {
+        const currentPath = queue.pop();
+        const items = await fs.readdir(currentPath, { withFileTypes: true });
+        for (const item of items) {
+          if (item.isDirectory()) {
+            queue.push(path.join(currentPath, item.name));
+          } else {
+            totalFiles++;
+          }
+        }
+      }
+      console.log(`Found ${totalFiles} files to upload`);
+    }
+
     for (const file of files) {
       const localFilePath = path.join(localPath, file.name);
       const remoteFilePath = path.join(remotePath, file.name).replace(/\\/g, '/');
       
       if (file.isDirectory()) {
-        await uploadDirectory(localFilePath, remoteFilePath);
+        await uploadDirectory(localFilePath, remoteFilePath, totalFiles, currentFile);
       } else {
-        await uploadToHeroku(localFilePath, remoteFilePath);
+        currentFile.count++;
+        const progress = (currentFile.count / totalFiles * 100).toFixed(1);
+        console.log(`[${currentFile.count}/${totalFiles}] (${progress}%) Uploading ${remoteFilePath}`);
+        try {
+          await uploadToHeroku(localFilePath, remoteFilePath);
+        } catch (error) {
+          console.error(`Failed to upload ${remoteFilePath}:`, error.message);
+          throw error;
+        }
       }
     }
   } catch (error) {
@@ -109,14 +146,18 @@ async function cleanup(tempDir) {
 
 async function main() {
   let tempDir = null;
+  const startTime = Date.now();
+  
   try {
-    console.log('Starting tile download from CloudCube...');
+    console.log('=== Starting Tile Migration Process ===');
+    console.log('\n1. Downloading tiles from CloudCube...');
     tempDir = await downloadAllTiles();
     
-    console.log('Starting tile upload to Heroku...');
+    console.log('\n2. Uploading tiles to Heroku...');
     await uploadDirectory(path.join(tempDir, 'floors'), 'src/floors');
     
-    console.log('Tile upload complete!');
+    const duration = ((Date.now() - startTime) / 1000).toFixed(1);
+    console.log(`\n=== Migration Complete! (${duration}s) ===`);
   } catch (error) {
     console.error('Process failed:', error);
     process.exit(1);
