@@ -158,12 +158,12 @@ window.addEventListener('DOMContentLoaded', async () => {
         
         // Initialize app with progress callback
         await app.initialize((progress, message) => {
+            console.log('Loading progress:', progress, message); // Debug log
             updateLoadingProgress(progress, message);
+            if (progress >= 100) {
+                setTimeout(hideLoading, 500);
+            }
         });
-        
-        // Hide loading screen
-        updateLoadingProgress(100, 'Ready!');
-        setTimeout(hideLoading, 500);
         
         isInitialized = true;
     } catch (error) {

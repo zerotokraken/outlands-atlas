@@ -433,6 +433,9 @@ export class MapManager {
             // Initialize markers for the current level
             this.updateMarkers();
             
+            // Report completion
+            onProgress?.(100, 'Ready!');
+            
         } finally {
             this.isLoadingMap = false;
         }
