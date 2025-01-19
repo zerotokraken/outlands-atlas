@@ -10,6 +10,8 @@
     "build": "tsc && webpack",
     "start": "node dist/server.js",
     "dev": "webpack serve --open",
+    "upload-tiles": "node scripts/upload-tiles.js",
+    "deploy": "git push heroku master && npm run upload-tiles",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
