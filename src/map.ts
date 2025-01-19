@@ -24,7 +24,6 @@ export class MapManager {
     private cloudcubeUrl: string = '';
     
     constructor(private locationsData: LocationsData) {
-        this.initializeSidebar();
     }
 
     private async initializeCloudcubeUrl(): Promise<void> {
@@ -335,19 +334,20 @@ export class MapManager {
             }
         });
 
-        // Load all map layers at initialization
-        this.loadAllMapLayers().then(() => {
-            // Add click handlers for map switcher
-            const mapLinks = document.querySelectorAll('.map-link');
-            mapLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (this.isLoadingMap) return;
-                    mapLinks.forEach(l => l.classList.remove('selected'));
-                    link.classList.add('selected');
-                    const level = link.textContent || "Level 1";
-                    this.setLevel(level);
-                });
+        // Initialize sidebar and load map layers
+        this.initializeSidebar();
+        await this.loadAllMapLayers();
+
+        // Add click handlers for map switcher
+        const mapLinks = document.querySelectorAll('.map-link');
+        mapLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (this.isLoadingMap) return;
+                mapLinks.forEach(l => l.classList.remove('selected'));
+                link.classList.add('selected');
+                const level = link.textContent || "Level 1";
+                this.setLevel(level);
             });
         });
     }
