@@ -1,0 +1,78 @@
+{
+    "Level 1": {
+        "Passage": {
+            "Stairs": [
+                    {
+                    "id": 1,
+                    "title": "Stairs to Level 2",
+                    "description": "This leads to the west side of Level 2",
+                    "coordinates": [1322, 4822],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 2,
+                    "title": "Guard Post",
+                    "category": "Important Location",
+                    "description": "A fortified position overlooking the entrance",
+                    "coordinates": [300, 200],
+                    "codex_upgrade": "Important locations are key areas that are crucial to explore.",
+                    "icon": "icons/skull2.png"
+                }
+            ],
+            "Portals": [
+                {
+                    "id": 1,
+                    "title": "Gold Moongate",
+                    "category": "Portals",
+                    "description": "Can be used to travel to any town. You can recall near Gold Moongates.",
+                    "coordinates": [[3486, 2605], [3356, 2087], [3905, 2426], [3684, 2838]],
+                    "icon": "icons/Gates_Yellow.png"
+                },
+                {
+                    "id": 2,
+                    "title": "Guard Post",
+                    "category": "Important Location",
+                    "description": "A fortified position overlooking the entrance",
+                    "coordinates": [300, 200],
+                    "codex_upgrade": "Important locations are key areas that are crucial to explore.",
+                    "icon": "icons/skull2.png"
+                }
+            ],
+            "Teleport Tiles": [
+                {
+                    "id": 3,
+                    "title": "Ancient Shrine",
+                    "category": "Point of Interest",
+                    "description": "A mysterious shrine with strange markings",
+                    "coordinates": [400, 300],
+                    "codex_upgrade": "Points of Interest are notable locations that may contain valuable items or information.",
+                    "icon": "icons/star.png"
+                }
+            ],
+            "Waystar": [
+                {
+                    "id": 3,
+                    "title": "Ancient Shrine",
+                    "category": "Point of Interest",
+                    "description": "A mysterious shrine with strange markings",
+                    "coordinates": [400, 300],
+                    "codex_upgrade": "Points of Interest are notable locations that may contain valuable items or information.",
+                    "icon": "icons/star.png"
+                }
+                ]
+            },
+        "Misc": {
+            "Knock Spawns": [
+                {
+                    "id": "knock",
+                    "title": "Knock",
+                    "words": "Ex Ylem",
+                    "icon": "icons/timerune-knock.png",
+                    "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
+                    "codex_upgrade": "Door unlock duration increased by 5 seconds\n+10% Chest Unlock chance\n+10% Chance to not consume Rune on usage",
+                    "coordinates": [1855, 1734]
+                }
+            ]
+        }
+    }
+}
