@@ -19,12 +19,17 @@ export default {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    extensionAlias: {
+      '.js': ['.js', '.ts']
+    }
   },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    clean: true,
+    clean: {
+      keep: /server\.js$/
+    }
   },
   plugins: [
     new CopyPlugin({
@@ -34,6 +39,9 @@ export default {
         { from: 'src/images', to: 'src/images' },
         { from: 'src/css', to: 'src/css' },
         { from: 'src/json', to: 'src/json' },
+        { from: 'src/app.ts', to: 'src/app.ts' },
+        { from: 'src/map.ts', to: 'src/map.ts' },
+        { from: 'src/types.ts', to: 'src/types.ts' },
         { 
           from: 'src/floors/**/required_tiles.json',
           to: ({ context, absoluteFilename }) => {

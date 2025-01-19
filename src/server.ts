@@ -1,12 +1,12 @@
-import * as express from 'express';
-import * as path from 'path';
+import express from 'express';
+import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const app = express.default();
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 // API endpoint to get environment variables

@@ -1,5 +1,5 @@
-import { MapManager } from './map';
-import { LocationsData } from './types';
+import { MapManager } from './map.js';
+import { LocationsData } from './types.js';
 
 class App {
     private mapManager: MapManager;

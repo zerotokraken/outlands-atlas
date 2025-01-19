@@ -1,5 +1,5 @@
 import L from 'leaflet';
-import { Location, LocationsData, AVAILABLE_ICONS } from './types';
+import { Location, LocationsData, AVAILABLE_ICONS } from './types.js';
 
 interface TileConfig {
     startDir: number;
