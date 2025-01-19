@@ -39,7 +39,13 @@ export default {
         { from: 'src/images', to: 'src/images' },
         { from: 'src/css', to: 'src/css' },
         { from: 'src/json', to: 'src/json' },
-        { from: 'src/floors', to: 'src/floors' }
+        { 
+          from: 'src/floors/**/required_tiles.json',
+          to: ({ context, absoluteFilename }) => {
+            const relativePath = path.relative(context, absoluteFilename);
+            return relativePath;
+          }
+        }
       ],
     }),
   ],
