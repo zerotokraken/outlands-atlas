@@ -83,55 +83,6 @@ class App {
 
 // Initialize the application when the DOM is loaded
 let isInitialized = false;
-// Show loading screen
-function showLoading(message: string) {
-    const loadingScreen = document.createElement('div');
-    loadingScreen.id = 'loading-screen';
-    loadingScreen.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        font-family: Arial, sans-serif;
-        z-index: 9999;
-    `;
-    loadingScreen.innerHTML = `
-        <h2>Loading Atlas...</h2>
-        <p id="loading-message">${message}</p>
-        <div class="progress-bar" style="width: 200px; height: 20px; background: #333; border-radius: 10px; overflow: hidden;">
-            <div id="progress" style="width: 0%; height: 100%; background: #4CAF50; transition: width 0.3s;"></div>
-        </div>
-    `;
-    document.body.appendChild(loadingScreen);
-}
-
-function updateLoadingProgress(progress: number, message?: string) {
-    const progressBar = document.getElementById('progress');
-    const loadingMessage = document.getElementById('loading-message');
-    if (progressBar) {
-        progressBar.style.width = `${progress}%`;
-    }
-    if (loadingMessage && message) {
-        loadingMessage.textContent = message;
-    }
-}
-
-function hideLoading() {
-    const loadingScreen = document.getElementById('loading-screen');
-    if (loadingScreen) {
-        loadingScreen.style.opacity = '0';
-        loadingScreen.style.transition = 'opacity 0.5s';
-        setTimeout(() => loadingScreen.remove(), 500);
-    }
-}
-
 window.addEventListener('DOMContentLoaded', async () => {
     if (isInitialized) {
         console.warn('Application is already initialized');
@@ -145,29 +96,12 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        showLoading('Loading map data...');
-        
-        // Load locations data
-        updateLoadingProgress(10, 'Loading locations data...');
         const response = await fetch('src/json/locations.json');
         const locationsData = await response.json();
-        
-        // Create app instance
-        updateLoadingProgress(20, 'Initializing application...');
         const app = new App(locationsData);
-        
-        // Initialize app with progress callback
-        await app.initialize((progress, message) => {
-            console.log('Loading progress:', progress, message); // Debug log
-            updateLoadingProgress(progress, message);
-            if (progress >= 100) {
-                setTimeout(hideLoading, 500);
-            }
-        });
-        
+        await app.initialize();
         isInitialized = true;
     } catch (error) {
         console.error('Failed to initialize application:', error);
-        updateLoadingProgress(100, 'Error loading map. Please refresh the page.');
     }
 });
