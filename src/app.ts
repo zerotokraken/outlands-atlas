@@ -88,6 +88,13 @@ window.addEventListener('DOMContentLoaded', async () => {
         console.warn('Application is already initialized');
         return;
     }
+
+    const mapContainer = document.getElementById('map');
+    if (!mapContainer) {
+        console.error('Map container not found');
+        return;
+    }
+
     try {
         const response = await fetch('src/json/locations.json');
         const locationsData = await response.json();

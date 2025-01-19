@@ -233,8 +233,18 @@ export class MapManager {
 
     public async initialize(elementId: string): Promise<void> {
         if (this.map) {
-            console.warn('Map is already initialized');
-            return;
+            console.warn('Map is already initialized, cleaning up...');
+            this.map.remove();
+            this.map = null;
+            if (this.coordDisplay) {
+                this.coordDisplay.remove();
+                this.coordDisplay = null;
+            }
+            if (this.markersLayer) {
+                this.markersLayer.clearLayers();
+                this.markersLayer = null;
+            }
+            this.mapLayers = {};
         }
 
         await this.initializeCloudcubeUrl();
