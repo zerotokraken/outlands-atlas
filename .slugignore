@@ -1,0 +1,2 @@
+# Exclude tile images from Heroku slug
+src/floors/*/tiles/

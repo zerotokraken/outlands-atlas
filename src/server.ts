@@ -9,6 +9,13 @@ const __dirname = dirname(__filename);
 const app = express.default();
 const PORT = process.env.PORT || 3000;
 
+// API endpoint to get environment variables
+app.get('/api/config', (req, res) => {
+  res.json({
+    cloudcubeUrl: process.env.CLOUDCUBE_URL || ''
+  });
+});
+
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, '../dist')));
 

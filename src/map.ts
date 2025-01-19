@@ -21,9 +21,21 @@ export class MapManager {
     private hiddenCategories: Set<string> = new Set();
     private mapLayers: { [key: string]: { layer: L.LayerGroup; bounds: L.LatLngBoundsExpression } } = {};
     private isLoadingMap: boolean = false;
+    private cloudcubeUrl: string = '';
     
     constructor(private locationsData: LocationsData) {
         this.initializeSidebar();
+        this.initializeCloudcubeUrl();
+    }
+
+    private async initializeCloudcubeUrl(): Promise<void> {
+        try {
+            const response = await fetch('/api/config');
+            const config = await response.json();
+            this.cloudcubeUrl = config.cloudcubeUrl;
+        } catch (error) {
+            console.error('Failed to fetch config:', error);
+        }
     }
 
     private updateMarkers(): void {
@@ -331,7 +343,7 @@ export class MapManager {
     }
 
     private async loadTileConfig(level: string): Promise<TileConfig> {
-        const response = await fetch(`src/floors/floor-${level.split(' ')[1]}/required_tiles.json`);
+        const response = await fetch(`${this.cloudcubeUrl}/floors/floor-${level.split(' ')[1]}/required_tiles.json`);
         const config = await response.json();
         return config.tiles;
     }
@@ -368,7 +380,7 @@ export class MapManager {
                         ] as L.LatLngBoundsExpression;
 
                         L.imageOverlay(
-                            `src/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`,
+                            `${this.cloudcubeUrl}/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`,
                             bounds
                         ).addTo(layerGroup);
                     }
@@ -433,7 +445,7 @@ export class MapManager {
             const scaledHalfSize = scaledSize / 2;
             return L.divIcon({
                 className: 'marker-icon',
-                html: `<img src="/src/${location.icon}" style="width: ${scaledSize}px; height: auto;">`,
+                html: `<img src="${this.cloudcubeUrl}/${location.icon}" style="width: ${scaledSize}px; height: auto;">`,
                 iconSize: [scaledSize, scaledSize],
                 iconAnchor: [scaledHalfSize, scaledHalfSize]
             });
@@ -468,7 +480,7 @@ export class MapManager {
         const scaledHalfSize = scaledSize / 2;
         return L.divIcon({
             className: 'marker-icon',
-            html: `<img src="/src/${iconConfig.path}" style="width: ${scaledSize}px; height: auto;">`,
+            html: `<img src="${this.cloudcubeUrl}/${iconConfig.path}" style="width: ${scaledSize}px; height: auto;">`,
             iconSize: [scaledSize, scaledSize],
             iconAnchor: [scaledHalfSize, scaledHalfSize]
         });
