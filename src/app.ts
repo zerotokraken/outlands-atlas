@@ -8,8 +8,8 @@ class App {
         this.mapManager = new MapManager(locationsData);
     }
 
-    public initialize(): void {
-        this.mapManager.initialize('map');
+    public async initialize(): Promise<void> {
+        await this.mapManager.initialize('map');
         this.setupEventListeners();
     }
 
@@ -92,7 +92,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         const response = await fetch('src/json/locations.json');
         const locationsData = await response.json();
         const app = new App(locationsData);
-        app.initialize();
+        await app.initialize();
         isInitialized = true;
     } catch (error) {
         console.error('Failed to initialize application:', error);

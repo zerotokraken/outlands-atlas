@@ -25,7 +25,6 @@ export class MapManager {
     
     constructor(private locationsData: LocationsData) {
         this.initializeSidebar();
-        this.initializeCloudcubeUrl();
     }
 
     private async initializeCloudcubeUrl(): Promise<void> {
@@ -33,8 +32,13 @@ export class MapManager {
             const response = await fetch('/api/config');
             const config = await response.json();
             this.cloudcubeUrl = config.cloudcubeUrl;
+            if (!this.cloudcubeUrl) {
+                throw new Error('CLOUDCUBE_URL is not set');
+            }
+            console.log('CloudCube URL:', this.cloudcubeUrl);
         } catch (error) {
             console.error('Failed to fetch config:', error);
+            throw error;
         }
     }
 
@@ -228,11 +232,13 @@ export class MapManager {
 
     private coordDisplay: HTMLElement | null = null;
 
-    public initialize(elementId: string): void {
+    public async initialize(elementId: string): Promise<void> {
         if (this.map) {
             console.warn('Map is already initialized');
             return;
         }
+
+        await this.initializeCloudcubeUrl();
         // Create coordinate display element
         this.coordDisplay = document.createElement('div');
         this.coordDisplay.className = 'coordinate-display';
