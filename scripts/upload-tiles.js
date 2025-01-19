@@ -1,6 +1,7 @@
 import { exec } from 'child_process';
 import { promisify } from 'util';
 import fs from 'fs/promises';
+import { createWriteStream } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { S3Client, GetObjectCommand, ListObjectsV2Command } from '@aws-sdk/client-s3';
@@ -36,7 +37,7 @@ async function downloadFromS3(s3Key, localPath) {
     const response = await s3Client.send(command);
     await fs.mkdir(path.dirname(localPath), { recursive: true });
     
-    const writeStream = fs.createWriteStream(localPath);
+    const writeStream = createWriteStream(localPath);
     await finished(Readable.fromWeb(response.Body).pipe(writeStream));
   } catch (error) {
     console.error(`Error downloading ${s3Key}:`, error);
