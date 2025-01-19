@@ -391,8 +391,13 @@ export class MapManager {
                 const numRows = config.endTile - config.startTile + 1;
 
                 // Add tiles
+                const totalTiles = numCols * numRows;
+                let loadedTiles = 0;
                 for (let col = 0; col < numCols; col++) {
                     for (let row = 0; row < numRows; row++) {
+                        loadedTiles++;
+                        const tileProgress = (loadedTiles / totalTiles) * progressPerLevel;
+                        onProgress?.(40 + (i * progressPerLevel) + tileProgress, `Loading ${level} (${Math.round(loadedTiles/totalTiles * 100)}%)...`);
                         const directory = col + config.startDir;
                         const file = row + config.startTile;
                         
