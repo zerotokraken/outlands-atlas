@@ -1,11 +1,12 @@
-import express from 'express';
-import path from 'path';
+import * as express from 'express';
+import * as path from 'path';
+import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = dirname(__filename);
 
-const app = express();
+const app = express.default();
 const PORT = process.env.PORT || 3000;
 
 // Serve static files from the dist directory
