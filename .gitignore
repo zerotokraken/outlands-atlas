@@ -3,3 +3,4 @@ node_modules/
 download.js
 upload-to-cloudcube.ts
 upload-to-cloudcube.js
+upload-tsconfig.json

@@ -28,7 +28,7 @@ export default {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     clean: {
-      keep: /server\.js$/
+      keep: /(server\.js|app\.js|map\.js|types\.js)$/
     }
   },
   plugins: [
@@ -39,9 +39,6 @@ export default {
         { from: 'src/images', to: 'src/images' },
         { from: 'src/css', to: 'src/css' },
         { from: 'src/json', to: 'src/json' },
-        { from: 'src/app.ts', to: 'src/app.ts' },
-        { from: 'src/map.ts', to: 'src/map.ts' },
-        { from: 'src/types.ts', to: 'src/types.ts' },
         { 
           from: 'src/floors/**/required_tiles.json',
           to: ({ context, absoluteFilename }) => {
