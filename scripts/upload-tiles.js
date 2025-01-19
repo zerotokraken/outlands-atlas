@@ -6,10 +6,18 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { S3Client, GetObjectCommand, ListObjectsV2Command } from '@aws-sdk/client-s3';
 import dotenv from 'dotenv';
-import { Readable } from 'stream';
+import { Readable, Transform } from 'stream';
 import { finished } from 'stream/promises';
 
 dotenv.config();
+
+// Check required environment variables
+const requiredEnvVars = ['CLOUDCUBE_ACCESS_KEY_ID', 'CLOUDCUBE_SECRET_ACCESS_KEY', 'CLOUDCUBE_URL'];
+const missingEnvVars = requiredEnvVars.filter(varName => !process.env[varName]);
+if (missingEnvVars.length > 0) {
+  console.error('Missing required environment variables:', missingEnvVars.join(', '));
+  process.exit(1);
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -38,7 +46,8 @@ async function downloadFromS3(s3Key, localPath) {
     await fs.mkdir(path.dirname(localPath), { recursive: true });
     
     const writeStream = createWriteStream(localPath);
-    await finished(Readable.fromWeb(response.Body).pipe(writeStream));
+    const readStream = response.Body instanceof Transform ? response.Body : Readable.fromWeb(response.Body);
+    await finished(readStream.pipe(writeStream));
   } catch (error) {
     console.error(`Error downloading ${s3Key}:`, error);
     throw error;
