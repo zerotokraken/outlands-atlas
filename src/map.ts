@@ -21,24 +21,7 @@ export class MapManager {
     private hiddenCategories: Set<string> = new Set();
     private mapLayers: { [key: string]: { layer: L.LayerGroup; bounds: L.LatLngBoundsExpression } } = {};
     private isLoadingMap: boolean = false;
-    private cloudcubeUrl: string = '';
-    
     constructor(private locationsData: LocationsData) {
-    }
-
-    private async initializeCloudcubeUrl(): Promise<void> {
-        try {
-            const response = await fetch('/api/config');
-            const config = await response.json();
-            this.cloudcubeUrl = config.cloudcubeUrl;
-            if (!this.cloudcubeUrl) {
-                throw new Error('CLOUDCUBE_URL is not set');
-            }
-            console.log('CloudCube URL:', this.cloudcubeUrl);
-        } catch (error) {
-            console.error('Failed to fetch config:', error);
-            throw error;
-        }
     }
 
     private updateMarkers(): void {
@@ -247,8 +230,7 @@ export class MapManager {
             this.mapLayers = {};
         }
 
-        onProgress?.(35, 'Initializing CloudCube...');
-        await this.initializeCloudcubeUrl();
+        onProgress?.(35, 'Initializing map...');
         // Create coordinate display element
         this.coordDisplay = document.createElement('div');
         this.coordDisplay.className = 'coordinate-display';
@@ -364,7 +346,7 @@ export class MapManager {
     }
 
     private async loadTileConfig(level: string): Promise<TileConfig> {
-        const response = await fetch(`/api/s3/floors/floor-${level.split(' ')[1]}/required_tiles.json`);
+        const response = await fetch(`src/floors/floor-${level.split(' ')[1]}/required_tiles.json`);
         const config = await response.json();
         return config.tiles;
     }
@@ -409,7 +391,7 @@ export class MapManager {
                         ] as L.LatLngBoundsExpression;
 
                         L.imageOverlay(
-                            `/api/s3/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`,
+                            `src/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`,
                             bounds
                         ).addTo(layerGroup);
                     }
