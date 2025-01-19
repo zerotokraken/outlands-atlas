@@ -353,7 +353,7 @@ export class MapManager {
     }
 
     private async loadTileConfig(level: string): Promise<TileConfig> {
-        const response = await fetch(`${this.cloudcubeUrl}/floors/floor-${level.split(' ')[1]}/required_tiles.json`);
+        const response = await fetch(`/api/s3/floors/floor-${level.split(' ')[1]}/required_tiles.json`);
         const config = await response.json();
         return config.tiles;
     }
@@ -390,7 +390,7 @@ export class MapManager {
                         ] as L.LatLngBoundsExpression;
 
                         L.imageOverlay(
-                            `${this.cloudcubeUrl}/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`,
+                            `/api/s3/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`,
                             bounds
                         ).addTo(layerGroup);
                     }
@@ -455,7 +455,7 @@ export class MapManager {
             const scaledHalfSize = scaledSize / 2;
             return L.divIcon({
                 className: 'marker-icon',
-                html: `<img src="${this.cloudcubeUrl}/${location.icon}" style="width: ${scaledSize}px; height: auto;">`,
+                html: `<img src="/api/s3/${location.icon}" style="width: ${scaledSize}px; height: auto;">`,
                 iconSize: [scaledSize, scaledSize],
                 iconAnchor: [scaledHalfSize, scaledHalfSize]
             });
@@ -490,7 +490,7 @@ export class MapManager {
         const scaledHalfSize = scaledSize / 2;
         return L.divIcon({
             className: 'marker-icon',
-            html: `<img src="${this.cloudcubeUrl}/${iconConfig.path}" style="width: ${scaledSize}px; height: auto;">`,
+            html: `<img src="/api/s3/${iconConfig.path}" style="width: ${scaledSize}px; height: auto;">`,
             iconSize: [scaledSize, scaledSize],
             iconAnchor: [scaledHalfSize, scaledHalfSize]
         });
