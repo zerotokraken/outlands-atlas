@@ -82,12 +82,18 @@ class App {
 }
 
 // Initialize the application when the DOM is loaded
+let isInitialized = false;
 window.addEventListener('DOMContentLoaded', async () => {
+    if (isInitialized) {
+        console.warn('Application is already initialized');
+        return;
+    }
     try {
         const response = await fetch('src/json/locations.json');
         const locationsData = await response.json();
         const app = new App(locationsData);
         app.initialize();
+        isInitialized = true;
     } catch (error) {
         console.error('Failed to initialize application:', error);
     }

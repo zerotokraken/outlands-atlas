@@ -229,6 +229,10 @@ export class MapManager {
     private coordDisplay: HTMLElement | null = null;
 
     public initialize(elementId: string): void {
+        if (this.map) {
+            console.warn('Map is already initialized');
+            return;
+        }
         // Create coordinate display element
         this.coordDisplay = document.createElement('div');
         this.coordDisplay.className = 'coordinate-display';
