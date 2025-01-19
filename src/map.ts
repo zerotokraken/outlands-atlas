@@ -231,7 +231,7 @@ export class MapManager {
 
     private coordDisplay: HTMLElement | null = null;
 
-    public async initialize(elementId: string): Promise<void> {
+    public async initialize(elementId: string, onProgress?: (progress: number, message: string) => void): Promise<void> {
         if (this.map) {
             console.warn('Map is already initialized, cleaning up...');
             this.map.remove();
@@ -247,6 +247,7 @@ export class MapManager {
             this.mapLayers = {};
         }
 
+        onProgress?.(35, 'Initializing CloudCube...');
         await this.initializeCloudcubeUrl();
         // Create coordinate display element
         this.coordDisplay = document.createElement('div');
@@ -346,7 +347,7 @@ export class MapManager {
 
         // Initialize sidebar and load map layers
         this.initializeSidebar();
-        await this.loadAllMapLayers();
+        await this.loadAllMapLayers(onProgress);
 
         // Add click handlers for map switcher
         const mapLinks = document.querySelectorAll('.map-link');
@@ -368,7 +369,7 @@ export class MapManager {
         return config.tiles;
     }
 
-    private async loadAllMapLayers(): Promise<void> {
+    private async loadAllMapLayers(onProgress?: (progress: number, message: string) => void): Promise<void> {
         if (!this.map) return;
         
         this.isLoadingMap = true;
@@ -376,8 +377,11 @@ export class MapManager {
         
         try {
             const levels = ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 6.5", "Level 7", "Level 8"];
+            const progressPerLevel = 60 / levels.length; // 60% of progress bar for loading levels (40-100%)
             
-            for (const level of levels) {
+            for (let i = 0; i < levels.length; i++) {
+                const level = levels[i];
+                onProgress?.(40 + (i * progressPerLevel), `Loading ${level}...`);
                 const floorNumber = level.split(' ')[1];
                 const config = await this.loadTileConfig(level);
                 
