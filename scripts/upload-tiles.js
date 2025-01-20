@@ -164,7 +164,7 @@ async function main() {
     tempDir = await downloadAllTiles();
     
     console.log('\n2. Uploading tiles to Heroku...');
-    await uploadDirectory(path.join(tempDir, 'floors'), 'src/floors');
+    await uploadDirectory(path.join(tempDir, 'floors'), 'dist/floors');
     
     const duration = ((Date.now() - startTime) / 1000).toFixed(1);
     console.log(`\n=== Migration Complete! (${duration}s) ===`);
