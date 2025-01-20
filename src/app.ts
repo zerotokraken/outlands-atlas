@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     mapContainerParent.appendChild(mapContainer);
 
     try {
-        const response = await fetch('src/json/locations.json');
+        const response = await fetch('/json/locations.json');
         const locationsData = await response.json();
         const app = new App(locationsData);
         await app.initialize();
