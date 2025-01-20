@@ -35,10 +35,10 @@ export default {
     new CopyPlugin({
       patterns: [
         { from: 'index.html', to: '.' },
-        { from: 'src/icons', to: 'icons' },
-        { from: 'src/images', to: 'images' },
-        { from: 'src/css', to: 'css' },
-        { from: 'src/json', to: 'json' },
+        { from: 'src/icons', to: 'src/icons' },
+        { from: 'src/images', to: 'src/images' },
+        { from: 'src/css', to: 'src/css' },
+        { from: 'src/json', to: 'src/json' },
         { 
           from: 'src/floors/**/required_tiles.json',
           to: ({ context, absoluteFilename }) => {
