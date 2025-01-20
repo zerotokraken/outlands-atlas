@@ -30,57 +30,103 @@ export class TileService {
         }
     }
 
+    private getBucketHost(): string {
+        if (!this.cloudCubeConfig?.url) {
+            throw new Error('CloudCube URL not found');
+        }
+        const match = this.cloudCubeConfig.url.match(/https:\/\/(.*?)\//);
+        return match ? match[1] : '';
+    }
+
+    private async sha256(message: string): Promise<string> {
+        const msgBuffer = new TextEncoder().encode(message);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+        return Array.from(new Uint8Array(hashBuffer))
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join('');
+    }
+
+    private async hmacSha256(key: string | ArrayBuffer, message: string): Promise<ArrayBuffer> {
+        const keyBuffer = key instanceof ArrayBuffer ? key : new TextEncoder().encode(key);
+        const messageBuffer = new TextEncoder().encode(message);
+
+        const cryptoKey = await crypto.subtle.importKey(
+            'raw',
+            keyBuffer,
+            { name: 'HMAC', hash: 'SHA-256' },
+            false,
+            ['sign']
+        );
+
+        return crypto.subtle.sign('HMAC', cryptoKey, messageBuffer);
+    }
+
     private async fetchFromCloudCube(path: string): Promise<Response> {
         if (!this.cloudCubeConfig) {
             throw new Error('CloudCube configuration not found');
         }
 
         const { url, accessKeyId, secretAccessKey } = this.cloudCubeConfig;
-        const timestamp = new Date().toISOString().slice(0, -5) + 'Z';
-        const date = timestamp.slice(0, 10).replace(/-/g, '');
+        const region = 'us-east-1';
+        const service = 's3';
 
-        // AWS S3 request signing
-        const signature = await this.signRequest('GET', path, timestamp, date);
+        const timestamp = new Date().toISOString().replace(/[:-]|\.\d{3}/g, '');
+        const date = timestamp.slice(0, 8);
+
+        // Create canonical request
+        const canonicalHeaders = {
+            'host': this.getBucketHost(),
+            'x-amz-date': timestamp
+        };
+
+        const signedHeaders = Object.keys(canonicalHeaders).sort().join(';');
+
+        const canonicalRequest = [
+            'GET',
+            path,
+            '',
+            Object.entries(canonicalHeaders)
+                .sort(([a], [b]) => a.localeCompare(b))
+                .map(([k, v]) => `${k}:${v}`)
+                .join('\n') + '\n',
+            signedHeaders,
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' // Empty body hash
+        ].join('\n');
+
+        // Create string to sign
+        const scope = `${date}/${region}/${service}/aws4_request`;
+        const stringToSign = [
+            'AWS4-HMAC-SHA256',
+            timestamp,
+            scope,
+            await this.sha256(canonicalRequest)
+        ].join('\n');
+
+        // Calculate signature
+        const kDate = await this.hmacSha256('AWS4' + secretAccessKey, date);
+        const kRegion = await this.hmacSha256(kDate, region);
+        const kService = await this.hmacSha256(kRegion, service);
+        const kSigning = await this.hmacSha256(kService, 'aws4_request');
+        const signature = await this.hmacSha256(kSigning, stringToSign);
+
+        // Convert signature to hex
+        const signatureHex = Array.from(new Uint8Array(signature))
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join('');
+
+        // Create authorization header
+        const authorization = [
+            'AWS4-HMAC-SHA256 Credential=' + accessKeyId + '/' + scope,
+            'SignedHeaders=' + signedHeaders,
+            'Signature=' + signatureHex
+        ].join(', ');
 
         const headers = new Headers({
-            'Authorization': `AWS ${accessKeyId}:${signature}`,
+            'Authorization': authorization,
             'x-amz-date': timestamp
         });
 
         return fetch(`${url}${path}`, { headers });
-    }
-
-    private async signRequest(method: string, path: string, timestamp: string, date: string): Promise<string> {
-        if (!this.cloudCubeConfig) {
-            throw new Error('CloudCube configuration not found');
-        }
-
-        const { secretAccessKey } = this.cloudCubeConfig;
-        const stringToSign = [
-            method,
-            '',
-            '',
-            timestamp,
-            path
-        ].join('\n');
-
-        // Create HMAC SHA1 signature
-        const encoder = new TextEncoder();
-        const key = await crypto.subtle.importKey(
-            'raw',
-            encoder.encode(secretAccessKey),
-            { name: 'HMAC', hash: 'SHA-1' },
-            false,
-            ['sign']
-        );
-
-        const signature = await crypto.subtle.sign(
-            'HMAC',
-            key,
-            encoder.encode(stringToSign)
-        );
-
-        return btoa(String.fromCharCode(...new Uint8Array(signature)));
     }
 
     public async getTile(floorNumber: string, directory: string, file: string): Promise<string> {
@@ -97,6 +143,9 @@ export class TileService {
         try {
             // Fetch from CloudCube
             const response = await this.fetchFromCloudCube(tilePath);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const blob = await response.blob();
 
             // Cache the response
@@ -125,6 +174,9 @@ export class TileService {
         try {
             // Fetch from CloudCube
             const response = await this.fetchFromCloudCube(configPath);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             
             // Cache the response
             if (this.cache) {
