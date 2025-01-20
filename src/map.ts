@@ -346,7 +346,7 @@ export class MapManager {
     }
 
     private async loadTileConfig(level: string): Promise<TileConfig> {
-        const response = await fetch(`src/floors/floor-${level.split(' ')[1]}/required_tiles.json`);
+        const response = await fetch(`/floors/floor-${level.split(' ')[1]}/required_tiles.json`);
         const config = await response.json();
         return config.tiles;
     }
@@ -391,7 +391,7 @@ export class MapManager {
                         ] as L.LatLngBoundsExpression;
 
                         L.imageOverlay(
-                            `src/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`,
+                            `/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`,
                             bounds
                         ).addTo(layerGroup);
                     }
