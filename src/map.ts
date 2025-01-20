@@ -324,9 +324,9 @@ export class MapManager {
 
     private async loadTileConfig(level: string): Promise<TileConfig> {
         const floorNumber = level.split(' ')[1];
-        const response = await fetch('/json/locations.json');
+        const response = await this.tileService.getJson(`/floors/floor-${floorNumber}/required_tiles.json`);
         const config = await response.json();
-        return config.tiles[`floor-${floorNumber}`];
+        return config.tiles;
     }
 
     private async loadAllMapLayers(onProgress?: (progress: number, message: string) => void): Promise<void> {
