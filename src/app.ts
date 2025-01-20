@@ -92,7 +92,15 @@ window.addEventListener('DOMContentLoaded', async () => {
     // Create a new map container
     const mapContainer = document.createElement('div');
     mapContainer.id = 'map';
-    document.body.appendChild(mapContainer);
+    
+    // Find the main content area
+    const mainContent = document.querySelector('.main-content');
+    if (!mainContent) {
+        console.error('Main content area not found');
+        return;
+    }
+    
+    mainContent.appendChild(mapContainer);
 
     try {
         const response = await fetch('src/json/locations.json');

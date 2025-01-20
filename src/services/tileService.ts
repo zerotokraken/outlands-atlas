@@ -142,8 +142,7 @@ export class TileService {
     }
 
     public async getTile(floorNumber: string, directory: string, file: string): Promise<string> {
-        const { bucketId } = this.getBucketInfo();
-        const tilePath = `/${bucketId}/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`;
+        const tilePath = `/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`;
         
         // Try to get from cache first
         if (this.cache) {
@@ -174,8 +173,7 @@ export class TileService {
     }
 
     public async getTileConfig(floorNumber: string): Promise<Response> {
-        const { bucketId } = this.getBucketInfo();
-        const configPath = `/${bucketId}/floors/floor-${floorNumber}/required_tiles.json`;
+        const configPath = `/json/required_tiles.json`;
         
         // Try to get from cache first
         if (this.cache) {
