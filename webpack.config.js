@@ -67,5 +67,17 @@ export default {
     hot: true,
     compress: true,
     port: 3000,
+    setupMiddlewares: (middlewares, devServer) => {
+      if (!devServer) {
+        throw new Error('webpack-dev-server is not defined');
+      }
+
+      devServer.app.get('*.json', (req, res, next) => {
+        res.type('application/json');
+        next();
+      });
+
+      return middlewares;
+    }
   },
 };
