@@ -130,7 +130,8 @@ export class TileService {
     }
 
     public async getTile(floorNumber: string, directory: string, file: string): Promise<string> {
-        const tilePath = `floors/floor-${floorNumber}/tiles/${directory}/${file}.png`;
+        const bucketId = this.cloudCubeConfig?.url?.split('/').pop() || '';
+        const tilePath = `${bucketId}/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`;
         
         // Try to get from cache first
         if (this.cache) {
@@ -161,7 +162,8 @@ export class TileService {
     }
 
     public async getTileConfig(floorNumber: string): Promise<Response> {
-        const configPath = `floors/floor-${floorNumber}/required_tiles.json`;
+        const bucketId = this.cloudCubeConfig?.url?.split('/').pop() || '';
+        const configPath = `${bucketId}/floors/floor-${floorNumber}/required_tiles.json`;
         
         // Try to get from cache first
         if (this.cache) {
