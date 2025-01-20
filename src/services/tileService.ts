@@ -172,8 +172,36 @@ export class TileService {
         }
     }
 
+    public async getJson(path: string): Promise<Response> {
+        // Try to get from cache first
+        if (this.cache) {
+            const cachedResponse = await this.cache.match(path);
+            if (cachedResponse) {
+                return cachedResponse;
+            }
+        }
+
+        try {
+            // Fetch from CloudCube
+            const response = await this.fetchFromCloudCube(path);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            // Cache the response
+            if (this.cache) {
+                await this.cache.put(path, response.clone());
+            }
+
+            return response;
+        } catch (error) {
+            console.error(`Failed to load JSON: ${path}`, error);
+            throw error;
+        }
+    }
+
     public async getTileConfig(floorNumber: string): Promise<Response> {
-        const configPath = `/json/required_tiles.json`;
+        const configPath = `/floors/floor-${floorNumber}/required_tiles.json`;
         
         // Try to get from cache first
         if (this.cache) {

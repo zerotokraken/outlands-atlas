@@ -1,5 +1,6 @@
 import { MapManager } from './map.js';
 import { LocationsData } from './types.js';
+import { TileService } from './services/tileService.js';
 
 class App {
     private mapManager: MapManager;
@@ -103,7 +104,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     mapContainerParent.appendChild(mapContainer);
 
     try {
-        const response = await fetch('/json/locations.json');
+        const tileService = new TileService();
+        const response = await tileService.getJson('/json/locations.json');
         const locationsData = await response.json();
         const app = new App(locationsData);
         await app.initialize();
