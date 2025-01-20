@@ -199,20 +199,19 @@ export class MapManager {
     private coordDisplay: HTMLElement | null = null;
 
     public async initialize(elementId: string, onProgress?: (progress: number, message: string) => void): Promise<void> {
-        if (this.map) {
-            console.warn('Map is already initialized, cleaning up...');
-            this.map.remove();
-            this.map = null;
-            if (this.coordDisplay) {
-                this.coordDisplay.remove();
-                this.coordDisplay = null;
-            }
-            if (this.markersLayer) {
-                this.markersLayer.clearLayers();
-                this.markersLayer = null;
-            }
-            this.mapLayers = {};
+        // Clean up any existing map instance
+        this.cleanup();
+
+        // Remove any existing map container
+        const existingMap = document.getElementById(elementId);
+        if (existingMap) {
+            existingMap.remove();
         }
+
+        // Create a new map container
+        const mapContainer = document.createElement('div');
+        mapContainer.id = elementId;
+        document.getElementById('map-container')?.appendChild(mapContainer);
 
         onProgress?.(35, 'Initializing map...');
         
@@ -324,7 +323,7 @@ export class MapManager {
 
     private async loadTileConfig(level: string): Promise<TileConfig> {
         const floorNumber = level.split(' ')[1];
-        const response = await this.tileService.getJson(`/floors/floor-${floorNumber}/required_tiles.json`);
+        const response = await fetch(`src/floors/floor-${floorNumber}/required_tiles.json`);
         const config = await response.json();
         return config.tiles;
     }
@@ -362,7 +361,7 @@ export class MapManager {
                         
                         const directory = col + config.startDir;
                         const file = row + config.startTile;
-                        const tileUrl = `src/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`;
+                        const tilePath = `floors/floor-${floorNumber}/tiles/${directory}/${file}.png`;
                         
                         const overlap = 2;
                         const bounds = [
@@ -434,7 +433,7 @@ export class MapManager {
             const scaledHalfSize = scaledSize / 2;
             return L.divIcon({
                 className: 'marker-icon',
-                html: `<img src="${location.icon}" style="width: ${scaledSize}px; height: auto;">`,
+            html: `<img src="/src/${location.icon}" style="width: ${scaledSize}px; height: auto;">`,
                 iconSize: [scaledSize, scaledSize],
                 iconAnchor: [scaledHalfSize, scaledHalfSize]
             });
@@ -466,7 +465,7 @@ export class MapManager {
         const scaledHalfSize = scaledSize / 2;
         return L.divIcon({
             className: 'marker-icon',
-            html: `<img src="${iconConfig.path}" style="width: ${scaledSize}px; height: auto;">`,
+            html: `<img src="/src/${iconConfig.path}" style="width: ${scaledSize}px; height: auto;">`,
             iconSize: [scaledSize, scaledSize],
             iconAnchor: [scaledHalfSize, scaledHalfSize]
         });
@@ -538,6 +537,22 @@ export class MapManager {
 
     public isCategoryVisible(categoryName: string): boolean {
         return !this.hiddenCategories.has(categoryName);
+    }
+
+    public cleanup(): void {
+        if (this.map) {
+            this.map.remove();
+            this.map = null;
+        }
+        if (this.coordDisplay) {
+            this.coordDisplay.remove();
+            this.coordDisplay = null;
+        }
+        if (this.markersLayer) {
+            this.markersLayer.clearLayers();
+            this.markersLayer = null;
+        }
+        this.mapLayers = {};
     }
 
     private getAllCategories(): string[] {

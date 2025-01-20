@@ -3,7 +3,7 @@ import { LocationsData } from './types.js';
 import { TileService } from './services/tileService.js';
 
 class App {
-    private mapManager: MapManager;
+    public mapManager: MapManager;
 
     constructor(private locationsData: LocationsData) {
         this.mapManager = new MapManager(locationsData);
@@ -83,7 +83,24 @@ class App {
 }
 
 // Initialize the application when the DOM is loaded
+let isInitializing = false;
+let app: App | null = null;
+
+declare const module: any;
+
+// Cleanup function for hot module reloading
+if (module.hot) {
+    module.hot.dispose(() => {
+        if (app?.mapManager) {
+            app.mapManager.cleanup();
+        }
+        app = null;
+    });
+}
+
 window.addEventListener('DOMContentLoaded', async () => {
+    if (isInitializing) return;
+    isInitializing = true;
     // Remove any existing map container
     const existingMap = document.getElementById('map');
     if (existingMap) {
@@ -104,12 +121,13 @@ window.addEventListener('DOMContentLoaded', async () => {
     mapContainerParent.appendChild(mapContainer);
 
     try {
-        const tileService = new TileService();
-        const response = await tileService.getJson('/json/locations.json');
+        const response = await fetch('src/json/locations.json');
         const locationsData = await response.json();
-        const app = new App(locationsData);
+        app = new App(locationsData);
         await app.initialize();
     } catch (error) {
         console.error('Failed to initialize application:', error);
+    } finally {
+        isInitializing = false;
     }
 });

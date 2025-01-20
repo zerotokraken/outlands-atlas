@@ -4,8 +4,8 @@ import CopyPlugin from 'copy-webpack-plugin';
 import webpack from 'webpack';
 import dotenv from 'dotenv';
 
-// Load environment variables from .env file
-dotenv.config();
+// Load environment variables from .env.local file
+dotenv.config({ path: '.env.local' });
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -17,7 +17,15 @@ export default {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+              experimentalWatchApi: true
+            }
+          }
+        ],
         exclude: /node_modules/,
       },
     ],

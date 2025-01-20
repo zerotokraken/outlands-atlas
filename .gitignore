@@ -5,3 +5,4 @@ upload-to-cloudcube.ts
 upload-to-cloudcube.js
 upload-tsconfig.json
 src/floors/**/tiles/
+.env.local

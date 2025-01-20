@@ -7,6 +7,7 @@ interface CloudCubeConfig {
 export class TileService {
     private cache: Cache | null = null;
     private cloudCubeConfig: CloudCubeConfig | null = null;
+    private readonly emptyHash = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
 
     constructor() {
         // Initialize cache
@@ -88,21 +89,23 @@ export class TileService {
         const { host } = this.getBucketInfo();
         const canonicalHeaders = {
             'host': host,
+            'x-amz-content-sha256': this.emptyHash,
             'x-amz-date': timestamp
         };
 
-        const signedHeaders = Object.keys(canonicalHeaders).sort().join(';');
+        const signedHeaders = 'host;x-amz-content-sha256;x-amz-date';
 
+        const { bucketId } = this.getBucketInfo();
         const canonicalRequest = [
             'GET',
-            path,
+            `/${bucketId}${path}`,
             '',
             Object.entries(canonicalHeaders)
                 .sort(([a], [b]) => a.localeCompare(b))
                 .map(([k, v]) => `${k}:${v}`)
                 .join('\n') + '\n',
             signedHeaders,
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' // Empty body hash
+            this.emptyHash // Empty body hash
         ].join('\n');
 
         // Create string to sign
@@ -135,10 +138,14 @@ export class TileService {
 
         const headers = new Headers({
             'Authorization': authorization,
-            'x-amz-date': timestamp
+            'host': host,
+            'x-amz-date': timestamp,
+            'x-amz-content-sha256': this.emptyHash
         });
 
-        return fetch(`${url}${path}`, { headers });
+        // Remove any trailing slash from URL
+        const baseUrl = url.replace(/\/$/, '');
+        return fetch(`${baseUrl}${path}`, { headers });
     }
 
     public async getTile(floorNumber: string, directory: string, file: string): Promise<string> {
@@ -187,8 +194,6 @@ export class TileService {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            
-            // Cache the response
             if (this.cache) {
                 await this.cache.put(path, response.clone());
             }
@@ -201,7 +206,7 @@ export class TileService {
     }
 
     public async getTileConfig(floorNumber: string): Promise<Response> {
-        const configPath = `/floors/floor-${floorNumber}/required_tiles.json`;
+        const configPath = `floors/floor-${floorNumber}/required_tiles.json`;
         
         // Try to get from cache first
         if (this.cache) {
