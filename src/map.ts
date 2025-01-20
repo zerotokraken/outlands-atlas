@@ -459,7 +459,7 @@ export class MapManager {
             const scaledHalfSize = scaledSize / 2;
             return L.divIcon({
                 className: 'marker-icon',
-                html: `<img src="/${location.icon}" style="width: ${scaledSize}px; height: auto;">`,
+                html: `<img src="${location.icon}" style="width: ${scaledSize}px; height: auto;">`,
                 iconSize: [scaledSize, scaledSize],
                 iconAnchor: [scaledHalfSize, scaledHalfSize]
             });
@@ -494,7 +494,7 @@ export class MapManager {
         const scaledHalfSize = scaledSize / 2;
         return L.divIcon({
             className: 'marker-icon',
-            html: `<img src="/${iconConfig.path}" style="width: ${scaledSize}px; height: auto;">`,
+                html: `<img src="${iconConfig.path}" style="width: ${scaledSize}px; height: auto;">`,
             iconSize: [scaledSize, scaledSize],
             iconAnchor: [scaledHalfSize, scaledHalfSize]
         });
