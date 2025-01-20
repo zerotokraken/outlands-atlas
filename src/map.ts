@@ -323,7 +323,10 @@ export class MapManager {
 
     private async loadTileConfig(level: string): Promise<TileConfig> {
         const floorNumber = level.split(' ')[1];
-        const response = await fetch(`src/floors/floor-${floorNumber}/required_tiles.json`);
+        const configPath = `floors/floor-${floorNumber}/required_tiles.json`;
+        const response = process.env.IS_DEVELOPMENT ?
+            await fetch(`src/${configPath}`) :
+            await this.tileService.getJson(configPath);
         const config = await response.json();
         return config.tiles;
     }
@@ -433,7 +436,7 @@ export class MapManager {
             const scaledHalfSize = scaledSize / 2;
             return L.divIcon({
                 className: 'marker-icon',
-            html: `<img src="/src/${location.icon}" style="width: ${scaledSize}px; height: auto;">`,
+            html: `<img src="${process.env.IS_DEVELOPMENT ? '/src/' : '/'}${location.icon}" style="width: ${scaledSize}px; height: auto;">`,
                 iconSize: [scaledSize, scaledSize],
                 iconAnchor: [scaledHalfSize, scaledHalfSize]
             });
@@ -465,7 +468,7 @@ export class MapManager {
         const scaledHalfSize = scaledSize / 2;
         return L.divIcon({
             className: 'marker-icon',
-            html: `<img src="/src/${iconConfig.path}" style="width: ${scaledSize}px; height: auto;">`,
+            html: `<img src="${process.env.IS_DEVELOPMENT ? '/src/' : '/'}${iconConfig.path}" style="width: ${scaledSize}px; height: auto;">`,
             iconSize: [scaledSize, scaledSize],
             iconAnchor: [scaledHalfSize, scaledHalfSize]
         });

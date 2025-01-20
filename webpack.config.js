@@ -10,8 +10,10 @@ dotenv.config({ path: '.env.local' });
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
 export default {
-  mode: 'development',
+  mode: isDevelopment ? 'development' : 'production',
   entry: './src/app.ts',
   module: {
     rules: [
@@ -48,7 +50,8 @@ export default {
     new webpack.DefinePlugin({
       'process.env.CLOUDCUBE_URL': JSON.stringify(process.env.CLOUDCUBE_URL),
       'process.env.CLOUDCUBE_ACCESS_KEY_ID': JSON.stringify(process.env.CLOUDCUBE_ACCESS_KEY_ID),
-      'process.env.CLOUDCUBE_SECRET_ACCESS_KEY': JSON.stringify(process.env.CLOUDCUBE_SECRET_ACCESS_KEY)
+      'process.env.CLOUDCUBE_SECRET_ACCESS_KEY': JSON.stringify(process.env.CLOUDCUBE_SECRET_ACCESS_KEY),
+      'process.env.IS_DEVELOPMENT': JSON.stringify(isDevelopment)
     }),
     new CopyPlugin({
       patterns: [
