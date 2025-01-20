@@ -8,6 +8,7 @@ export class TileService {
     private cache: Cache | null = null;
     private cloudCubeConfig: CloudCubeConfig | null = null;
     private readonly emptyHash = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';
+    private blobUrlCache: Map<string, string> = new Map();
 
     constructor() {
         // Initialize cache
@@ -151,28 +152,42 @@ export class TileService {
     public async getTile(floorNumber: string, directory: string, file: string): Promise<string> {
         const tilePath = `/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`;
         
-        // Try to get from cache first
-        if (this.cache) {
-            const cachedResponse = await this.cache.match(tilePath);
-            if (cachedResponse) {
-                return URL.createObjectURL(await cachedResponse.blob());
-            }
+        // Check if we have a cached blob URL
+        const cachedBlobUrl = this.blobUrlCache.get(tilePath);
+        if (cachedBlobUrl) {
+            return cachedBlobUrl;
         }
 
         try {
-            // Fetch from CloudCube
-            const response = await this.fetchFromCloudCube(tilePath);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const blob = await response.blob();
-
-            // Cache the response
+            let blob: Blob;
+            // Try to get from cache first
             if (this.cache) {
-                await this.cache.put(tilePath, new Response(blob.slice(0)));
+                const cachedResponse = await this.cache.match(tilePath);
+                if (cachedResponse) {
+                    blob = await cachedResponse.blob();
+                } else {
+                    // Fetch from CloudCube
+                    const response = await this.fetchFromCloudCube(tilePath);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    blob = await response.blob();
+                    // Cache the response
+                    await this.cache.put(tilePath, new Response(blob.slice(0)));
+                }
+            } else {
+                // Fetch from CloudCube if no cache
+                const response = await this.fetchFromCloudCube(tilePath);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                blob = await response.blob();
             }
 
-            return URL.createObjectURL(blob);
+            // Create and cache the blob URL
+            const blobUrl = URL.createObjectURL(blob);
+            this.blobUrlCache.set(tilePath, blobUrl);
+            return blobUrl;
         } catch (error) {
             console.error(`Failed to load tile: ${tilePath}`, error);
             throw error;
@@ -233,5 +248,13 @@ export class TileService {
             console.error(`Failed to load tile config: ${configPath}`, error);
             throw error;
         }
+    }
+
+    public cleanup(): void {
+        // Revoke all blob URLs
+        for (const blobUrl of this.blobUrlCache.values()) {
+            URL.revokeObjectURL(blobUrl);
+        }
+        this.blobUrlCache.clear();
     }
 }

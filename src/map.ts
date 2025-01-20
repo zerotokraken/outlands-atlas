@@ -410,6 +410,9 @@ export class MapManager {
     private async loadMapLayer(level: string): Promise<void> {
         if (!this.map || this.isLoadingMap) return;
         
+        // Clean up old layer's blob URLs
+        this.tileService.cleanup();
+        
         Object.entries(this.mapLayers).forEach(([layerLevel, { layer, bounds }]) => {
             if (layerLevel === level) {
                 this.map?.addLayer(layer);
@@ -555,6 +558,7 @@ export class MapManager {
             this.markersLayer = null;
         }
         this.mapLayers = {};
+        this.tileService.cleanup();
     }
 
     private getAllCategories(): string[] {
