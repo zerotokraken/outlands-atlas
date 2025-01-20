@@ -30,12 +30,23 @@ export class TileService {
         }
     }
 
-    private getBucketHost(): string {
+    private getBucketInfo(): { host: string, bucketId: string } {
         if (!this.cloudCubeConfig?.url) {
             throw new Error('CloudCube URL not found');
         }
-        const match = this.cloudCubeConfig.url.match(/https:\/\/(.*?)\//);
-        return match ? match[1] : '';
+        // Handle both full URLs and bucket IDs
+        if (this.cloudCubeConfig.url.startsWith('http')) {
+            const url = new URL(this.cloudCubeConfig.url);
+            return {
+                host: url.hostname,
+                bucketId: url.pathname.split('/')[1] || ''
+            };
+        } else {
+            return {
+                host: 'cloud-cube-us2.s3.amazonaws.com',
+                bucketId: this.cloudCubeConfig.url
+            };
+        }
     }
 
     private async sha256(message: string): Promise<string> {
@@ -74,8 +85,9 @@ export class TileService {
         const date = timestamp.slice(0, 8);
 
         // Create canonical request
+        const { host } = this.getBucketInfo();
         const canonicalHeaders = {
-            'host': this.getBucketHost(),
+            'host': host,
             'x-amz-date': timestamp
         };
 
@@ -130,8 +142,8 @@ export class TileService {
     }
 
     public async getTile(floorNumber: string, directory: string, file: string): Promise<string> {
-        const bucketId = this.cloudCubeConfig?.url?.split('/').pop() || '';
-        const tilePath = `${bucketId}/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`;
+        const { bucketId } = this.getBucketInfo();
+        const tilePath = `/${bucketId}/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`;
         
         // Try to get from cache first
         if (this.cache) {
@@ -162,8 +174,8 @@ export class TileService {
     }
 
     public async getTileConfig(floorNumber: string): Promise<Response> {
-        const bucketId = this.cloudCubeConfig?.url?.split('/').pop() || '';
-        const configPath = `${bucketId}/floors/floor-${floorNumber}/required_tiles.json`;
+        const { bucketId } = this.getBucketInfo();
+        const configPath = `/${bucketId}/floors/floor-${floorNumber}/required_tiles.json`;
         
         // Try to get from cache first
         if (this.cache) {
