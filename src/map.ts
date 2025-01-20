@@ -1,5 +1,6 @@
 import L from 'leaflet';
 import { Location, LocationsData, AVAILABLE_ICONS } from './types.js';
+import { TileService } from './services/tileService.js';
 
 interface TileConfig {
     startDir: number;
@@ -21,13 +22,14 @@ export class MapManager {
     private hiddenCategories: Set<string> = new Set();
     private mapLayers: { [key: string]: { layer: L.LayerGroup; bounds: L.LatLngBoundsExpression } } = {};
     private isLoadingMap: boolean = false;
+    private tileService: TileService;
+
     constructor(private locationsData: LocationsData) {
+        this.tileService = new TileService();
     }
 
     private updateMarkers(): void {
         if (!this.markersLayer || !this.map) return;
-        
-        console.log('Updating markers, hidden categories:', Array.from(this.hiddenCategories)); // Debug log
         
         this.markersLayer.clearLayers();
         
@@ -40,7 +42,6 @@ export class MapManager {
         if (levelData.Passage) {
             for (const type in levelData.Passage) {
                 const categoryName = type.charAt(0).toUpperCase() + type.slice(1);
-                console.log('Checking category:', categoryName, 'Hidden:', this.hiddenCategories.has(categoryName)); // Debug log
                 if (!this.hiddenCategories.has(categoryName)) {
                     levelData.Passage[type].forEach(loc => {
                         const coordinates = Array.isArray(loc.coordinates[0]) 
@@ -68,7 +69,6 @@ export class MapManager {
         if (levelData.Runes) {
             for (const circle in levelData.Runes) {
                 const categoryName = circle.charAt(0).toUpperCase() + circle.slice(1);
-                console.log('Checking category:', categoryName, 'Hidden:', this.hiddenCategories.has(categoryName)); // Debug log
                 if (!this.hiddenCategories.has(categoryName)) {
                     levelData.Runes[circle].forEach(rune => {
                         const coordinates = Array.isArray(rune.coordinates[0])
@@ -97,15 +97,12 @@ export class MapManager {
         const categoriesContainer = document.getElementById('categories');
         if (!categoriesContainer) return;
 
-        // Clear existing categories
         categoriesContainer.innerHTML = '';
 
         const levelData = this.locationsData[this.currentLevel];
         if (!levelData) return;
 
-        // Helper function to create category items
         const createCategoryItem = (title: string, count: number, iconClass: string) => {
-            // Ensure consistent case for category names
             const categoryName = title.charAt(0).toUpperCase() + title.slice(1);
             const isVisible = !this.hiddenCategories.has(categoryName);
             return `
@@ -121,35 +118,30 @@ export class MapManager {
             `;
         };
 
-        // Add Passage categories
         if (levelData.Passage) {
             const passageHtml = `
                 <div class="header">Passage</div>
                 <div class="group-categories">
-                    ${Object.entries(levelData.Passage).map(([subCategory, locations]) => {
-                        console.log('Creating Passage category:', subCategory); // Debug log
-                        return createCategoryItem(subCategory, locations.length, 'icon-important');
-                    }).join('')}
+                    ${Object.entries(levelData.Passage).map(([subCategory, locations]) => 
+                        createCategoryItem(subCategory, locations.length, 'icon-important')
+                    ).join('')}
                 </div>
             `;
             categoriesContainer.innerHTML += passageHtml;
         }
 
-        // Add Runes categories
         if (levelData.Runes) {
             const runesHtml = `
                 <div class="header">Runes</div>
                 <div class="group-categories">
-                    ${Object.entries(levelData.Runes).map(([subCategory, locations]) => {
-                        console.log('Creating Runes category:', subCategory); // Debug log
-                        return createCategoryItem(subCategory, locations.length, 'icon-resource');
-                    }).join('')}
+                    ${Object.entries(levelData.Runes).map(([subCategory, locations]) => 
+                        createCategoryItem(subCategory, locations.length, 'icon-resource')
+                    ).join('')}
                 </div>
             `;
             categoriesContainer.innerHTML += runesHtml;
         }
 
-        // Add click handlers for category items
         const categoryItems = document.querySelectorAll('.category-item');
         categoryItems.forEach(item => {
             const handleClick = (e: Event) => {
@@ -161,12 +153,9 @@ export class MapManager {
                 
                 const category = item.getAttribute('data-category');
                 if (!category) return;
-
-                console.log('Toggling category:', category); // Debug log
                 
                 const wasHidden = this.hiddenCategories.has(category);
                 
-                // Update state
                 if (wasHidden) {
                     this.hiddenCategories.delete(category);
                     item.classList.add('category-visible');
@@ -174,10 +163,7 @@ export class MapManager {
                     this.hiddenCategories.add(category);
                     item.classList.remove('category-visible');
                 }
-
-                console.log('Hidden categories after toggle:', Array.from(this.hiddenCategories)); // Debug log
                 
-                // Only update if state actually changed
                 if (wasHidden !== this.hiddenCategories.has(category)) {
                     this.updateMarkers();
                 }
@@ -186,7 +172,6 @@ export class MapManager {
             item.addEventListener('click', handleClick, { capture: true });
         });
 
-        // Add click handlers for show/hide all buttons
         const showAllButton = document.getElementById('showAll');
         const hideAllButton = document.getElementById('hideAll');
 
@@ -208,7 +193,6 @@ export class MapManager {
     private getMarkerSize(): number {
         if (!this.map) return 32;
         const zoom = this.map.getZoom();
-        // Base size is 32px at zoom level 0
         return Math.max(16, Math.min(128, 32 * Math.pow(2, zoom)));
     }
 
@@ -231,7 +215,7 @@ export class MapManager {
         }
 
         onProgress?.(35, 'Initializing map...');
-        // Create coordinate display element
+        
         this.coordDisplay = document.createElement('div');
         this.coordDisplay.className = 'coordinate-display';
         this.coordDisplay.style.cssText = `
@@ -266,14 +250,12 @@ export class MapManager {
 
         this.markersLayer = L.layerGroup().addTo(this.map);
 
-        // Add mousemove and click handlers
         this.map.on('click', (e) => {
             const coords = e.latlng;
             const coordArray = [Math.round(coords.lat), Math.round(coords.lng)];
             const coordString = `[${coordArray[0]}, ${coordArray[1]}]`;
             navigator.clipboard.writeText(coordString);
             
-            // Show temporary feedback
             if (this.coordDisplay) {
                 const originalStyle = this.coordDisplay.style.background;
                 this.coordDisplay.style.background = 'rgba(0, 255, 0, 0.7)';
@@ -298,9 +280,7 @@ export class MapManager {
             }
         });
 
-        // Add zoom handler to update marker sizes
         this.map.on('zoomend', () => {
-            // Only update marker sizes, don't reinitialize
             if (this.markersLayer) {
                 const currentSize = this.getMarkerSize();
                 this.markersLayer.eachLayer((layer) => {
@@ -308,7 +288,6 @@ export class MapManager {
                         const marker = layer as L.Marker;
                         const markerOptions = marker.options as MarkerOptions;
                         if (markerOptions.location && markerOptions.mainCategory && markerOptions.category) {
-                            // Only update the icon size, don't recreate markers
                             const icon = marker.getIcon() as L.DivIcon;
                             const iconHtml = icon.options.html;
                             if (iconHtml && typeof iconHtml === 'string') {
@@ -327,11 +306,9 @@ export class MapManager {
             }
         });
 
-        // Initialize sidebar and load map layers
         this.initializeSidebar();
         await this.loadAllMapLayers(onProgress);
 
-        // Add click handlers for map switcher
         const mapLinks = document.querySelectorAll('.map-link');
         mapLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -346,7 +323,8 @@ export class MapManager {
     }
 
     private async loadTileConfig(level: string): Promise<TileConfig> {
-        const response = await fetch(`/floors/floor-${level.split(' ')[1]}/required_tiles.json`);
+        const floorNumber = level.split(' ')[1];
+        const response = await this.tileService.getTileConfig(floorNumber);
         const config = await response.json();
         return config.tiles;
     }
@@ -359,7 +337,7 @@ export class MapManager {
         
         try {
             const levels = ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 6.5", "Level 7", "Level 8"];
-            const progressPerLevel = 60 / levels.length; // 60% of progress bar for loading levels (40-100%)
+            const progressPerLevel = 60 / levels.length;
             
             for (let i = 0; i < levels.length; i++) {
                 const level = levels[i];
@@ -372,44 +350,47 @@ export class MapManager {
                 const numCols = config.endDir - config.startDir + 1;
                 const numRows = config.endTile - config.startTile + 1;
 
-                // Add tiles
                 const totalTiles = numCols * numRows;
                 let loadedTiles = 0;
+
                 for (let col = 0; col < numCols; col++) {
                     for (let row = 0; row < numRows; row++) {
                         loadedTiles++;
                         const tileProgress = (loadedTiles / totalTiles) * progressPerLevel;
-                        onProgress?.(40 + (i * progressPerLevel) + tileProgress, `Loading ${level} (${Math.round(loadedTiles/totalTiles * 100)}%)...`);
+                        onProgress?.(40 + (i * progressPerLevel) + tileProgress, 
+                            `Loading ${level} (${Math.round(loadedTiles/totalTiles * 100)}%)...`);
+                        
                         const directory = col + config.startDir;
                         const file = row + config.startTile;
+                        const tileUrl = `src/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`;
                         
-                        // Add a small overlap to prevent seams
                         const overlap = 2;
                         const bounds = [
                             [(numRows - row - 1) * tileSize - overlap, col * tileSize - overlap],
                             [(numRows - row) * tileSize + overlap, (col + 1) * tileSize + overlap]
                         ] as L.LatLngBoundsExpression;
 
-                        L.imageOverlay(
-                            `/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`,
-                            bounds
-                        ).addTo(layerGroup);
+                        try {
+                            // Get tile URL from service
+                            const tileUrl = await this.tileService.getTile(floorNumber, directory.toString(), file.toString());
+                            
+                            L.imageOverlay(tileUrl, bounds).addTo(layerGroup);
+                        } catch (error) {
+                            console.warn(`Failed to load tile: ${directory}/${file}`, error);
+                        }
                     }
                 }
 
-                // Calculate bounds for this layer
                 const viewBounds: L.LatLngBoundsExpression = [
                     [0, 0],
                     [numRows * tileSize, numCols * tileSize]
                 ];
 
-                // Store the layer group and its bounds
                 this.mapLayers[level] = {
                     layer: layerGroup,
                     bounds: viewBounds
                 };
                 
-                // Only add the first layer
                 if (firstLayer) {
                     layerGroup.addTo(this.map);
                     this.map.fitBounds(viewBounds);
@@ -417,10 +398,7 @@ export class MapManager {
                 }
             }
             
-            // Initialize markers for the current level
             this.updateMarkers();
-            
-            // Report completion
             onProgress?.(100, 'Ready!');
             
         } finally {
@@ -431,7 +409,6 @@ export class MapManager {
     private async loadMapLayer(level: string): Promise<void> {
         if (!this.map || this.isLoadingMap) return;
         
-        // Hide all layers except the current one
         Object.entries(this.mapLayers).forEach(([layerLevel, { layer, bounds }]) => {
             if (layerLevel === level) {
                 this.map?.addLayer(layer);
@@ -441,7 +418,6 @@ export class MapManager {
             }
         });
         
-        // Clear and update markers
         if (this.markersLayer) {
             this.markersLayer.clearLayers();
         }
@@ -449,9 +425,8 @@ export class MapManager {
     }
 
     private createMarkerIcon(mainCategory: string, subCategory: string, location?: Location, size: number = 32): L.DivIcon {
-        console.log('Creating marker for:', mainCategory, subCategory); // Debug log
         const halfSize = size / 2;
-        // If location has a specific icon, use it
+        
         if (location?.icon) {
             const iconConfig = Object.values(AVAILABLE_ICONS).find(config => config.path === location.icon);
             const scale = iconConfig?.scale || 100;
@@ -465,7 +440,6 @@ export class MapManager {
             });
         }
 
-        // Default icons based on category
         let iconConfig;
         const categoryKey = `${mainCategory}/${subCategory}`.toLowerCase();
         switch (categoryKey) {
@@ -476,7 +450,6 @@ export class MapManager {
                 iconConfig = AVAILABLE_ICONS.GATE_YELLOW;
                 break;
             default:
-                // Fallback to colored square if no icon matches
                 const colors: { [key: string]: string } = {
                     "Passage": "#e74c3c",
                     "Runes": "#f1c40f"
@@ -489,12 +462,11 @@ export class MapManager {
                 });
         }
 
-        // Return icon with default image for category
         const scaledSize = size * iconConfig.scale / 100;
         const scaledHalfSize = scaledSize / 2;
         return L.divIcon({
             className: 'marker-icon',
-                html: `<img src="${iconConfig.path}" style="width: ${scaledSize}px; height: auto;">`,
+            html: `<img src="${iconConfig.path}" style="width: ${scaledSize}px; height: auto;">`,
             iconSize: [scaledSize, scaledSize],
             iconAnchor: [scaledHalfSize, scaledHalfSize]
         });
@@ -522,8 +494,7 @@ export class MapManager {
         description.textContent = location.description;
         content.appendChild(description);
         
-        // Only show codex upgrade for runes
-        if (location.codex_upgrade && location.words) { // Runes have words, other locations don't
+        if (location.codex_upgrade && location.words) {
             const codexTitle = document.createElement('h4');
             codexTitle.textContent = 'Codex Upgrade';
             content.appendChild(codexTitle);
@@ -541,7 +512,7 @@ export class MapManager {
         if (this.isLoadingMap) return;
         this.currentLevel = level;
         this.loadMapLayer(level).then(() => {
-            this.initializeSidebar(); // Reinitialize sidebar for new level
+            this.initializeSidebar();
         });
     }
 
