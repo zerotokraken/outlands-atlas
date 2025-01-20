@@ -51,22 +51,16 @@ export default {
       'process.env.CLOUDCUBE_URL': JSON.stringify(process.env.CLOUDCUBE_URL),
       'process.env.CLOUDCUBE_ACCESS_KEY_ID': JSON.stringify(process.env.CLOUDCUBE_ACCESS_KEY_ID),
       'process.env.CLOUDCUBE_SECRET_ACCESS_KEY': JSON.stringify(process.env.CLOUDCUBE_SECRET_ACCESS_KEY),
-      'process.env.IS_DEVELOPMENT': JSON.stringify(isDevelopment)
+      'process.env.IS_DEVELOPMENT': JSON.stringify(false)
     }),
     new CopyPlugin({
       patterns: [
         { from: 'index.html', to: '.' },
-        { from: 'src/icons', to: 'src/icons' },
-        { from: 'src/images', to: 'src/images' },
-        { from: 'src/css', to: 'src/css' },
-        { from: 'src/json', to: 'src/json' },
-        { 
-          from: 'src/floors/**/required_tiles.json',
-          to: ({ context, absoluteFilename }) => {
-            const relativePath = path.relative(context, absoluteFilename);
-            return relativePath.replace(/^src\//, '');
-          }
-        }
+        { from: 'src/icons', to: 'icons' },
+        { from: 'src/images', to: 'images' },
+        { from: 'src/css', to: 'css' },
+        { from: 'src/json', to: 'json' },
+        { from: 'src/floors', to: 'floors', globOptions: { ignore: ['**/tiles/**'] } }
       ],
     }),
   ],
