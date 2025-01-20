@@ -323,10 +323,9 @@ export class MapManager {
 
     private async loadTileConfig(level: string): Promise<TileConfig> {
         const floorNumber = level.split(' ')[1];
-        const configPath = `floors/floor-${floorNumber}/required_tiles.json`;
-        const response = process.env.IS_DEVELOPMENT ?
-            await fetch(`src/${configPath}`) :
-            await this.tileService.getJson(configPath);
+        const response = await fetch(process.env.IS_DEVELOPMENT ? 
+            `src/floors/floor-${floorNumber}/required_tiles.json` : 
+            `/floors/floor-${floorNumber}/required_tiles.json`);
         const config = await response.json();
         return config.tiles;
     }

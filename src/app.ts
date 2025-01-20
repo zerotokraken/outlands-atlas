@@ -121,10 +121,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     mapContainerParent.appendChild(mapContainer);
 
     try {
-        const jsonPath = process.env.IS_DEVELOPMENT ? 'src/json/locations.json' : '/json/locations.json';
-        const response = process.env.IS_DEVELOPMENT ? 
-            await fetch(jsonPath) :
-            await new TileService().getJson(jsonPath);
+        const response = await fetch(process.env.IS_DEVELOPMENT ? 'src/json/locations.json' : '/json/locations.json');
         const locationsData = await response.json();
         app = new App(locationsData);
         await app.initialize();
