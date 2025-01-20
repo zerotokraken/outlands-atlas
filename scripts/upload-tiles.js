@@ -122,33 +122,40 @@ async function uploadToHeroku(localPath, remotePath, retries = 3) {
   }
 }
 
+async function countFiles(dirPath) {
+  let count = 0;
+  const queue = [dirPath];
+  
+  while (queue.length > 0) {
+    const currentPath = queue.pop();
+    const items = await fs.readdir(currentPath, { withFileTypes: true });
+    for (const item of items) {
+      if (item.isDirectory()) {
+        queue.push(path.join(currentPath, item.name));
+      } else {
+        count++;
+      }
+    }
+  }
+  
+  return count;
+}
+
 async function uploadDirectory(localPath, remotePath, totalFiles = null, currentFile = { count: 0, failed: [] }) {
   try {
-    const files = await fs.readdir(localPath, { withFileTypes: true });
-    
-    // Count total files on first call
+    // Count total files only once at the start
     if (totalFiles === null) {
-      totalFiles = 0;
-      const queue = [localPath];
-      while (queue.length > 0) {
-        const currentPath = queue.pop();
-        const items = await fs.readdir(currentPath, { withFileTypes: true });
-        for (const item of items) {
-          if (item.isDirectory()) {
-            queue.push(path.join(currentPath, item.name));
-          } else {
-            totalFiles++;
-          }
-        }
-      }
+      totalFiles = await countFiles(localPath);
       console.log(`Found ${totalFiles} files to upload`);
     }
 
+    const files = await fs.readdir(localPath, { withFileTypes: true });
     for (const file of files) {
       const localFilePath = path.join(localPath, file.name);
       const remoteFilePath = path.join(remotePath, file.name).replace(/\\/g, '/');
       
       if (file.isDirectory()) {
+        // Pass the existing totalFiles count to avoid recounting
         await uploadDirectory(localFilePath, remoteFilePath, totalFiles, currentFile);
       } else {
         currentFile.count++;
@@ -159,7 +166,6 @@ async function uploadDirectory(localPath, remotePath, totalFiles = null, current
         } catch (error) {
           console.error(`Failed to upload ${remoteFilePath}:`, error.message);
           currentFile.failed.push({ path: remoteFilePath, error: error.message });
-          // Continue with next file instead of throwing
         }
       }
     }

@@ -36,15 +36,26 @@ http {
     client_max_body_size <%= ENV['NGINX_CLIENT_MAX_BODY_SIZE'] || 1 %>M;
     root /app/dist;
 
+    # Handle JSON files directly
+    location ~ \.json$ {
+      try_files $uri =404;
+      expires -1;
+      add_header Cache-Control no-store;
+      add_header Content-Type application/json;
+    }
+
+    # Handle static assets with caching
+    location ~ \.(png|jpg|jpeg|gif|ico|css|js)$ {
+      try_files $uri =404;
+      expires max;
+      add_header Cache-Control public;
+    }
+
+    # Default location block
     location / {
       try_files $uri $uri/ /index.html;
       expires -1;
       add_header Cache-Control no-store;
-    }
-
-    location /static {
-      expires max;
-      add_header Cache-Control public;
     }
 
     location = /index.html {
