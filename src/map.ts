@@ -325,7 +325,7 @@ export class MapManager {
         const floorNumber = level.split(' ')[1];
         const response = await fetch(process.env.IS_DEVELOPMENT ? 
             `src/floors/floor-${floorNumber}/required_tiles.json` : 
-            `/floors/floor-${floorNumber}/required_tiles.json`);
+            `/src/floors/floor-${floorNumber}/required_tiles.json`);
         const config = await response.json();
         return config.tiles;
     }
