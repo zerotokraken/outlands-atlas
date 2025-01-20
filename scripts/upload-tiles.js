@@ -55,27 +55,40 @@ async function downloadFromS3(s3Key, localPath) {
 }
 
 async function downloadAllTiles() {
-  const command = new ListObjectsV2Command({
-    Bucket: bucketName,
-    Prefix: `${cubeName}/floors`
-  });
+  const tempDir = path.join(__dirname, '../temp');
+  await fs.mkdir(tempDir, { recursive: true });
+
+  let allFiles = [];
+  let continuationToken = undefined;
 
   try {
-    const response = await s3Client.send(command);
-    const tempDir = path.join(__dirname, '../temp');
-    await fs.mkdir(tempDir, { recursive: true });
+    // First, collect all files through pagination
+    do {
+      const command = new ListObjectsV2Command({
+        Bucket: bucketName,
+        Prefix: `${cubeName}/floors`,
+        ContinuationToken: continuationToken
+      });
 
-    const files = response.Contents || [];
-    const totalFiles = files.length;
-    console.log(`Found ${totalFiles} files to download`);
+      const response = await s3Client.send(command);
+      allFiles = allFiles.concat(response.Contents || []);
+      continuationToken = response.NextContinuationToken;
+      
+      if (continuationToken) {
+        console.log(`Found ${allFiles.length} files so far, getting more...`);
+      }
+    } while (continuationToken);
 
-    for (let i = 0; i < files.length; i++) {
-      const object = files[i];
+    console.log(`Found ${allFiles.length} total files to download`);
+
+    // Then download all files
+    for (let i = 0; i < allFiles.length; i++) {
+      const object = allFiles[i];
       const localPath = path.join(tempDir, object.Key.replace(`${cubeName}/`, ''));
-      const progress = ((i + 1) / totalFiles * 100).toFixed(1);
+      const progress = ((i + 1) / allFiles.length * 100).toFixed(1);
       try {
         await downloadFromS3(object.Key.replace(`${cubeName}/`, ''), localPath);
-        console.log(`[${i + 1}/${totalFiles}] (${progress}%) Downloaded ${object.Key}`);
+        console.log(`[${i + 1}/${allFiles.length}] (${progress}%) Downloaded ${object.Key}`);
       } catch (error) {
         console.error(`Failed to download ${object.Key}:`, error.message);
         throw error;
@@ -89,17 +102,27 @@ async function downloadAllTiles() {
   }
 }
 
-async function uploadToHeroku(localPath, remotePath) {
-  try {
-    console.log(`Uploading ${localPath} to ${remotePath}`);
-    await execAsync(`heroku static:upload ${localPath} ${remotePath}`);
-  } catch (error) {
-    console.error(`Error uploading ${localPath}:`, error);
-    throw error;
+async function uploadToHeroku(localPath, remotePath, retries = 3) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      if (attempt > 1) {
+        console.log(`Retry attempt ${attempt}/${retries} for ${remotePath}`);
+      }
+      console.log(`Uploading ${localPath} to ${remotePath}`);
+      await execAsync(`heroku static:upload ${localPath} ${remotePath}`);
+      return; // Success, exit function
+    } catch (error) {
+      if (attempt === retries) {
+        console.error(`Failed all ${retries} attempts to upload ${localPath}:`, error);
+        throw error;
+      }
+      console.warn(`Upload failed (attempt ${attempt}/${retries}), retrying in 5 seconds...`);
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    }
   }
 }
 
-async function uploadDirectory(localPath, remotePath, totalFiles = null, currentFile = { count: 0 }) {
+async function uploadDirectory(localPath, remotePath, totalFiles = null, currentFile = { count: 0, failed: [] }) {
   try {
     const files = await fs.readdir(localPath, { withFileTypes: true });
     
@@ -135,7 +158,8 @@ async function uploadDirectory(localPath, remotePath, totalFiles = null, current
           await uploadToHeroku(localFilePath, remoteFilePath);
         } catch (error) {
           console.error(`Failed to upload ${remoteFilePath}:`, error.message);
-          throw error;
+          currentFile.failed.push({ path: remoteFilePath, error: error.message });
+          // Continue with next file instead of throwing
         }
       }
     }
@@ -157,6 +181,7 @@ async function cleanup(tempDir) {
 async function main() {
   let tempDir = null;
   const startTime = Date.now();
+  const failedUploads = { count: 0, failed: [] };
   
   try {
     console.log('=== Starting Tile Migration Process ===');
@@ -164,10 +189,17 @@ async function main() {
     tempDir = await downloadAllTiles();
     
     console.log('\n2. Uploading tiles to Heroku...');
-    await uploadDirectory(path.join(tempDir, 'floors'), 'dist/floors');
+    await uploadDirectory(path.join(tempDir, 'floors'), 'dist/floors', null, failedUploads);
     
     const duration = ((Date.now() - startTime) / 1000).toFixed(1);
     console.log(`\n=== Migration Complete! (${duration}s) ===`);
+    
+    if (failedUploads.failed.length > 0) {
+      console.log(`\nWARNING: ${failedUploads.failed.length} files failed to upload:`);
+      failedUploads.failed.forEach(({ path, error }) => {
+        console.log(`- ${path}: ${error}`);
+      });
+    }
   } catch (error) {
     console.error('Process failed:', error);
     process.exit(1);
