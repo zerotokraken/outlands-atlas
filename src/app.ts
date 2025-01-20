@@ -82,25 +82,23 @@ class App {
 }
 
 // Initialize the application when the DOM is loaded
-let isInitialized = false;
 window.addEventListener('DOMContentLoaded', async () => {
-    if (isInitialized) {
-        console.warn('Application is already initialized');
-        return;
+    // Remove any existing map container
+    const existingMap = document.getElementById('map');
+    if (existingMap) {
+        existingMap.remove();
     }
 
-    const mapContainer = document.getElementById('map');
-    if (!mapContainer) {
-        console.error('Map container not found');
-        return;
-    }
+    // Create a new map container
+    const mapContainer = document.createElement('div');
+    mapContainer.id = 'map';
+    document.body.appendChild(mapContainer);
 
     try {
         const response = await fetch('src/json/locations.json');
         const locationsData = await response.json();
         const app = new App(locationsData);
         await app.initialize();
-        isInitialized = true;
     } catch (error) {
         console.error('Failed to initialize application:', error);
     }
