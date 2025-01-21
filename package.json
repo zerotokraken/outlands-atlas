@@ -8,7 +8,7 @@
   },
   "scripts": {
     "optimize-tiles": "node scripts/optimize-tiles.js",
-    "clean": "if exist dist rmdir /s /q dist",
+    "clean": "rm -rf dist",
     "build": "npm run clean && tsc && webpack",
     "start": "node dist/server.js",
     "dev": "webpack serve --open",
