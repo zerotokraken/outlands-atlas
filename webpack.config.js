@@ -42,16 +42,11 @@ export default {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    clean: {
-      keep: /(server\.js|app\.js|map\.js|types\.js)$/
-    }
+    clean: false
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.CLOUDCUBE_URL': JSON.stringify(process.env.CLOUDCUBE_URL),
-      'process.env.CLOUDCUBE_ACCESS_KEY_ID': JSON.stringify(process.env.CLOUDCUBE_ACCESS_KEY_ID),
-      'process.env.CLOUDCUBE_SECRET_ACCESS_KEY': JSON.stringify(process.env.CLOUDCUBE_SECRET_ACCESS_KEY),
-      'process.env.IS_DEVELOPMENT': JSON.stringify(false)
+      'process.env.IS_DEVELOPMENT': JSON.stringify(process.env.NODE_ENV === 'development')
     }),
     new CopyPlugin({
       patterns: [
@@ -60,13 +55,13 @@ export default {
         { from: 'src/images', to: 'images' },
         { from: 'src/css', to: 'css' },
         { from: 'src/json', to: 'json' },
-        { from: 'src/floors', to: 'floors', globOptions: { ignore: ['**/tiles/**'] } }
+        { from: 'src/floors', to: 'floors' }
       ],
     }),
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, '/'),
+      directory: path.join(__dirname, 'dist'),
       publicPath: '/',
     },
     hot: true,

@@ -213,7 +213,7 @@ export class MapManager {
         mapContainer.id = elementId;
         document.getElementById('map-container')?.appendChild(mapContainer);
 
-        onProgress?.(35, 'Initializing map...');
+        onProgress?.(50, 'Initializing map...');
         
         this.coordDisplay = document.createElement('div');
         this.coordDisplay.className = 'coordinate-display';
@@ -306,7 +306,10 @@ export class MapManager {
         });
 
         this.initializeSidebar();
-        await this.loadAllMapLayers(onProgress);
+        
+        // Only load the initial floor (Level 1)
+        await this.loadMapLayer("Level 1");
+        onProgress?.(100, 'Ready!');
 
         const mapLinks = document.querySelectorAll('.map-link');
         mapLinks.forEach(link => {
@@ -323,88 +326,9 @@ export class MapManager {
 
     private async loadTileConfig(level: string): Promise<TileConfig> {
         const floorNumber = level.split(' ')[1];
-        const response = await fetch(process.env.IS_DEVELOPMENT ? 
-            `/src/floors/floor-${floorNumber}/required_tiles.json` : 
-            `/floors/floor-${floorNumber}/required_tiles.json`);
+        const response = await fetch(`/floors/floor-${floorNumber}/required_tiles.json`);
         const config = await response.json();
         return config.tiles;
-    }
-
-    private async loadAllMapLayers(onProgress?: (progress: number, message: string) => void): Promise<void> {
-        if (!this.map) return;
-        
-        this.isLoadingMap = true;
-        let firstLayer = true;
-        
-        try {
-            const levels = ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 6.5", "Level 7", "Level 8"];
-            const progressPerLevel = 60 / levels.length;
-            
-            for (let i = 0; i < levels.length; i++) {
-                const level = levels[i];
-                onProgress?.(40 + (i * progressPerLevel), `Loading ${level}...`);
-                const floorNumber = level.split(' ')[1];
-                const config = await this.loadTileConfig(level);
-                
-                const layerGroup = L.layerGroup();
-                const tileSize = 256;
-                const numCols = config.endDir - config.startDir + 1;
-                const numRows = config.endTile - config.startTile + 1;
-
-                const totalTiles = numCols * numRows;
-                let loadedTiles = 0;
-
-                for (let col = 0; col < numCols; col++) {
-                    for (let row = 0; row < numRows; row++) {
-                        loadedTiles++;
-                        const tileProgress = (loadedTiles / totalTiles) * progressPerLevel;
-                        onProgress?.(40 + (i * progressPerLevel) + tileProgress, 
-                            `Loading ${level} (${Math.round(loadedTiles/totalTiles * 100)}%)...`);
-                        
-                        const directory = col + config.startDir;
-                        const file = row + config.startTile;
-                        const tilePath = `floors/floor-${floorNumber}/tiles/${directory}/${file}.png`;
-                        
-                        const overlap = 2;
-                        const bounds = [
-                            [(numRows - row - 1) * tileSize - overlap, col * tileSize - overlap],
-                            [(numRows - row) * tileSize + overlap, (col + 1) * tileSize + overlap]
-                        ] as L.LatLngBoundsExpression;
-
-                        try {
-                            // Get tile URL from service
-                            const tileUrl = await this.tileService.getTile(floorNumber, directory.toString(), file.toString());
-                            
-                            L.imageOverlay(tileUrl, bounds).addTo(layerGroup);
-                        } catch (error) {
-                            console.warn(`Failed to load tile: ${directory}/${file}`, error);
-                        }
-                    }
-                }
-
-                const viewBounds: L.LatLngBoundsExpression = [
-                    [0, 0],
-                    [numRows * tileSize, numCols * tileSize]
-                ];
-
-                this.mapLayers[level] = {
-                    layer: layerGroup,
-                    bounds: viewBounds
-                };
-                
-                if (firstLayer) {
-                    layerGroup.addTo(this.map);
-                    this.map.fitBounds(viewBounds);
-                    firstLayer = false;
-                }
-            }
-            
-            this.updateMarkers();
-            onProgress?.(100, 'Ready!');
-            
-        } finally {
-            this.isLoadingMap = false;
-        }
     }
 
     private async loadMapLayer(level: string): Promise<void> {
@@ -413,14 +337,61 @@ export class MapManager {
         // Clean up old layer's blob URLs
         this.tileService.cleanup();
         
-        Object.entries(this.mapLayers).forEach(([layerLevel, { layer, bounds }]) => {
-            if (layerLevel === level) {
-                this.map?.addLayer(layer);
-                this.map?.fitBounds(bounds);
-            } else {
-                this.map?.removeLayer(layer);
+        // If we already have this layer loaded, just show it
+        if (this.mapLayers[level]) {
+            Object.entries(this.mapLayers).forEach(([layerLevel, { layer, bounds }]) => {
+                if (layerLevel === level) {
+                    this.map?.addLayer(layer);
+                    this.map?.fitBounds(bounds);
+                } else {
+                    this.map?.removeLayer(layer);
+                }
+            });
+        } else {
+            // Load the new layer
+            const floorNumber = level.split(' ')[1];
+            const config = await this.loadTileConfig(level);
+            
+            const layerGroup = L.layerGroup();
+            const tileSize = 256;
+            const numCols = config.endDir - config.startDir + 1;
+            const numRows = config.endTile - config.startTile + 1;
+
+            for (let col = 0; col < numCols; col++) {
+                for (let row = 0; row < numRows; row++) {
+                    const directory = col + config.startDir;
+                    const file = row + config.startTile;
+                    
+                    const overlap = 2;
+                    const bounds = [
+                        [(numRows - row - 1) * tileSize - overlap, col * tileSize - overlap],
+                        [(numRows - row) * tileSize + overlap, (col + 1) * tileSize + overlap]
+                    ] as L.LatLngBoundsExpression;
+
+                    const tilePath = `/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`;
+                    L.imageOverlay(tilePath, bounds).addTo(layerGroup);
+                }
             }
-        });
+
+            const viewBounds: L.LatLngBoundsExpression = [
+                [0, 0],
+                [numRows * tileSize, numCols * tileSize]
+            ];
+
+            // Remove old layers
+            Object.values(this.mapLayers).forEach(({ layer }) => {
+                this.map?.removeLayer(layer);
+            });
+
+            // Store and show new layer
+            this.mapLayers[level] = {
+                layer: layerGroup,
+                bounds: viewBounds
+            };
+            
+            layerGroup.addTo(this.map);
+            this.map?.fitBounds(viewBounds);
+        }
         
         if (this.markersLayer) {
             this.markersLayer.clearLayers();
@@ -438,7 +409,7 @@ export class MapManager {
             const scaledHalfSize = scaledSize / 2;
             return L.divIcon({
                 className: 'marker-icon',
-            html: `<img src="${process.env.IS_DEVELOPMENT ? '/src/' : '/'}icons/${location.icon.split('/').pop()}" style="width: ${scaledSize}px; height: auto;">`,
+            html: `<img src="/icons/${location.icon.split('/').pop()}" style="width: ${scaledSize}px; height: auto;">`,
                 iconSize: [scaledSize, scaledSize],
                 iconAnchor: [scaledHalfSize, scaledHalfSize]
             });
@@ -470,7 +441,7 @@ export class MapManager {
         const scaledHalfSize = scaledSize / 2;
         return L.divIcon({
             className: 'marker-icon',
-            html: `<img src="${process.env.IS_DEVELOPMENT ? '/src/' : '/'}icons/${iconConfig.path.split('/').pop()}" style="width: ${scaledSize}px; height: auto;">`,
+            html: `<img src="/icons/${iconConfig.path.split('/').pop()}" style="width: ${scaledSize}px; height: auto;">`,
             iconSize: [scaledSize, scaledSize],
             iconAnchor: [scaledHalfSize, scaledHalfSize]
         });

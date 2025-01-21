@@ -7,6 +7,7 @@
     "node": "18.x"
   },
   "scripts": {
+    "optimize-tiles": "node scripts/optimize-tiles.js",
     "build": "tsc && webpack",
     "start": "node dist/server.js",
     "dev": "webpack serve --open",
@@ -34,6 +35,7 @@
     "@aws-sdk/client-s3": "^3.731.1",
     "express": "^4.21.2",
     "leaflet": "^1.9.4",
-    "node-fetch": "^2.7.0"
+    "node-fetch": "^2.7.0",
+    "sharp": "^0.33.5"
   }
 }
