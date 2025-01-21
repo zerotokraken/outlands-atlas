@@ -7,12 +7,15 @@ interface Location {
     words?: string;
     icon?: string;  // Path to icon relative to src/, e.g. "icons/Stairs.png"
     scale?: number; // Optional scale percentage for the icon, defaults to 100
+    container?: string; // Optional container type where the item is found
 }
 
 interface IconConfig {
     path: string;
-    scale: number;
+    scale: number;  // Allow any number for scale
 }
+
+// Remove the 'as const' assertion to allow scale overrides
 
 // Available icons with their configurations
 const AVAILABLE_ICONS = {
@@ -42,7 +45,7 @@ const AVAILABLE_ICONS = {
     RUNE_TIMELYWEALTH: { path: "icons/timerune-timelywealth.png", scale: 100 },
     RUNE_TREMOR: { path: "icons/timerune-tremor.png", scale: 100 },
     RUNE_WILDCREATURES: { path: "icons/timerune-wildcreatures.png", scale: 100 },
-} as const;
+};
 
 interface CategoryData {
     [subcategory: string]: Location[];

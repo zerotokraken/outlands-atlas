@@ -1,0 +1,332 @@
+{
+  "circles": [
+    {
+      "name": "Circle 1",
+      "runes": [
+        {
+          "name": "Knock",
+          "wordsOfPower": "Ex Ylem",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "All Doors within 3 tiles become opened and stay unlocked for 15 seconds",
+            "Each Chest within 3 tiles has a 50% chance to become unlocked"
+          ],
+          "upgrades": [
+            "Door unlock duration increased by 5 seconds",
+            "+10% Chest Unlock chance",
+            "+10% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Mend",
+          "wordsOfPower": "Rel Mani",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "Heals 50 Health immediately",
+            "Heals 20 Health every 2 seconds for 10 seconds",
+            "Has a 50% chance to remove each Bleed and Disease effect on player"
+          ],
+          "upgrades": [
+            "Immediate Healing increased by 10",
+            "Healing duration increased by 2 seconds",
+            "Bleed and Disease removal chance increased by 10%",
+            "1 Additional random player within 8 tiles will also be affected",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Iron Flesh",
+          "wordsOfPower": "In Ylem Sanct",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "10 Minute duration",
+            "Applies 5 Physical Barrier charges to player",
+            "Any Melee Attack inflicting more than 20 Damage to the player will be reduced to 20 Damage and consume 1 Physical Barrier charge",
+            "Players cannot have more than 10 charges stored"
+          ],
+          "upgrades": [
+            "+1 Barrier Charge applied",
+            "1 Additional random player within 8 tiles will also be affected",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Magic Ward",
+          "wordsOfPower": "In Ort Sanct",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "10 Minute duration",
+            "Applies 5 Magical Barrier charges to player",
+            "Any Spell inflicting more than 20 Damage to the player will be reduced to 20 Damage and consume 1 Magical Barrier charge",
+            "Players cannot have more than 10 charges stored"
+          ],
+          "upgrades": [
+            "+1 Barrier charge applied",
+            "1 Additional random player within 8 tiles will also be affected",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Fortify Rations",
+          "wordsOfPower": "In Xen Mani",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "5 Minute duration",
+            "Increases player's Effective Cooking Skill by 50",
+            "4 Additional random players within 8 tiles will also be affected"
+          ],
+          "upgrades": [
+            "+1 Minute duration",
+            "2 Additional random players within 8 tiles will also be affected",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Circle 2",
+      "runes": [
+        {
+          "name": "Repel",
+          "wordsOfPower": "In Bet Rel",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "Applies a 5 tile Knockback effect to all creatures within 5 tiles (max of 5 creatures affected)",
+            "Applies a Hinder effect of 2.5 seconds",
+            "If Knockback causes creature to collide with a wall or immovable object, they will take 2500 Damage and suffer a Hinder effect of 5 seconds"
+          ],
+          "upgrades": [
+            "Knockback distance and radius increased by 1",
+            "+1 Max Creatures Affected",
+            "+20% duration to Hinder effects",
+            "+500 Damage on collision",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Timely Wealth",
+          "wordsOfPower": "Kal Tym Ylem",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "Create a randomized Time Dungeon equipment item in the player's backpack",
+            "Has a 25% chance to create a Timely Bank Note in the player's backpack"
+          ],
+          "upgrades": [
+            "+5% chance for an additional Time Dungeon equipment item to appear",
+            "+5% chance for Timely Bank Note to appear",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Wild Creatures",
+          "wordsOfPower": "In Bet Xen",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "2.5 Minute duration",
+            "A Silver Serpent, Silver Bear, Silver Stag, and Silver Wolf appear as allied creatures at location",
+            "Creatures are dismissed when duration ends (unless killed beforehand)"
+          ],
+          "upgrades": [
+            "+30 Second duration",
+            "Damage of creatures increased by 20%",
+            "Hit Points of creatures increased by 20%",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Mass Invisibility",
+          "wordsOfPower": "In Vas Quas",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "Applies the Invisibility Spell immediately",
+            "Grants 10 Stealth Steps, which can be used regardless of skill, within the next 2 minutes (or until revealed)",
+            "4 Additional random players within 8 tiles will also be affected"
+          ],
+          "upgrades": [
+            "+2 Stealth Step received",
+            "2 Additional random players within 8 tiles will also be affected",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Negate Time",
+          "wordsOfPower": "Xen Corp Tym",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "10 Minute duration",
+            "Gain immunity to Time Rift, Time Vortex, Pilgrim's Curse, Leper's Curse, Bleeding Sand, and Miasma effects",
+            "4 Additional random players within 8 tiles will also be affected"
+          ],
+          "upgrades": [
+            "+2 Minute duration",
+            "2 Additional random players within 8 tiles will also be affected",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Circle 3",
+      "runes": [
+        {
+          "name": "Refresh",
+          "wordsOfPower": "In Mani Ort",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "5 Minute duration",
+            "Players will regain 5 Health, 5 Stam, and 5 Mana every 15 seconds",
+            "4 Additional random players within 8 tiles will also be affected"
+          ],
+          "upgrades": [
+            "+1 Minute duration",
+            "2 Additional random player within 8 tiles will also be affected",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Bloom",
+          "wordsOfPower": "In Vas Ort",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "2.5 minute duration",
+            "Creates a Bloom effect at location",
+            "Every 15 seconds will create an allied Noxweed near the Bloom location, if one does not currently exist",
+            "Every 15 seconds a random player within 8 tiles of Bloom location will have all Poison, Bleed, and Disease effects removed"
+          ],
+          "upgrades": [
+            "+30 Second duration",
+            "Noxweed and Poison Cure interval reduced by 1 second",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Awaken Earth",
+          "wordsOfPower": "An Zu Ylem",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "2.5 Minute duration",
+            "Creates 2 allied Silver Elementals at location",
+            "Silver Elementals are dismissed when duration ends (unless killed beforehand)"
+          ],
+          "upgrades": [
+            "+30 Second duration",
+            "Damage of Silver Elementals increased by 20%",
+            "Hit Points of Silver Elementals increased by 20%",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Conjure Potion",
+          "wordsOfPower": "In Bet Wis",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "Creates an blessed Omni Potion in the player's backpack that only that player may use",
+            "4 Additional random players within 8 tiles will also receive Omni Potions"
+          ],
+          "upgrades": [
+            "2 Additional random players within 8 tiles will also receive Omni Potions",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Circle of Power",
+          "wordsOfPower": "In Vas Ort Grav",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "30 Second duration",
+            "Creates a Circle of Power effect at location",
+            "Players within 6 tiles of Circle of Power effect receive a Damage Bonus of +20%"
+          ],
+          "upgrades": [
+            "+6 Second duration",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Circle 4",
+      "runes": [
+        {
+          "name": "Tremor",
+          "wordsOfPower": "Kal Vas Rel Ylem",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "Inflicts 5000 Damage to each creature within 5 tiles (max of 5 creatures affected)",
+            "Applies a Pierce effect of 50 and Hex effect of 100 for 15 seconds"
+          ],
+          "upgrades": [
+            "Damage increased by 1000",
+            "+1 Radius",
+            "+1 Max Creatures Affected",
+            "Pierce and Hex duration increased by 3 seconds",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Meteor Shower",
+          "wordsOfPower": "Kal Des Flam Hur",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "10 Second duration",
+            "Creates a Meteor Shower effect at location",
+            "Every 2 seconds will inflict 1500 Damage to each creature within 5 tiles of Meteor Shower location (max of 5 creatures affected)"
+          ],
+          "upgrades": [
+            "+2 Second duration",
+            "+1 Radius",
+            "+1 Max Creatures Affected",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Animated Weapon",
+          "wordsOfPower": "In Jux Por Ylem",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "2.5 Minute duration",
+            "Creates an allied Silver Weapon at location",
+            "Silver Weapon is dismissed when duration ends (unless killed beforehand)"
+          ],
+          "upgrades": [
+            "+30 Second duration", 
+            "Attack Speed of Silver Weapon increased by 20%",
+            "Damage of Silver Weapon increased by 20%",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Silver Sapling",
+          "wordsOfPower": "In Vas Ort Mani",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "10 Minute duration",
+            "Creates a Silver Sapling at location",
+            "Every 15 seconds will restore 25 health to a random player within 8 tiles of Silver Sapling location",
+            "Players can resurrect at a Silver Sapling similar to an Ankh"
+          ],
+          "upgrades": [
+            "+2 Minute duration",
+            "Heal interval reduced by 1 second",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        },
+        {
+          "name": "Mass Sleep",
+          "wordsOfPower": "In Vas Zu",
+          "pointsPerTier": ["1", "2", "3", "4", "5"],
+          "description": [
+            "15 Second duration",
+            "Pacifies all creatures within 10 tiles that are not currently pacified or provoked (max of 5 creatures affected)"
+          ],
+          "upgrades": [
+            "+3 Second duration",
+            "+2 Radius",
+            "+1 Max Creatures Affected",
+            "+5% Chance to not consume Rune on usage"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -23,15 +23,14 @@
             "Teleport Tiles": [],
             "Waystar": []
             },
-        "Misc": {
-            "Knock Spawns": [
+        "Runes": {
+            "Knock": [
                 {
                     "id": "knock",
                     "title": "Knock",
-                    "words": "Ex Ylem",
+                    "container": "Crate",
                     "icon": "icons/timerune-knock.png",
                     "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
-                    "codex_upgrade": "Door unlock duration increased by 5 seconds\n+10% Chest Unlock chance\n+10% Chance to not consume Rune on usage",
                     "coordinates": [1855, 1734]
                 }
             ]

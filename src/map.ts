@@ -1,6 +1,7 @@
 import L from 'leaflet';
-import { Location, LocationsData, AVAILABLE_ICONS } from './types.js';
+import { Location, LocationsData, CategoryData, AVAILABLE_ICONS } from './types.js';
 import { TileService } from './services/tileService.js';
+import { InfoMenu } from './components/InfoMenu.js';
 
 interface TileConfig {
     startDir: number;
@@ -23,9 +24,11 @@ export class MapManager {
     private mapLayers: { [key: string]: { layer: L.LayerGroup; bounds: L.LatLngBoundsExpression } } = {};
     private isLoadingMap: boolean = false;
     private tileService: TileService;
+    private infoMenu: InfoMenu;
 
     constructor(private locationsData: LocationsData) {
         this.tileService = new TileService();
+        this.infoMenu = new InfoMenu();
     }
 
     private updateMarkers(): void {
@@ -38,22 +41,23 @@ export class MapManager {
         
         const currentSize = this.getMarkerSize();
         
-        // Add passage markers
-        if (levelData.Passage) {
-            for (const type in levelData.Passage) {
-                const categoryName = type.charAt(0).toUpperCase() + type.slice(1);
+        // Handle all categories dynamically
+        Object.entries(levelData).forEach(([mainCategory, categoryData]) => {
+            if (!categoryData) return;
+            Object.entries(categoryData as CategoryData).forEach(([subCategory, locations]: [string, Location[]]) => {
+                const categoryName = subCategory.charAt(0).toUpperCase() + subCategory.slice(1);
                 if (!this.hiddenCategories.has(categoryName)) {
-                    levelData.Passage[type].forEach(loc => {
+                    locations.forEach(loc => {
                         const coordinates = Array.isArray(loc.coordinates[0]) 
                             ? loc.coordinates as [number, number][]
                             : [loc.coordinates as [number, number]];
                         
                         coordinates.forEach(coord => {
                             const marker = L.marker(coord, {
-                                icon: this.createMarkerIcon('Passage', categoryName, loc, currentSize),
+                                icon: this.createMarkerIcon(mainCategory, categoryName, loc, currentSize),
                                 location: loc,
                                 category: categoryName,
-                                mainCategory: 'Passage',
+                                mainCategory: mainCategory,
                                 zIndexOffset: 1000
                             } as MarkerOptions);
                             
@@ -62,35 +66,8 @@ export class MapManager {
                         });
                     });
                 }
-            }
-        }
-        
-        // Add rune markers
-        if (levelData.Runes) {
-            for (const circle in levelData.Runes) {
-                const categoryName = circle.charAt(0).toUpperCase() + circle.slice(1);
-                if (!this.hiddenCategories.has(categoryName)) {
-                    levelData.Runes[circle].forEach(rune => {
-                        const coordinates = Array.isArray(rune.coordinates[0])
-                            ? rune.coordinates as [number, number][]
-                            : [rune.coordinates as [number, number]];
-                        
-                        coordinates.forEach(coord => {
-                            const marker = L.marker(coord, {
-                                icon: this.createMarkerIcon('Runes', categoryName, rune, currentSize),
-                                location: rune,
-                                category: categoryName,
-                                mainCategory: 'Runes',
-                                zIndexOffset: 1000
-                            } as MarkerOptions);
-                            
-                            marker.bindPopup(this.createPopupContent(rune));
-                            this.markersLayer?.addLayer(marker);
-                        });
-                    });
-                }
-            }
-        }
+            });
+        });
     }
 
     private initializeSidebar(): void {
@@ -102,9 +79,22 @@ export class MapManager {
         const levelData = this.locationsData[this.currentLevel];
         if (!levelData) return;
 
-        const createCategoryItem = (title: string, count: number, iconClass: string) => {
+        const getLocationCount = (locations: Location[]) => {
+            return locations.reduce((total, loc) => {
+                // If coordinates is an array of arrays, count each coordinate set
+                if (Array.isArray(loc.coordinates[0])) {
+                    return total + (loc.coordinates as [number, number][]).length;
+                }
+                // Single coordinate set counts as 1
+                return total + 1;
+            }, 0);
+        };
+
+        const createCategoryItem = (title: string, locations: Location[], mainCategory: string) => {
             const categoryName = title.charAt(0).toUpperCase() + title.slice(1);
             const isVisible = !this.hiddenCategories.has(categoryName);
+            const count = getLocationCount(locations);
+            const iconClass = mainCategory === 'Passage' ? 'icon-important' : 'icon-resource';
             return `
                 <div class="category-item ${isVisible ? 'category-visible' : ''}" data-category="${categoryName}">
                     <span class="icon ${iconClass}">
@@ -118,29 +108,19 @@ export class MapManager {
             `;
         };
 
-        if (levelData.Passage) {
-            const passageHtml = `
-                <div class="header">Passage</div>
+        // Handle all categories dynamically
+        Object.entries(levelData).forEach(([mainCategory, categoryData]) => {
+            if (!categoryData) return;
+            const categoryHtml = `
+                <div class="header">${mainCategory}</div>
                 <div class="group-categories">
-                    ${Object.entries(levelData.Passage).map(([subCategory, locations]) => 
-                        createCategoryItem(subCategory, locations.length, 'icon-important')
+                    ${Object.entries(categoryData as CategoryData).map(([subCategory, locations]: [string, Location[]]) => 
+                        createCategoryItem(subCategory, locations, mainCategory)
                     ).join('')}
                 </div>
             `;
-            categoriesContainer.innerHTML += passageHtml;
-        }
-
-        if (levelData.Runes) {
-            const runesHtml = `
-                <div class="header">Runes</div>
-                <div class="group-categories">
-                    ${Object.entries(levelData.Runes).map(([subCategory, locations]) => 
-                        createCategoryItem(subCategory, locations.length, 'icon-resource')
-                    ).join('')}
-                </div>
-            `;
-            categoriesContainer.innerHTML += runesHtml;
-        }
+            categoriesContainer.innerHTML += categoryHtml;
+        });
 
         const categoryItems = document.querySelectorAll('.category-item');
         categoryItems.forEach(item => {
@@ -211,7 +191,11 @@ export class MapManager {
         // Create a new map container
         const mapContainer = document.createElement('div');
         mapContainer.id = elementId;
-        document.getElementById('map-container')?.appendChild(mapContainer);
+        const mapContainerElement = document.getElementById('map-container');
+        if (!mapContainerElement) return;
+        
+        mapContainerElement.appendChild(mapContainer);
+        this.infoMenu.mount(mapContainerElement);
 
         onProgress?.(50, 'Initializing map...');
         
@@ -290,7 +274,17 @@ export class MapManager {
                             const icon = marker.getIcon() as L.DivIcon;
                             const iconHtml = icon.options.html;
                             if (iconHtml && typeof iconHtml === 'string') {
-                                const scaledSize = currentSize * (markerOptions.location.scale || 100) / 100;
+                                // Get the icon's base scale from AVAILABLE_ICONS or location
+                                let scale = 100;
+                                if (markerOptions.location?.icon) {
+                                    const iconConfig = Object.values(AVAILABLE_ICONS).find(config => config.path === markerOptions.location?.icon);
+                                    scale = iconConfig?.scale || 100;
+                                }
+                                // Apply location-specific scale override if it exists
+                                if (markerOptions.location?.scale) {
+                                    scale = markerOptions.location.scale;
+                                }
+                                const scaledSize = currentSize * (scale / 100);
                                 const scaledHalfSize = scaledSize / 2;
                                 marker.setIcon(L.divIcon({
                                     className: 'marker-icon',
@@ -362,14 +356,18 @@ export class MapManager {
                     const directory = col + config.startDir;
                     const file = row + config.startTile;
                     
-                    const overlap = 2;
+                    // Use a very small overlap to prevent tile lines
+                    const overlap = 0.1;
                     const bounds = [
                         [(numRows - row - 1) * tileSize - overlap, col * tileSize - overlap],
                         [(numRows - row) * tileSize + overlap, (col + 1) * tileSize + overlap]
                     ] as L.LatLngBoundsExpression;
 
                     const tilePath = `/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`;
-                    L.imageOverlay(tilePath, bounds).addTo(layerGroup);
+                    const overlay = L.imageOverlay(tilePath, bounds, {
+                        className: 'seamless-tile'
+                    });
+                    overlay.addTo(layerGroup);
                 }
             }
 
@@ -403,13 +401,18 @@ export class MapManager {
         const halfSize = size / 2;
         
         if (location?.icon) {
+            // Get the icon's base scale from AVAILABLE_ICONS
             const iconConfig = Object.values(AVAILABLE_ICONS).find(config => config.path === location.icon);
-            const scale = iconConfig?.scale || 100;
-            const scaledSize = size * scale / 100;
+            let scale = iconConfig?.scale || 100;
+            // Apply location-specific scale override if it exists
+            if (location.scale) {
+                scale = location.scale;
+            }
+            const scaledSize = size * (scale / 100);
             const scaledHalfSize = scaledSize / 2;
             return L.divIcon({
                 className: 'marker-icon',
-            html: `<img src="/icons/${location.icon.split('/').pop()}" style="width: ${scaledSize}px; height: auto;">`,
+                html: `<img src="/icons/${location.icon.split('/').pop()}" style="width: ${scaledSize}px; height: auto;">`,
                 iconSize: [scaledSize, scaledSize],
                 iconAnchor: [scaledHalfSize, scaledHalfSize]
             });
@@ -427,7 +430,8 @@ export class MapManager {
             default:
                 const colors: { [key: string]: string } = {
                     "Passage": "#e74c3c",
-                    "Runes": "#f1c40f"
+                    "Runes": "#f1c40f",
+                    "Misc": "#3498db"
                 };
                 return L.divIcon({
                     className: 'marker-icon',
@@ -437,7 +441,12 @@ export class MapManager {
                 });
         }
 
-        const scaledSize = size * iconConfig.scale / 100;
+        let scale = iconConfig.scale;
+        // Apply location-specific scale override if it exists
+        if (location?.scale) {
+            scale = location.scale;
+        }
+        const scaledSize = size * (scale / 100);
         const scaledHalfSize = scaledSize / 2;
         return L.divIcon({
             className: 'marker-icon',
@@ -455,6 +464,12 @@ export class MapManager {
         title.textContent = location.title;
         content.appendChild(title);
         
+        if (location.container) {
+            const container = document.createElement('p');
+            container.innerHTML = `<i>Found in: ${location.container}</i>`;
+            content.appendChild(container);
+        }
+
         if (location.words) {
             const words = document.createElement('p');
             words.innerHTML = `<i>${location.words}</i>`;
@@ -469,7 +484,7 @@ export class MapManager {
         description.textContent = location.description;
         content.appendChild(description);
         
-        if (location.codex_upgrade && location.words) {
+        if (location.codex_upgrade) {
             const codexTitle = document.createElement('h4');
             codexTitle.textContent = 'Codex Upgrade';
             content.appendChild(codexTitle);
@@ -535,12 +550,11 @@ export class MapManager {
     private getAllCategories(): string[] {
         const categories = new Set<string>();
         Object.values(this.locationsData).forEach(levelData => {
-            if (levelData.Passage) {
-                Object.keys(levelData.Passage).forEach(category => categories.add(category));
-            }
-            if (levelData.Runes) {
-                Object.keys(levelData.Runes).forEach(category => categories.add(category));
-            }
+            Object.values(levelData).forEach(categoryData => {
+                if (categoryData) {
+                    Object.keys(categoryData as CategoryData).forEach(category => categories.add(category));
+                }
+            });
         });
         return Array.from(categories);
     }

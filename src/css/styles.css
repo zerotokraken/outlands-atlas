@@ -436,3 +436,16 @@ body {
     margin-top: 1rem;
     margin-bottom: 0.5rem;
 }
+
+/* Ensure seamless tile rendering */
+.seamless-tile {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    /* Add a very slight scale to prevent gaps */
+    transform: scale(1.001);
+    /* Ensure tiles are rendered without antialiasing */
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+}

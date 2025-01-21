@@ -1,0 +1,109 @@
+{
+  "relics": [
+    {
+      "name": "Apothecary Wheel",
+      "icon": "timedungeon-relics-apothecarywheel.png",
+      "description": "A mystical device used by ancient healers"
+    },
+    {
+      "name": "Barrel of Filth",
+      "icon": "timedungeon-relics-barreloffilth.png",
+      "description": "A container of vile substances"
+    },
+    {
+      "name": "Beastmaster Horn",
+      "icon": "timedungeon-relics-beastmasterhorn.png",
+      "description": "Used to command wild creatures"
+    },
+    {
+      "name": "Bomb Cluster",
+      "icon": "timedungeon-relics-bombcluster.png",
+      "description": "A collection of explosive devices"
+    },
+    {
+      "name": "Brace of Knives",
+      "icon": "timedungeon-relics-braceofknives.png",
+      "description": "A set of deadly throwing knives"
+    },
+    {
+      "name": "Cross of Compassion",
+      "icon": "timedungeon-relics-crossofcompassion.png",
+      "description": "A holy symbol of healing and mercy"
+    },
+    {
+      "name": "Divination Orb",
+      "icon": "timedungeon-relics-divinationorb.png",
+      "description": "Used to glimpse possible futures"
+    },
+    {
+      "name": "Mirror of Reflection",
+      "icon": "timedungeon-relics-mirrorofreflection.png",
+      "description": "Shows more than mere reflections"
+    },
+    {
+      "name": "Murder of Crows",
+      "icon": "timedungeon-relics-murderofcrows.png",
+      "description": "Summons a flock of deadly birds"
+    },
+    {
+      "name": "Perilous Python",
+      "icon": "timedungeon-relics-perilouspython.png",
+      "description": "A serpentine creature of great danger"
+    },
+    {
+      "name": "Prodigy Fiddle",
+      "icon": "timedungeon-relics-prodigyfiddle.png",
+      "description": "An instrument of supernatural skill"
+    },
+    {
+      "name": "Rose of Fading Beauty",
+      "icon": "timedungeon-relics-roseoffadingbeauty.png",
+      "description": "A flower of fleeting perfection"
+    },
+    {
+      "name": "Scale of Balance",
+      "icon": "timedungeon-relics-scaleofbalance.png",
+      "description": "Weighs fate and fortune"
+    },
+    {
+      "name": "Shrieking Mandrake",
+      "icon": "timedungeon-relics-shriekingmandrake.png",
+      "description": "A root that screams when pulled"
+    },
+    {
+      "name": "Statue of the Siren",
+      "icon": "timedungeon-relics-statueofthesiren.png",
+      "description": "A figure of alluring danger"
+    },
+    {
+      "name": "The Final Hour",
+      "icon": "timedungeon-relics-thefinalhour.png",
+      "description": "Marks the end of all things"
+    },
+    {
+      "name": "Tyromancer's Cache",
+      "icon": "timedungeon-relics-tyromancerscache.png",
+      "description": "A collection of mystical cheeses"
+    },
+    {
+      "name": "Tyromancer's Cheese",
+      "icon": "timedungeon-relics-tyromancerscheese.png",
+      "description": "Cheese infused with magical properties"
+    },
+    {
+      "name": "Vile Concoction",
+      "icon": "timedungeon-relics-vileconcoction.png",
+      "description": "A brew of terrible potency"
+    },
+    {
+      "name": "Warning Canary",
+      "icon": "timedungeon-relics-warningcanary.png",
+      "description": "Alerts of impending danger"
+    },
+    {
+      "name": "Widow's Grief",
+      "icon": "timedungeon-relics-widowsgrief.png",
+      "description": "Embodies sorrow and loss"
+    }
+  ]
+}
