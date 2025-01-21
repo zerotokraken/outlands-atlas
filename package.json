@@ -8,7 +8,8 @@
   },
   "scripts": {
     "optimize-tiles": "node scripts/optimize-tiles.js",
-    "build": "tsc && webpack",
+    "clean": "if exist dist rmdir /s /q dist",
+    "build": "npm run clean && tsc && webpack",
     "start": "node dist/server.js",
     "dev": "webpack serve --open",
     "upload-tiles": "node scripts/upload-tiles.js",
@@ -25,6 +26,7 @@
     "@types/node": "^22.10.7",
     "copy-webpack-plugin": "^12.0.2",
     "dotenv": "^16.4.7",
+    "rimraf": "^6.0.1",
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.3",
     "webpack": "^5.97.1",
@@ -34,6 +36,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.731.1",
     "express": "^4.21.2",
+    "jimp": "^1.6.0",
     "leaflet": "^1.9.4",
     "node-fetch": "^2.7.0",
     "sharp": "^0.33.5"

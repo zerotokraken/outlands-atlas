@@ -14,6 +14,7 @@ interface MarkerOptions extends L.MarkerOptions {
     location?: Location;
     category?: string;
     mainCategory?: string;
+    containerIndex?: number;
 }
 
 export class MapManager {
@@ -25,10 +26,76 @@ export class MapManager {
     private isLoadingMap: boolean = false;
     private tileService: TileService;
     private infoMenu: InfoMenu;
+    private coordDisplay: HTMLElement | null = null;
 
     constructor(private locationsData: LocationsData) {
         this.tileService = new TileService();
         this.infoMenu = new InfoMenu();
+    }
+
+    private getMarkerSize(): number {
+        if (!this.map) return 32;
+        const zoom = this.map.getZoom();
+        return Math.max(16, Math.min(128, 32 * Math.pow(2, zoom)));
+    }
+
+    private createMarkerIcon(mainCategory: string, subCategory: string, location?: Location, size: number = 32): L.DivIcon {
+        const halfSize = size / 2;
+        
+        if (location?.icon) {
+            // Get the icon's base scale from AVAILABLE_ICONS
+            const iconConfig = Object.values(AVAILABLE_ICONS).find(config => config.path === location.icon);
+            let scale = iconConfig?.scale || 100;
+            // Apply location-specific scale override if it exists
+            if (location.scale) {
+                scale = location.scale;
+            }
+            const scaledSize = size * (scale / 100);
+            const scaledHalfSize = scaledSize / 2;
+            return L.divIcon({
+                className: 'marker-icon',
+            html: `<img src="/${location.icon}" style="width: ${scaledSize}px; height: auto; image-rendering: -webkit-optimize-contrast;">`,
+                iconSize: [scaledSize, scaledSize],
+                iconAnchor: [scaledHalfSize, scaledHalfSize]
+            });
+        }
+
+        let iconConfig;
+        const categoryKey = `${mainCategory}/${subCategory}`.toLowerCase();
+        switch (categoryKey) {
+            case 'passage/stairs':
+                iconConfig = AVAILABLE_ICONS.STAIRS;
+                break;
+            case 'passage/portals':
+                iconConfig = AVAILABLE_ICONS.GATE_YELLOW;
+                break;
+            default:
+                const colors: { [key: string]: string } = {
+                    "Passage": "#e74c3c",
+                    "Runes": "#f1c40f",
+                    "Misc": "#3498db"
+                };
+                return L.divIcon({
+                    className: 'marker-icon',
+                    html: `<div style="background-color: ${colors[mainCategory] || '#3498db'}; width: ${size}px; height: ${size}px;"></div>`,
+                    iconSize: [size, size],
+                    iconAnchor: [halfSize, halfSize]
+                });
+        }
+
+        let scale = iconConfig.scale;
+        // Apply location-specific scale override if it exists
+        if (location?.scale) {
+            scale = location.scale;
+        }
+        const scaledSize = size * (scale / 100);
+        const scaledHalfSize = scaledSize / 2;
+        return L.divIcon({
+            className: 'marker-icon',
+                html: `<img src="/${iconConfig.path}" style="width: ${scaledSize}px; height: auto; image-rendering: -webkit-optimize-contrast;">`,
+            iconSize: [scaledSize, scaledSize],
+            iconAnchor: [scaledHalfSize, scaledHalfSize]
+        });
     }
 
     private updateMarkers(): void {
@@ -52,22 +119,68 @@ export class MapManager {
                             ? loc.coordinates as [number, number][]
                             : [loc.coordinates as [number, number]];
                         
-                        coordinates.forEach(coord => {
+                        coordinates.forEach((coord, index) => {
                             const marker = L.marker(coord, {
                                 icon: this.createMarkerIcon(mainCategory, categoryName, loc, currentSize),
                                 location: loc,
                                 category: categoryName,
                                 mainCategory: mainCategory,
+                                containerIndex: index,
                                 zIndexOffset: 1000
                             } as MarkerOptions);
                             
-                            marker.bindPopup(this.createPopupContent(loc));
+                            marker.bindPopup(() => this.createPopupContent(loc, marker.options as MarkerOptions));
                             this.markersLayer?.addLayer(marker);
                         });
                     });
                 }
             });
         });
+    }
+
+    private createPopupContent(location: Location, options?: MarkerOptions): HTMLElement {
+        const content = document.createElement('div');
+        content.className = 'popup-content';
+        
+        const title = document.createElement('h3');
+        title.textContent = location.title;
+        content.appendChild(title);
+        
+        if (location.container && Array.isArray(location.container)) {
+            const containerIndex = options?.containerIndex ?? 0;
+            if (location.container[containerIndex]) {
+                const container = document.createElement('p');
+                container.innerHTML = `<i>Found in: ${location.container[containerIndex]}</i>`;
+                content.appendChild(container);
+            }
+        }
+
+        if (location.words) {
+            const words = document.createElement('p');
+            words.innerHTML = `<i>${location.words}</i>`;
+            content.appendChild(words);
+        }
+        
+        const descriptionTitle = document.createElement('h4');
+        descriptionTitle.textContent = 'Description';
+        content.appendChild(descriptionTitle);
+
+        const description = document.createElement('p');
+        description.textContent = location.description;
+        content.appendChild(description);
+        
+        if (location.codex_upgrade) {
+            const codexTitle = document.createElement('h4');
+            codexTitle.textContent = 'Codex Upgrade';
+            content.appendChild(codexTitle);
+
+            const codex = document.createElement('p');
+            codex.className = 'codex-info';
+            codex.textContent = location.codex_upgrade;
+            content.appendChild(codex);
+        }
+        
+        return content;
     }
 
     private initializeSidebar(): void {
@@ -169,14 +282,6 @@ export class MapManager {
             });
         }
     }
-
-    private getMarkerSize(): number {
-        if (!this.map) return 32;
-        const zoom = this.map.getZoom();
-        return Math.max(16, Math.min(128, 32 * Math.pow(2, zoom)));
-    }
-
-    private coordDisplay: HTMLElement | null = null;
 
     public async initialize(elementId: string, onProgress?: (progress: number, message: string) => void): Promise<void> {
         // Clean up any existing map instance
@@ -395,107 +500,6 @@ export class MapManager {
             this.markersLayer.clearLayers();
         }
         this.updateMarkers();
-    }
-
-    private createMarkerIcon(mainCategory: string, subCategory: string, location?: Location, size: number = 32): L.DivIcon {
-        const halfSize = size / 2;
-        
-        if (location?.icon) {
-            // Get the icon's base scale from AVAILABLE_ICONS
-            const iconConfig = Object.values(AVAILABLE_ICONS).find(config => config.path === location.icon);
-            let scale = iconConfig?.scale || 100;
-            // Apply location-specific scale override if it exists
-            if (location.scale) {
-                scale = location.scale;
-            }
-            const scaledSize = size * (scale / 100);
-            const scaledHalfSize = scaledSize / 2;
-            return L.divIcon({
-                className: 'marker-icon',
-                html: `<img src="/icons/${location.icon.split('/').pop()}" style="width: ${scaledSize}px; height: auto;">`,
-                iconSize: [scaledSize, scaledSize],
-                iconAnchor: [scaledHalfSize, scaledHalfSize]
-            });
-        }
-
-        let iconConfig;
-        const categoryKey = `${mainCategory}/${subCategory}`.toLowerCase();
-        switch (categoryKey) {
-            case 'passage/stairs':
-                iconConfig = AVAILABLE_ICONS.STAIRS;
-                break;
-            case 'passage/portals':
-                iconConfig = AVAILABLE_ICONS.GATE_YELLOW;
-                break;
-            default:
-                const colors: { [key: string]: string } = {
-                    "Passage": "#e74c3c",
-                    "Runes": "#f1c40f",
-                    "Misc": "#3498db"
-                };
-                return L.divIcon({
-                    className: 'marker-icon',
-                    html: `<div style="background-color: ${colors[mainCategory] || '#3498db'}; width: ${size}px; height: ${size}px;"></div>`,
-                    iconSize: [size, size],
-                    iconAnchor: [halfSize, halfSize]
-                });
-        }
-
-        let scale = iconConfig.scale;
-        // Apply location-specific scale override if it exists
-        if (location?.scale) {
-            scale = location.scale;
-        }
-        const scaledSize = size * (scale / 100);
-        const scaledHalfSize = scaledSize / 2;
-        return L.divIcon({
-            className: 'marker-icon',
-            html: `<img src="/icons/${iconConfig.path.split('/').pop()}" style="width: ${scaledSize}px; height: auto;">`,
-            iconSize: [scaledSize, scaledSize],
-            iconAnchor: [scaledHalfSize, scaledHalfSize]
-        });
-    }
-
-    private createPopupContent(location: Location): HTMLElement {
-        const content = document.createElement('div');
-        content.className = 'popup-content';
-        
-        const title = document.createElement('h3');
-        title.textContent = location.title;
-        content.appendChild(title);
-        
-        if (location.container) {
-            const container = document.createElement('p');
-            container.innerHTML = `<i>Found in: ${location.container}</i>`;
-            content.appendChild(container);
-        }
-
-        if (location.words) {
-            const words = document.createElement('p');
-            words.innerHTML = `<i>${location.words}</i>`;
-            content.appendChild(words);
-        }
-        
-        const descriptionTitle = document.createElement('h4');
-        descriptionTitle.textContent = 'Description';
-        content.appendChild(descriptionTitle);
-
-        const description = document.createElement('p');
-        description.textContent = location.description;
-        content.appendChild(description);
-        
-        if (location.codex_upgrade) {
-            const codexTitle = document.createElement('h4');
-            codexTitle.textContent = 'Codex Upgrade';
-            content.appendChild(codexTitle);
-
-            const codex = document.createElement('p');
-            codex.className = 'codex-info';
-            codex.textContent = location.codex_upgrade;
-            content.appendChild(codex);
-        }
-        
-        return content;
     }
 
     public setLevel(level: string): void {

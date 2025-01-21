@@ -28,10 +28,10 @@
                 {
                     "id": "knock",
                     "title": "Knock",
-                    "container": "Crate",
-                    "icon": "icons/timerune-knock.png",
+                    "container": ["Crate"],
+                    "icon": "icons/runes/timerune-knock.png",
                     "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
-                    "coordinates": [1855, 1734]
+                    "coordinates": [[1855, 1734]]
                 }
             ]
         }

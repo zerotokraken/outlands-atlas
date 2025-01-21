@@ -335,6 +335,12 @@ body {
     width: 32px !important;
     height: 32px !important;
     cursor: pointer !important;
+    background: transparent !important;
+}
+
+.marker-icon img {
+    background: transparent !important;
+    mix-blend-mode: normal;
 }
 
 .leaflet-popup-content-wrapper {
