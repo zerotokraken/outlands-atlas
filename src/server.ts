@@ -16,7 +16,19 @@ app.use((req, res, next) => {
 });
 
 // Serve static files from the dist directory
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../dist'), {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.json')) {
+      res.set('Content-Type', 'application/json');
+    }
+  }
+}));
+
+// Explicitly handle .json files before the catch-all route
+app.get('*.json', (req, res) => {
+  const jsonPath = path.join(__dirname, '../dist', req.path);
+  res.sendFile(jsonPath);
+});
 
 // Send index.html for all other routes to support SPA routing
 app.get('*', (req, res) => {
