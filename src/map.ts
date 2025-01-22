@@ -425,9 +425,10 @@ export class MapManager {
 
     private async loadTileConfig(level: string): Promise<TileConfig> {
         let floorPath;
-        if (level.toLowerCase() === 'sewers' || level.toLowerCase() === 'tunnel') {
-            // Handle named locations
-            floorPath = level.toLowerCase();
+        const levelLower = level.toLowerCase();
+        if (levelLower === 'sewers' || levelLower === 'tunnel') {
+            // Handle named locations - preserve original case for path
+            floorPath = level;
         } else {
             // Handle numbered floors
             const floorNumber = level.split(' ')[1];
@@ -457,8 +458,9 @@ export class MapManager {
         } else {
             // Load the new layer
             let floorPath;
-            if (level.toLowerCase() === 'sewers' || level.toLowerCase() === 'tunnel') {
-                floorPath = level.toLowerCase();
+            const levelLower = level.toLowerCase();
+            if (levelLower === 'sewers' || levelLower === 'tunnel') {
+                floorPath = level;
             } else {
                 const floorNumber = level.split(' ')[1];
                 floorPath = `floor-${floorNumber}`;
