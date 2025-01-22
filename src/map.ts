@@ -424,8 +424,16 @@ export class MapManager {
     }
 
     private async loadTileConfig(level: string): Promise<TileConfig> {
-        const floorNumber = level.split(' ')[1];
-        const response = await fetch(`/floors/floor-${floorNumber}/required_tiles.json`);
+        let floorPath;
+        if (level.toLowerCase() === 'sewers' || level.toLowerCase() === 'tunnel') {
+            // Handle named locations
+            floorPath = level.toLowerCase();
+        } else {
+            // Handle numbered floors
+            const floorNumber = level.split(' ')[1];
+            floorPath = `floor-${floorNumber}`;
+        }
+        const response = await fetch(`/floors/${floorPath}/required_tiles.json`);
         const config = await response.json();
         return config.tiles;
     }
@@ -448,7 +456,13 @@ export class MapManager {
             });
         } else {
             // Load the new layer
-            const floorNumber = level.split(' ')[1];
+            let floorPath;
+            if (level.toLowerCase() === 'sewers' || level.toLowerCase() === 'tunnel') {
+                floorPath = level.toLowerCase();
+            } else {
+                const floorNumber = level.split(' ')[1];
+                floorPath = `floor-${floorNumber}`;
+            }
             const config = await this.loadTileConfig(level);
             
             const layerGroup = L.layerGroup();
@@ -468,7 +482,7 @@ export class MapManager {
                         [(numRows - row) * tileSize + overlap, (col + 1) * tileSize + overlap]
                     ] as L.LatLngBoundsExpression;
 
-                    const tilePath = `/floors/floor-${floorNumber}/tiles/${directory}/${file}.png`;
+                    const tilePath = `/floors/${floorPath}/tiles/${directory}/${file}.png`;
                     const overlay = L.imageOverlay(tilePath, bounds, {
                         className: 'seamless-tile'
                     });
