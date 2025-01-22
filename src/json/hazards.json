@@ -1,0 +1,13 @@
+{
+    "hazards": [
+      {
+        "name": "Time Flux & Rifts",
+        "icon": ["time-flux.png", "time-rift.png"],
+        "location": "Anywhere",
+        "description": [
+          "Drain health, stamina & mana. The flux are the lesser versions that are blue vortexs near to the floor. The rifts are the greater variations that extend much higher into the air and are more deadly. Negate time is useful if a number of these appear at once."
+        ]
+      }
+    ]
+  }
+  

@@ -4,39 +4,61 @@ export class InfoMenu {
     private currentPage: string = '';
     private escapeListener: ((e: KeyboardEvent) => void) | null = null;
 
+    // Icon size configuration
+    private static readonly ICON_SIZES = {
+        small: '64px',
+        medium: '84px',
+        large: '96px'
+    };
+
+    // Helper method to create icon container
+    private createIconContainer(size: keyof typeof InfoMenu.ICON_SIZES, marginRight = '8px') {
+        return `
+            width: ${InfoMenu.ICON_SIZES[size]};
+            height: ${InfoMenu.ICON_SIZES[size]};
+            margin-right: ${marginRight};
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        `;
+    }
+
     constructor() {
         // Create container for the info button and menu
         this.container = document.createElement('div');
         this.container.className = 'info-container';
         this.container.style.cssText = `
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: -10px;
+            left: -10px;
             z-index: 10000;
         `;
 
         // Create info button
         const infoButton = document.createElement('button');
         infoButton.className = 'info-button';
-        infoButton.innerHTML = 'ℹ️';
+        const buttonImg = document.createElement('img');
+        buttonImg.src = '/icons/click-me.png';
+        buttonImg.style.cssText = `
+            width: ${InfoMenu.ICON_SIZES.large};
+            height: ${InfoMenu.ICON_SIZES.large};
+            image-rendering: pixelated;
+            filter: drop-shadow(0 0 4px #d4af37) 
+                   drop-shadow(0 0 8px #d4af37);
+        `;
+        infoButton.appendChild(buttonImg);
+        
         infoButton.style.cssText = `
-            background: #262626;
-            border: 1px solid #333;
-            color: #fff;
-            padding: 8px 12px;
-            border-radius: 4px;
+            background: transparent;
+            border: none;
+            padding: 8px;
             cursor: pointer;
-            font-size: 16px;
             transition: all 0.2s ease;
         `;
-        infoButton.addEventListener('click', () => this.toggleMenu());
-        infoButton.addEventListener('mouseover', () => {
-            infoButton.style.background = '#333';
-            infoButton.style.borderColor = '#444';
-        });
-        infoButton.addEventListener('mouseout', () => {
-            infoButton.style.background = '#262626';
-            infoButton.style.borderColor = '#333';
+
+        infoButton.addEventListener('click', () => {
+            buttonImg.style.filter = 'none';
+            this.toggleMenu();
         });
 
         this.container.appendChild(infoButton);
@@ -72,8 +94,6 @@ export class InfoMenu {
             z-index: 10002;
             background: #262626;
             border: 1px solid #d4af37;
-            border-radius: 4px;
-            padding: 12px 50px 12px 20px;
             width: min(1600px, 95vw);
             max-height: 90vh;
             overflow-y: auto;
@@ -82,6 +102,7 @@ export class InfoMenu {
             color: #fff;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             font-size: 0.9em;
+            padding: 12px 50px 12px 20px;
         `;
         
         // Add webkit scrollbar styles
@@ -174,8 +195,12 @@ export class InfoMenu {
 
         const runesButton = createNavButton('Time Runes', 'runes');
         const relicsButton = createNavButton('Time Relics', 'relics');
+        const hazardsButton = createNavButton('Hazards', 'hazards');
+        const teleportsButton = createNavButton('Teleports', 'teleports');
         nav.appendChild(runesButton);
         nav.appendChild(relicsButton);
+        nav.appendChild(hazardsButton);
+        nav.appendChild(teleportsButton);
 
         // Create content container
         const content = document.createElement('div');
@@ -218,6 +243,12 @@ export class InfoMenu {
         } else if (page === 'relics') {
             const relicsData = await fetch('/json/relics.json').then(res => res.json());
             content.innerHTML = this.createRelicsContent(relicsData);
+        } else if (page === 'hazards') {
+            const hazardsData = await fetch('/json/hazards.json').then(res => res.json());
+            content.innerHTML = this.createHazardsContent(hazardsData);
+        } else if (page === 'teleports') {
+            const teleportsData = await fetch('/json/teleports.json').then(res => res.json());
+            content.innerHTML = this.createTeleportsContent(teleportsData);
         }
     }
 
@@ -236,7 +267,9 @@ export class InfoMenu {
                 html += `
                     <div class="rune-card" style="background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 10px; font-size: 0.85em;">
                         <div style="display: flex; align-items: center; margin-bottom: 8px;">
-                            <img src="/icons/runes/timerune-${iconName}.png" style="width: 28px; height: 28px; margin-right: 8px;">
+                            <div style="${this.createIconContainer('large')}">
+                                <img src="/icons/runes/timerune-${iconName}.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                            </div>
                             <div>
                                 <h3 style="color: #d4af37; margin: 0; font-size: 1em;">${rune.name}</h3>
                                 <div style="color: #999; font-style: italic; font-size: 0.85em;">${rune.wordsOfPower}</div>
@@ -272,7 +305,9 @@ export class InfoMenu {
             html += `
                 <div class="relic-card" style="background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 10px; font-size: 0.85em;">
                     <div style="display: flex; align-items: center; margin-bottom: 8px;">
-                        <img src="/icons/relics/${relic.icon}" style="width: 28px; height: 28px; margin-right: 8px;">
+                        <div style="${this.createIconContainer('large')}">
+                            <img src="/icons/relics/${relic.icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        </div>
                         <div>
                             <h3 style="color: #d4af37; margin: 0; font-size: 1em;">${relic.name}</h3>
                             <div style="color: #999; font-size: 0.85em;">
@@ -282,6 +317,94 @@ export class InfoMenu {
                     </div>
                     <div style="margin: 8px 0;">
                         ${relic.description.map((desc: string) => `
+                            <div style="color: #999; margin-bottom: 4px;">• ${desc}</div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        });
+
+        html += `
+            </div>
+        `;
+
+        return html;
+    }
+
+    private createHazardsContent(data: any): string {
+        let html = `
+            <div class="hazards-list" style="display: flex; flex-direction: column; gap: 12px;">
+        `;
+        
+        data.hazards.forEach((hazard: any) => {
+            html += `
+                <div class="hazard-card" style="background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 10px; font-size: 0.85em;">
+                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                        <div style="display: flex; gap: 4px; margin-right: 8px;">
+                            ${Array.isArray(hazard.icon) 
+                                ? hazard.icon.map((icon: string) => `
+                                    <div style="${this.createIconContainer('large', '0')}">
+                                        <img src="/icons/${icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                `).join('')
+                                : `<div style="${this.createIconContainer('large', '0')}">
+                                    <img src="/icons/${hazard.icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                   </div>`
+                            }
+                        </div>
+                        <div>
+                            <h3 style="color: #d4af37; margin: 0; font-size: 1em;">${hazard.name}</h3>
+                            <div style="color: #999; font-size: 0.85em;">
+                                ${hazard.location}
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin: 8px 0;">
+                        ${hazard.description.map((desc: string) => `
+                            <div style="color: #999; margin-bottom: 4px;">• ${desc}</div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        });
+
+        html += `
+            </div>
+        `;
+
+        return html;
+    }
+
+    private createTeleportsContent(data: any): string {
+        let html = `
+            <div class="teleports-list" style="display: flex; flex-direction: column; gap: 12px;">
+        `;
+        
+        data["Teleporation & Portals"].forEach((teleport: any) => {
+            html += `
+                <div class="teleport-card" style="background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 10px; font-size: 0.85em;">
+                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                        <div style="display: flex; gap: 4px; margin-right: 8px;">
+                            ${Array.isArray(teleport.icon) 
+                                ? teleport.icon.map((icon: string) => `
+                                    <div style="${this.createIconContainer('large', '0')}">
+                                        <img src="/icons/${icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                `).join('')
+                                : `<div style="${this.createIconContainer('large', '0')}">
+                                    <img src="/icons/${teleport.icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                   </div>`
+                            }
+                        </div>
+                        <div>
+                            <h3 style="color: #d4af37; margin: 0; font-size: 1em;">${teleport.name}</h3>
+                            <div style="color: #999; font-size: 0.85em;">
+                                ${teleport.location}
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin: 8px 0;">
+                        ${teleport.description.map((desc: string) => `
                             <div style="color: #999; margin-bottom: 4px;">• ${desc}</div>
                         `).join('')}
                     </div>
@@ -310,8 +433,15 @@ export class InfoMenu {
             if (backdrop) {
                 const isVisible = backdrop.style.display === 'block';
                 backdrop.style.display = isVisible ? 'none' : 'block';
+
+                // Find the button image
+                const buttonImg = this.container.querySelector('img');
                 
                 if (!isVisible) {
+                    // Remove glow when opening menu
+                    if (buttonImg) {
+                        buttonImg.style.filter = 'none';
+                    }
                     // Add escape key listener when opening
                     this.escapeListener = (e: KeyboardEvent) => {
                         if (e.key === 'Escape') {
@@ -324,6 +454,10 @@ export class InfoMenu {
                     if (this.escapeListener) {
                         document.removeEventListener('keydown', this.escapeListener);
                         this.escapeListener = null;
+                    }
+                    // Restore glow when closing menu
+                    if (buttonImg) {
+                        buttonImg.style.filter = 'drop-shadow(0 0 4px #d4af37) drop-shadow(0 0 8px #d4af37)';
                     }
                 }
             }

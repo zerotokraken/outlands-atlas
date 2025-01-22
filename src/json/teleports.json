@@ -1,0 +1,21 @@
+{
+    "Teleporation & Portals": [
+      {
+        "name": "Teleportation Stones",
+        "icon": ["rel-por.png", "teleport-rune.png"],
+        "location": "Anywhere",
+        "description": [
+          "Stand on the tile or rune and speak 'Vas Rel Por' and teleport the other end. Sometimes you can see the other stone and sometimes it's much farther away. Must have the required time gem."
+        ]
+      },
+      {
+        "name": "Waystar Teleport Tile",
+        "icon": ["waystar.png"],
+        "location": "Floor 3 and lower",
+        "description": [
+          "If one possesses a Waystar and required time gem then one can transport their entire party through a temporary gate. This is not an easy to attain item."
+        ]
+      }
+    ]
+  }
+  
