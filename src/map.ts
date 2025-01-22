@@ -427,8 +427,8 @@ export class MapManager {
         let floorPath;
         const levelLower = level.toLowerCase();
         if (levelLower === 'sewers' || levelLower === 'tunnel') {
-            // Handle named locations - preserve original case for path
-            floorPath = level;
+            // Handle named locations - always use lowercase for path
+            floorPath = levelLower;
         } else {
             // Handle numbered floors
             const floorNumber = level.split(' ')[1];
@@ -460,7 +460,7 @@ export class MapManager {
             let floorPath;
             const levelLower = level.toLowerCase();
             if (levelLower === 'sewers' || levelLower === 'tunnel') {
-                floorPath = level;
+                floorPath = levelLower;
             } else {
                 const floorNumber = level.split(' ')[1];
                 floorPath = `floor-${floorNumber}`;
