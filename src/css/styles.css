@@ -332,15 +332,38 @@ body {
 }
 
 .marker-icon {
-    width: 32px !important;
-    height: 32px !important;
     cursor: pointer !important;
     background: transparent !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
-.marker-icon img {
+.icon-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center;
+}
+
+.icon-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     background: transparent !important;
     mix-blend-mode: normal;
+    transform-origin: center;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.rune-icon .icon-image {
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8))
+           drop-shadow(0 0 4px rgba(241, 196, 15, 0.6));
+    /* Ensure the glow effect scales with zoom */
+    transform: scale(1.1);
+    z-index: 1000;
 }
 
 .leaflet-popup-content-wrapper {

@@ -1,5 +1,5 @@
 import L from 'leaflet';
-import { Location, LocationsData, CategoryData, AVAILABLE_ICONS } from './types.js';
+import { Location, LocationsData, CategoryData, AVAILABLE_ICONS, Route, RoutesData } from './types.js';
 import { TileService } from './services/tileService.js';
 import { InfoMenu } from './components/InfoMenu.js';
 
@@ -20,6 +20,7 @@ interface MarkerOptions extends L.MarkerOptions {
 export class MapManager {
     private map: L.Map | null = null;
     private markersLayer: L.LayerGroup | null = null;
+    private routesLayer: L.LayerGroup | null = null;
     private currentLevel: string = "Level 1";
     private hiddenCategories: Set<string> = new Set();
     private mapLayers: { [key: string]: { layer: L.LayerGroup; bounds: L.LatLngBoundsExpression } } = {};
@@ -27,10 +28,159 @@ export class MapManager {
     private tileService: TileService;
     private infoMenu: InfoMenu;
     private coordDisplay: HTMLElement | null = null;
+    private routes: RoutesData = {};
 
     constructor(private locationsData: LocationsData) {
         this.tileService = new TileService();
         this.infoMenu = new InfoMenu();
+        this.loadRoutes();
+    }
+
+    private async loadRoutes(): Promise<void> {
+        try {
+            // Initialize empty routes object
+            this.routes = {};
+            
+            // Get list of route files directly from the routes directory
+            const routesListResponse = await fetch('./json/routes/');
+            const files = await routesListResponse.json();
+            
+            // Load each route file
+            for (const file of files) {
+                try {
+                    const routeResponse = await fetch(`./json/routes/${file}`);
+                    const routeData = await routeResponse.json();
+                    
+                    // Extract category from filename (e.g., "sewers-route.json" -> "Sewers Route")
+                    const category = file.replace('.json', '')
+                        .split('-')
+                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ');
+                    
+                    // Add route array to the appropriate category
+                    if (!this.routes[category]) {
+                        this.routes[category] = [];
+                    }
+                    this.routes[category] = routeData;
+                    
+                    // Add route category to hiddenCategories by default
+                    this.hiddenCategories.add(category);
+                } catch (error) {
+                    console.error(`Failed to load route file ${file}:`, error);
+                }
+            }
+        } catch (error) {
+            console.error('Failed to load routes:', error);
+            this.routes = {};
+        }
+    }
+
+    private drawRoutes(): void {
+        if (!this.routesLayer || !this.map) return;
+        
+        this.routesLayer.clearLayers();
+        
+        Object.entries(this.routes).forEach(([category, routes]) => {
+            if (this.hiddenCategories.has(category)) return;
+            
+            routes.forEach(route => {
+                // Find segments for current level
+                const levelSegments = route.segments.filter(segment => segment.level === this.currentLevel);
+                
+                levelSegments.forEach(segment => {
+                    // Split points into path segments based on gaps
+                    const pathSegments: [number, number][][] = [[]];
+                    let currentPathSegment = 0;
+
+                    segment.points.forEach((point, index) => {
+                        // Get coordinates for this point
+                        let coords: [number, number];
+                        if (point.locationId) {
+                            const location = this.findLocationById(point.locationId);
+                            if (location) {
+                                coords = Array.isArray(location.coordinates[0]) 
+                                    ? (location.coordinates as [number, number][])[0]
+                                    : location.coordinates as [number, number];
+                                
+                                // Use location's description if point doesn't have one
+                                if (!point.description) {
+                                    point.description = location.description;
+                                }
+                            } else {
+                                return; // Skip if location not found
+                            }
+                        } else {
+                            coords = point.coordinates;
+                        }
+                        
+                        // Add point to current path segment
+                        pathSegments[currentPathSegment].push(coords);
+                        
+                        // Add path points if they exist
+                        if (point.pathPoints) {
+                            pathSegments[currentPathSegment].push(...point.pathPoints);
+                        }
+                        
+                        // If this point has gap=true and it's not the last point,
+                        // start a new path segment for the next points
+                        if (point.gap && index < segment.points.length - 1) {
+                            pathSegments.push([]);
+                            currentPathSegment++;
+                        }
+                    });
+
+                    // Create a polyline for each path segment
+                    pathSegments.forEach(segmentPoints => {
+                        if (segmentPoints.length > 0) {
+                            // Create curved path using spline interpolation
+                            const curvedPoints = this.createCurvedPath(segmentPoints);
+                            
+                            const routeLine = L.polyline(curvedPoints, {
+                                color: route.color || '#3388ff',
+                                weight: 3,
+                                opacity: 0.8,
+                                dashArray: route.dashArray,
+                                smoothFactor: 1
+                            });
+
+                            // Add popup to the route line
+                            const routeContent = document.createElement('div');
+                            routeContent.className = 'route-popup';
+                            routeContent.innerHTML = `
+                                <h3>${route.title}</h3>
+                                <p>${route.description}</p>
+                            `;
+                            routeLine.bindPopup(routeContent);
+                            
+                            this.routesLayer?.addLayer(routeLine);
+                        }
+                    });
+
+                    // Create markers only for main points with descriptions
+                    segment.points.forEach((point, index) => {
+                        if (point.description) {
+                            const marker = L.circleMarker(point.coordinates, {
+                                radius: 5,
+                                color: route.color || '#3388ff',
+                                fillColor: '#fff',
+                                fillOpacity: 1,
+                                weight: 2
+                            });
+                            
+                            const content = document.createElement('div');
+                            content.className = 'route-point-popup';
+                            content.innerHTML = `
+                                <h4>${index === 0 ? 'Start' : index === segment.points.length - 1 ? 'End' : `Step ${index}`}</h4>
+                                <p>${point.description}</p>
+                            `;
+                            
+                            marker.bindPopup(content);
+                            this.routesLayer?.addLayer(marker);
+                        }
+                    });
+                });
+            });
+        });
     }
 
     private getMarkerSize(): number {
@@ -40,23 +190,27 @@ export class MapManager {
     }
 
     private createMarkerIcon(mainCategory: string, subCategory: string, location?: Location, size: number = 32): L.DivIcon {
-        const halfSize = size / 2;
+        const baseClass = 'marker-icon';
+        const zoomClass = `zoom-level-${this.map?.getZoom() || 0}`;
         
         if (location?.icon) {
-            // Get the icon's base scale from AVAILABLE_ICONS
             const iconConfig = Object.values(AVAILABLE_ICONS).find(config => config.path === location.icon);
             let scale = iconConfig?.scale || 100;
-            // Apply location-specific scale override if it exists
             if (location.scale) {
                 scale = location.scale;
             }
+            
             const scaledSize = size * (scale / 100);
-            const scaledHalfSize = scaledSize / 2;
+            // Add rune-icon class if it's a rune icon
+            const isRune = location.icon?.includes('/runes/');
+            const runeClass = isRune ? 'rune-icon' : '';
             return L.divIcon({
-                className: 'marker-icon',
-            html: `<img src="/${location.icon}" style="width: ${scaledSize}px; height: auto; image-rendering: -webkit-optimize-contrast;">`,
+                className: `${baseClass} ${zoomClass} ${runeClass}`,
+                html: `<div class="icon-wrapper" style="transform-origin: center;">
+                         <img src="./${location.icon}" class="icon-image" style="width: 100%; height: 100%; image-rendering: -webkit-optimize-contrast;">
+                       </div>`,
                 iconSize: [scaledSize, scaledSize],
-                iconAnchor: [scaledHalfSize, scaledHalfSize]
+                iconAnchor: [scaledSize/2, scaledSize/2]
             });
         }
 
@@ -73,28 +227,32 @@ export class MapManager {
                 const colors: { [key: string]: string } = {
                     "Passage": "#e74c3c",
                     "Runes": "#f1c40f",
-                    "Misc": "#3498db"
+                    "Misc": "#3498db",
+                    "Routes": "#2ecc71"
                 };
+                const defaultScale = 100;
+                const scaledSize = size * (defaultScale / 100);
                 return L.divIcon({
-                    className: 'marker-icon',
-                    html: `<div style="background-color: ${colors[mainCategory] || '#3498db'}; width: ${size}px; height: ${size}px;"></div>`,
-                    iconSize: [size, size],
-                    iconAnchor: [halfSize, halfSize]
+                    className: `${baseClass} ${zoomClass}`,
+                    html: `<div class="icon-wrapper" style="background-color: ${colors[mainCategory] || '#3498db'}; width: 100%; height: 100%;"></div>`,
+                    iconSize: [scaledSize, scaledSize],
+                    iconAnchor: [scaledSize/2, scaledSize/2]
                 });
         }
 
         let scale = iconConfig.scale;
-        // Apply location-specific scale override if it exists
         if (location?.scale) {
             scale = location.scale;
         }
+        
         const scaledSize = size * (scale / 100);
-        const scaledHalfSize = scaledSize / 2;
         return L.divIcon({
-            className: 'marker-icon',
-                html: `<img src="/${iconConfig.path}" style="width: ${scaledSize}px; height: auto; image-rendering: -webkit-optimize-contrast;">`,
+            className: `${baseClass} ${zoomClass}`,
+            html: `<div class="icon-wrapper" style="transform-origin: center;">
+                     <img src="./${iconConfig.path}" class="icon-image" style="width: 100%; height: 100%; image-rendering: -webkit-optimize-contrast;">
+                   </div>`,
             iconSize: [scaledSize, scaledSize],
-            iconAnchor: [scaledHalfSize, scaledHalfSize]
+            iconAnchor: [scaledSize/2, scaledSize/2]
         });
     }
 
@@ -120,13 +278,17 @@ export class MapManager {
                             : [loc.coordinates as [number, number]];
                         
                         coordinates.forEach((coord, index) => {
+                            const currentIcon = this.createMarkerIcon(mainCategory, categoryName, loc, currentSize);
+                            const iconSize = currentIcon.options.iconSize || [currentSize, currentSize];
                             const marker = L.marker(coord, {
-                                icon: this.createMarkerIcon(mainCategory, categoryName, loc, currentSize),
+                                icon: currentIcon,
                                 location: loc,
                                 category: categoryName,
                                 mainCategory: mainCategory,
                                 containerIndex: index,
-                                zIndexOffset: 1000
+                                zIndexOffset: 1000,
+                                // Center the marker on the coordinates
+                                iconAnchor: [iconSize[0] / 2, iconSize[1] / 2]
                             } as MarkerOptions);
                             
                             marker.bindPopup(() => this.createPopupContent(loc, marker.options as MarkerOptions));
@@ -168,6 +330,17 @@ export class MapManager {
         const description = document.createElement('p');
         description.textContent = location.description;
         content.appendChild(description);
+
+        if (location.requirements) {
+            const requirementsTitle = document.createElement('h4');
+            requirementsTitle.textContent = 'Requirements';
+            content.appendChild(requirementsTitle);
+
+            const requirements = document.createElement('p');
+            requirements.className = 'requirements-info';
+            requirements.textContent = location.requirements;
+            content.appendChild(requirements);
+        }
         
         if (location.codex_upgrade) {
             const codexTitle = document.createElement('h4');
@@ -203,10 +376,9 @@ export class MapManager {
             }, 0);
         };
 
-        const createCategoryItem = (title: string, locations: Location[], mainCategory: string) => {
+        const createCategoryItem = (title: string, count: number, mainCategory: string) => {
             const categoryName = title.charAt(0).toUpperCase() + title.slice(1);
             const isVisible = !this.hiddenCategories.has(categoryName);
-            const count = getLocationCount(locations);
             const iconClass = mainCategory === 'Passage' ? 'icon-important' : 'icon-resource';
             return `
                 <div class="category-item ${isVisible ? 'category-visible' : ''}" data-category="${categoryName}">
@@ -228,12 +400,33 @@ export class MapManager {
                 <div class="header">${mainCategory}</div>
                 <div class="group-categories">
                     ${Object.entries(categoryData as CategoryData).map(([subCategory, locations]: [string, Location[]]) => 
-                        createCategoryItem(subCategory, locations, mainCategory)
+                        createCategoryItem(subCategory, getLocationCount(locations), mainCategory)
                     ).join('')}
                 </div>
             `;
             categoriesContainer.innerHTML += categoryHtml;
         });
+
+        // Add routes to sidebar if there are any for this level
+        const routesForLevel = Object.entries(this.routes).reduce((acc, [category, routes]) => {
+            const levelRoutes = routes.filter(route => route.segments.some(segment => segment.level === this.currentLevel));
+            if (levelRoutes.length > 0) {
+                acc[category] = levelRoutes;
+            }
+            return acc;
+        }, {} as RoutesData);
+
+        if (Object.keys(routesForLevel).length > 0) {
+            const routesHtml = `
+                <div class="header">Routes</div>
+                <div class="group-categories">
+                    ${Object.entries(routesForLevel).map(([category, routes]) => 
+                        createCategoryItem(category, routes.length, 'Routes')
+                    ).join('')}
+                </div>
+            `;
+            categoriesContainer.innerHTML += routesHtml;
+        }
 
         const categoryItems = document.querySelectorAll('.category-item');
         categoryItems.forEach(item => {
@@ -259,6 +452,7 @@ export class MapManager {
                 
                 if (wasHidden !== this.hiddenCategories.has(category)) {
                     this.updateMarkers();
+                    this.drawRoutes();
                 }
             };
             
@@ -302,6 +496,8 @@ export class MapManager {
         mapContainerElement.appendChild(mapContainer);
         this.infoMenu.mount(mapContainerElement);
 
+        onProgress?.(40, 'Loading routes...');
+        await this.loadRoutes();
         onProgress?.(50, 'Initializing map...');
         
         this.coordDisplay = document.createElement('div');
@@ -337,6 +533,7 @@ export class MapManager {
         }).addTo(this.map);
 
         this.markersLayer = L.layerGroup().addTo(this.map);
+        this.routesLayer = L.layerGroup().addTo(this.map);
 
         this.map.on('click', (e) => {
             const coords = e.latlng;
@@ -391,12 +588,18 @@ export class MapManager {
                                 }
                                 const scaledSize = currentSize * (scale / 100);
                                 const scaledHalfSize = scaledSize / 2;
-                                marker.setIcon(L.divIcon({
-                                    className: 'marker-icon',
+                                // Preserve the rune-icon class if it exists
+                                const isRune = markerOptions.location?.icon?.includes('/runes/');
+                                const runeClass = isRune ? 'rune-icon' : '';
+                                const newIcon = L.divIcon({
+                                    className: `marker-icon ${runeClass}`,
                                     html: iconHtml.replace(/width: \d+px/, `width: ${scaledSize}px`),
                                     iconSize: [scaledSize, scaledSize],
                                     iconAnchor: [scaledHalfSize, scaledHalfSize]
-                                }));
+                                });
+                                marker.setIcon(newIcon);
+                                // Update marker options to keep it centered
+                                (marker.options as L.MarkerOptions & { iconAnchor?: [number, number] }).iconAnchor = [scaledHalfSize, scaledHalfSize];
                             }
                         }
                     }
@@ -423,18 +626,43 @@ export class MapManager {
         });
     }
 
-    private async loadTileConfig(level: string): Promise<TileConfig> {
-        let floorPath;
+    private getFloorPath(level: string): string {
         const levelLower = level.toLowerCase();
-        if (levelLower === 'sewers' || levelLower === 'tunnel') {
-            // Handle named locations - always use lowercase for path
-            floorPath = levelLower;
-        } else {
-            // Handle numbered floors
-            const floorNumber = level.split(' ')[1];
-            floorPath = `floor-${floorNumber}`;
+        
+        // Handle special named areas
+        const specialAreas = {
+            'sewers': 'sewers',
+            'tunnel': 'tunnel',
+            'the molten core': 'the-molten-core'
+        };
+
+        // Check if it's a special area (case-insensitive)
+        for (const [areaName, dirName] of Object.entries(specialAreas)) {
+            if (levelLower === areaName || level === dirName) {
+                return dirName;
+            }
         }
-        const response = await fetch(`/floors/${floorPath}/required_tiles.json`);
+        
+        // Handle numbered floors
+        const floorNumber = level.split(' ')[1];
+        if (floorNumber === '2') {
+            // Handle split level 2 - explicitly check for "Lower" and "Upper"
+            if (level.includes('Lower')) {
+                return 'floor-2-lower-reaches';
+            }
+            if (level.includes('Upper')) {
+                return 'floor-2-upper-reaches';
+            }
+            // Default to lower reaches if not specified
+            return 'floor-2-lower-reaches';
+        }
+        
+        return `floor-${floorNumber}`;
+    }
+
+    private async loadTileConfig(level: string): Promise<TileConfig> {
+        const floorPath = this.getFloorPath(level);
+        const response = await fetch(`./floors/${floorPath}/required_tiles.json`);
         const config = await response.json();
         return config.tiles;
     }
@@ -457,14 +685,7 @@ export class MapManager {
             });
         } else {
             // Load the new layer
-            let floorPath;
-            const levelLower = level.toLowerCase();
-            if (levelLower === 'sewers' || levelLower === 'tunnel') {
-                floorPath = levelLower;
-            } else {
-                const floorNumber = level.split(' ')[1];
-                floorPath = `floor-${floorNumber}`;
-            }
+            const floorPath = this.getFloorPath(level);
             const config = await this.loadTileConfig(level);
             
             const layerGroup = L.layerGroup();
@@ -484,7 +705,7 @@ export class MapManager {
                         [(numRows - row) * tileSize + overlap, (col + 1) * tileSize + overlap]
                     ] as L.LatLngBoundsExpression;
 
-                    const tilePath = `/floors/${floorPath}/tiles/${directory}/${file}.png`;
+                    const tilePath = `./floors/${floorPath}/tiles/${directory}/${file}.png`;
                     const overlay = L.imageOverlay(tilePath, bounds, {
                         className: 'seamless-tile'
                     });
@@ -515,12 +736,26 @@ export class MapManager {
         if (this.markersLayer) {
             this.markersLayer.clearLayers();
         }
+        if (this.routesLayer) {
+            this.routesLayer.clearLayers();
+        }
         this.updateMarkers();
+        this.drawRoutes();
     }
 
     public setLevel(level: string): void {
         if (this.isLoadingMap) return;
-        this.currentLevel = level;
+        
+        // Normalize level names to match routes.json
+        const specialAreas = {
+            'Sewers': 'sewers',
+            'Tunnel': 'tunnel',
+            'The Molten Core': 'the molten core'
+        };
+        
+        // Check if it's a special area and normalize the name
+        this.currentLevel = specialAreas[level as keyof typeof specialAreas] || level;
+        
         this.loadMapLayer(level).then(() => {
             this.initializeSidebar();
         });
@@ -533,21 +768,100 @@ export class MapManager {
             this.hiddenCategories.add(categoryName);
         }
         this.updateMarkers();
+        this.drawRoutes();
     }
 
     public showAllCategories(): void {
         this.hiddenCategories.clear();
         this.updateMarkers();
+        this.drawRoutes();
     }
 
     public hideAllCategories(): void {
         const categories = this.getAllCategories();
         categories.forEach(category => this.hiddenCategories.add(category));
         this.updateMarkers();
+        this.drawRoutes();
     }
 
     public isCategoryVisible(categoryName: string): boolean {
         return !this.hiddenCategories.has(categoryName);
+    }
+
+    private getAllCategories(): string[] {
+        const categories = new Set<string>();
+        // Add location categories
+        Object.values(this.locationsData).forEach(levelData => {
+            Object.values(levelData).forEach(categoryData => {
+                if (categoryData) {
+                    Object.keys(categoryData as CategoryData).forEach(category => categories.add(category));
+                }
+            });
+        });
+        // Add route categories
+        Object.keys(this.routes).forEach(category => categories.add(category));
+        return Array.from(categories);
+    }
+
+    private findLocationById(id: string | number): Location | null {
+        for (const levelData of Object.values(this.locationsData)) {
+            for (const categoryData of Object.values(levelData)) {
+                if (!categoryData) continue;
+                for (const locations of Object.values(categoryData)) {
+                    const location = locations.find(loc => loc.id === id);
+                    if (location) return location;
+                }
+            }
+        }
+        return null;
+    }
+
+    private createCurvedPath(points: [number, number][]): [number, number][] {
+        if (points.length < 3) return points;
+
+        const curvedPoints: [number, number][] = [];
+        const tension = 0.5; // Controls how tight the curve is (0.3-0.5 works well)
+        const numSegments = 16; // Number of segments between each point pair
+
+        for (let i = 0; i < points.length - 1; i++) {
+            const p0 = i > 0 ? points[i - 1] : points[i];
+            const p1 = points[i];
+            const p2 = points[i + 1];
+            const p3 = i < points.length - 2 ? points[i + 2] : p2;
+
+            // Add the current point
+            curvedPoints.push(p1);
+
+            // Add interpolated points between current and next point
+            for (let t = 1; t < numSegments; t++) {
+                const t1 = t / numSegments;
+                
+                // Catmull-Rom spline interpolation
+                const t2 = t1 * t1;
+                const t3 = t2 * t1;
+                
+                const x = 0.5 * (
+                    (2 * p1[0]) +
+                    (-p0[0] + p2[0]) * t1 +
+                    (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * t2 +
+                    (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * t3
+                );
+                
+                const y = 0.5 * (
+                    (2 * p1[1]) +
+                    (-p0[1] + p2[1]) * t1 +
+                    (2 * p0[1] - 5 * p1[1] + 4 * p2[1] - p3[1]) * t2 +
+                    (-p0[1] + 3 * p1[1] - 3 * p2[1] + p3[1]) * t3
+                );
+                
+                curvedPoints.push([x, y]);
+            }
+        }
+        
+        // Add the last point
+        curvedPoints.push(points[points.length - 1]);
+        
+        return curvedPoints;
     }
 
     public cleanup(): void {
@@ -563,19 +877,11 @@ export class MapManager {
             this.markersLayer.clearLayers();
             this.markersLayer = null;
         }
+        if (this.routesLayer) {
+            this.routesLayer.clearLayers();
+            this.routesLayer = null;
+        }
         this.mapLayers = {};
         this.tileService.cleanup();
-    }
-
-    private getAllCategories(): string[] {
-        const categories = new Set<string>();
-        Object.values(this.locationsData).forEach(levelData => {
-            Object.values(levelData).forEach(categoryData => {
-                if (categoryData) {
-                    Object.keys(categoryData as CategoryData).forEach(category => categories.add(category));
-                }
-            });
-        });
-        return Array.from(categories);
     }
 }

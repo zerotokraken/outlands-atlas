@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -23,6 +24,19 @@ app.use(express.static(path.join(__dirname, '../dist'), {
     }
   }
 }));
+
+// Handle directory listing for routes
+app.get('/json/routes/', async (req, res) => {
+  const routesPath = path.join(__dirname, '../dist/json/routes');
+  try {
+    const files = await fs.promises.readdir(routesPath);
+    const jsonFiles = files.filter(file => file.endsWith('.json'));
+    res.json(jsonFiles);
+  } catch (error) {
+    console.error('Error reading routes directory:', error);
+    res.json([]);
+  }
+});
 
 // Explicitly handle .json files before the catch-all route
 app.get('*.json', (req, res) => {

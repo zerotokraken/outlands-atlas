@@ -3,8 +3,8 @@
 :: call npm install
 
 echo Building project...
-call npx tsc
-call npx webpack
+call set NODE_ENV=production
+call npm run build
 
 echo Starting server...
-call npx serve dist
+call npm start

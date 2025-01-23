@@ -1,0 +1,166 @@
+[
+    {
+        "id": "sewers-route-1",
+        "title": "Sewers Route",
+        "description": "Here is a route to quickly get down to sewers for farming. A runner build is recommended as you can easily die in many spots.",
+        "color": "#ff4444",
+        "dashArray": "10, 5",
+        "segments": [
+            {
+                "level": "Level 1",
+                "points": [
+                    {
+                        "coordinates": [3371, 2526],
+                        "description": "Start here at the entrance",
+                        "pathPoints": [
+                            [3165, 2543],
+                            [3156, 2680],
+                            [3114, 2744],
+                            [3100, 2800],
+                            [3050, 2900],
+                            [2868, 2902],
+                            [2776, 2790],
+                            [2563, 2721],
+                            [2425, 2778],
+                            [2264, 2882],
+                            [2379, 3111],
+                            [2291, 3342]
+                        ]
+                    },
+                    {
+                        "coordinates": [2265, 3702],
+                        "gap": true 
+                    },
+                    {
+                        "coordinates": [2302, 3912],
+                        "pathPoints": [
+                            [2404, 4181],
+                            [2516, 4485],
+                            [2337, 4722]
+                        ]
+                    },
+                    {
+                        "coordinates": [2043, 4721],
+                        "gap": false,
+                        "pathPoints": [
+                            [1608, 4740],
+                            [1489, 4766],
+                            [1546, 4863],
+                            [1515, 4970],
+                            [1375, 4961]
+                        ]
+                    },            
+                    {
+                        "coordinates": [1322, 4822],
+                        "gap": true 
+                    }
+                ]
+            },
+            {
+                "level": "Level 2 Upper Reaches",
+                "points": [
+                    {
+                        "coordinates": [1948, 1088],
+                        "gap": false
+                    },
+                    {
+                        "coordinates": [1754, 1075],
+                        "description": "There are a few oozes here and a dread spider ahead. Nothing is too dangerous and this part can be done without an elemental if you mind your step.",
+                        "pathPoints": [
+                            [1771, 797],
+                            [1737, 689],
+                            [1451, 713]
+                        ]
+                    },
+                    {
+                        "coordinates": [1423, 754],
+                        "description": "Get tucked in the corner against the spikey rock and the water. Rope to one of the open tiles on the other side of the water.",
+                        "gap": true 
+                    },
+                    {
+                        "coordinates": [1343, 865],
+                        "description": "Rope here and run directly down the stairs. Generally the mobs aren't close enough to aggro right when you come in.",
+                        "pathPoints": [
+                            [1336, 947],
+                            [1392, 941],
+                            [1379, 901]
+                        ]
+                    }
+                ]
+            },
+            {
+                "level": "Level 3",
+                "points": [
+                    {
+                        "coordinates": [4788, 2490],
+                        "gap": false
+                    },
+                    {
+                        "coordinates": [4738, 2384],
+                        "description": "You are safe relatively on the first room but this place can get a little dicey. Recommend elementals to help with the next step.",
+                        "pathPoints": [
+                            [4455, 2405],
+                            [4446, 2011],
+                            [4364, 2008],
+                            [4330, 1554],
+                            [4096, 1534],
+                            [4096, 1124]
+                        ]
+                    },
+                    {
+                        "coordinates": [4031, 1092],
+                        "description": "You might way to do a lap around this section to get the mobs away from this wall you have to break.",
+                        "gap": true,
+                        "pathPoints": [
+                            [4016, 957],
+                            [3991, 844]
+                        ]
+                    },
+                    {
+                        "coordinates": [3854, 745],
+                        "gap": false,
+                        "pathPoints": [
+                            [3636, 878],
+                            [3628, 1338],
+                            [3543, 1367]
+                        ]
+                    },
+                    {
+                        "coordinates": [3521, 1574],
+                        "gap": false
+                    },
+                    {
+                        "coordinates": [3477, 1697],
+                        "description": "This room is full of spiders that can snare you. Rope/teleport through quickly",
+                        "pathPoints": [
+                            [3344, 1872],
+                            [3093, 1876],
+                            [3030, 2076],
+                            [3154, 2418],
+                            [3123, 2667],
+                            [3340, 2702],
+                            [3345, 2970],
+                            [3572, 2961],
+                            [3602, 3325],
+                            [3490, 3363],
+                            [3474, 3320]
+                        ]
+                    }
+                ]
+            },
+            {
+                "level": "sewers",
+                "points": [
+                    {
+                        "coordinates": [1406, 962],
+                        "description": "The teleport from level 3 will place you here. Run north to the rope to climb up.",
+                        "gap": false,
+                        "pathPoints": [
+                            [1646, 945]
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

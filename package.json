@@ -8,12 +8,12 @@
   },
   "scripts": {
     "optimize-tiles": "node scripts/optimize-tiles.js",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "build": "npm run clean && tsc && webpack",
     "start": "node dist/server.js",
     "dev": "webpack serve --open",
     "upload-tiles": "node scripts/upload-tiles.js",
-    "deploy": "git push heroku master && npm run upload-tiles",
+    "deploy": "git push && npm run upload-tiles",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

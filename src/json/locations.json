@@ -4,8 +4,8 @@
             "Stairs": [
                     {
                     "id": 1,
-                    "title": "Stairs to Level 2",
-                    "description": "This leads to the west side of Level 2",
+                    "title": "Stairs to the Upper Reaches",
+                    "description": "This leads to the west side of the Upper Reaches",
                     "coordinates": [1322, 4822],
                     "icon": "icons/Stairs.png"
                 }
@@ -34,6 +34,107 @@
                     "coordinates": [[1855, 1734]]
                 }
             ]
+        },
+        "Teleports": {
+            "Rel Por Stones": [
+                {
+                    "id": "rel_por",
+                    "title": "Rel Por Stone",
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/rel-por.png",
+                    "description": "Teleports you to across the river.",
+                    "coordinates": [[2265, 3702], [2302, 3912], [3515, 4423], [3353, 4381]]
+                },
+                {
+                    "id": "rel_por",
+                    "title": "Rel Por Stone",
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/rel-por.png",
+                    "description": "Teleports you to the Colony Outpost in the Lower Reaches.",
+                    "coordinates": [2045, 3994]
+                }
+            ]
         }
+    },
+    "Level 2 Upper Reaches":  {
+        "Passage": {
+            "Stairs": [
+                {
+                    "id": 1,
+                    "title": "Stairs to Level 3",
+                    "description": "This leads to the north part of level 3.",
+                    "coordinates": [1376, 903],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 2,
+                    "title": "Stairs to Level 1",
+                    "description": "This leads to the south east part of level 1.",
+                    "coordinates": [1948, 1088],
+                    "icon": "icons/Stairs.png"
+                }
+
+            ],
+            "Portals": [],
+            "Teleport Tiles": [],
+            "Waystar": []
+         }
+     },
+    "Level 3": {
+        "Passage": {
+            "Stairs": [
+                {
+                    "id": 1,
+                    "title": "Stairs to the Upper Reaches",
+                    "description": "This leads to the west part of the Upper Reaches.",
+                    "coordinates": [4788, 2490],
+                    "icon": "icons/Stairs.png"
+                }
+
+            ],
+            "Portals": [],
+            "Teleport Tiles": [],
+            "Waystar": []
+         },
+        "Doors": {
+            "Locked": [
+                {
+                    "id": 1,
+                    "title": "Locked Door",
+                    "description": "Requires a knock rune.",
+                    "coordinates": [3466, 3342],
+                    "icon": "icons/lock.png"
+                }
+            ]
+        },
+        "Teleports": {
+            "Teleport Tiles": [
+                {
+                    "id": 1,
+                    "title": "Teleport Tile",
+                    "description": "Teleports you into Sewers. This is tile is not visible. Simple open the door with knock and then run straight into the cell and you will be teleported. No gems are required",
+                    "coordinates": [3474, 3320],
+                    "icon": "icons/teleport-rune.png"
+                }
+            ],
+            "Rel Por Stones": [
+                {
+                    "id": "rel_por",
+                    "title": "Rel Por Stone",
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/rel-por.png",
+                    "description": "Teleports you to the nearby room.",
+                    "coordinates": [[3991, 844], [3854, 745]]
+                },
+                {
+                    "id": "rel_por",
+                    "title": "Rel Por Stone",
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/rel-por.png",
+                    "description": "Teleports you to the nearby room.",
+                    "coordinates": [[3543, 1367], [3521, 1574]]
+                }
+            ]
+         }
     }
 }

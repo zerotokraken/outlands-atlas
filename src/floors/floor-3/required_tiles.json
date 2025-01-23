@@ -2,7 +2,7 @@
     "tiles": {
         "startDir": 403,
         "endDir": 420,
-        "startTile": 48,
+        "startTile": 45,
         "endTile": 64
     }
 }

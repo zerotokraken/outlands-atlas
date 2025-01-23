@@ -8,14 +8,16 @@ export class InfoMenu {
     private static readonly ICON_SIZES = {
         small: '64px',
         medium: '84px',
-        large: '96px'
+        large: '96px',
     };
 
     // Helper method to create icon container
-    private createIconContainer(size: keyof typeof InfoMenu.ICON_SIZES, marginRight = '8px') {
+    private createIconContainer(size: keyof typeof InfoMenu.ICON_SIZES, marginRight = '8px', scale?: number) {
+        const baseSize = InfoMenu.ICON_SIZES[size];
+        const containerSize = scale ? `${parseInt(baseSize) * (scale/100)}px` : baseSize;
         return `
-            width: ${InfoMenu.ICON_SIZES[size]};
-            height: ${InfoMenu.ICON_SIZES[size]};
+            width: ${containerSize};
+            height: ${containerSize};
             margin-right: ${marginRight};
             display: flex;
             align-items: center;
@@ -343,12 +345,12 @@ export class InfoMenu {
                         <div style="display: flex; gap: 4px; margin-right: 8px;">
                             ${Array.isArray(hazard.icon) 
                                 ? hazard.icon.map((icon: string) => `
-                                    <div style="${this.createIconContainer('large', '0')}">
-                                        <img src="/icons/${icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    <div style="${this.createIconContainer('large', '0', hazard.scale)}">
+                                        <img src="/${icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                                     </div>
                                 `).join('')
                                 : `<div style="${this.createIconContainer('large', '0')}">
-                                    <img src="/icons/${hazard.icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    <img src="/${hazard.icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                                    </div>`
                             }
                         </div>

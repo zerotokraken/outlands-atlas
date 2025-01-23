@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 import CopyPlugin from 'copy-webpack-plugin';
 import webpack from 'webpack';
 import dotenv from 'dotenv';
+import fs from 'fs';
 
 // Load environment variables from .env.local file
 dotenv.config({ path: '.env.local' });
@@ -41,7 +42,7 @@ export default {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: isDevelopment ? '/' : './',
     clean: false
   },
   plugins: [
@@ -60,10 +61,16 @@ export default {
     }),
   ],
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-      publicPath: '/',
-    },
+    static: [
+      {
+        directory: path.join(__dirname, 'dist'),
+        publicPath: '/',
+      },
+      {
+        directory: path.join(__dirname, 'src'),
+        publicPath: '/src',
+      }
+    ],
     hot: true,
     compress: true,
     port: 3000,
@@ -72,6 +79,7 @@ export default {
         throw new Error('webpack-dev-server is not defined');
       }
 
+      // Handle JSON files
       devServer.app.get('*.json', (req, res, next) => {
         res.type('application/json');
         next();
