@@ -27,7 +27,6 @@ export class MapManager {
     private isLoadingMap: boolean = false;
     private tileService: TileService;
     private infoMenu: InfoMenu;
-    private coordDisplay: HTMLElement | null = null;
     private routes: RoutesData = {};
 
     constructor(private locationsData: LocationsData) {
@@ -439,8 +438,7 @@ export class MapManager {
                         const iconClass = 'icon-resource';
                         return `
                             <div class="category-item ${isVisible ? 'category-visible' : ''}" 
-                                 data-category="${categoryName}"
-                                 title="Appears on: ${levels.join(', ')}">
+                                 data-category="${categoryName}">
                                 <span class="icon ${iconClass}">
                                     <span class="path1"></span>
                                     <span class="path2"></span>
@@ -528,21 +526,6 @@ export class MapManager {
         await this.loadRoutes();
         onProgress?.(50, 'Initializing map...');
         
-        this.coordDisplay = document.createElement('div');
-        this.coordDisplay.className = 'coordinate-display';
-        this.coordDisplay.style.cssText = `
-            position: fixed;
-            bottom: 10px;
-            left: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-family: monospace;
-            z-index: 1000;
-        `;
-        document.body.appendChild(this.coordDisplay);
-
         this.map = L.map(elementId, {
             crs: L.CRS.Simple,
             minZoom: -4,
@@ -569,28 +552,6 @@ export class MapManager {
             const coordString = `[${coordArray[0]}, ${coordArray[1]}]`;
             navigator.clipboard.writeText(coordString);
             
-            if (this.coordDisplay) {
-                const originalStyle = this.coordDisplay.style.background;
-                this.coordDisplay.style.background = 'rgba(0, 255, 0, 0.7)';
-                setTimeout(() => {
-                    if (this.coordDisplay) {
-                        this.coordDisplay.style.background = originalStyle;
-                    }
-                }, 200);
-            }
-        });
-
-        this.map.on('mousemove', (e) => {
-            if (this.coordDisplay) {
-                const coords = e.latlng;
-                const coordArray = [Math.round(coords.lat), Math.round(coords.lng)];
-                const coordString = `[${coordArray[0]}, ${coordArray[1]}]`;
-                this.coordDisplay.innerHTML = `
-                    Raw: ${coords.lat.toFixed(2)}, ${coords.lng.toFixed(2)}<br>
-                    JSON: <span style="cursor: pointer; text-decoration: underline;" onclick="navigator.clipboard.writeText('${coordString}')">${coordString}</span>
-                    <span style="font-size: 0.8em; margin-left: 5px;">(click to copy)</span>
-                `;
-            }
         });
 
         this.map.on('zoomend', () => {
@@ -902,10 +863,6 @@ export class MapManager {
         if (this.map) {
             this.map.remove();
             this.map = null;
-        }
-        if (this.coordDisplay) {
-            this.coordDisplay.remove();
-            this.coordDisplay = null;
         }
         if (this.markersLayer) {
             this.markersLayer.clearLayers();

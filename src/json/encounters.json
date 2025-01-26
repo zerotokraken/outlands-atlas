@@ -2,15 +2,15 @@
     "encounters": [
       {
         "name": "ExoThrugg",
-        "icon": ["images/exo-thrugg.png"],
-        "location": "Specific Locations",
+        "icon": "images/exothrugg.png",
+        "location": "Floors 3 and Below",
         "description": [
-          "fill in here"
+          "You will receive the warning *You sense a foreboding presence nearby...* afterwords Exothrugg will appear and attempt to unleash a devastating area abilty on your group. This can be countered by being invisble or moving a screen away from him and waiting out his stay. This range from from a few seconds to a few minutes. Being hidden does not prevent damage if it attacks someone else."
         ]
       },
       {
         "name": "The Pilgrim",
-        "icon": ["images/pilgrim.png"],
+        "icon": "images/pilgrim.png",
         "scale": 300,
         "location": "Specific Locations",
         "description": [
@@ -19,7 +19,7 @@
       },
       {
         "name": "Rifts in Time",
-        "icon": ["images/portal-spawn.png"],
+        "icon": "images/portal-spawn.png",
         "scale": 300,
         "location": "Anywhere",
         "description": [
@@ -28,7 +28,7 @@
       },
       {
         "name": "Fallen Expeditions & Adventurer Parties",
-        "icon": ["images/dead-expedition.png"],
+        "icon": "images/dead-expedition.png",
         "scale": 300,
         "location": "Anywhere",
         "description": [
@@ -37,7 +37,7 @@
       },
       {
         "name": "Monster Camps",
-        "icon": ["images/enemy-camps.png"],
+        "icon": "images/enemy-camps.png",
         "scale": 300,
         "location": "Anywhere",
         "description": [
@@ -46,7 +46,7 @@
       },
       {
         "name": "Lost Colony Camps",
-        "icon": ["images/friendly-camp.png"],
+        "icon": "images/friendly-camp.png",
         "scale": 300,
         "location": "Anywhere",
         "description": [
@@ -55,7 +55,7 @@
       },
       {
         "name": "Wild Growth & Silver Animals",
-        "icon": ["images/silver-animals.png"],
+        "icon": "images/silver-animals.png",
         "scale": 300,
         "location": "Anywhere",
         "description": [
@@ -64,7 +64,7 @@
       },
       {
         "name": "Blackrock Meteors",
-        "icon": ["images/blackrock-meteor.png"],
+        "icon": "images/blackrock-meteor.png",
         "location": "Anywhere",
         "description": [
           "addhere"
@@ -72,7 +72,7 @@
       },
       {
         "name": "Nexus Warden",
-        "icon": ["images/nexus-warden.png"],
+        "icon": "images/nexus-warden.png",
         "scale": 300,
         "location": "Anywhere",
         "description": [
@@ -81,7 +81,7 @@
       },
       {
         "name": "Items of Virtue",
-        "icon": ["images/virtue-items.png"],
+        "icon": "images/virtue-items.png",
         "scale": 300,
         "location": "Anywhere",
         "description": [
@@ -90,4 +90,3 @@
       }
     ]
   }
-  

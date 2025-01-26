@@ -31,6 +31,7 @@ const AVAILABLE_ICONS = {
     LADDERS: { path: "icons/ladder.png", scale: 300 },
     TELEPORT_TILE: { path: "icons/teleport-rune.png", scale: 125 },
     GEM_VENDOR: { path: "icons/treasure.png", scale: 125},
+    CAVE: { path: "icons/cave.png", scale: 150},
 
     // Time runes
     RUNE_KNOCK: { path: "icons/runes/timerune-knock.png", scale: 100 },
@@ -56,7 +57,8 @@ const AVAILABLE_ICONS = {
     // Images
     BLEEDING_SANDS: { path: "images/bleeding-sands.png", scale: 300 },
     // Bosses
-    POISON_FINGER: { path: "icons/bosses/poison-finger.png", scale: 200}
+    POISON_FINGER: { path: "icons/bosses/poison-finger.png", scale: 200},
+    EXOTHRUGG: { path: "images/exothrugg.png", scale: 300 },
     
 };
 
