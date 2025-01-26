@@ -3,7 +3,7 @@
         "id": "sewers-route-1",
         "title": "Sewers Route",
         "description": "Here is a route to quickly get down to sewers for farming. A runner build is recommended as you can easily die in many spots.",
-        "color": "#ff4444",
+        "color": "#7CFC00",
         "dashArray": "10, 5",
         "segments": [
             {
@@ -11,7 +11,7 @@
                 "points": [
                     {
                         "coordinates": [3371, 2526],
-                        "description": "Start here at the entrance",
+                        "description": "Start here at the entrance. You will need 3 Precious Time Gems for this path.",
                         "pathPoints": [
                             [3165, 2543],
                             [3156, 2680],
@@ -109,7 +109,7 @@
                     },
                     {
                         "coordinates": [4031, 1092],
-                        "description": "You might way to do a lap around this section to get the mobs away from this wall you have to break.",
+                        "description": "You might way to do a lap around this section to get the mobs away from this wall you have to break. The bomb relic is useful here.",
                         "gap": true,
                         "pathPoints": [
                             [4016, 957],
@@ -153,10 +153,11 @@
                 "points": [
                     {
                         "coordinates": [1406, 962],
-                        "description": "The teleport from level 3 will place you here. Run north to the rope to climb up.",
+                        "description": "The teleport from level 3 will place you here. Run north to the rope to climb up and you're finished!",
                         "gap": false,
                         "pathPoints": [
-                            [1646, 945]
+                            [1646, 945],
+                            [1854, 977]
                         ]
                     }
                 ]

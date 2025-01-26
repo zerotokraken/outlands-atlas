@@ -205,6 +205,7 @@ export class InfoMenu {
         const npcsButton = createNavButton('NPCs', 'npcs');
         const questsButton = createNavButton('Quests', 'quests');
         const questItemsButton = createNavButton('Quest Items', 'quest-items');
+        const routesButton = createNavButton('Routes', 'routes');
         nav.appendChild(runesButton);
         nav.appendChild(relicsButton);
         nav.appendChild(hazardsButton);
@@ -215,7 +216,6 @@ export class InfoMenu {
         nav.appendChild(npcsButton);
         nav.appendChild(questsButton);
         nav.appendChild(questItemsButton);
-
         // Create content container
         const content = document.createElement('div');
         content.className = 'info-content';

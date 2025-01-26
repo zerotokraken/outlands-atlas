@@ -146,22 +146,6 @@
                 }
             ],
             "Portals": [],
-            "Teleport Tiles": [],
-            "Waystar": []
-         },
-        "Doors": {
-            "Locked": [
-                {
-                    "id": 1,
-                    "title": "Locked Door",
-                    "description": "Requires a knock rune.",
-                    "coordinates": [2721, 998],
-                    "icon": "icons/lock.png"
-                }
-            ]
-        },
-        "Teleports": {
-            "Teleport Tiles": [],
             "Rel Por Stones": [
                 {
                     "id": "rel_por",
@@ -170,6 +154,27 @@
                     "icon": "icons/rel-por.png",
                     "description": "Teleports you to the nearby room.",
                     "coordinates": [[3058, 2316], [3099, 2479]]
+                }
+            ],
+            "Waystar": [
+                {
+                    "id": 1,
+                    "title": "Waystar",
+                    "requirements": "1 Tri Time Gem",
+                    "icon": "icons/waystar.png",
+                    "description": "Summons a moongate to Colony for a short duration",
+                    "coordinates": [579, 2563]
+                }
+            ]
+         },
+        "Doors": {
+            "Locked": [
+                {
+                    "id": 1,
+                    "title": "Locked Door",
+                    "description": "Requires a knock rune.",
+                    "coordinates": [[2721, 998], [1225, 2547]],
+                    "icon": "icons/lock.png"
                 }
             ]
          }
