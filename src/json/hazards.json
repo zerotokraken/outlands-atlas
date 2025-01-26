@@ -16,6 +16,15 @@
       "description": [
         "Applies a bleed effect to the player. This can stack up to lethal ranges quickly. If you are in the Warding Parry stance and have someone to heal you then you can destroy it by double clicking it like other destructibles. A Mend rune is helpeful as well."
       ]
+    },
+    {
+      "name": "Miasma",
+      "icon": ["images/miasma.png"],
+      "scale": 300,
+      "location": "Anywhere",
+      "description": [
+        "Applies a disease effect to the player. This can stack up to lethal ranges quickly. Completely avoid this if possible."
+      ]
     }
   ]
 }

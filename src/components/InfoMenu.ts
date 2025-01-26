@@ -199,10 +199,22 @@ export class InfoMenu {
         const relicsButton = createNavButton('Time Relics', 'relics');
         const hazardsButton = createNavButton('Hazards', 'hazards');
         const teleportsButton = createNavButton('Teleports', 'teleports');
+        const encountersButton = createNavButton('Encounters', 'encounters');
+        const entitiesButton = createNavButton('Entities', 'entities');
+        const lootButton = createNavButton('Loot', 'loot');
+        const npcsButton = createNavButton('NPCs', 'npcs');
+        const questsButton = createNavButton('Quests', 'quests');
+        const questItemsButton = createNavButton('Quest Items', 'quest-items');
         nav.appendChild(runesButton);
         nav.appendChild(relicsButton);
         nav.appendChild(hazardsButton);
         nav.appendChild(teleportsButton);
+        nav.appendChild(encountersButton);
+        nav.appendChild(entitiesButton);
+        nav.appendChild(lootButton);
+        nav.appendChild(npcsButton);
+        nav.appendChild(questsButton);
+        nav.appendChild(questItemsButton);
 
         // Create content container
         const content = document.createElement('div');
@@ -251,6 +263,24 @@ export class InfoMenu {
         } else if (page === 'teleports') {
             const teleportsData = await fetch('/json/teleports.json').then(res => res.json());
             content.innerHTML = this.createTeleportsContent(teleportsData);
+        } else if (page === 'encounters') {
+            const encountersData = await fetch('/json/encounters.json').then(res => res.json());
+            content.innerHTML = this.createEncountersContent(encountersData);
+        } else if (page === 'entities') {
+            const entitiesData = await fetch('/json/entities.json').then(res => res.json());
+            content.innerHTML = this.createEntitiesContent(entitiesData);
+        } else if (page === 'loot') {
+            const lootData = await fetch('/json/loot.json').then(res => res.json());
+            content.innerHTML = this.createLootContent(lootData);
+        } else if (page === 'npcs') {
+            const npcsData = await fetch('/json/npcs.json').then(res => res.json());
+            content.innerHTML = this.createNpcsContent(npcsData);
+        } else if (page === 'quests') {
+            const questsData = await fetch('/json/quests.json').then(res => res.json());
+            content.innerHTML = this.createQuestsContent(questsData);
+        } else if (page === 'quest-items') {
+            const questItemsData = await fetch('/json/quest-items.json').then(res => res.json());
+            content.innerHTML = this.createQuestItemsContent(questItemsData);
         }
     }
 
@@ -413,6 +443,283 @@ export class InfoMenu {
                 </div>
             `;
         });
+
+        html += `
+            </div>
+        `;
+
+        return html;
+    }
+
+    private createEncountersContent(data: any): string {
+        let html = `
+            <div class="encounters-list" style="display: flex; flex-direction: column; gap: 12px;">
+        `;
+        
+        if (data.encounters) {
+            data.encounters.forEach((encounter: any) => {
+                html += `
+                    <div class="encounter-card" style="background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 10px; font-size: 0.85em;">
+                        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                            <div style="display: flex; gap: 4px; margin-right: 8px;">
+                                ${Array.isArray(encounter.icon) 
+                                    ? encounter.icon.map((icon: string) => `
+                                        <div style="${this.createIconContainer('large', '0')}">
+                                            <img src="/icons/${icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                        </div>
+                                    `).join('')
+                                    : `<div style="${this.createIconContainer('large', '0')}">
+                                        <img src="/icons/${encounter.icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                       </div>`
+                                }
+                            </div>
+                            <div>
+                                <h3 style="color: #d4af37; margin: 0; font-size: 1em;">${encounter.name}</h3>
+                                <div style="color: #999; font-size: 0.85em;">
+                                    ${encounter.location}
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin: 8px 0;">
+                            ${encounter.description.map((desc: string) => `
+                                <div style="color: #999; margin-bottom: 4px;">• ${desc}</div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        html += `
+            </div>
+        `;
+
+        return html;
+    }
+
+    private createEntitiesContent(data: any): string {
+        let html = `
+            <div class="entities-list" style="display: flex; flex-direction: column; gap: 12px;">
+        `;
+        
+        if (data.entities) {
+            data.entities.forEach((entity: any) => {
+                html += `
+                    <div class="entity-card" style="background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 10px; font-size: 0.85em;">
+                        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                            <div style="display: flex; gap: 4px; margin-right: 8px;">
+                                ${Array.isArray(entity.icon) 
+                                    ? entity.icon.map((icon: string) => `
+                                        <div style="${this.createIconContainer('large', '0')}">
+                                            <img src="/icons/${icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                        </div>
+                                    `).join('')
+                                    : `<div style="${this.createIconContainer('large', '0')}">
+                                        <img src="/icons/${entity.icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                       </div>`
+                                }
+                            </div>
+                            <div>
+                                <h3 style="color: #d4af37; margin: 0; font-size: 1em;">${entity.name}</h3>
+                                <div style="color: #999; font-size: 0.85em;">
+                                    ${entity.location}
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin: 8px 0;">
+                            ${entity.description.map((desc: string) => `
+                                <div style="color: #999; margin-bottom: 4px;">• ${desc}</div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        html += `
+            </div>
+        `;
+
+        return html;
+    }
+
+    private createLootContent(data: any): string {
+        let html = `
+            <div class="loot-list" style="display: flex; flex-direction: column; gap: 12px;">
+        `;
+        
+        if (data.loot) {
+            data.loot.forEach((item: any) => {
+                html += `
+                    <div class="loot-card" style="background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 10px; font-size: 0.85em;">
+                        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                            <div style="display: flex; gap: 4px; margin-right: 8px;">
+                                ${Array.isArray(item.icon) 
+                                    ? item.icon.map((icon: string) => `
+                                        <div style="${this.createIconContainer('large', '0')}">
+                                            <img src="/icons/${icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                        </div>
+                                    `).join('')
+                                    : `<div style="${this.createIconContainer('large', '0')}">
+                                        <img src="/icons/${item.icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                       </div>`
+                                }
+                            </div>
+                            <div>
+                                <h3 style="color: #d4af37; margin: 0; font-size: 1em;">${item.name}</h3>
+                                <div style="color: #999; font-size: 0.85em;">
+                                    ${item.location}
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin: 8px 0;">
+                            ${item.description.map((desc: string) => `
+                                <div style="color: #999; margin-bottom: 4px;">• ${desc}</div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        html += `
+            </div>
+        `;
+
+        return html;
+    }
+
+    private createNpcsContent(data: any): string {
+        let html = `
+            <div class="npcs-list" style="display: flex; flex-direction: column; gap: 12px;">
+        `;
+        
+        if (data.npcs) {
+            data.npcs.forEach((npc: any) => {
+                html += `
+                    <div class="npc-card" style="background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 10px; font-size: 0.85em;">
+                        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                            <div style="display: flex; gap: 4px; margin-right: 8px;">
+                                ${Array.isArray(npc.icon) 
+                                    ? npc.icon.map((icon: string) => `
+                                        <div style="${this.createIconContainer('large', '0')}">
+                                            <img src="/icons/${icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                        </div>
+                                    `).join('')
+                                    : `<div style="${this.createIconContainer('large', '0')}">
+                                        <img src="/icons/${npc.icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                       </div>`
+                                }
+                            </div>
+                            <div>
+                                <h3 style="color: #d4af37; margin: 0; font-size: 1em;">${npc.name}</h3>
+                                <div style="color: #999; font-size: 0.85em;">
+                                    ${npc.location}
+                                </div>
+                                ${npc.quests ? `<div style="color: #999; font-size: 0.85em;">Quests: ${npc.quests}</div>` : ''}
+                            </div>
+                        </div>
+                        <div style="margin: 8px 0;">
+                            ${npc.description.map((desc: string) => `
+                                <div style="color: #999; margin-bottom: 4px;">• ${desc}</div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        html += `
+            </div>
+        `;
+
+        return html;
+    }
+
+    private createQuestsContent(data: any): string {
+        let html = `
+            <div class="quests-list" style="display: flex; flex-direction: column; gap: 12px;">
+        `;
+        
+        if (data.quests) {
+            data.quests.forEach((quest: any) => {
+                html += `
+                    <div class="quest-card" style="background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 10px; font-size: 0.85em;">
+                        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                            <div style="display: flex; gap: 4px; margin-right: 8px;">
+                                ${Array.isArray(quest.icon) 
+                                    ? quest.icon.map((icon: string) => `
+                                        <div style="${this.createIconContainer('large', '0')}">
+                                            <img src="/icons/${icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                        </div>
+                                    `).join('')
+                                    : `<div style="${this.createIconContainer('large', '0')}">
+                                        <img src="/icons/${quest.icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                       </div>`
+                                }
+                            </div>
+                            <div>
+                                <h3 style="color: #d4af37; margin: 0; font-size: 1em;">${quest.name}</h3>
+                                <div style="color: #999; font-size: 0.85em;">
+                                    ${quest.location}
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin: 8px 0;">
+                            ${quest.description.map((desc: string) => `
+                                <div style="color: #999; margin-bottom: 4px;">• ${desc}</div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        html += `
+            </div>
+        `;
+
+        return html;
+    }
+
+    private createQuestItemsContent(data: any): string {
+        let html = `
+            <div class="quest-items-list" style="display: flex; flex-direction: column; gap: 12px;">
+        `;
+        
+        if (data["quest-items"]) {
+            data["quest-items"].forEach((item: any) => {
+                html += `
+                    <div class="quest-item-card" style="background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 10px; font-size: 0.85em;">
+                        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                            <div style="display: flex; gap: 4px; margin-right: 8px;">
+                                ${Array.isArray(item.icon) 
+                                    ? item.icon.map((icon: string) => `
+                                        <div style="${this.createIconContainer('large', '0')}">
+                                            <img src="/icons/${icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                        </div>
+                                    `).join('')
+                                    : `<div style="${this.createIconContainer('large', '0')}">
+                                        <img src="/icons/${item.icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                       </div>`
+                                }
+                            </div>
+                            <div>
+                                <h3 style="color: #d4af37; margin: 0; font-size: 1em;">${item.name}</h3>
+                                <div style="color: #999; font-size: 0.85em;">
+                                    ${item.location}
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin: 8px 0;">
+                            ${item.description.map((desc: string) => `
+                                <div style="color: #999; margin-bottom: 4px;">• ${desc}</div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+        }
 
         html += `
             </div>

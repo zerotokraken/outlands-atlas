@@ -28,7 +28,7 @@ const AVAILABLE_ICONS = {
     GATE_YELLOW: { path: "icons/Gates_Yellow.png", scale: 150 },
     TELEPORT_REL_POR: { path: "icons/rel-por.png", scale: 175 },
     // Time runes
-    RUNE_KNOCK: { path: "icons/runes/timerune-knock.png", scale: 150 },
+    RUNE_KNOCK: { path: "icons/runes/timerune-knock.png", scale: 125 },
     RUNE_MEND: { path: "icons/runes/timerune-mendtime.png", scale: 100 },
     RUNE_IRONFLESH: { path: "icons/runes/timerune-ironflesh.png", scale: 100 },
     RUNE_REPEL: { path: "icons/runes/timerune-repel.png", scale: 100 },

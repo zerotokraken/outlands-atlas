@@ -1,0 +1,93 @@
+{
+    "encounters": [
+      {
+        "name": "ExoThrugg",
+        "icon": ["images/exo-thrugg.png"],
+        "location": "Specific Locations",
+        "description": [
+          "fill in here"
+        ]
+      },
+      {
+        "name": "The Pilgrim",
+        "icon": ["images/pilgrim.png"],
+        "scale": 300,
+        "location": "Specific Locations",
+        "description": [
+          "fill in here"
+        ]
+      },
+      {
+        "name": "Rifts in Time",
+        "icon": ["images/portal-spawn.png"],
+        "scale": 300,
+        "location": "Anywhere",
+        "description": [
+          "The player will detect a rift in Time and three silver moongates will appear. Various monsters will appear out of these gates and attack the player. This monsters are highly varied and this could easily result in death."
+        ]
+      },
+      {
+        "name": "Fallen Expeditions & Adventurer Parties",
+        "icon": ["images/dead-expedition.png"],
+        "scale": 300,
+        "location": "Anywhere",
+        "description": [
+          "There will be camps of fallen adventurers that may or may not be guarded by monsters. There can be various loot found amoung the dead."
+        ]
+      },
+      {
+        "name": "Monster Camps",
+        "icon": ["images/enemy-camps.png"],
+        "scale": 300,
+        "location": "Anywhere",
+        "description": [
+          "Creatures may travel to certain floors and establish temporary camps. They will have treasure amoung them and the leader will generally carry a key to a locked chest."
+        ]
+      },
+      {
+        "name": "Lost Colony Camps",
+        "icon": ["images/friendly-camp.png"],
+        "scale": 300,
+        "location": "Anywhere",
+        "description": [
+          "Members of the Lost Colony may travel to certain floors and establish temporary camps. There may be some containers to loot. There will be a healer and some guards to defend you. This can be used to your advantage in certain areas."
+        ]
+      },
+      {
+        "name": "Wild Growth & Silver Animals",
+        "icon": ["images/silver-animals.png"],
+        "scale": 300,
+        "location": "Anywhere",
+        "description": [
+          "Pockets of a verdent world break through to Time. Friendly creatures spawn here are formidble foes for monsters and criminals alike. Be careful not to flag."
+        ]
+      },
+      {
+        "name": "Blackrock Meteors",
+        "icon": ["images/blackrock-meteor.png"],
+        "location": "Anywhere",
+        "description": [
+          "addhere"
+        ]
+      },
+      {
+        "name": "Nexus Warden",
+        "icon": ["images/nexus-warden.png"],
+        "scale": 300,
+        "location": "Anywhere",
+        "description": [
+            "addhere"
+        ]
+      },
+      {
+        "name": "Items of Virtue",
+        "icon": ["images/virtue-items.png"],
+        "scale": 300,
+        "location": "Anywhere",
+        "description": [
+          "addhere"
+        ]
+      }
+    ]
+  }
+  

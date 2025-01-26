@@ -1,10 +1,10 @@
 {
-    "entities": [
+    "npcs": [
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "location": "",
+        "quests": "",
         "description": [
           "fill in here"
         ]
@@ -12,8 +12,8 @@
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "location": "",
+        "quests": "",
         "description": [
           "fill in here"
         ]
@@ -21,8 +21,8 @@
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "location": "",
+        "quests": "",
         "description": [
           "fill in here"
         ]
@@ -30,8 +30,8 @@
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "location": "",
+        "quests": "",
         "description": [
           "fill in here"
         ]
@@ -39,8 +39,8 @@
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "location": "",
+        "quests": "",
         "description": [
           "fill in here"
         ]
@@ -48,8 +48,8 @@
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "location": "",
+        "quests": "",
         "description": [
           "fill in here"
         ]
@@ -57,8 +57,8 @@
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "location": "",
+        "quests": "",
         "description": [
           "fill in here"
         ]
@@ -66,8 +66,8 @@
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "location": "",
+        "quests": "",
         "description": [
           "fill in here"
         ]

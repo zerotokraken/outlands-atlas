@@ -1,10 +1,9 @@
 {
-    "entities": [
+    "loot": [
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "sources": "",
         "description": [
           "fill in here"
         ]
@@ -12,8 +11,7 @@
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "sources": "",
         "description": [
           "fill in here"
         ]
@@ -21,8 +19,7 @@
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "sources": "",
         "description": [
           "fill in here"
         ]
@@ -30,8 +27,7 @@
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "sources": "",
         "description": [
           "fill in here"
         ]
@@ -39,8 +35,7 @@
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "sources": "",
         "description": [
           "fill in here"
         ]
@@ -48,8 +43,7 @@
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "sources": "",
         "description": [
           "fill in here"
         ]
@@ -57,8 +51,7 @@
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "sources": "",
         "description": [
           "fill in here"
         ]
@@ -66,8 +59,7 @@
       {
         "name": "",
         "icon": [""],
-        "abilties": [""],
-        "locations": "",
+        "sources": "",
         "description": [
           "fill in here"
         ]
