@@ -39,6 +39,28 @@
                         "gap": true
                     }
                 ]
+            },
+            {
+                "level": "Level 5",
+                "points": [
+                    {
+                        "coordinates": [2050, 2224],
+                        "description": "This is where the teleport from Sewers takes you. Recommend Magic Ward rune and Reflection Relic. Frost on a hotkey is a must.",
+                        "pathPoints": [
+                            [2152, 2193],
+                            [2559, 2064],
+                            [2588, 1846],
+                            [2509, 1620],
+                            [2588, 1127],
+                            [2638, 999],
+                            [2759, 771],
+                            [3031, 765],
+                            [3047, 829],
+                            [3251, 824],
+                            [3576, 816]
+                        ]
+                    }
+                ]
             }
         ]
     }

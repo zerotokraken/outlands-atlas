@@ -118,7 +118,7 @@
                     },
                     {
                         "coordinates": [3854, 745],
-                        "gap": false,
+                        "gap": true,
                         "pathPoints": [
                             [3636, 878],
                             [3628, 1338],

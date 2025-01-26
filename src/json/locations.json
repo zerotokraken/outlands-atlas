@@ -69,11 +69,31 @@
                     "coordinates": [1948, 1088],
                     "icon": "icons/Stairs.png"
                 }
-
             ],
             "Portals": [],
             "Teleport Tiles": [],
-            "Waystar": []
+            "Waystar": [
+                {
+                    "id": 1,
+                    "title": "Waystar",
+                    "requirements": "1 Tri Time Gem",
+                    "icon": "icons/waystar.png",
+                    "description": "Summons a moongate to Colony for a short duration",
+                    "coordinates": [1259, 2813]
+                }
+            ]
+         },
+         "Runes": {
+             "Knock": [
+                 {
+                     "id": "knock",
+                     "title": "Knock",
+                     "container": ["Strong Box", "Metal Chest", "Wooden Box"],
+                     "icon": "icons/runes/timerune-knock.png",
+                     "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
+                     "coordinates": [[1346, 1222], [1482, 1267], [1556, 2843]]
+                 }
+             ]
          }
      },
     "Level 2 Lower Reaches": {
@@ -121,10 +141,38 @@
                 }
 
             ],
+            "Rel Por Stones": [
+                {
+                    "id": "rel_por",
+                    "title": "Rel Por Stone",
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/rel-por.png",
+                    "description": "Teleports you to a nearby area.",
+                    "coordinates": [[2521, 766], [1979, 561], [696, 2472], [690, 2624], [3543, 1367], [3521, 1574], [3991, 844], [3854, 745]]
+                }
+            ],            
             "Portals": [],
-            "Teleport Tiles": [],
-            "Waystar": []
+            "Teleport Tiles": [
+                {
+                    "id": 1,
+                    "title": "Teleport Tile",
+                    "description": "Teleports you into Sewers. This is tile is not visible. Simple open the door with knock and then run straight into the cell and you will be teleported. No gems are required",
+                    "coordinates": [3474, 3320],
+                    "icon": "icons/teleport-rune.png"
+                }
+            ],
+            "Waystar": [
+                {
+                    "id": 1,
+                    "title": "Waystar",
+                    "requirements": "1 Tri Time Gem",
+                    "icon": "icons/waystar.png",
+                    "description": "Summons a moongate to Colony for a short duration",
+                    "coordinates": [928, 1480]
+                }
+            ]
          },
+         
         "Doors": {
             "Locked": [
                 {
@@ -136,35 +184,17 @@
                 }
             ]
         },
-        "Teleports": {
-            "Teleport Tiles": [
+        "NPCs": {
+            "Gem Vendor": [
                 {
                     "id": 1,
-                    "title": "Teleport Tile",
-                    "description": "Teleports you into Sewers. This is tile is not visible. Simple open the door with knock and then run straight into the cell and you will be teleported. No gems are required",
-                    "coordinates": [3474, 3320],
-                    "icon": "icons/teleport-rune.png"
-                }
-            ],
-            "Rel Por Stones": [
-                {
-                    "id": "rel_por",
-                    "title": "Rel Por Stone",
-                    "requirements": "1 Precious Time Gem",
-                    "icon": "icons/rel-por.png",
-                    "description": "Teleports you to the nearby room.",
-                    "coordinates": [[3991, 844], [3854, 745]]
-                },
-                {
-                    "id": "rel_por",
-                    "title": "Rel Por Stone",
-                    "requirements": "1 Precious Time Gem",
-                    "icon": "icons/rel-por.png",
-                    "description": "Teleports you to the nearby room.",
-                    "coordinates": [[3543, 1367], [3521, 1574]]
+                    "title": "Gem Vendor",
+                    "description": "Sells Time gems.",
+                    "coordinates": [1048, 1883],
+                    "icon": "icons/treasure.png"
                 }
             ]
-         }
+        }
     },
     "sewers": {
         "Passage": {
