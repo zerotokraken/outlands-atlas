@@ -30,7 +30,7 @@ const AVAILABLE_ICONS = {
     WAYSTAR: { path: "icons/waystar.png", scale: 250 },
     LADDERS: { path: "icons/ladder.png", scale: 300 },
     // Time runes
-    RUNE_KNOCK: { path: "icons/runes/timerune-knock.png", scale: 125 },
+    RUNE_KNOCK: { path: "icons/runes/timerune-knock.png", scale: 100 },
     RUNE_MEND: { path: "icons/runes/timerune-mendtime.png", scale: 100 },
     RUNE_IRONFLESH: { path: "icons/runes/timerune-ironflesh.png", scale: 100 },
     RUNE_REPEL: { path: "icons/runes/timerune-repel.png", scale: 100 },
