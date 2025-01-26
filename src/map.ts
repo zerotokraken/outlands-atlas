@@ -203,10 +203,14 @@ export class MapManager {
             // Add rune-icon class if it's a rune icon
             const isRune = location.icon?.includes('/runes/');
             const runeClass = isRune ? 'rune-icon' : '';
+            // Add red glow for boss icons
+            const isBoss = location.icon?.includes('/bosses/');
+            const glow = isBoss ? 'filter: drop-shadow(0 0 2px red) drop-shadow(0 0 4px red) drop-shadow(0 0 6px red);' : '';
+            
             return L.divIcon({
                 className: `${baseClass} ${zoomClass} ${runeClass}`,
                 html: `<div class="icon-wrapper" style="transform-origin: center;">
-                         <img src="./${location.icon}" class="icon-image" style="width: 100%; height: 100%; image-rendering: -webkit-optimize-contrast;">
+                         <img src="./${location.icon}" class="icon-image" style="width: 100%; height: 100%; image-rendering: -webkit-optimize-contrast; ${glow}">
                        </div>`,
                 iconSize: [scaledSize, scaledSize],
                 iconAnchor: [scaledSize/2, scaledSize/2]
@@ -615,9 +619,15 @@ export class MapManager {
                                 // Preserve the rune-icon class if it exists
                                 const isRune = markerOptions.location?.icon?.includes('/runes/');
                                 const runeClass = isRune ? 'rune-icon' : '';
+                                // Add red outline for boss icons
+                                const isBoss = markerOptions.location?.icon?.includes('/bosses/');
+                                const glow = isBoss ? 'filter: drop-shadow(0 0 2px red) drop-shadow(0 0 4px red) drop-shadow(0 0 6px red);' : '';
+                                
                                 const newIcon = L.divIcon({
                                     className: `marker-icon ${runeClass}`,
-                                    html: iconHtml.replace(/width: \d+px/, `width: ${scaledSize}px`),
+                                    html: `<div class="icon-wrapper" style="transform-origin: center;">
+                                            <img src="${iconHtml.match(/src="([^"]+)"/)?.[1]}" class="icon-image" style="width: 100%; height: 100%; image-rendering: -webkit-optimize-contrast; ${glow}">
+                                          </div>`,
                                     iconSize: [scaledSize, scaledSize],
                                     iconAnchor: [scaledHalfSize, scaledHalfSize]
                                 });

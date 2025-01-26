@@ -55,6 +55,8 @@ const AVAILABLE_ICONS = {
     RUNE_WILDCREATURES: { path: "icons/runes/timerune-wildcreatures.png", scale: 100 },
     // Images
     BLEEDING_SANDS: { path: "images/bleeding-sands.png", scale: 300 },
+    // Bosses
+    POISON_FINGER: { path: "icons/bosses/poison-finger.png", scale: 200}
     
 };
 

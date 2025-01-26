@@ -248,6 +248,17 @@
                     "icon": "icons/lock.png"
                 }
             ]
+         },
+         "Bosses": {
+            "Poison Finger": [
+                {
+                    "id": "bosses",
+                    "title": "Poison Finger",
+                    "description": "What the fuck is this.",
+                    "coordinates": [[1720, 3644]],
+                    "icon": "icons/bosses/poison-finger.png"
+                }
+            ]           
          }
     }
 }
