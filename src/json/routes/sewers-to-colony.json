@@ -1,0 +1,45 @@
+[
+    {
+        "id": "sewers-to-colony-1",
+        "title": "Sewers to Colony",
+        "description": "This is the exit route for Sewers once you have finished farming.",
+        "color": "#7CFC00",
+        "dashArray": "10, 5",
+        "segments": [
+            {
+                "level": "sewers",
+                "points": [
+                    {
+                        "coordinates": [2132, 1964],
+                        "description": "This is the way out of the sewers. You will need 1 Precious Time Gem and 1 Tri Time Gem for this path.",
+                        "pathPoints": [
+                            [2058, 2266],
+                            [2388, 2286],
+                            [2804, 2278]
+                        ]
+                    },
+                    {
+                        "coordinates": [3058, 2316],
+                        "gap": true 
+                    },
+                    {
+                        "coordinates": [3099, 2479],
+                        "pathPoints": [
+                            [2818, 2498],
+                            [2778, 2622],
+                            [2516, 2616],
+                            [2510, 2558],
+                            [1912, 2560],
+                            [1602, 2550],
+                            [1394, 2552]
+                        ]
+                    },
+                    {
+                        "coordinates": [1225, 2547],
+                        "gap": true
+                    }
+                ]
+            }
+        ]
+    }
+]

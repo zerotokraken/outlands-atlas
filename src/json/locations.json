@@ -174,11 +174,19 @@
                     "id": 1,
                     "title": "Ladder",
                     "description": "This takes you up off the ground floor.",
-                    "coordinates": [1854, 977],
+                    "coordinates": [[1854, 977], [1232, 792], [1108, 1516]],
                     "icon": "icons/ladder.png"
                 }
             ],
-            "Portals": [],
+            "Teleport Tiles": [
+                {
+                    "id": 1,
+                    "title": "Teleport Tile",
+                    "description": "Teleports you to Cursed Prevalia. This is tile is not visible. Simple open the door with knock and then run straight into the cell and you will be teleported. No gems are required",
+                    "coordinates": [1140, 2556],
+                    "icon": "icons/teleport-rune.png"
+                }
+            ],
             "Rel Por Stones": [
                 {
                     "id": "rel_por",

@@ -42,7 +42,7 @@ export class MapManager {
             this.routes = {};
             
             // Define known route files (can be expanded later)
-            const routeFiles = ['sewers-route.json'];
+            const routeFiles = ['entrance-to-sewers.json', 'sewers-to-colony.json'];
             
             // Load each route file
             for (const file of routeFiles) {
@@ -406,30 +406,37 @@ export class MapManager {
             categoriesContainer.innerHTML += categoryHtml;
         });
 
-        // Add all routes to sidebar
-        if (Object.keys(this.routes).length > 0) {
+        // Add routes to sidebar if there are any for this level
+        const routesForLevel = Object.entries(this.routes).reduce((acc, [category, routes]) => {
+            const levelRoutes = routes.filter(route => route.segments.some(segment => segment.level === this.currentLevel));
+            if (levelRoutes.length > 0) {
+                // For each route, get all levels it appears on for the tooltip
+                const routeLevels = routes.reduce((levels: string[], route) => {
+                    route.segments.forEach(segment => {
+                        if (!levels.includes(segment.level)) {
+                            levels.push(segment.level);
+                        }
+                    });
+                    return levels;
+                }, []);
+                
+                acc[category] = { routes: levelRoutes, levels: routeLevels };
+            }
+            return acc;
+        }, {} as { [key: string]: { routes: Route[], levels: string[] } });
+
+        if (Object.keys(routesForLevel).length > 0) {
             const routesHtml = `
                 <div class="header">Routes</div>
                 <div class="group-categories">
-                    ${Object.entries(this.routes).map(([category, routes]) => {
-                        // For each route, get all levels it appears on
-                        const routeLevels = routes.reduce((levels: string[], route) => {
-                            route.segments.forEach(segment => {
-                                if (!levels.includes(segment.level)) {
-                                    levels.push(segment.level);
-                                }
-                            });
-                            return levels;
-                        }, []);
-                        
-                        // Create category item with tooltip showing levels
+                    ${Object.entries(routesForLevel).map(([category, { routes, levels }]) => {
                         const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
                         const isVisible = !this.hiddenCategories.has(categoryName);
                         const iconClass = 'icon-resource';
                         return `
                             <div class="category-item ${isVisible ? 'category-visible' : ''}" 
                                  data-category="${categoryName}"
-                                 title="Appears on: ${routeLevels.join(', ')}">
+                                 title="Appears on: ${levels.join(', ')}">
                                 <span class="icon ${iconClass}">
                                     <span class="path1"></span>
                                     <span class="path2"></span>

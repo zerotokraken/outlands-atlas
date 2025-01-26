@@ -1,7 +1,7 @@
 [
     {
-        "id": "sewers-route-1",
-        "title": "Sewers Route",
+        "id": "entrance-to-sewers-1",
+        "title": "Entrance To Sewers",
         "description": "Here is a route to quickly get down to sewers for farming. A runner build is recommended as you can easily die in many spots.",
         "color": "#7CFC00",
         "dashArray": "10, 5",
