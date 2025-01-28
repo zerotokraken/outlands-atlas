@@ -64,7 +64,7 @@
                     "id": 1,
                     "title": "Locked Door",
                     "description": "Requires a knock rune.",
-                    "coordinates": [[2186, 1703], [2570, 1246]],
+                    "coordinates": [[2186, 1703], [2570, 1246], [1051, 2151], [908, 3066]],
                     "icon": "icons/lock.png"
                 }
             ]
@@ -477,8 +477,15 @@
                 {
                     "id": 1,
                     "title": "Cave",
-                    "description": ["Leads to Colony on Level 4", "Leads to Blood Forest on Level 4"],
-                    "coordinates": [[338, 756], [338, 3877]],
+                    "description": [["Leads to Colony on Level 4"]],
+                    "coordinates": [[338, 756]],
+                    "icon": "icons/cave.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Cave",
+                    "description": [["Leads to Blood Forest on Level 4"]],
+                    "coordinates": [[338, 3877]],
                     "icon": "icons/cave.png"
                 }
             ],
