@@ -628,7 +628,8 @@ export class MapManager {
         const specialAreas = {
             'sewers': 'sewers',
             'tunnel': 'tunnel',
-            'the molten core': 'the-molten-core'
+            'the molten core': 'the-molten-core',
+            'stonegate': "stonegate"
         };
 
         // Check if it's a special area (case-insensitive)
