@@ -26,12 +26,14 @@ const AVAILABLE_ICONS = {
     STAR: { path: "icons/star.png", scale: 100 },
     GATE_RED: { path: "icons/Gates_Red.png", scale: 100 },
     GATE_YELLOW: { path: "icons/Gates_Yellow.png", scale: 150 },
+    GATE_SILVER: { path: "icons/Gates_Silver.png", scale: 150 },
     TELEPORT_REL_POR: { path: "icons/rel-por.png", scale: 200 },
     WAYSTAR: { path: "icons/waystar.png", scale: 250 },
     LADDERS: { path: "icons/ladder.png", scale: 300 },
     TELEPORT_TILE: { path: "icons/teleport-rune.png", scale: 125 },
     GEM_VENDOR: { path: "icons/treasure.png", scale: 125},
     CAVE: { path: "icons/cave.png", scale: 150},
+    FLAG: { path: "icons/flag.png", scale: 150},
 
     // Time runes
     RUNE_KNOCK: { path: "icons/runes/timerune-knock.png", scale: 100 },

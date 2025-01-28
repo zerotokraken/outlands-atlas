@@ -746,7 +746,8 @@ export class MapManager {
         const specialAreas = {
             'Sewers': 'sewers',
             'Tunnel': 'tunnel',
-            'The Molten Core': 'the molten core'
+            'The Molten Core': 'the molten core',
+            'Stonegate': "Stonegate"
         };
         
         // Check if it's a special area and normalize the name

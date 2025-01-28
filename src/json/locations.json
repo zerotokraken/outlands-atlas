@@ -18,6 +18,13 @@
                     "description": "Can be used to travel to any town. You can recall near Gold Moongates.",
                     "coordinates": [[3486, 2605], [3356, 2087], [3905, 2426], [3684, 2838]],
                     "icon": "icons/Gates_Yellow.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Portal to Stonegate",
+                    "description": "This teleports you randomly to one of five locations in Stonegate. Be warned if you enter with a group.",
+                    "coordinates": [2323, 801],
+                    "icon": "icons/Gates_Silver.png"
                 }
             ],
             "Rel Por Stones": [
@@ -48,6 +55,17 @@
                     "icon": "icons/runes/timerune-knock.png",
                     "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
                     "coordinates": [[1855, 1734], [3252, 4144], [3228, 4932], [4412, 4948]]
+                }
+            ]
+        },
+        "Doors": {
+            "Locked": [
+                {
+                    "id": 1,
+                    "title": "Locked Door",
+                    "description": "Requires a knock rune.",
+                    "coordinates": [[2186, 1703], [2570, 1246]],
+                    "icon": "icons/lock.png"
                 }
             ]
         }
@@ -151,7 +169,8 @@
                     "coordinates": [[2521, 766], [1979, 561], [696, 2472], [690, 2624], [3543, 1367], [3521, 1574], [3991, 844], [3854, 745]]
                 }
             ],            
-            "Portals": [],
+            "Portals": [
+            ],
             "Teleport Tiles": [
                 {
                     "id": 1,
@@ -500,6 +519,48 @@
             "Portals": [],
             "Rel Por Stones": [],
             "Stairs": [],
+            "Teleport Tiles": [],
+            "Waystar": [
+            ]
+         }
+    },
+    "Stonegate": {
+        "Passage": {
+            "Entrances": [
+                {
+                    "id": 1,
+                    "title": "Spawn",
+                    "description": "This is one of five locations you can spawn into when entering the area.",
+                    "coordinates": [[528, 2281], [1178, 4320], [2089, 2694], [2679, 3838], [1530, 4423]],
+                    "icon": "icons/flag.png"
+                }
+            ],
+            "Locked Doors": [],
+            "Portals": [],
+            "Rel Por Stones": [],
+            "Stairs": [
+                {
+                "id": 1,
+                "title": "Stairs to the Excavation Site",
+                "description": "This leads to the Excavation Site",
+                "coordinates": [1567, 3819],
+                "icon": "icons/Stairs.png"
+            },
+            {
+                "id": 1,
+                "title": "Stairs to Stonegate",
+                "description": "This leads to the middle of Stonegate",
+                "coordinates": [2677, 1379],
+                "icon": "icons/Stairs.png"
+            },
+            {
+                "id": 1,
+                "title": "Stairs to the Upper Reaches",
+                "description": "This leads to the middle of the Upper Reaches",
+                "coordinates": [2597, 367],
+                "icon": "icons/Stairs.png"
+            }
+        ],
             "Teleport Tiles": [],
             "Waystar": [
             ]
