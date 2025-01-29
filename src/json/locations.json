@@ -279,7 +279,7 @@
                     "title": "Port",
                     "description": "The bottle of port for the stew.",
                     "coordinates": [2268, 1698],
-                    "icon": "icons/bottle.png"
+                    "icon": "icons/wooden-box.png"
                 }
             ]
         }
