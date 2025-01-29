@@ -10,6 +10,14 @@ interface TileConfig {
     endTile: number;
 }
 
+interface TileSetConfig {
+    startDir: number;
+    endDir: number;
+    startTile: number;
+    endTile: number;
+    offsetX?: number;
+}
+
 interface MarkerOptions extends L.MarkerOptions {
     location?: Location;
     category?: string;
@@ -629,7 +637,9 @@ export class MapManager {
             'sewers': 'sewers',
             'tunnel': 'tunnel',
             'the molten core': 'the-molten-core',
-            'stonegate': "stonegate"
+            'stonegate': "stonegate",
+            'hall of virtue': "hall-of-virtue",
+            'the abyssal core': "the-abyssal-core"
         };
 
         // Check if it's a special area (case-insensitive)
@@ -656,11 +666,18 @@ export class MapManager {
         return `floor-${floorNumber}`;
     }
 
-    private async loadTileConfig(level: string): Promise<TileConfig> {
+    private async loadTileConfig(level: string): Promise<{ primary: TileSetConfig; secondary?: TileSetConfig }> {
         const floorPath = this.getFloorPath(level);
         const response = await fetch(`./floors/${floorPath}/required_tiles.json`);
         const config = await response.json();
-        return config.tiles;
+        
+        // Handle both new and old format
+        if ('primary' in config.tiles) {
+            return config.tiles;
+        } else {
+            // Convert old format to new format
+            return { primary: config.tiles };
+        }
     }
 
     private async loadMapLayer(level: string): Promise<void> {
@@ -686,32 +703,68 @@ export class MapManager {
             
             const layerGroup = L.layerGroup();
             const tileSize = 256;
-            const numCols = config.endDir - config.startDir + 1;
-            const numRows = config.endTile - config.startTile + 1;
 
-            for (let col = 0; col < numCols; col++) {
-                for (let row = 0; row < numRows; row++) {
-                    const directory = col + config.startDir;
-                    const file = row + config.startTile;
-                    
-                    // Use a very small overlap to prevent tile lines
-                    const overlap = 0.1;
-                    const bounds = [
-                        [(numRows - row - 1) * tileSize - overlap, col * tileSize - overlap],
-                        [(numRows - row) * tileSize + overlap, (col + 1) * tileSize + overlap]
-                    ] as L.LatLngBoundsExpression;
+            // Function to load a tile set
+            const loadTileSet = (tileConfig: TileSetConfig, verticalOffset: number = 0) => {
+                const numCols = tileConfig.endDir - tileConfig.startDir + 1;
+                const numRows = tileConfig.endTile - tileConfig.startTile + 1;
+                const offsetX = tileConfig.offsetX || 0;
 
-                    const tilePath = `./floors/${floorPath}/tiles/${directory}/${file}.png`;
-                    const overlay = L.imageOverlay(tilePath, bounds, {
-                        className: 'seamless-tile'
-                    });
-                    overlay.addTo(layerGroup);
+                for (let col = 0; col < numCols; col++) {
+                    for (let row = 0; row < numRows; row++) {
+                        const directory = col + tileConfig.startDir;
+                        const file = row + tileConfig.startTile;
+                        
+                        // Use a very small overlap to prevent tile lines
+                        const overlap = 0.1;
+                        const bounds = [
+                            [(numRows - row - 1) * tileSize + verticalOffset - overlap, (col * tileSize + offsetX) - overlap],
+                            [(numRows - row) * tileSize + verticalOffset + overlap, ((col + 1) * tileSize + offsetX) + overlap]
+                        ] as L.LatLngBoundsExpression;
+
+                        const tilePath = `./floors/${floorPath}/tiles/${directory}/${file}.png`;
+                        const overlay = L.imageOverlay(tilePath, bounds, {
+                            className: 'seamless-tile'
+                        });
+                        overlay.addTo(layerGroup);
+                    }
                 }
+                return { numRows, numCols, offsetX };
+            };
+
+            // Calculate dimensions for both sets
+            const primaryRows = config.primary.endTile - config.primary.startTile + 1;
+            const secondaryRows = config.secondary ? (config.secondary.endTile - config.secondary.startTile + 1) : 0;
+            
+            // Calculate vertical offset to center secondary tiles
+            const verticalOffset = secondaryRows > 0 ? (primaryRows - secondaryRows) * tileSize / 2 : 0;
+
+            // Calculate primary dimensions
+            const primaryCols = config.primary.endDir - config.primary.startDir + 1;
+            const primaryWidth = primaryCols * tileSize;
+
+            // Set secondary offset before loading tiles
+            if (config.secondary && config.secondary.endDir > 0) {
+                config.secondary.offsetX = primaryWidth;
             }
+
+            // Load primary tiles
+            const primary = loadTileSet(config.primary, 0);
+            
+            // Load secondary tiles if they exist
+            let secondary = { numRows: 0, numCols: 0, offsetX: 0 };
+            if (config.secondary && config.secondary.endDir > 0) {
+                secondary = loadTileSet(config.secondary, verticalOffset);
+            }
+
+            // Calculate total bounds to encompass both primary and secondary tiles
+            const secondaryWidth = secondary.numCols * tileSize;
+            const totalWidth = primaryWidth + (secondary.numCols > 0 ? secondaryWidth : 0);
+            const totalHeight = Math.max(primary.numRows, secondary.numRows) * tileSize;
 
             const viewBounds: L.LatLngBoundsExpression = [
                 [0, 0],
-                [numRows * tileSize, numCols * tileSize]
+                [totalHeight, totalWidth]
             ];
 
             // Remove old layers
@@ -747,7 +800,9 @@ export class MapManager {
             'Sewers': 'sewers',
             'Tunnel': 'tunnel',
             'The Molten Core': 'the molten core',
-            'Stonegate': "Stonegate"
+            'Stonegate': "stonegate",
+            'Hall of Virtue': "hall of virtue",
+            'The Abyssal Core': "the abyssal core"
         };
         
         // Check if it's a special area and normalize the name

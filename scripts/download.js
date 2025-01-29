@@ -37,6 +37,20 @@ async function cleanupFiles(floorName, config) {
         // Get all directories in the floor's tiles directory
         const dirs = await fs.readdir(floorDir);
         
+        // Create ranges for both primary and secondary tiles
+        const dirRanges = [];
+        const tileRanges = [];
+
+        // Add primary ranges
+        dirRanges.push([config.primary.startDir, config.primary.endDir]);
+        tileRanges.push([config.primary.startTile, config.primary.endTile]);
+
+        // Add secondary ranges if they exist
+        if (config.secondary && config.secondary.endDir > 0) {
+            dirRanges.push([config.secondary.startDir, config.secondary.endDir]);
+            tileRanges.push([config.secondary.startTile, config.secondary.endTile]);
+        }
+
         for (const dir of dirs) {
             const dirPath = path.join(floorDir, dir);
             const dirStat = await fs.stat(dirPath);
@@ -44,9 +58,10 @@ async function cleanupFiles(floorName, config) {
             if (dirStat.isDirectory()) {
                 const dirNum = parseInt(dir);
                 
-                // If directory is outside the required range, delete it
-                if (dirNum < config.startDir || dirNum > config.endDir) {
-                    console.log(`Removing directory outside range: ${dirPath}`);
+                // Check if directory is in any of the ranges
+                const inRange = dirRanges.some(([start, end]) => dirNum >= start && dirNum <= end);
+                if (!inRange) {
+                    console.log(`Removing directory outside all ranges: ${dirPath}`);
                     await fs.rm(dirPath, { recursive: true });
                     continue;
                 }
@@ -56,9 +71,11 @@ async function cleanupFiles(floorName, config) {
                 for (const file of files) {
                     if (file.endsWith('.png')) {
                         const tileNum = parseInt(file.split('.')[0]);
-                        if (tileNum < config.startTile || tileNum > config.endTile) {
+                        // Check if tile is in any of the ranges
+                        const inRange = tileRanges.some(([start, end]) => tileNum >= start && tileNum <= end);
+                        if (!inRange) {
                             const filePath = path.join(dirPath, file);
-                            console.log(`Removing file outside range: ${filePath}`);
+                            console.log(`Removing file outside all ranges: ${filePath}`);
                             await fs.unlink(filePath);
                         }
                     }
@@ -72,28 +89,20 @@ async function cleanupFiles(floorName, config) {
     }
 }
 
-async function downloadFloorTiles(floorName) {
-    // Read the required tiles configuration
-    const configPath = path.join('src', 'floors', floorName, 'required_tiles.json');
-    const configContent = await fs.readFile(configPath, 'utf-8');
-    const config = JSON.parse(configContent).tiles;
-    
-    // Clean up files not in the required range
-    await cleanupFiles(floorName, config);
-    
+async function downloadTileSet(floorName, tileSet, label) {
     let downloaded = 0;
-    const total = (config.endDir - config.startDir + 1) * (config.endTile - config.startTile + 1);
+    const total = (tileSet.endDir - tileSet.startDir + 1) * (tileSet.endTile - tileSet.startTile + 1);
     
     // Create array of directory numbers
     const directories = Array.from(
-        {length: config.endDir - config.startDir + 1}, 
-        (_, i) => i + config.startDir
+        {length: tileSet.endDir - tileSet.startDir + 1}, 
+        (_, i) => i + tileSet.startDir
     );
     
     // Create array of file numbers
     const fileNumbers = Array.from(
-        {length: config.endTile - config.startTile + 1}, 
-        (_, i) => i + config.startTile
+        {length: tileSet.endTile - tileSet.startTile + 1}, 
+        (_, i) => i + tileSet.startTile
     );
     
     // Ensure floor directory exists
@@ -113,25 +122,54 @@ async function downloadFloorTiles(floorName) {
                 downloaded++;
                 const percent = Math.round(downloaded/total*100);
                 if (percent % 5 === 0) {
-                    console.log(`Progress: ${downloaded}/${total} (${percent}%)`);
+                    console.log(`[${label}] Progress: ${downloaded}/${total} (${percent}%)`);
                 }
                 continue;
             } catch {
                 // File doesn't exist, download it
-                console.log(`Attempting to download: ${dir}/${fileNum}.png`);
+                console.log(`[${label}] Attempting to download: ${dir}/${fileNum}.png`);
                 const url = `https://exploreoutlands.com/outlands_newCav/10/${dir}/${fileNum}.png`;
                 const success = await downloadFile(url, filePath);
                 if (success) {
                     downloaded++;
                     const percent = Math.round(downloaded/total*100);
                     if (percent % 5 === 0) {
-                        console.log(`Progress: ${downloaded}/${total} (${percent}%)`);
+                        console.log(`[${label}] Progress: ${downloaded}/${total} (${percent}%)`);
                     }
                 }
                 // Add a small delay between downloads
                 await new Promise(resolve => setTimeout(resolve, 500));
             }
         }
+    }
+}
+
+async function downloadFloorTiles(floorName) {
+    // Read the required tiles configuration
+    const configPath = path.join('src', 'floors', floorName, 'required_tiles.json');
+    const configContent = await fs.readFile(configPath, 'utf-8');
+    const config = JSON.parse(configContent).tiles;
+    
+    // Handle both old and new format
+    if ('primary' in config) {
+        // New format with primary/secondary tiles
+        // Clean up files considering both primary and secondary ranges
+        await cleanupFiles(floorName, config);
+        
+        // Download primary tiles
+        console.log('Downloading primary tiles...');
+        await downloadTileSet(floorName, config.primary, 'Primary');
+        
+        // Download secondary tiles if they exist
+        if (config.secondary && config.secondary.endDir > 0) {
+            console.log('Downloading secondary tiles...');
+            await downloadTileSet(floorName, config.secondary, 'Secondary');
+        }
+    } else {
+        // Old format
+        console.log('Downloading tiles...');
+        await cleanupFiles(floorName, { primary: config });
+        await downloadTileSet(floorName, config, 'Main');
     }
 }
 

@@ -72,18 +72,19 @@ body {
 }
 
 .map-link {
-    padding: 0.5rem;
+    padding: 0.35rem 0.25rem;
     color: #999;
     text-decoration: none;
     border: 1px solid #333;
     border-radius: 4px;
     transition: all 0.2s ease;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     text-align: center;
     cursor: pointer;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1.2;
 }
 
 .map-link:hover {

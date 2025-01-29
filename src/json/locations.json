@@ -70,7 +70,7 @@
             ]
         }
     },
-    "Level 2 Upper Reaches":  {
+    "Level 2 Upper":  {
         "Passage": {
             "Stairs": [
                 {
@@ -114,7 +114,7 @@
              ]
          }
      },
-    "Level 2 Lower Reaches": {
+    "Level 2 Lower": {
         "Passage": {
             "Stairs": [],
             "Rel Por Stones": [],
