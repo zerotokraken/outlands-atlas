@@ -1,6 +1,17 @@
 import fetch from 'node-fetch';
 import fs from 'fs/promises';
 import path from 'path';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env.local
+dotenv.config({ path: '.env.local' });
+
+// Get the map URL from environment variables
+const MAP_URL = process.env.map_url;
+if (!MAP_URL) {
+    console.error('map_url is not defined in .env.local');
+    process.exit(1);
+}
 
 async function ensureDirectoryExists(dir) {
     try {
@@ -134,7 +145,7 @@ async function downloadTileSet(floorName, tileSet, label) {
             } catch {
                 // File doesn't exist, download it
                 console.log(`[${label}] Attempting to download: ${dir}/${fileNum}.png`);
-                const url = `https://exploreoutlands.com/outlands_newCav/10/${dir}/${fileNum}.png`;
+                const url = `${MAP_URL}${dir}/${fileNum}.png`;
                 const success = await downloadFile(url, filePath);
                 if (success) {
                     downloaded++;
