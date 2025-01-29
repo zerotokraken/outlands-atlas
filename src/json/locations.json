@@ -314,7 +314,15 @@
                     "coordinates": [[3333, 2509], [3511, 2604], [4368, 4036], [4540, 3899]]
                 }
             ],
-            "Stairs": [],
+            "Stairs": [
+                {
+                    "id": 1,
+                    "title": "Stairs to the Hall Of Virtue",
+                    "description": "Leads down to the Hall of Virtue.",
+                    "coordinates": [[1192, 1377]],
+                    "icon": "icons/stairs.png"
+                }
+            ],
             "Teleport Tiles": [],
             "Waystar": [
                 {
@@ -362,11 +370,20 @@
                     "requirements": "1 Precious Time Gem",
                     "icon": "icons/rel-por.png",
                     "description": "Teleports you to a nearby area.",
-                    "coordinates": [[3038, 3216], [3340, 3216]]
+                    "coordinates": [[3038, 3216], [3340, 3216], [3096, 4677], [3094, 4675]]
                 }
             ],
             "Stairs": [],
-            "Teleport Tiles": [],
+            "Teleport Tiles": [
+                {
+                    "id": "teleport",
+                    "title": "Teleport Tile",
+                    "requirements": "1 Bipartite Time Gem",
+                    "icon": "icons/teleport-rune.png",
+                    "description": "Takes you back to colony.",
+                    "coordinates": [[3590, 738]]
+                }
+            ],
             "Waystar": [
                 {
                     "id": 1,
@@ -578,7 +595,7 @@
             ]
          }
     },
-    "Stonegate": {
+    "stonegate": {
         "Passage": {
             "Entrances": [
                 {
@@ -618,6 +635,19 @@
             "Teleport Tiles": [],
             "Waystar": [
             ]
+         }
+    },
+    "hall of virtue": {
+        "Passage": {
+            "Stairs": [
+                {
+                "id": 1,
+                "title": "Stairs to the Colony",
+                "description": "This leads back up to the Colony",
+                "coordinates": [505, 778],
+                "icon": "icons/Stairs.png"
+            }
+        ]
          }
     }
 }
