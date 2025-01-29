@@ -46,7 +46,13 @@ async function cleanupFiles(floorName, config) {
         tileRanges.push([config.primary.startTile, config.primary.endTile]);
 
         // Add secondary ranges if they exist
-        if (config.secondary && config.secondary.endDir > 0) {
+        if (config.secondaries) {
+            for (const secondary of config.secondaries) {
+                dirRanges.push([secondary.startDir, secondary.endDir]);
+                tileRanges.push([secondary.startTile, secondary.endTile]);
+            }
+        } else if (config.secondary && config.secondary.endDir > 0) {
+            // Handle old format for backward compatibility
             dirRanges.push([config.secondary.startDir, config.secondary.endDir]);
             tileRanges.push([config.secondary.startTile, config.secondary.endTile]);
         }
@@ -161,7 +167,13 @@ async function downloadFloorTiles(floorName) {
         await downloadTileSet(floorName, config.primary, 'Primary');
         
         // Download secondary tiles if they exist
-        if (config.secondary && config.secondary.endDir > 0) {
+        if (config.secondaries) {
+            for (let i = 0; i < config.secondaries.length; i++) {
+                console.log(`Downloading secondary tiles set ${i + 1}...`);
+                await downloadTileSet(floorName, config.secondaries[i], `Secondary ${i + 1}`);
+            }
+        } else if (config.secondary && config.secondary.endDir > 0) {
+            // Handle old format for backward compatibility
             console.log('Downloading secondary tiles...');
             await downloadTileSet(floorName, config.secondary, 'Secondary');
         }

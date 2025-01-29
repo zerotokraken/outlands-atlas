@@ -666,13 +666,20 @@ export class MapManager {
         return `floor-${floorNumber}`;
     }
 
-    private async loadTileConfig(level: string): Promise<{ primary: TileSetConfig; secondary?: TileSetConfig }> {
+    private async loadTileConfig(level: string): Promise<{ primary: TileSetConfig; secondaries?: TileSetConfig[] }> {
         const floorPath = this.getFloorPath(level);
         const response = await fetch(`./floors/${floorPath}/required_tiles.json`);
         const config = await response.json();
         
         // Handle both new and old format
         if ('primary' in config.tiles) {
+            // Convert old secondary to new secondaries array format if needed
+            if (config.tiles.secondary && !config.tiles.secondaries) {
+                return {
+                    primary: config.tiles.primary,
+                    secondaries: [config.tiles.secondary]
+                };
+            }
             return config.tiles;
         } else {
             // Convert old format to new format
@@ -732,35 +739,49 @@ export class MapManager {
                 return { numRows, numCols, offsetX };
             };
 
-            // Calculate dimensions for both sets
-            const primaryRows = config.primary.endTile - config.primary.startTile + 1;
-            const secondaryRows = config.secondary ? (config.secondary.endTile - config.secondary.startTile + 1) : 0;
-            
-            // Calculate vertical offset to center secondary tiles
-            const verticalOffset = secondaryRows > 0 ? (primaryRows - secondaryRows) * tileSize / 2 : 0;
-
             // Calculate primary dimensions
+            const primaryRows = config.primary.endTile - config.primary.startTile + 1;
             const primaryCols = config.primary.endDir - config.primary.startDir + 1;
             const primaryWidth = primaryCols * tileSize;
-
-            // Set secondary offset before loading tiles
-            if (config.secondary && config.secondary.endDir > 0) {
-                config.secondary.offsetX = primaryWidth;
-            }
 
             // Load primary tiles
             const primary = loadTileSet(config.primary, 0);
             
             // Load secondary tiles if they exist
-            let secondary = { numRows: 0, numCols: 0, offsetX: 0 };
-            if (config.secondary && config.secondary.endDir > 0) {
-                secondary = loadTileSet(config.secondary, verticalOffset);
+            let totalWidth = primaryWidth;
+            
+            if (config.secondaries && config.secondaries.length > 0) {
+                // Calculate total height of all secondary areas
+                const totalSecondaryHeight = config.secondaries.reduce((sum, secondary) => 
+                    sum + ((secondary.endTile - secondary.startTile + 1) * tileSize), 0);
+                
+                // Start position for the first secondary area
+                // This centers the stack of secondary areas relative to the primary map
+                let currentVerticalOffset = ((primaryRows * tileSize) - totalSecondaryHeight) / 2;
+                
+                // All secondary areas will be placed at primaryWidth
+                const secondaryOffsetX = primaryWidth;
+                
+                for (const secondary of config.secondaries) {
+                    const secondaryRows = secondary.endTile - secondary.startTile + 1;
+                    
+                    // Set the X offset for this secondary area
+                    secondary.offsetX = secondaryOffsetX;
+                    
+                    // Load this secondary set with its vertical position
+                    const secondaryResult = loadTileSet(secondary, currentVerticalOffset);
+                    
+                    // Update the total width if needed
+                    const secondaryWidth = secondaryResult.numCols * tileSize;
+                    totalWidth = Math.max(totalWidth, secondaryOffsetX + secondaryWidth);
+                    
+                    // Move down for the next secondary area
+                    currentVerticalOffset += secondaryRows * tileSize;
+                }
             }
 
-            // Calculate total bounds to encompass both primary and secondary tiles
-            const secondaryWidth = secondary.numCols * tileSize;
-            const totalWidth = primaryWidth + (secondary.numCols > 0 ? secondaryWidth : 0);
-            const totalHeight = Math.max(primary.numRows, secondary.numRows) * tileSize;
+            // Calculate total bounds to encompass all tiles
+            const totalHeight = primaryRows * tileSize;
 
             const viewBounds: L.LatLngBoundsExpression = [
                 [0, 0],

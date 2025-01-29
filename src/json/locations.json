@@ -157,7 +157,22 @@
                     "coordinates": [4788, 2490],
                     "icon": "icons/Stairs.png"
                 }
-
+            ],
+            "Secret Passageways": [
+                {
+                    "id": 1,
+                    "title": "Hidden bridge entrance",
+                    "description": "You can go North off the bridge and inside to travel to a secret paradise. Beware.",
+                    "coordinates": [2445, 3220],
+                    "icon": "icons/hidden_passage.png"
+                },
+                {
+                    "id": 1,
+                    "title": "The Greed Room",
+                    "description": "Speak the words in the book to enter. You will not exit.",
+                    "coordinates": [2842, 5059],
+                    "icon": "icons/hidden_passage.png"
+                }
             ],
             "Rel Por Stones": [
                 {
@@ -170,6 +185,27 @@
                 }
             ],            
             "Portals": [
+                {
+                    "id": 1,
+                    "title": "Portal to the ship",
+                    "description": "Interact with the model ship twice to open the portal. This teleports you to a ship lost in time.",
+                    "coordinates": [1988, 715],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Portal back to the model ship",
+                    "description": "This returns you to the model ship.",
+                    "coordinates": [1306, 5308],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Portal back to Level 3",
+                    "description": "This takes you to the west side of the Ettin area.",
+                    "coordinates": [2738, 4938],
+                    "icon": "icons/Gates_Silver.png"
+                }
             ],
             "Teleport Tiles": [
                 {
@@ -235,6 +271,17 @@
                     "icon": "icons/trap.png"
                 }
             ] 
+        },
+        "Quest": {
+            "Quest Items": [
+                {
+                    "id": "port",
+                    "title": "Port",
+                    "description": "The bottle of port for the stew.",
+                    "coordinates": [2268, 1698],
+                    "icon": "icons/bottle.png"
+                }
+            ]
         }
     },
     "Level 4": {

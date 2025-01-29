@@ -1,10 +1,30 @@
 {
     "tiles": {
-        "startDir": 403,
-        "endDir": 420,
-        "startTile": 45,
-        "endTile": 64
+        "primary": {
+            "startDir": 403,
+            "endDir": 420,
+            "startTile": 45,
+            "endTile": 64
+        },
+        "secondaries": [
+            {
+                "startDir": 316,
+                "endDir": 321,
+                "startTile": 108,
+                "endTile": 112
+            },
+            {
+                "startDir": 432,
+                "endDir": 434,
+                "startTile": 81,
+                "endTile": 84
+            },
+            {
+                "startDir": 432,
+                "endDir": 434,
+                "startTile": 86,
+                "endTile": 88
+            }
+        ]
     }
 }
-
-

@@ -34,6 +34,7 @@ const AVAILABLE_ICONS = {
     GEM_VENDOR: { path: "icons/treasure.png", scale: 125},
     CAVE: { path: "icons/cave.png", scale: 150},
     FLAG: { path: "icons/flag.png", scale: 150},
+    HIDDEN_PASSAGE: { path: "icons/hidden_passage.png", scale: 125},
 
     // Time runes
     RUNE_KNOCK: { path: "icons/runes/timerune-knock.png", scale: 100 },
