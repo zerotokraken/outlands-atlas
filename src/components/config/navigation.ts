@@ -1,7 +1,6 @@
 import { NavButton } from '../types/InfoMenuTypes.js';
 
 export const navigationButtons: NavButton[] = [
-    { text: 'General', page: 'general' },
     { text: 'Time Runes', page: 'runes' },
     { text: 'Time Relics', page: 'relics' },
     { text: 'Hazards', page: 'hazards' },
@@ -17,7 +16,6 @@ export const navigationButtons: NavButton[] = [
 export const defaultPage = 'runes';
 
 export const contentMapping: { [key: string]: string } = {
-    'general': '/json/general.json',
     'runes': '/json/runes.json',
     'relics': '/json/relics.json',
     'hazards': '/json/hazards.json',

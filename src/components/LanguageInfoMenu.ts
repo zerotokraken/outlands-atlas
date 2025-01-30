@@ -124,10 +124,19 @@ export class LanguageInfoMenu {
         if (!content) return;
 
         try {
-            const [letterData, suffixes] = await Promise.all([
-                fetch(`/json/language/gargish/${this.currentTab.toLowerCase()}.json`).then(res => res.json()),
-                fetch('/json/language/gargish_suffixes.json').then(res => res.json())
-            ]);
+            let letterData = {};
+            let suffixes = {};
+
+            if (this.currentTab === 'Suffixes') {
+                console.log('Loading suffixes data...');
+                suffixes = await fetch('/json/language/gargish_suffixes.json').then(res => res.json());
+                console.log('Loaded suffixes:', suffixes);
+            } else {
+                [letterData, suffixes] = await Promise.all([
+                    fetch(`/json/language/gargish/${this.currentTab.toLowerCase()}.json`).then(res => res.json()),
+                    fetch('/json/language/gargish_suffixes.json').then(res => res.json())
+                ]);
+            }
 
             // Create tabs
             const nav = document.createElement('div');
@@ -169,7 +178,7 @@ export class LanguageInfoMenu {
 
             const contentDiv = document.createElement('div');
             contentDiv.className = 'language-content';
-            contentDiv.style.cssText = 'display: flex; flex-direction: column; gap: 20px; margin-top: 20px;';
+            contentDiv.style.cssText = 'margin-top: 20px;';
 
             if (this.currentTab === 'Suffixes') {
                 contentDiv.innerHTML = this.createSuffixesContent(suffixes);
@@ -185,6 +194,7 @@ export class LanguageInfoMenu {
     }
 
     private showTab(tab: string) {
+        console.log('Switching to tab:', tab);
         this.currentTab = tab;
         this.loadContent();
     }
@@ -194,7 +204,7 @@ export class LanguageInfoMenu {
             return `<div style="color: #999; text-align: center;">No words found starting with '${this.currentTab}'</div>`;
         }
 
-        return Object.entries(letterData).map(([word, definition]) => {
+        const entries = Object.entries(letterData).map(([word, definition]) => {
             let definitionHtml = '';
             if (typeof definition === 'string') {
                 definitionHtml = `<div>${definition}</div>`;
@@ -209,29 +219,94 @@ export class LanguageInfoMenu {
             }
 
             return `
-                <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 16px;">
-                    <h3 style="color: #d4af37; margin: 0 0 12px 0; font-size: 1em;">${word}</h3>
-                    <div style="color: #999;">
+                <div style="
+                    background: #1a1a1a; 
+                    border: 1px solid #333; 
+                    border-radius: 4px; 
+                    padding: 12px; 
+                    min-width: 0;
+                    transition: all 0.2s ease;
+                    cursor: pointer;
+                " onmouseover="this.style.background='#262626';this.style.borderColor='#444';" 
+                   onmouseout="this.style.background='#1a1a1a';this.style.borderColor='#333';">
+                    <h3 style="
+                        color: #d4af37; 
+                        margin: 0 0 8px 0; 
+                        font-size: 1em; 
+                        white-space: nowrap; 
+                        overflow: hidden; 
+                        text-overflow: ellipsis;
+                    ">${word}</h3>
+                    <div style="
+                        color: #999; 
+                        max-height: 80px; 
+                        overflow-y: auto;
+                        font-size: 0.9em;
+                        line-height: 1.4;
+                    ">
                         ${definitionHtml}
                     </div>
                 </div>
             `;
-        }).join('');
+        });
+
+        return `
+            <div style="
+                display: grid; 
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+                gap: 12px;
+                padding: 4px;
+            ">
+                ${entries.join('')}
+            </div>
+        `;
     }
 
     private createSuffixesContent(suffixData: any): string {
-        return suffixData.suffixes.map(suffix => `
-            <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 16px;">
-                <h3 style="color: #d4af37; margin: 0 0 12px 0; font-size: 1em;">${suffix.suffix}</h3>
-                <div style="color: #999;">
+        console.log('Creating suffixes content with data:', suffixData);
+        const entries = suffixData.suffixes.map(suffix => `
+            <div style="
+                background: #1a1a1a; 
+                border: 1px solid #333; 
+                border-radius: 4px; 
+                padding: 12px; 
+                min-width: 0;
+                transition: all 0.2s ease;
+                cursor: pointer;
+            " onmouseover="this.style.background='#262626';this.style.borderColor='#444';" 
+               onmouseout="this.style.background='#1a1a1a';this.style.borderColor='#333';">
+                <h3 style="
+                    color: #d4af37; 
+                    margin: 0 0 8px 0; 
+                    font-size: 1em; 
+                    white-space: nowrap; 
+                    overflow: hidden; 
+                    text-overflow: ellipsis;
+                ">${suffix.suffix}</h3>
+                <div style="
+                    color: #999;
+                    font-size: 0.9em;
+                    line-height: 1.4;
+                ">
                     <div>Meaning: ${suffix.meaning}</div>
-                    <div>Examples:</div>
-                    <ul style="margin-top: 4px; margin-left: 20px;">
+                    <div style="margin-top: 4px;">Examples:</div>
+                    <ul style="margin: 4px 0 0 16px;">
                         ${suffix.examples.map(ex => `<li>${ex}</li>`).join('')}
                     </ul>
                 </div>
             </div>
-        `).join('');
+        `);
+
+        return `
+            <div style="
+                display: grid; 
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+                gap: 12px;
+                padding: 4px;
+            ">
+                ${entries.join('')}
+            </div>
+        `;
     }
 
     public mount(parent: HTMLElement) {
