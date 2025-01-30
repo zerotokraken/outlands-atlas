@@ -37,7 +37,10 @@ const AVAILABLE_ICONS = {
     BOX: { path: "icons/wooden-box.png", scale: 150},
     HIDDEN_PASSAGE: { path: "icons/hidden_passage.png", scale: 125},
     TRAP: { path: "icons/trap.png", scale: 150},
-
+    GRAY_CHEST: { path: "icons/gray_chest.png", scale: 125},
+    VOIDBALL: { path: "icons/voidball.png", scale: 125},
+    PORTAL: { path: "icons/portal.png", scale: 150},
+    SECRET_DOOR: { path: "icons/secret-door.png", scale: 150},
     // Time runes
     RUNE_KNOCK: { path: "icons/runes/timerune-knock.png", scale: 100 },
     RUNE_MEND: { path: "icons/runes/timerune-mendtime.png", scale: 100 },

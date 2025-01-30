@@ -1,0 +1,102 @@
+{
+  "kad": ["fail", "collapse"],
+  "kah": ["sacrifice"],
+  "kah-mání-zen-de": ["sacrificial"],
+  "kal": ["summon", "call", "greet", "hello", "usher in"],
+  "kal-ort": ["cast (a spell)"],
+  "kalix": ["chalice", "cup"],
+  "kans": ["use", "consume", "eat"],
+  "kans-char": ["plate"],
+  "kans-in-lem": ["cook", "Foodmaker"],
+  "kans-sa": ["consumable"],
+  "kap": ["box"],
+  "karbas": ["canvas"],
+  "kas": ["helm"],
+  "kat": ["fall"],
+  "ker": ["sure", "certain"],
+  "ker-de": ["to be sure", "certainly"],
+  "ker-tas": ["conviction"],
+  "kimik": ["chemical"],
+  "kír": ["circle"],
+  "kír-char": ["wheel"],
+  "kír-ku": ["round"],
+  "kír-por": ["orbit", "roll"],
+  "klár": {
+    "alternates": ["qar"],
+    "definitions": ["bright"]
+  },
+  "klau": {
+    "alternates": ["qau"],
+    "definitions": ["chamber"]
+  },
+  "klep": {
+    "alternates": ["qep"],
+    "definitions": ["take", "get", "steal"]
+  },
+  "klep-lem": ["thief", "pirate"],
+  "klí": {
+    "alternates": ["qí"],
+    "definitions": ["three"]
+  },
+  "klí-tim": ["thrice"],
+  "kódeks": {
+    "alternates": ["kódex"],
+    "definitions": ["book", "codex"]
+  },
+  "kódex-reg": ["library"],
+  "kon": ["opposite"],
+  "kons": ["organization"],
+  "kor": ["courage"],
+  "korb": ["basket"],
+  "korp": ["death", "dead", "deadly"],
+  "kort": ["chrysalis", "cork"],
+  "kreb": ["frequent"],
+  "kred": ["believe", "think", "consider"],
+  "kred-char": ["mind"],
+  "kred-don": {
+    "alternates": ["kredon"],
+    "definitions": ["entrust"]
+  },
+  "kred-in": ["idea", "invention"],
+  "kred-in-lem": ["creator", "inventor"],
+  "kred-lem": ["believer"],
+  "kred-tas": ["belief", "opinion", "theory", "thought"],
+  "krill": ["Krill (name)"],
+  "ku": ["with"],
+  "ku-ánte": ["within"],
+  "ku-por": ["combine"],
+  "kua": {
+    "alternates": ["qua"],
+    "definitions": ["which", "as"]
+  },
+  "kuad": {
+    "alternates": ["quad"],
+    "definitions": ["cube"]
+  },
+  "kuae": {
+    "alternates": ["quae"],
+    "definitions": ["problem"]
+  },
+  "kuar": {
+    "alternates": ["quar"],
+    "definitions": ["four"]
+  },
+  "kuas": {
+    "alternates": ["quas"],
+    "definitions": ["illusion", "illusionary"]
+  },
+  "kui": {
+    "alternates": ["quí"],
+    "definitions": ["any"]
+  },
+  "kui-áilem": ["anything"],
+  "kui-tim": ["anytime"],
+  "kul": ["knife"],
+  "kuo": {
+    "alternates": ["quó"],
+    "definitions": ["how"]
+  },
+  "kupsi": ["blade"],
+  "kur": ["attention", "care"],
+  "kur-ku": ["attentive", "caring"]
+}

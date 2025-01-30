@@ -1,7 +1,4 @@
 dist/
 node_modules/
-upload-to-cloudcube.ts
-upload-to-cloudcube.js
-upload-tsconfig.json
 .env.local
-bundleTiles.ts
+documentation/

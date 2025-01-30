@@ -1,0 +1,77 @@
+{
+    "suffixes": [
+        {
+            "suffix": "-char",
+            "meaning": "part (names a tool used for doing a certain action)",
+            "examples": [
+                "agrachar - weapon"
+            ]
+        },
+        {
+            "suffix": "-de",
+            "meaning": "of (marks adjectives or adverbs formed from nouns, verbs, and other words)",
+            "examples": [
+                "ker-de - certainly",
+                "des-de - below"
+            ]
+        },
+        {
+            "suffix": "-ku",
+            "meaning": "with (forms adjectives)",
+            "examples": [
+                "mirku - watery"
+            ]
+        },
+        {
+            "suffix": "-le",
+            "meaning": "end (marks past tense or perfective aspect of verbs)",
+            "examples": [
+                "vaglemle - wandered",
+                "saeple - sealed"
+            ]
+        },
+        {
+            "suffix": "-lem",
+            "meaning": "one (similar to English -er in baker, writer, miner, etc.)",
+            "examples": [
+                "un-lem - shade/ghost"
+            ]
+        },
+        {
+            "suffix": "-re",
+            "meaning": "begin (marks future tense of verbs)",
+            "examples": [
+                "re korp - will die"
+            ]
+        },
+        {
+            "suffix": "-sa",
+            "meaning": "able (similar to English -able, -ible)",
+            "examples": [
+                "vas-sa - greatly capable"
+            ]
+        },
+        {
+            "suffix": "-tas",
+            "meaning": "quality (marks abstract nouns)",
+            "examples": [
+                "ámotas - love (from ámo - to love)"
+            ]
+        },
+        {
+            "suffix": "-te",
+            "meaning": "in (marks present tense or imperfective aspect of verbs)",
+            "examples": [
+                "lók-te - speaks/is speaking",
+                "vestte - searches/is searching"
+            ]
+        },
+        {
+            "suffix": "-ve",
+            "meaning": "like (forms adjectives)",
+            "examples": [
+                "misve - similar"
+            ]
+        }
+    ]
+}

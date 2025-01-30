@@ -25,6 +25,13 @@
                     "description": "This teleports you randomly to one of five locations in Stonegate. Be warned if you enter with a group.",
                     "coordinates": [2323, 801],
                     "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Exit from Colony",
+                    "description": "This is where you appear if you use one of the teleports at Colony or Colony Outpost.",
+                    "coordinates": [4326, 1276],
+                    "icon": "icons/portal.png"
                 }
             ],
             "Rel Por Stones": [
@@ -51,10 +58,10 @@
                 {
                     "id": "knock",
                     "title": "Knock",
-                    "container": ["Crate", "Bag", "Metal Chest", "Bag"],
+                    "container": ["Crate", "Bag", "Metal Chest", "Bag", "Chest"],
                     "icon": "icons/runes/timerune-knock.png",
                     "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
-                    "coordinates": [[1855, 1734], [3252, 4144], [3228, 4932], [4412, 4948]]
+                    "coordinates": [[1855, 1734], [3252, 4144], [3228, 4932], [4412, 4948], [2158, 757]]
                 }
             ]
         },
@@ -64,8 +71,35 @@
                     "id": 1,
                     "title": "Locked Door",
                     "description": "Requires a knock rune.",
-                    "coordinates": [[2186, 1703], [2570, 1246], [1051, 2151], [908, 3066]],
+                    "coordinates": [[2186, 1703], [2570, 1246], [1051, 2151], [908, 3066], [3044, 2006], [3047, 2223], [2901, 2346], [2669, 2341]],
                     "icon": "icons/lock.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Secret Door",
+                    "description": "Requires a knock rune.",
+                    "coordinates": [[4447, 2671], [4673, 2556], [4863, 1847], [4902, 1431], [4961, 1476], [5148, 1636]],
+                    "icon": "icons/secret-door.png"
+                }
+            ]
+        },
+        "Misc": {
+            "Community Chests": [
+                {
+                    "id": 1,
+                    "title": "Community Chests",
+                    "description": "These chests are free for anyone to store items in. Take what you need; leave what you can..",
+                    "coordinates": [[3437, 2603]],
+                    "icon": "icons/gray_chest.png"
+                }
+            ],
+            "Metal Chests": [
+                {
+                    "id": 1,
+                    "title": "Metal Chest",
+                    "description": "This chest is locked and requires a knock rune to open. Can contain special/rare loot.",
+                    "coordinates": [[2420, 5308], [3221, 4955], [4294, 4574], [1727, 5311], [2059, 3948], [2056, 3917]],
+                    "icon": "icons/gray_chest.png"
                 }
             ]
         }
@@ -320,7 +354,7 @@
                     "title": "Stairs to the Hall Of Virtue",
                     "description": "Leads down to the Hall of Virtue.",
                     "coordinates": [[1192, 1377]],
-                    "icon": "icons/stairs.png"
+                    "icon": "icons/Stairs.png"
                 }
             ],
             "Teleport Tiles": [],
@@ -355,6 +389,26 @@
                     "icon": "icons/runes/timerune-knock.png",
                     "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
                     "coordinates": [[1992, 2156], [3872, 1304]]
+                }
+            ]
+        },
+        "Misc": {
+            "Community Chests": [
+                {
+                    "id": 1,
+                    "title": "Community Chests",
+                    "description": "These chests are free for anyone to store items in. Take what you need; leave what you can..",
+                    "coordinates": [[2159, 1551], [2107, 1493]],
+                    "icon": "icons/gray_chest.png"
+                }
+            ],
+            "Voidball": [
+                {
+                    "id": 1,
+                    "title": "Voidball",
+                    "description": "A field to play Voidball on. Traps are optional. There is a friendly Exothrugg nearby...",
+                    "coordinates": [1268, 417],
+                    "icon": "icons/voidball.png"
                 }
             ]
         }
@@ -597,17 +651,16 @@
     },
     "stonegate": {
         "Passage": {
-            "Entrances": [
+            "Portals": [
                 {
                     "id": 1,
-                    "title": "Spawn",
+                    "title": "Entrance from Level 1",
                     "description": "This is one of five locations you can spawn into when entering the area.",
                     "coordinates": [[528, 2281], [1178, 4320], [2089, 2694], [2679, 3838], [1530, 4423]],
-                    "icon": "icons/flag.png"
+                    "icon": "icons/portal.png"
                 }
             ],
             "Locked Doors": [],
-            "Portals": [],
             "Rel Por Stones": [],
             "Stairs": [
                 {

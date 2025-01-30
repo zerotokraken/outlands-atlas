@@ -1,0 +1,26 @@
+{
+  "eger": ["desire", "need"],
+  "eger-ku": ["necessary", "needed"],
+  "ek": ["six"],
+  "enu": ["list"],
+  "equi": ["horse"],
+  "er": ["so"],
+  "erb": ["grass"],
+  "esh": {
+    "alternates": ["ew"],
+    "definitions": ["and"]
+  },
+  "est": ["be", "exist", "is", "are"],
+  "esta": ["such", "that", "those"],
+  "esta-de": ["thereby", "therewith"],
+  "esta-tim": ["then"],
+  "et": ["albeit", "although", "though"],
+  "evol": ["development", "growth"],
+  "ex": {
+    "alternates": ["eks"],
+    "definitions": ["freedom", "free", "release"]
+  },
+  "ex-por": ["hatch", "open", "unlocked"],
+  "ex-rap": ["burst"],
+  "exferlem": ["Exferlem (name)"]
+}

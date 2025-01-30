@@ -2,6 +2,7 @@ import L from 'leaflet';
 import { Location, LocationsData, CategoryData, AVAILABLE_ICONS, Route, RoutesData } from './types.js';
 import { TileService } from './services/tileService.js';
 import { InfoMenu } from './components/InfoMenu.js';
+import { LanguageInfoMenu } from './components/LanguageInfoMenu.js';
 
 interface TileConfig {
     startDir: number;
@@ -35,11 +36,13 @@ export class MapManager {
     private isLoadingMap: boolean = false;
     private tileService: TileService;
     private infoMenu: InfoMenu;
+    private languageInfoMenu: LanguageInfoMenu;
     private routes: RoutesData = {};
 
     constructor(private locationsData: LocationsData) {
         this.tileService = new TileService();
         this.infoMenu = new InfoMenu();
+        this.languageInfoMenu = new LanguageInfoMenu();
         this.loadRoutes();
     }
 
@@ -529,6 +532,7 @@ export class MapManager {
         
         mapContainerElement.appendChild(mapContainer);
         this.infoMenu.mount(mapContainerElement);
+        this.languageInfoMenu.mount(mapContainerElement);
 
         onProgress?.(40, 'Loading routes...');
         await this.loadRoutes();

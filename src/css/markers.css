@@ -1,0 +1,119 @@
+.marker-icon {
+    cursor: pointer !important;
+    background: transparent !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.icon-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center;
+}
+
+.icon-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: transparent !important;
+    mix-blend-mode: normal;
+    transform-origin: center;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.rune-icon .icon-image, 
+.icon-wrapper img[src*="ladder.png"] {
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8))
+           drop-shadow(0 0 4px rgba(241, 196, 15, 0.6));
+    transform: scale(1.1);
+    z-index: 1000;
+}
+
+/* Popup Styles */
+.leaflet-popup-content-wrapper {
+    background: #262626;
+    color: #fff;
+    border-radius: 4px;
+    border: 1px solid #d4af37;
+    width: 300px !important;
+    max-width: 300px !important;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.leaflet-popup-tip {
+    background: #262626;
+    border: 1px solid #d4af37;
+}
+
+.leaflet-popup-content {
+    margin: 0;
+    padding: 1rem;
+    width: 100% !important;
+}
+
+.leaflet-popup-content h3 {
+    color: #d4af37;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    word-wrap: break-word;
+}
+
+.leaflet-popup-content p {
+    color: #ccc;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.leaflet-popup-content p:last-child {
+    margin-bottom: 0;
+}
+
+.popup-content {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.popup-content h4 {
+    color: #f1f1f1;
+    font-size: .95rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Route Popup Styles */
+.route-popup {
+    padding: 10px;
+}
+
+.route-popup h3 {
+    color: #d4af37;
+    margin: 0 0 10px 0;
+}
+
+.route-popup p {
+    margin: 5px 0;
+    color: #999;
+}
+
+.route-point-popup {
+    padding: 10px;
+}
+
+.route-point-popup h4 {
+    color: #d4af37;
+    margin: 0 0 5px 0;
+}
+
+.route-point-popup p {
+    margin: 5px 0;
+    color: #999;
+}

@@ -1,0 +1,87 @@
+{
+    "lexicon": {
+        "basic": [
+            {
+                "gargish": "An",
+                "english": "Virtue",
+                "notes": "Used as a prefix in many virtue-related words"
+            },
+            {
+                "gargish": "Beh",
+                "english": "Of",
+                "notes": "Possessive marker"
+            },
+            {
+                "gargish": "Kal",
+                "english": "Call/Summon",
+                "notes": "Often used in magical invocations"
+            }
+        ],
+        "advanced": [
+            {
+                "gargish": "An-Kal-Por",
+                "english": "Gate Travel",
+                "notes": "Literally: 'Virtue calls movement'"
+            },
+            {
+                "gargish": "Vas-Kal-An",
+                "english": "Great Virtue Call",
+                "notes": "Used in high-level magical rituals"
+            }
+        ]
+    },
+    "grammar": {
+        "prefixes": [
+            {
+                "prefix": "An-",
+                "meaning": "Virtuous/Holy",
+                "example": "An-Lor (Holy Light)"
+            },
+            {
+                "prefix": "Vas-",
+                "meaning": "Great/Powerful",
+                "example": "Vas-Flam (Great Flame)"
+            }
+        ],
+        "suffixes": [
+            {
+                "suffix": "-Por",
+                "meaning": "Movement/Travel",
+                "example": "Rel-Por (Change Location)"
+            },
+            {
+                "suffix": "-Mani",
+                "meaning": "Life/Living",
+                "example": "In-Mani (Create Life)"
+            }
+        ]
+    },
+    "examples": [
+        {
+            "gargish": "Kal-Vas-Flam",
+            "literal": "Call Great Flame",
+            "meaning": "Summon a powerful fire",
+            "context": "Combat magic"
+        },
+        {
+            "gargish": "An-Tym-Por",
+            "literal": "Virtue Time Movement",
+            "meaning": "Sacred temporal travel",
+            "context": "Time magic"
+        }
+    ],
+    "tablets": [
+        {
+            "location": "Ancient Temple",
+            "text": "An-Tym-Mani Beh Kal",
+            "translation": "The virtuous life of time calls forth",
+            "notes": "Found on a weathered stone tablet"
+        },
+        {
+            "location": "Hidden Shrine",
+            "text": "Vas-An-Por Beh Mani",
+            "translation": "Great virtuous movement of life",
+            "notes": "Inscription above a portal"
+        }
+    ]
+}

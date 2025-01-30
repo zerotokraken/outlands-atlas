@@ -1,0 +1,20 @@
+{
+  "nag": ["swim"],
+  "naks": {
+    "alternates": ["nax", "nox"],
+    "definitions": ["poison (n)", "poisonous"]
+  },
+  "naxátilor": ["Naxatilor (name)"],
+  "násh": ["Nash (name)"],
+  "neb": ["mist"],
+  "nem": ["lumber", "wood"],
+  "ner": ["nerge"],
+  "nes": ["require", "must", "has to"],
+  "nes-tas": ["demand", "request"],
+  "ni": ["no", "neither"],
+  "nim": ["quite", "very"],
+  "nix": ["snow"],
+  "nod": ["knot"],
+  "nóm": ["name"],
+  "nub": ["cloud"]
+}

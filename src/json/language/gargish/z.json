@@ -1,0 +1,30 @@
+{
+  "zash": {
+    "alternates": ["zaw"],
+    "definitions": ["something", "somewhat"]
+  },
+  "zen": ["creature", "being (n)", "animal", "existence"],
+  "zen-crin": ["fur"],
+  "zen-for-tas": ["muscle"],
+  "zen-korp": ["undead", "daemon"],
+  "zen-ku": ["physical"],
+  "zen-lem": ["pet"],
+  "zen-múr": ["race", "people", "person"],
+  "zen-múr-int": ["meet", "meeting"],
+  "zen-teg": ["leather"],
+  "zen-tú": ["body"],
+  "zhah": ["Zhah (name)"],
+  "zhel": {
+    "alternates": ["zel"],
+    "definitions": ["iron"]
+  },
+  "zhel-kas": ["Zhelkas (name; iron helm)"],
+  "zhen": {
+    "alternates": ["xen"],
+    "definitions": ["family"]
+  },
+  "zú": ["sleep"],
+  "zú-áilem": ["sleep dust"],
+  "zú-ku": ["sleepy", "tired"],
+  "zú-tim": ["winter"]
+}

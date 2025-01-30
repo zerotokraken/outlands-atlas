@@ -1,0 +1,109 @@
+/* Language Info Menu Styles */
+.language-info-container {
+    position: absolute;
+    top: 86px;
+    left: 0;
+    z-index: 9999;
+}
+
+.language-info-button {
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.language-info-button img {
+    width: 60px;
+    height: 60px;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 0 4px #3498db) 
+            drop-shadow(0 0 8px #3498db);
+}
+
+.language-info-button:hover img {
+    filter: drop-shadow(0 0 6px #3498db) 
+            drop-shadow(0 0 12px #3498db);
+}
+
+.language-info-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10005;
+    background: #262626;
+    border: 1px solid #d4af37;
+    width: min(1600px, 95vw);
+    max-height: 90vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #d4af37 #262626;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    font-size: 0.9em;
+    padding: 12px 50px 12px 20px;
+}
+
+.language-info-menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 10004;
+}
+
+.language-info-menu::-webkit-scrollbar {
+    width: 8px;
+}
+
+.language-info-menu::-webkit-scrollbar-track {
+    background: #262626;
+}
+
+.language-info-menu::-webkit-scrollbar-thumb {
+    background-color: #d4af37;
+    border-radius: 4px;
+    border: 2px solid #262626;
+}
+
+/* Letter tabs navigation */
+.language-info-menu .letter-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d4af37;
+    padding-bottom: 8px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #d4af37 #262626;
+}
+
+.language-info-menu .letter-tabs::-webkit-scrollbar {
+    height: 4px;
+}
+
+.language-info-menu .letter-tabs::-webkit-scrollbar-track {
+    background: #262626;
+}
+
+.language-info-menu .letter-tabs::-webkit-scrollbar-thumb {
+    background-color: #d4af37;
+    border-radius: 2px;
+}
+
+.language-info-menu .letter-tabs button {
+    min-width: 32px;
+    padding: 4px 8px;
+    font-size: 0.9em;
+    white-space: nowrap;
+}
+
+.language-info-menu .letter-tabs button.suffixes {
+    min-width: auto;
+    padding: 4px 12px;
+}

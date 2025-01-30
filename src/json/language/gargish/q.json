@@ -1,0 +1,41 @@
+{
+  "qua": {
+    "alternates": ["kua"],
+    "definitions": ["what", "which", "as"]
+  },
+  "qua-lem": ["who", "some"],
+  "qua-ter": ["where"],
+  "qua-tim": ["when"],
+  "qua-wís": ["why", "because", "reason"],
+  "quad": {
+    "alternates": ["kuad"],
+    "definitions": ["cube", "square"]
+  },
+  "quae": {
+    "alternates": ["kuad"],
+    "definitions": ["problem", "trouble"]
+  },
+  "quaeven": ["Quaeven (name)"],
+  "quan": ["Quan (name)"],
+  "quant": ["degree", "size"],
+  "quar": {
+    "alternates": ["kuar"],
+    "definitions": ["four"]
+  },
+  "quas": {
+    "alternates": ["kuas"],
+    "definitions": ["illusion", "illusionary"]
+  },
+  "quas-áilem": ["duplicate"],
+  "quas-korp": ["fear", "illusion of death"],
+  "quas-rep-ku": ["mix", "mixed"],
+  "quas-zen": ["clone"],
+  "quí": {
+    "alternates": ["kui"],
+    "definitions": ["any", "anything"]
+  },
+  "quó": {
+    "alternates": ["kuo"],
+    "definitions": ["how"]
+  }
+}
