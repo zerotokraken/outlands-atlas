@@ -3,6 +3,7 @@
       {
         "name": "ExoThrugg",
         "icon": "images/exothrugg.png",
+        "scale": 400,
         "location": "Floors 3 and Below",
         "description": [
           "You will receive the warning *You sense a foreboding presence nearby...* afterwords Exothrugg will appear and attempt to unleash a devastating area abilty on your group. This can be countered by being invisble or moving a screen away from him and waiting out his stay. This range from from a few seconds to a few minutes. Being hidden does not prevent damage if it attacks someone else."
@@ -11,7 +12,7 @@
       {
         "name": "The Pilgrim",
         "icon": "images/pilgrim.png",
-        "scale": 300,
+        "scale": 400,
         "location": "Specific Locations",
         "description": [
           "fill in here"

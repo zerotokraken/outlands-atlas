@@ -152,7 +152,43 @@
         "Passage": {
             "Stairs": [],
             "Rel Por Stones": [],
-            "Portals": [],
+            "Portals": [
+                {
+                    "id": 1,
+                    "title": "Silver Gate",
+                    "description": "Takes you to Sewers.",
+                    "coordinates": [747, 3716],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Silver Gate",
+                    "description": "Takes you to Blood Forest.",
+                    "coordinates": [699, 3763],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Silver Gate",
+                    "description": "Takes you to the Mirrors.",
+                    "coordinates": [659, 3717],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Silver Gate",
+                    "description": "Takes you to the Abyssal Core.",
+                    "coordinates": [711, 3661],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Exit from Level 5",
+                    "description": "This is where you appear if you use the secret teleport from Prevalia Zoo.",
+                    "coordinates": [701, 3717],
+                    "icon": "icons/portal.png"
+                }
+            ],
             "Teleport Tiles": [],
             "Waystar": [
                 {
@@ -427,7 +463,24 @@
                     "coordinates": [[3038, 3216], [3340, 3216], [3096, 4677], [3094, 4675]]
                 }
             ],
-            "Stairs": [],
+            "Stairs": [
+                {
+                    "id": 1,
+                    "title": "Stairs to Level 4",
+                    "description": "This leads back to Level 4",
+                    "coordinates": [647, 4680],
+                    "icon": "icons/Stairs.png"
+                }
+            ],
+            "Secret Passageways": [
+                {
+                    "id": 1,
+                    "title": "Hidden zoo teleport",
+                    "description": "Say 'garoo garoo' to teleport to the platform with four silver gates on Level 2.",
+                    "coordinates": [2791, 4917],
+                    "icon": "icons/hidden_passage.png"
+                }
+            ],
             "Teleport Tiles": [
                 {
                     "id": "teleport",

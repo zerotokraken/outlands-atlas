@@ -38,7 +38,8 @@ export interface TabletData {
 
 export interface HazardData {
     name: string;
-    icon: string | string[];
+    icon: string;
+    secondaryIcon?: string;
     location: string;
     description: string[];
     scale?: number;
@@ -53,8 +54,20 @@ export interface RelicsContent {
     relics: RelicData[];
 }
 
+export interface EncounterData {
+    name: string;
+    icon: string;
+    location: string;
+    description: string[];
+    scale?: number;
+}
+
 export interface HazardsContent {
     hazards: HazardData[];
+}
+
+export interface EncountersContent {
+    encounters: EncounterData[];
 }
 
 export interface TabletsContent {

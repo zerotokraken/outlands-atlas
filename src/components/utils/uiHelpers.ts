@@ -8,6 +8,7 @@ export interface CardData {
     icon?: string;
     location?: string;
     additionalInfo?: { [key: string]: string };
+    customIcons?: string;
 }
 
 export function createCard(
@@ -15,7 +16,7 @@ export function createCard(
     createIconContainer: CreateIconContainer,
     scale?: number
 ): string {
-    const { title, subtitle, description, icon, location, additionalInfo } = data;
+    const { title, subtitle, description, icon, location, additionalInfo, customIcons } = data;
 
     const descriptionHtml = Array.isArray(description)
         ? description.map(desc => `<div style="color: #999; margin-bottom: 4px;">• ${desc}</div>`).join('')
@@ -29,21 +30,22 @@ export function createCard(
 
     return `
         <div class="card" style="${cardStyle}">
-            <div style="${flexRowStyle}">
-                ${icon ? `
-                    <div style="${createIconContainer('large', '0', scale)}">
-                        <img src="${icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
-                    </div>
-                ` : ''}
-                <div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div style="display: flex; justify-content: center; gap: 10px;">
+                    ${customIcons || (icon ? `
+                        <div style="${createIconContainer('large', '0', scale)}">
+                            <img src="${icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        </div>
+                    ` : '')}
+                </div>
+                <div style="text-align: center;">
                     <h3 style="${headerStyle}">${title}</h3>
-                    <div style="${subtitleStyle}">${subtitle}</div>
                     ${location ? `<div style="${subtitleStyle}">${location}</div>` : ''}
                     ${additionalInfoHtml}
                 </div>
-            </div>
-            <div style="${descriptionStyle}">
-                ${descriptionHtml}
+                <div style="${descriptionStyle}">
+                    ${descriptionHtml}
+                </div>
             </div>
         </div>
     `;
