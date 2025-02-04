@@ -9,19 +9,19 @@
         {
             "location": "Tablet 1",
             "text": "Vaglemle vit trak vit esh an-inie tú ánte lem-de vía",
-            "translation": "Wandered mirror to mirror and destroyed all within his path",
-            "notes": "vaglemle: wandered, vit: glass (mirror), trak: to/toward/for/unto, esh: and, an-inle: smash/destroy (past), tú: all, ánte: among/enter/in/into/within, lem-de: his/her/its/their, vía: path/course/road"
+            "translation": "Wandering shard to shard and leaving nothing but destruction in his wake",
+            "notes": "vaglemle: wandered, vit: glass, trak: to/toward/for/unto, esh: and, an-inle: smash/destroy (past), tú: all, ánte: among/enter/in/into/within, lem-de: his/her/its/their, vía: path/course/road"
         },
         {
             "location": "Tablet 2",
             "text": "An-inle lem-múr vit lem-de tim-por",
-            "translation": "Destroyed all of his mirrors to come",
+            "translation": "Destroying those shards when he arrives",
             "notes": "an-inie: smash/destroy (past), lem-múr: everyone/those, vit: glass, lem-de: his, tim-por: arrive time"
         },
         {
             "location": "Tablet 3",
             "text": "Estte ánte ista ter intes ter-múr",
-            "translation": "Be among this place between world(s)",
+            "translation": "Be among this place between worlds- (the tablet is damaged)",
             "notes": "est-te: be/exist/is/are (present), ánte: among/enter/in/into/within, ista: this, ter: place, intes: between, ter-múr: world"
         },
         {
@@ -33,7 +33,7 @@
         {
             "location": "Tablet 5",
             "text": "An vas-wísle lem-de timte trak",
-            "translation": "No great wisdom for their timing",
+            "translation": "Not knowing his timing unto",
             "notes": "an: negate/not/none/no, vas-wisle: great knowledge/ultimate wisdom (past), lem-de: his/her/its/their, timte: waiting/timing, trak: to/toward/for/unto"
         },
         {
@@ -57,19 +57,19 @@
         {
             "location": "Tablet 9",
             "text": "Wis-quaste lem-de jux sol lókte mo apérte",
-            "translation": "Speak their dangerous word to unlock the doors",
+            "translation": "Know their danger but speak the word to open",
             "notes": "wis-quaste: know/knowledge/wise/wisdom/intelligent/illusion (present), lem-de: his/her/its/their, jux: danger/harm/damage, sol: only/but, lókte: discuss/say/speak/talk/tell (present), mo: noun/word, apérte: open/unlock (present)"
         },
         {
             "location": "Tablet 10",
             "text": "Vidte via re korp est un-lem prop",
-            "translation": "The objective is to exist as a ghost(dead) to see the path",
+            "translation": "See the path that will be death, there is a ghost's purpose",
             "notes": "vidte: see/look/view/eye (present), via: path/course/road, re: to/will/shall, korp: death/dead/deadly, est: be/exist/is/are, un-lem: shade/ghost, prop: intention/objective/plan/purpose"
         },
         {
             "location": "Tablet 11",
             "text": "Wis-quaste lem-de jux sol lókte mo un-lem",
-            "translation": "Speak their dangerous word while a shade(ghost, dead?)",
+            "translation": "Know their danger but speak the word ghost",
             "notes": "wis-quaste: know/knowledge/wise/wisdom/intelligent/illusion (present), lem-de: his/her/its/their, jux: danger/harm/damage, sol: only/but, lókte: discuss/say/speak/talk/tell (present), mo: noun/word, un-lem: shade/ghost"
         }
     ]
