@@ -204,6 +204,17 @@
         "Doors": {
             "Locked": []
         },
+        "NPCs": {
+            "Gem Vendor": [
+                {
+                    "id": 1,
+                    "title": "Gem Vendor",
+                    "description": "Sells Time gems.",
+                    "coordinates": [[4163, 2495]],
+                    "icon": "icons/treasure.png"
+                }
+            ]
+        },
         "Runes": {
             "Knock": [
                 {
