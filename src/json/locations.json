@@ -187,9 +187,33 @@
                     "description": "This is where you appear if you use the secret teleport from Prevalia Zoo.",
                     "coordinates": [701, 3717],
                     "icon": "icons/portal.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Teleport from Colony or Level 1",
+                    "description": "This is where you appear if you use one of the teleports at Colony or the shortcut on Level 1.",
+                    "coordinates": [4284, 2516],
+                    "icon": "icons/portal.png"
                 }
             ],
-            "Teleport Tiles": [],
+            "Teleport Tiles": [
+                {
+                    "id": 1,
+                    "title": "Teleport to Colony",
+                    "description": "Takes you to the Colony on Level 4.",
+                    "coordinates": [4302, 2485],
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/teleport-rune.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Teleport to Level 1",
+                    "description": "This takes you to the Anhk room on Level 1.",
+                    "coordinates": [4318, 2532],
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/teleport-rune.png"
+                }
+            ],
             "Waystar": [
                 {
                     "id": 1,
@@ -404,7 +428,24 @@
                     "icon": "icons/Stairs.png"
                 }
             ],
-            "Teleport Tiles": [],
+            "Teleport Tiles": [
+                {
+                    "id": 1,
+                    "title": "Teleport to Colony Outpost",
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/teleport-rune.png",
+                    "description": "Teleports you to the Colony outpost.",
+                    "coordinates": [1489, 2028]
+                },
+                {
+                    "id": 1,
+                    "title": "Teleport to Level 1",
+                    "requirements": "1 Bipartite Time Gem",
+                    "icon": "icons/teleport-rune.png",
+                    "description": "Teleports you to the Anhk room on Level 1.",
+                    "coordinates": [1268, 2025]
+                }
+            ],
             "Waystar": [
                 {
                     "id": 1,
