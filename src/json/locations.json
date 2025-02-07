@@ -274,8 +274,8 @@
                 {
                     "id": 1,
                     "title": "The Greed Room",
-                    "description": "Speak the words in the book to enter. You will not exit.",
-                    "coordinates": [2842, 5059],
+                    "description": "Speak the words in the book to enter. Great wealth is in your future...",
+                    "coordinates": [1454, 5056],
                     "icon": "icons/hidden_passage.png"
                 }
             ],
@@ -301,14 +301,14 @@
                     "id": 1,
                     "title": "Portal back to the model ship",
                     "description": "This returns you to the model ship.",
-                    "coordinates": [1306, 5308],
+                    "coordinates": [150, 5309],
                     "icon": "icons/Gates_Silver.png"
                 },
                 {
                     "id": 1,
                     "title": "Portal back to Level 3",
                     "description": "This takes you to the west side of the Ettin area.",
-                    "coordinates": [2738, 4938],
+                    "coordinates": [1332, 4944],
                     "icon": "icons/Gates_Silver.png"
                 }
             ],
@@ -385,6 +385,13 @@
                     "description": "The bottle of port for the stew.",
                     "coordinates": [2268, 1698],
                     "icon": "icons/wooden-box.png"
+                },
+                {
+                    "id": "Tear of the Tides",
+                    "title": "Tear of the Tides",
+                    "description": "Approach the sparkling magic with an ancient coin and recite 'Fate and fortune, fire and tide, reveal the gift that you now hide'; This will spawn a miniboss that will drop the quest item.",
+                    "coordinates": [1493, 1695],
+                    "icon": "icons/water.png"
                 }
             ]
         }
@@ -519,10 +526,25 @@
                 {
                     "id": 1,
                     "title": "Stairs to Level 4",
-                    "description": "This leads back to Level 4",
+                    "description": "This leads back to the Maze on Level 4",
                     "coordinates": [647, 4680],
                     "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to Level 6",
+                    "description": "This leads back to Level 6",
+                    "coordinates": [4201, 4119],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to Level 4",
+                    "description": "This leads back to North West side of Level 4",
+                    "coordinates": [636, 565],
+                    "icon": "icons/Stairs.png"
                 }
+
             ],
             "Secret Passageways": [
                 {
@@ -752,7 +774,18 @@
             "Teleport Tiles": [],
             "Waystar": [
             ]
-         }
+         },
+         "Quest": {
+            "Quest Items": [
+                {
+                    "id": "Emberheart",
+                    "title": "Emberheart",
+                    "description": "Approach the sparkling magic with an ancient coin and recite 'Fate and fortune, fire and tide, reveal the gift that you now hide'; This will spawn a miniboss that will drop the quest item.",
+                    "coordinates": [2193, 1401],
+                    "icon": "icons/dragon.png"
+                }
+            ]
+        }
     },
     "stonegate": {
         "Passage": {

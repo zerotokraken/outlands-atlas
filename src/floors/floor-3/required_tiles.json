@@ -10,13 +10,13 @@
             {
                 "startDir": 316,
                 "endDir": 321,
-                "startTile": 108,
+                "startTile": 109,
                 "endTile": 112
             },
             {
                 "startDir": 432,
                 "endDir": 434,
-                "startTile": 81,
+                "startTile": 82,
                 "endTile": 84
             },
             {
@@ -24,6 +24,18 @@
                 "endDir": 434,
                 "startTile": 86,
                 "endTile": 88
+            },
+            {
+                "startDir": 420,
+                "endDir": 423,
+                "startTile": 67,
+                "endTile": 71
+            },
+            {
+                "startDir": 399,
+                "endDir": 408,
+                "startTile": 66,
+                "endTile": 71
             }
         ]
     }

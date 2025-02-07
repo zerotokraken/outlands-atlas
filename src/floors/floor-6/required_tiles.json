@@ -6,11 +6,25 @@
             "startTile": 75,
             "endTile": 88
         },
-        "secondary": {
-            "startDir": 424,
-            "endDir": 428,
-            "startTile": 69,
-            "endTile": 75
-        }
+        "secondaries": [
+            {
+                "startDir": 424,
+                "endDir": 428,
+                "startTile": 69,
+                "endTile": 75
+            },
+            {
+                "startDir": 422,
+                "endDir": 428,
+                "startTile": 100,
+                "endTile": 104
+            },
+            {
+                "startDir": 458,
+                "endDir": 464,
+                "startTile": 68,
+                "endTile": 71
+            }
+        ]
     }
 }
