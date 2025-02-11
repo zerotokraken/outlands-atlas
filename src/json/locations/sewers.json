@@ -1,0 +1,105 @@
+{
+    "sewers": {
+        "Passage": {
+            "Stairs": [
+                {
+                    "id": 1,
+                    "title": "Stairs to Level 5",
+                    "description": "This leads back to Level 5",
+                    "coordinates": [1140, 2556],
+                    "icon": "icons/Stairs.png"
+                }
+            ],
+            "Ladders": [
+                {
+                    "id": 1,
+                    "title": "Ladder",
+                    "description": "This takes you up off the ground floor.",
+                    "coordinates": [[1854, 977], [1232, 792], [1108, 1516]],
+                    "icon": "icons/ladder.png"
+                }
+            ],
+            "Teleport Tiles": [
+            ],
+            "Rel Por Stones": [
+                {
+                    "id": "rel_por",
+                    "title": "Rel Por Stone",
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/rel-por.png",
+                    "description": "Teleports you to the nearby room.",
+                    "coordinates": [[3058, 2316], [3099, 2479]]
+                }
+            ],
+            "Waystar": [
+                {
+                    "id": 1,
+                    "title": "Waystar",
+                    "requirements": "1 Tri Time Gem",
+                    "icon": "icons/waystar.png",
+                    "description": "Summons a moongate to Colony for a short duration",
+                    "coordinates": [579, 2563]
+                }
+            ]
+        },
+        "Doors": {
+            "Locked": [
+                {
+                    "id": 1,
+                    "title": "Locked Door",
+                    "description": "Requires a knock rune.",
+                    "coordinates": [[2721, 998], [1225, 2547]],
+                    "icon": "icons/lock.png"
+                }
+            ]
+        },
+        "Runes": {
+            "Knock": [
+                {
+                    "id": "knock",
+                    "title": "Knock",
+                    "container": ["Backpack", "Crate", "Strong Box"],
+                    "icon": "icons/runes/timerune-knock.png",
+                    "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
+                    "coordinates": [[1380, 504], [1267, 1225], [2775, 914]]
+                }
+            ]
+        },
+        "NPCs": {
+            "Gem Vendor": [
+                {
+                    "id": 1,
+                    "title": "Gem Vendor",
+                    "description": "Sells Precious Time gems only.",
+                    "coordinates": [787, 2571],
+                    "icon": "icons/treasure.png"
+                }
+            ]
+        },
+        "Entities": {
+            "Bosses": [
+                {
+                    "id": "bosses",
+                    "title": "Poison Finger",
+                    "description": "Special: Unknown",
+                    "coordinates": [1720, 3644],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Strongarm Bill",
+                    "description": "Special: Throws smoke bomb that increases damage taken by the target",
+                    "coordinates": [1776, 679],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "King Muk",
+                    "description": "Special: Unknown",
+                    "coordinates": [2036, 1532],
+                    "icon": "icons/boss.png"
+                }
+            ]
+        }
+    }
+}
