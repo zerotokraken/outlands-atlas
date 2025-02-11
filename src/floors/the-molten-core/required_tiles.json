@@ -1,9 +1,15 @@
 {
     "tiles": {
-        "startDir": 395,
-        "endDir": 403,
+        "startDir": 396,
+        "endDir": 402,
         "startTile": 85,
-        "endTile": 96
+        "endTile": 96,
+        "ignore": [
+            {
+                "dir": [402],
+                "tile": [85, 86, 87, 96]
+            }
+        ]
     }
 }
 

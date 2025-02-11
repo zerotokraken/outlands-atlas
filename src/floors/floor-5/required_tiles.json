@@ -3,7 +3,13 @@
         "startDir": 375,
         "endDir": 395,
         "startTile": 86,
-        "endTile": 103
+        "endTile": 103,
+        "ignore": [
+            {
+                "dir": [375, 376],
+                "tile": [86, 87, 88]
+            }
+        ]
     }
 }
 

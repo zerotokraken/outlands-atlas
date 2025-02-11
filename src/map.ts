@@ -17,6 +17,10 @@ interface TileSetConfig {
     startTile: number;
     endTile: number;
     offsetX?: number;
+    ignore?: Array<{
+        dir: number | number[];
+        tile: number | number[];
+    }>;
 }
 
 interface MarkerOptions extends L.MarkerOptions {
@@ -726,18 +730,27 @@ export class MapManager {
                         const directory = col + tileConfig.startDir;
                         const file = row + tileConfig.startTile;
                         
-                        // Use a very small overlap to prevent tile lines
-                        const overlap = 0.1;
-                        const bounds = [
-                            [(numRows - row - 1) * tileSize + verticalOffset - overlap, (col * tileSize + offsetX) - overlap],
-                            [(numRows - row) * tileSize + verticalOffset + overlap, ((col + 1) * tileSize + offsetX) + overlap]
-                        ] as L.LatLngBoundsExpression;
-
-                        const tilePath = `./floors/${floorPath}/tiles/${directory}/${file}.png`;
-                        const overlay = L.imageOverlay(tilePath, bounds, {
-                            className: 'seamless-tile'
+                        // Check if this tile should be ignored
+                        const shouldIgnore = tileConfig.ignore?.some(ignore => {
+                            const dirs = Array.isArray(ignore.dir) ? ignore.dir : [ignore.dir];
+                            const tiles = Array.isArray(ignore.tile) ? ignore.tile : [ignore.tile];
+                            return dirs.includes(directory) && tiles.includes(file);
                         });
-                        overlay.addTo(layerGroup);
+                        
+                        if (!shouldIgnore) {
+                            // Use a very small overlap to prevent tile lines
+                            const overlap = 0.1;
+                            const bounds = [
+                                [(numRows - row - 1) * tileSize + verticalOffset - overlap, (col * tileSize + offsetX) - overlap],
+                                [(numRows - row) * tileSize + verticalOffset + overlap, ((col + 1) * tileSize + offsetX) + overlap]
+                            ] as L.LatLngBoundsExpression;
+
+                            const tilePath = `./floors/${floorPath}/tiles/${directory}/${file}.png`;
+                            const overlay = L.imageOverlay(tilePath, bounds, {
+                                className: 'seamless-tile'
+                            });
+                            overlay.addTo(layerGroup);
+                        }
                     }
                 }
                 return { numRows, numCols, offsetX };

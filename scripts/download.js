@@ -41,6 +41,16 @@ async function downloadFile(url, filePath) {
     }
 }
 
+function shouldIgnoreTile(dir, tile, tileSet) {
+    if (!tileSet.ignore) return false;
+    
+    return tileSet.ignore.some(ignore => {
+        const dirs = Array.isArray(ignore.dir) ? ignore.dir : [ignore.dir];
+        const tiles = Array.isArray(ignore.tile) ? ignore.tile : [ignore.tile];
+        return dirs.includes(dir) && tiles.includes(tile);
+    });
+}
+
 async function cleanupFiles(floorName, config) {
     const floorDir = path.join('src', 'floors', floorName, 'tiles');
     
@@ -51,21 +61,25 @@ async function cleanupFiles(floorName, config) {
         // Create ranges for both primary and secondary tiles
         const dirRanges = [];
         const tileRanges = [];
+        const tileSets = [];
 
-        // Add primary ranges
+        // Add primary ranges and config
         dirRanges.push([config.primary.startDir, config.primary.endDir]);
         tileRanges.push([config.primary.startTile, config.primary.endTile]);
+        tileSets.push(config.primary);
 
         // Add secondary ranges if they exist
         if (config.secondaries) {
             for (const secondary of config.secondaries) {
                 dirRanges.push([secondary.startDir, secondary.endDir]);
                 tileRanges.push([secondary.startTile, secondary.endTile]);
+                tileSets.push(secondary);
             }
-        } else if (config.secondary && config.secondary.endDir > 0) {
+        } else if (config.secondary) {
             // Handle old format for backward compatibility
             dirRanges.push([config.secondary.startDir, config.secondary.endDir]);
             tileRanges.push([config.secondary.startTile, config.secondary.endTile]);
+            tileSets.push(config.secondary);
         }
 
         for (const dir of dirs) {
@@ -75,9 +89,16 @@ async function cleanupFiles(floorName, config) {
             if (dirStat.isDirectory()) {
                 const dirNum = parseInt(dir);
                 
-                // Check if directory is in any of the ranges
-                const inRange = dirRanges.some(([start, end]) => dirNum >= start && dirNum <= end);
-                if (!inRange) {
+                // Check if directory is outside all ranges
+                let dirInAnyRange = false;
+                for (const [start, end] of dirRanges) {
+                    if (dirNum >= start && dirNum <= end) {
+                        dirInAnyRange = true;
+                        break;
+                    }
+                }
+
+                if (!dirInAnyRange) {
                     console.log(`Removing directory outside all ranges: ${dirPath}`);
                     await fs.rm(dirPath, { recursive: true });
                     continue;
@@ -88,11 +109,24 @@ async function cleanupFiles(floorName, config) {
                 for (const file of files) {
                     if (file.endsWith('.png')) {
                         const tileNum = parseInt(file.split('.')[0]);
-                        // Check if tile is in any of the ranges
-                        const inRange = tileRanges.some(([start, end]) => tileNum >= start && tileNum <= end);
-                        if (!inRange) {
+                        
+                        // Check if tile is in any range and not ignored by its tileset
+                        let tileValid = false;
+                        for (let i = 0; i < dirRanges.length; i++) {
+                            const [dirStart, dirEnd] = dirRanges[i];
+                            const [tileStart, tileEnd] = tileRanges[i];
+                            
+                            if (dirNum >= dirStart && dirNum <= dirEnd && 
+                                tileNum >= tileStart && tileNum <= tileEnd && 
+                                !shouldIgnoreTile(dirNum, tileNum, tileSets[i])) {
+                                tileValid = true;
+                                break;
+                            }
+                        }
+                        
+                        if (!tileValid) {
                             const filePath = path.join(dirPath, file);
-                            console.log(`Removing file outside all ranges: ${filePath}`);
+                            console.log(`Removing file outside all valid ranges: ${filePath}`);
                             await fs.unlink(filePath);
                         }
                     }
@@ -108,19 +142,28 @@ async function cleanupFiles(floorName, config) {
 
 async function downloadTileSet(floorName, tileSet, label) {
     let downloaded = 0;
-    const total = (tileSet.endDir - tileSet.startDir + 1) * (tileSet.endTile - tileSet.startTile + 1);
+    let total = (tileSet.endDir - tileSet.startDir + 1) * (tileSet.endTile - tileSet.startTile + 1);
     
-    // Create array of directory numbers
-    const directories = Array.from(
-        {length: tileSet.endDir - tileSet.startDir + 1}, 
-        (_, i) => i + tileSet.startDir
-    );
+    // Subtract ignored tiles from total
+    if (tileSet.ignore) {
+        for (const ignore of tileSet.ignore) {
+            const dirs = Array.isArray(ignore.dir) ? ignore.dir : [ignore.dir];
+            const tiles = Array.isArray(ignore.tile) ? ignore.tile : [ignore.tile];
+            total -= dirs.length * tiles.length;
+        }
+    }
     
-    // Create array of file numbers
-    const fileNumbers = Array.from(
-        {length: tileSet.endTile - tileSet.startTile + 1}, 
-        (_, i) => i + tileSet.startTile
-    );
+    // Create array of directory numbers specific to this tileset
+    const directories = [];
+    for (let dir = tileSet.startDir; dir <= tileSet.endDir; dir++) {
+        directories.push(dir);
+    }
+    
+    // Create array of file numbers specific to this tileset
+    const fileNumbers = [];
+    for (let file = tileSet.startTile; file <= tileSet.endTile; file++) {
+        fileNumbers.push(file);
+    }
     
     // Ensure floor directory exists
     const floorDir = path.join('src', 'floors', floorName, 'tiles');
@@ -131,6 +174,11 @@ async function downloadTileSet(floorName, tileSet, label) {
         await ensureDirectoryExists(dirPath);
         
         for (const fileNum of fileNumbers) {
+            // Skip if tile should be ignored
+            if (shouldIgnoreTile(dir, fileNum, tileSet)) {
+                continue;
+            }
+
             const filePath = path.join(dirPath, `${fileNum}.png`);
             
             // Check if file exists
@@ -183,7 +231,7 @@ async function downloadFloorTiles(floorName) {
                 console.log(`Downloading secondary tiles set ${i + 1}...`);
                 await downloadTileSet(floorName, config.secondaries[i], `Secondary ${i + 1}`);
             }
-        } else if (config.secondary && config.secondary.endDir > 0) {
+        } else if (config.secondary) {
             // Handle old format for backward compatibility
             console.log('Downloading secondary tiles...');
             await downloadTileSet(floorName, config.secondary, 'Secondary');

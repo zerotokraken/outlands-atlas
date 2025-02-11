@@ -1,13 +1,13 @@
 {
     "tiles": {
         "primary": {
-            "startDir": 424,
+            "startDir": 425,
             "endDir": 434,
             "startTile": 59,
-            "endTile": 67
+            "endTile": 66
         },
         "secondary": {
-            "startDir": 430,
+            "startDir": 431,
             "endDir": 434,
             "startTile": 67,
             "endTile": 73

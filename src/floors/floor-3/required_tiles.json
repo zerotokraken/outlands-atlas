@@ -4,7 +4,13 @@
             "startDir": 403,
             "endDir": 420,
             "startTile": 45,
-            "endTile": 64
+            "endTile": 64,
+            "ignore": [
+                {
+                    "dir": [420, 419, 418, 417, 416, 415],
+                    "tile": [45, 46, 47]
+                }
+            ]
         },
         "secondaries": [
             {
@@ -28,8 +34,14 @@
             {
                 "startDir": 420,
                 "endDir": 423,
-                "startTile": 67,
-                "endTile": 71
+                "startTile": 66,
+                "endTile": 72,
+                "ignore": [
+                    {
+                        "dir": [420, 423],
+                        "tile": [72, 71, 70, 69, 66]
+                    }
+                ]
             },
             {
                 "startDir": 399,
