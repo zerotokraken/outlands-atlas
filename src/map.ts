@@ -423,11 +423,44 @@ export class MapManager {
         return content;
     }
 
+    private filterCategories(searchText: string): void {
+        const categoryItems = document.querySelectorAll('.category-item');
+        const searchLower = searchText.toLowerCase();
+
+        categoryItems.forEach(item => {
+            const title = item.querySelector('.title')?.textContent?.toLowerCase() || '';
+            const mainCategory = item.closest('.group-categories')?.previousElementSibling?.textContent?.toLowerCase() || '';
+            const matches = title.includes(searchLower) || mainCategory.includes(searchLower);
+            
+            // Show/hide the item based on search
+            item.classList.toggle('search-hidden', searchText !== '' && !matches);
+            
+            // Show/hide the header if all items in its group are hidden
+            const group = item.closest('.group-categories');
+            const header = group?.previousElementSibling;
+            if (group && header) {
+                const allItemsHidden = Array.from(group.querySelectorAll('.category-item'))
+                    .every(item => item.classList.contains('search-hidden'));
+                header.classList.toggle('search-hidden', allItemsHidden);
+                group.classList.toggle('search-hidden', allItemsHidden);
+            }
+        });
+    }
+
     private initializeSidebar(): void {
         const categoriesContainer = document.getElementById('categories');
+        const searchInput = document.getElementById('search') as HTMLInputElement;
         if (!categoriesContainer) return;
 
         categoriesContainer.innerHTML = '';
+
+        // Initialize search functionality
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const target = e.target as HTMLInputElement;
+                this.filterCategories(target.value);
+            });
+        }
 
         const levelData = this.locationsData[this.currentLevel];
         if (!levelData) return;
