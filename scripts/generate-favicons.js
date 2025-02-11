@@ -17,25 +17,25 @@ async function generateFavicons() {
         await sharp(inputImage)
             .resize(size, size, {
                 fit: 'contain',
-                background: { r: 26, g: 26, b: 26, alpha: 1 } // #1a1a1a background
+                background: { r: 0, g: 0, b: 0, alpha: 0 } // transparent background
             })
-            .toFile(path.join('favicon', name));
+            .toFile(path.join('src/favicon', name));
         
         console.log(`Generated ${name}`);
     }
 
     // Generate ICO file (contains both 16x16 and 32x32)
     const ico16 = await sharp(inputImage)
-        .resize(16, 16, { fit: 'contain', background: { r: 26, g: 26, b: 26, alpha: 1 } })
+        .resize(16, 16, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
         .toBuffer();
     
     const ico32 = await sharp(inputImage)
-        .resize(32, 32, { fit: 'contain', background: { r: 26, g: 26, b: 26, alpha: 1 } })
+        .resize(32, 32, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
         .toBuffer();
 
     // Write both buffers to favicon.ico
     await sharp(ico32)
-        .toFile(path.join('favicon', 'favicon.ico'));
+        .toFile(path.join('src/favicon', 'favicon.ico'));
     
     console.log('Generated favicon.ico');
 }
