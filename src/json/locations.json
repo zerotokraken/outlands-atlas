@@ -83,6 +83,31 @@
                 }
             ]
         },
+        "Entities": {
+            "Bosses": [
+                {
+                    "id": "bosses",
+                    "title": "Arnold the Bodybuilder",
+                    "description": "Special: Continous AOE head chucking.",
+                    "coordinates": [5040, 3240],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Burning Lich Lord",
+                    "description": "Special: Unknown.",
+                    "coordinates": [2074, 5425],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Mountain Orc Bozz",
+                    "description": "Special: Places explosive spike traps.",
+                    "coordinates": [5892, 3756],
+                    "icon": "icons/boss.png"
+                }
+            ]           
+         },
         "Misc": {
             "Community Chests": [
                 {
@@ -146,6 +171,17 @@
                      "coordinates": [[1346, 1222], [1482, 1267], [1556, 2843]]
                  }
              ]
+         },
+         "Entities": {
+            "Bosses": [
+                {
+                    "id": "bosses",
+                    "title": "Tox",
+                    "description": "Special: Unknown.",
+                    "coordinates": [1426, 1248],
+                    "icon": "icons/boss.png"
+                }
+            ]           
          }
      },
     "Level 2 Lower": {
@@ -228,7 +264,7 @@
         "Doors": {
             "Locked": []
         },
-        "NPCs": {
+        "Entities": {
             "Gem Vendor": [
                 {
                     "id": 1,
@@ -237,8 +273,17 @@
                     "coordinates": [[4163, 2495]],
                     "icon": "icons/treasure.png"
                 }
-            ]
-        },
+            ],
+            "Bosses": [
+                {
+                    "id": "bosses",
+                    "title": "A Forgotten Golem",
+                    "description": "Special: Unknown.",
+                    "coordinates": [1849, 3996],
+                    "icon": "icons/boss.png"
+                }
+            ]           
+         },
         "Runes": {
             "Knock": [
                 {
@@ -275,7 +320,14 @@
                     "id": 1,
                     "title": "The Greed Room",
                     "description": "Speak the words in the book to enter. Great wealth is in your future...",
-                    "coordinates": [1454, 5056],
+                    "coordinates": [2219, 5301],
+                    "icon": "icons/hidden_passage.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Lower Exodus Lair",
+                    "description": "Hit the switch in the room to the SE to trigger a portal leading down",
+                    "coordinates": [2792, 3293],
                     "icon": "icons/hidden_passage.png"
                 }
             ],
@@ -301,14 +353,21 @@
                     "id": 1,
                     "title": "Portal back to the model ship",
                     "description": "This returns you to the model ship.",
-                    "coordinates": [150, 5309],
+                    "coordinates": [914, 5568],
                     "icon": "icons/Gates_Silver.png"
                 },
                 {
                     "id": 1,
                     "title": "Portal back to Level 3",
                     "description": "This takes you to the west side of the Ettin area.",
-                    "coordinates": [1332, 4944],
+                    "coordinates": [2110, 5199],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Upper Exodus Lair",
+                    "description": "This returns you to the upper area.",
+                    "coordinates": [3374, 7561],
                     "icon": "icons/Gates_Silver.png"
                 }
             ],
@@ -355,7 +414,7 @@
                 }
             ]
         },
-        "NPCs": {
+        "Entities": {
             "Gem Vendor": [
                 {
                     "id": 1,
@@ -364,8 +423,73 @@
                     "coordinates": [[1048, 1883], [3184, 4032]],
                     "icon": "icons/treasure.png"
                 }
-            ]
-        },
+            ],
+            "Bosses": [
+                {
+                    "id": "bosses",
+                    "title": "A Living Arsenal",
+                    "description": "Special: Targeted single target.",
+                    "coordinates": [350, 2662],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Exodus Progressive Spawn",
+                    "description": "Special: Teleports and drops void bombs. You must kill the Exodus MK1-5 to spawn the boss.",
+                    "coordinates": [3009, 7333],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Anhk Room Bosses",
+                    "description": "There are many bosses here and I will add more detailed descriptions in the future.",
+                    "coordinates": [1123, 3343],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Alpha Shadow Wolf",
+                    "description": "Special: Revealer, Stealths and does a backstab",
+                    "coordinates": [3320, 2700],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Navery Nighteyes",
+                    "description": "Special: Summons spiders and does Nemesis. This is a progressive spawn: Kill the spiders until the boss spawns",
+                    "coordinates": [3496, 1691],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Pirate ship boss 1",
+                    "description": "Special: none",
+                    "coordinates": [1242, 5197],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Pirate ship boss 2",
+                    "description": "Special: none",
+                    "coordinates": [1157, 6014],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "The Catalyst Eye",
+                    "description": "Special: Targeted single target burst that applies a bleed",
+                    "coordinates": [1425, 592],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "The Barrier Warden",
+                    "description": "Special: Does a pontiff style bomb",
+                    "coordinates": [1876, 2700],
+                    "icon": "icons/boss.png"
+                }
+            ]           
+         },
         "Traps":{
             "Crystal Trap": [
                 {
@@ -704,16 +828,30 @@
                 }
             ]
         },
-         "Bosses": {
-            "Poison Finger": [
+         "Entities": {
+            "Bosses": [
                 {
                     "id": "bosses",
                     "title": "Poison Finger",
-                    "description": "What the fuck is this.",
-                    "coordinates": [[1720, 3644]],
-                    "icon": "icons/bosses/poison-finger.png"
+                    "description": "Special: Unknown",
+                    "coordinates": [1720, 3644],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Strongarm Bill",
+                    "description": "Special: Throws smoke bomb that increases damage taken by the target",
+                    "coordinates": [1776, 679],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "King Muk",
+                    "description": "Special: Unknown",
+                    "coordinates": [2036, 1532],
+                    "icon": "icons/boss.png"
                 }
-            ]           
+            ]
          }
     },
     "tunnel": {

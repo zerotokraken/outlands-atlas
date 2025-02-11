@@ -43,6 +43,7 @@ const AVAILABLE_ICONS = {
     SECRET_DOOR: { path: "icons/secret-door.png", scale: 150},
     WATER: { path: "icons/water.png", scale: 150},
     DRAGON: { path: "icons/dragon.png", scale: 150},
+    BOSS: { path: "icons/boss.png", scale: 200},
     // Time runes
     RUNE_KNOCK: { path: "icons/runes/timerune-knock.png", scale: 100 },
     RUNE_MEND: { path: "icons/runes/timerune-mendtime.png", scale: 100 },

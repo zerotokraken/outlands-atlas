@@ -755,33 +755,53 @@ export class MapManager {
             let totalWidth = primaryWidth;
             
             if (config.secondaries && config.secondaries.length > 0) {
-                // Calculate total height of all secondary areas
-                const totalSecondaryHeight = config.secondaries.reduce((sum, secondary) => 
-                    sum + ((secondary.endTile - secondary.startTile + 1) * tileSize), 0);
+                // Split secondaries into columns of 4
+                const columnsNeeded = Math.ceil(config.secondaries.length / 4);
+                const columns: typeof config.secondaries[] = [];
                 
-                // Start position for the first secondary area
-                // This centers the stack of secondary areas relative to the primary map
-                let currentVerticalOffset = ((primaryRows * tileSize) - totalSecondaryHeight) / 2;
-                
-                // All secondary areas will be placed at primaryWidth
-                const secondaryOffsetX = primaryWidth;
-                
-                for (const secondary of config.secondaries) {
-                    const secondaryRows = secondary.endTile - secondary.startTile + 1;
-                    
-                    // Set the X offset for this secondary area
-                    secondary.offsetX = secondaryOffsetX;
-                    
-                    // Load this secondary set with its vertical position
-                    const secondaryResult = loadTileSet(secondary, currentVerticalOffset);
-                    
-                    // Update the total width if needed
-                    const secondaryWidth = secondaryResult.numCols * tileSize;
-                    totalWidth = Math.max(totalWidth, secondaryOffsetX + secondaryWidth);
-                    
-                    // Move down for the next secondary area
-                    currentVerticalOffset += secondaryRows * tileSize;
+                for (let i = 0; i < columnsNeeded; i++) {
+                    columns.push(config.secondaries.slice(i * 4, (i + 1) * 4));
                 }
+
+                // Calculate max width needed for each column
+                const getColumnWidth = (areas: typeof config.secondaries) => {
+                    return Math.max(...areas.map(area => 
+                        (area.endDir - area.startDir + 0.5) * tileSize
+                    ), 0);
+                };
+
+                // Calculate column widths
+                const columnWidths = columns.map(getColumnWidth);
+
+                // Add spacing between columns
+                const columnSpacing = tileSize; // 1 tile worth of spacing
+
+                // Calculate heights and vertical offsets for each column
+                const columnHeights = columns.map(column => 
+                    column.reduce((sum, secondary) => 
+                        sum + ((secondary.endTile - secondary.startTile + 1) * tileSize), 0)
+                );
+
+                // Process each column
+                let currentX = primaryWidth + columnSpacing;
+                columns.forEach((column, columnIndex) => {
+                    // Calculate vertical offset to center the column
+                    let verticalOffset = ((primaryRows * tileSize) - columnHeights[columnIndex]) / 2;
+
+                    // Process each secondary in this column
+                    column.forEach(secondary => {
+                        const secondaryRows = secondary.endTile - secondary.startTile + 1;
+                        secondary.offsetX = currentX;
+                        const secondaryResult = loadTileSet(secondary, verticalOffset);
+                        verticalOffset += secondaryRows * tileSize;
+                    });
+
+                    // Move to next column position
+                    currentX += columnWidths[columnIndex] + columnSpacing;
+                });
+
+                // Update total width to include all columns and spacing
+                totalWidth = currentX;
             }
 
             // Calculate total bounds to encompass all tiles
