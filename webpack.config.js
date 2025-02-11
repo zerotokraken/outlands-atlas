@@ -56,7 +56,9 @@ export default {
         { from: 'src/images', to: 'images' },
         { from: 'src/css', to: 'css' },
         { from: 'src/json', to: 'json' },
-        { from: 'src/floors', to: 'floors' }
+        { from: 'src/floors', to: 'floors' },
+        { from: 'src/favicon', to: 'favicon' },
+        { from: 'site.webmanifest', to: '.' }
       ],
     }),
   ],
