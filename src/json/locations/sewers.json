@@ -40,10 +40,8 @@
                     "description": "Summons a moongate to Colony for a short duration",
                     "coordinates": [579, 2563]
                 }
-            ]
-        },
-        "Doors": {
-            "Locked": [
+            ],
+            "Locked Doors": [
                 {
                     "id": 1,
                     "title": "Locked Door",
