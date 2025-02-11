@@ -78,7 +78,7 @@
                     "id": 1,
                     "title": "Upper Exodus Lair",
                     "description": "This returns you to the upper area.",
-                    "coordinates": [3374, 7561],
+                    "coordinates": [2990, 7578],
                     "icon": "icons/Gates_Silver.png"
                 }
             ],
@@ -186,6 +186,27 @@
                     "title": "The Barrier Warden",
                     "description": "Special: Does a pontiff style bomb",
                     "coordinates": [1876, 2700],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "The Sleeper",
+                    "description": "Special: Does heavy melee hits and applies frequent poison",
+                    "coordinates": [1816, 7320],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Epochal Lich Lord",
+                    "description": "Special: Spawns waves of mobs and cast spells",
+                    "coordinates": [2087, 3838],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Tyball the Cursed",
+                    "description": "Special: Unknown",
+                    "coordinates": [3683, 6791],
                     "icon": "icons/boss.png"
                 }
             ]           

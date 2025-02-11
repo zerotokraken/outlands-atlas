@@ -54,6 +54,12 @@
                 "endDir": 424,
                 "startTile": 62,
                 "endTile": 64
+            },
+            {
+                "startDir": 417,
+                "endDir": 420,
+                "startTile": 70,
+                "endTile": 72
             }
         ]
     }

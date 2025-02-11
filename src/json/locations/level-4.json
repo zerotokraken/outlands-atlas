@@ -126,6 +126,20 @@
                 "description": "Special: Throws a disease cloud",
                 "coordinates": [2145, 6279],
                 "icon": "icons/boss.png"
+            },
+            {
+                "id": "bosses",
+                "title": "Ratmen Chief",
+                "description": "Special: Summons totems that do AOE damage",
+                "coordinates": [4794, 351],
+                "icon": "icons/boss.png"
+            },
+            {
+                "id": "bosses",
+                "title": "The One Left Behind",
+                "description": "Special: ",
+                "coordinates": [6141, 1956],
+                "icon": "icons/boss.png"
             }
         ]           
         },
