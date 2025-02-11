@@ -42,12 +42,62 @@ export class MapManager {
     private infoMenu: InfoMenu;
     private languageInfoMenu: LanguageInfoMenu;
     private routes: RoutesData = {};
+    private locationsData: LocationsData = {};
 
-    constructor(private locationsData: LocationsData) {
+    constructor() {
         this.tileService = new TileService();
         this.infoMenu = new InfoMenu();
         this.languageInfoMenu = new LanguageInfoMenu();
         this.loadRoutes();
+    }
+
+    private getLocationFileName(level: string): string {
+        const levelLower = level.toLowerCase();
+        
+        // Handle special named areas
+        const specialAreas = {
+            'sewers': 'sewers',
+            'tunnel': 'tunnel',
+            'the molten core': 'the-molten-core',
+            'stonegate': 'stonegate',
+            'hall of virtue': 'hall-of-virtue',
+            'the abyssal core': 'the-abyssal-core'
+        };
+
+        // Check if it's a special area
+        if (specialAreas[levelLower]) {
+            return specialAreas[levelLower];
+        }
+
+        // Handle numbered floors
+        if (level.startsWith('Level ')) {
+            const floorNumber = level.split(' ')[1];
+            if (floorNumber === '2') {
+                // Handle split level 2
+                if (level.includes('Lower')) {
+                    return 'level-2-lower';
+                }
+                if (level.includes('Upper')) {
+                    return 'level-2-upper';
+                }
+                return 'level-2-lower'; // Default to lower
+            }
+            return `level-${floorNumber}`;
+        }
+
+        return levelLower;
+    }
+
+    private async loadLocationData(level: string): Promise<void> {
+        const fileName = this.getLocationFileName(level);
+        try {
+            const response = await fetch(`./json/locations/${fileName}.json`);
+            const data = await response.json();
+            this.locationsData[level] = data[level];
+        } catch (error) {
+            console.error(`Error loading location data for ${level}:`, error);
+            this.locationsData[level] = {};
+        }
     }
 
     private async loadRoutes(): Promise<void> {
@@ -620,8 +670,12 @@ export class MapManager {
 
         this.initializeSidebar();
         
-        // Only load the initial floor (Level 1)
+        // Load initial floor (Level 1)
+        onProgress?.(60, 'Loading Level 1 data...');
+        await this.loadLocationData("Level 1");
+        onProgress?.(80, 'Loading map layer...');
         await this.loadMapLayer("Level 1");
+        this.initializeSidebar(); // Make sure sidebar is initialized after data is loaded
         onProgress?.(100, 'Ready!');
 
         const mapLinks = document.querySelectorAll('.map-link');
@@ -850,7 +904,7 @@ export class MapManager {
         this.drawRoutes();
     }
 
-    public setLevel(level: string): void {
+    public async setLevel(level: string): Promise<void> {
         if (this.isLoadingMap) return;
         
         // Normalize level names to match routes.json
@@ -866,9 +920,13 @@ export class MapManager {
         // Check if it's a special area and normalize the name
         this.currentLevel = specialAreas[level as keyof typeof specialAreas] || level;
         
-        this.loadMapLayer(level).then(() => {
-            this.initializeSidebar();
-        });
+        // Load location data if not already loaded
+        if (!this.locationsData[this.currentLevel]) {
+            await this.loadLocationData(this.currentLevel);
+        }
+        
+        await this.loadMapLayer(level);
+        this.initializeSidebar();
     }
 
     public toggleCategory(categoryName: string): void {

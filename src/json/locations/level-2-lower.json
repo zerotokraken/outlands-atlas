@@ -1,0 +1,115 @@
+{
+    "Level 2 Lower": {
+        "Passage": {
+            "Stairs": [],
+            "Rel Por Stones": [],
+            "Portals": [
+                {
+                    "id": 1,
+                    "title": "Silver Gate",
+                    "description": "Takes you to Sewers.",
+                    "coordinates": [747, 3716],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Silver Gate",
+                    "description": "Takes you to Blood Forest.",
+                    "coordinates": [699, 3763],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Silver Gate",
+                    "description": "Takes you to the Mirrors.",
+                    "coordinates": [659, 3717],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Silver Gate",
+                    "description": "Takes you to the Abyssal Core.",
+                    "coordinates": [711, 3661],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Exit from Level 5",
+                    "description": "This is where you appear if you use the secret teleport from Prevalia Zoo.",
+                    "coordinates": [701, 3717],
+                    "icon": "icons/portal.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Teleport from Colony or Level 1",
+                    "description": "This is where you appear if you use one of the teleports at Colony or the shortcut on Level 1.",
+                    "coordinates": [4284, 2516],
+                    "icon": "icons/portal.png"
+                }
+            ],
+            "Teleport Tiles": [
+                {
+                    "id": 1,
+                    "title": "Teleport to Colony",
+                    "description": "Takes you to the Colony on Level 4. Say 'Vas Rel Por' to use.",
+                    "coordinates": [4302, 2485],
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/teleport-rune.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Teleport to Level 1",
+                    "description": "This takes you to the Anhk room on Level 1. Say 'Vas Rel Por' to use.",
+                    "coordinates": [4318, 2532],
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/teleport-rune.png"
+                }
+            ],
+            "Waystar": [
+                {
+                    "id": 1,
+                    "title": "Waystar",
+                    "requirements": "1 Tri Time Gem",
+                    "icon": "icons/waystar.png",
+                    "description": "Summons a moongate to Colony for a short duration",
+                    "coordinates": [2257, 3725]
+                }
+            ]
+         },
+        "Doors": {
+            "Locked": []
+        },
+        "Entities": {
+            "Gem Vendor": [
+                {
+                    "id": 1,
+                    "title": "Gem Vendor",
+                    "description": "Sells Time gems.",
+                    "coordinates": [[4163, 2495]],
+                    "icon": "icons/treasure.png"
+                }
+            ],
+            "Bosses": [
+                {
+                    "id": "bosses",
+                    "title": "A Forgotten Golem",
+                    "description": "Special: Unknown.",
+                    "coordinates": [1849, 3996],
+                    "icon": "icons/boss.png"
+                }
+            ]           
+         },
+        "Runes": {
+            "Knock": [
+                {
+                    "id": "knock",
+                    "title": "Knock",
+                    "container": ["Metal Chest", "Crate", "Bookcase", "Bag, Backpack, Barrel", "Armoire", "Bookcase", "2 Crates"],
+                    "icon": "icons/runes/timerune-knock.png",
+                    "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
+                    "coordinates": [[1880, 3980], [2748, 3628], [3012, 3884], [2288, 1780], [3440, 1944], [4104, 1924], [4252, 2064], [6188, 1344]]
+                }
+            ]
+        }
+    }
+}

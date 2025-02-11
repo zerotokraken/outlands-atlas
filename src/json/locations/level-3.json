@@ -1,0 +1,223 @@
+{
+    "Level 3": {
+        "Passage": {
+            "Stairs": [
+                {
+                    "id": 1,
+                    "title": "Stairs to the Upper Reaches",
+                    "description": "This leads to the west part of the Upper Reaches.",
+                    "coordinates": [4788, 2490],
+                    "icon": "icons/Stairs.png"
+                }
+            ],
+            "Locked Doors": [
+                {
+                    "id": 1,
+                    "title": "Locked Door",
+                    "description": "Requires a knock rune.",
+                    "coordinates": [3466, 3342],
+                    "icon": "icons/lock.png"
+                }
+            ],
+            "Secret Passageways": [
+                {
+                    "id": 1,
+                    "title": "Hidden bridge entrance",
+                    "description": "You can go North off the bridge and inside to travel to a secret paradise. Beware.",
+                    "coordinates": [2445, 3220],
+                    "icon": "icons/hidden_passage.png"
+                },
+                {
+                    "id": 1,
+                    "title": "The Greed Room",
+                    "description": "Speak the words in the book to enter. Great wealth is in your future...",
+                    "coordinates": [1954, 5314],
+                    "icon": "icons/hidden_passage.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Lower Exodus Lair",
+                    "description": "Hit the switch in the room to the SE to trigger a portal leading down",
+                    "coordinates": [2792, 3293],
+                    "icon": "icons/hidden_passage.png"
+                }
+            ],
+            "Rel Por Stones": [
+                {
+                    "id": "rel_por",
+                    "title": "Rel Por Stone",
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/rel-por.png",
+                    "description": "Teleports you to a nearby area. Say 'Vas Rel Por' to use.",
+                    "coordinates": [[2521, 766], [1979, 561], [696, 2472], [690, 2624], [3543, 1367], [3521, 1574], [3991, 844], [3854, 745]]
+                }
+            ],            
+            "Portals": [
+                {
+                    "id": 1,
+                    "title": "Portal to the ship",
+                    "description": "Interact with the model ship twice to open the portal. This teleports you to a ship lost in time.",
+                    "coordinates": [1988, 715],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Portal back to the model ship",
+                    "description": "This returns you to the model ship.",
+                    "coordinates": [665, 5564],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Portal back to Level 3",
+                    "description": "This takes you to the west side of the Ettin area.",
+                    "coordinates": [1836, 5206],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Upper Exodus Lair",
+                    "description": "This returns you to the upper area.",
+                    "coordinates": [3374, 7561],
+                    "icon": "icons/Gates_Silver.png"
+                }
+            ],
+            "Teleport Tiles": [
+                {
+                    "id": 1,
+                    "title": "Teleport Tile",
+                    "description": "Teleports you into Sewers. This is tile is not visible. Simple open the door with knock and then run straight into the cell and you will be teleported. No gems are required",
+                    "coordinates": [3474, 3320],
+                    "icon": "icons/teleport-rune.png"
+                }
+            ],
+            "Waystar": [
+                {
+                    "id": 1,
+                    "title": "Waystar",
+                    "requirements": "1 Tri Time Gem",
+                    "icon": "icons/waystar.png",
+                    "description": "Summons a moongate to Colony for a short duration. Say 'Vas Rel Por' to use.",
+                    "coordinates": [[928, 1480], [3126, 4026]]
+                }
+            ]
+         },
+         "Runes": {
+            "Knock": [
+                {
+                    "id": "knock",
+                    "title": "Knock",
+                    "container": ["Armoire", "Dead Orc", "Crate", "Crate", "Crate", "Crate", "Strongbox"],
+                    "icon": "icons/runes/timerune-knock.png",
+                    "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
+                    "coordinates": [[2868, 1052], [3394, 2755], [3705, 2817], [3086, 3816], [3070, 3825], [1131, 4033], [339, 2710]]
+                }
+            ]
+        },        
+        "Entities": {
+            "Gem Vendor": [
+                {
+                    "id": 1,
+                    "title": "Gem Vendor",
+                    "description": "Sells Time gems.",
+                    "coordinates": [[1048, 1883], [3184, 4032]],
+                    "icon": "icons/treasure.png"
+                }
+            ],
+            "Bosses": [
+                {
+                    "id": "bosses",
+                    "title": "A Living Arsenal",
+                    "description": "Special: Targeted single target.",
+                    "coordinates": [350, 2662],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Exodus Progressive Spawn",
+                    "description": "Special: Teleports and drops void bombs. You must kill the Exodus MK1-5 to spawn the boss.",
+                    "coordinates": [3009, 7333],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Anhk Room Bosses",
+                    "description": "There are many bosses here and I will add more detailed descriptions in the future.",
+                    "coordinates": [1123, 3343],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Alpha Shadow Wolf",
+                    "description": "Special: Revealer, Stealths and does a backstab",
+                    "coordinates": [3320, 2700],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Navery Nighteyes",
+                    "description": "Special: Summons spiders and does Nemesis. This is a progressive spawn: Kill the spiders until the boss spawns",
+                    "coordinates": [3496, 1691],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Pirate ship boss 1",
+                    "description": "Special: none",
+                    "coordinates": [952, 5198],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Pirate ship boss 2",
+                    "description": "Special: none",
+                    "coordinates": [906, 6014],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "The Catalyst Eye",
+                    "description": "Special: Targeted single target burst that applies a bleed",
+                    "coordinates": [1425, 592],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "The Barrier Warden",
+                    "description": "Special: Does a pontiff style bomb",
+                    "coordinates": [1876, 2700],
+                    "icon": "icons/boss.png"
+                }
+            ]           
+         },
+        "Traps":{
+            "Crystal Trap": [
+                {
+                    "id": 1,
+                    "title": "Crystal Trap",
+                    "description": "Beware. When you step deep enough in the room the doorway will fill with crystals and two powerful revealing wisps will spawn. You can rope through the crystals.",
+                    "coordinates": [[2356, 1544]],
+                    "icon": "icons/trap.png"
+                }
+            ] 
+        },
+        "Quest": {
+            "Quest Items": [
+                {
+                    "id": "port",
+                    "title": "Port",
+                    "description": "The bottle of port for the stew.",
+                    "coordinates": [2268, 1698],
+                    "icon": "icons/wooden-box.png"
+                },
+                {
+                    "id": "Tear of the Tides",
+                    "title": "Tear of the Tides",
+                    "description": "Approach the sparkling magic with an ancient coin and recite 'Fate and fortune, fire and tide, reveal the gift that you now hide'; This will spawn a miniboss that will drop the quest item.",
+                    "coordinates": [1493, 1695],
+                    "icon": "icons/water.png"
+                }
+            ]
+        }
+    }
+}

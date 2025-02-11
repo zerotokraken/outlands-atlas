@@ -1,0 +1,165 @@
+{
+    "Level 4": {
+        "Passage": {
+        "Cave": [
+            {
+                "id": 1,
+                "title": "Cave",
+                "description": "Cave entrance/exit.",
+                "coordinates": [[2966, 4417], [2109, 5375], [791, 4126], [1972, 6308]],
+                "icon": "icons/cave.png"
+            },
+            {
+                "id": 1,
+                "title": "Cave",
+                "description": "Entrance to the Molten Core.",
+                "coordinates": [[4045, 3878]],
+                "icon": "icons/cave.png"
+            },
+            {
+                "id": 1,
+                "title": "Cave",
+                "description": [["Leads to Colony"]],
+                "coordinates": [[3192, 6616]],
+                "icon": "icons/cave.png"
+            },
+            {
+                "id": 1,
+                "title": "Cave",
+                "description": [["Leads to Blood Forest"]],
+                "coordinates": [[3160, 9752]],
+                "icon": "icons/cave.png"
+            },
+            {
+                "id": 1,
+                "title": "Cave",
+                "description": [["Leads to the tunnel connecting Colony and Blood Forest"]],
+                "coordinates": [[843, 1527], [683, 3552]],
+                "icon": "icons/cave.png"
+            }
+        ],
+        "Locked Doors": [],
+        "Portals": [],
+        "Rel Por Stones": [
+            {
+                "id": "rel_por",
+                "title": "Rel Por Stone",
+                "requirements": "1 Precious Time Gem",
+                "icon": "icons/rel-por.png",
+                "description": "Teleports you to a nearby area. Say 'Vas Rel Por' to use.",
+                "coordinates": [[3333, 2509], [3511, 2604], [4368, 4036], [4540, 3899]]
+            }
+        ],
+        "Stairs": [
+            {
+                "id": 1,
+                "title": "Stairs to the Hall Of Virtue",
+                "description": "Leads down to the Hall of Virtue.",
+                "coordinates": [[1192, 1377]],
+                "icon": "icons/Stairs.png"
+            },
+            {
+                "id": 1,
+                "title": "Stairs to the Colony",
+                "description": "This leads back up to the Colony",
+                "coordinates": [4370, 6664],
+                "icon": "icons/Stairs.png"
+            }
+        ],
+        "Teleport Tiles": [
+            {
+                "id": 1,
+                "title": "Teleport to Colony Outpost",
+                "requirements": "1 Precious Time Gem",
+                "icon": "icons/teleport-rune.png",
+                "description": "Teleports you to the Colony outpost. Say 'Vas Rel Por' to use.",
+                "coordinates": [1489, 2028]
+            },
+            {
+                "id": 1,
+                "title": "Teleport to Level 1",
+                "requirements": "1 Bipartite Time Gem",
+                "icon": "icons/teleport-rune.png",
+                "description": "Teleports you to the Anhk room on Level 1. Say 'Vas Rel Por' to use.",
+                "coordinates": [1268, 2025]
+            }
+        ],
+        "Waystar": [
+            {
+                "id": 1,
+                "title": "Waystar",
+                "requirements": "1 Tri Time Gem",
+                "icon": "icons/waystar.png",
+                "description": "Summons a moongate to Colony for a short duration. Say 'Vas Rel Por' to use.",
+                "coordinates": [[2276, 5360], [5324, 3852]]
+            }
+        ]
+        },
+        "Entities": {
+        "NPCs": [
+            {
+                "id": 1,
+                "title": "Gem Vendor",
+                "description": "Sells Time gems.",
+                "coordinates": [[2574, 1550]],
+                "icon": "icons/treasure.png"
+            }
+        ],
+        "Bosses": [
+            {
+                "id": "bosses",
+                "title": "Maw of the Abyss",
+                "description": "Special: Continous AOE spikes",
+                "coordinates": [4024, 2640],
+                "icon": "icons/boss.png"
+            },
+            {
+                "id": "bosses",
+                "title": "Navery Nighteyes",
+                "description": "Special: Summons spiders and does Nemesis. This is a progressive spawn: Kill the spiders until the boss spawns",
+                "coordinates": [3464, 8192],
+                "icon": "icons/boss.png"
+            },
+            {
+                "id": "bosses",
+                "title": "Meat Thing",
+                "description": "Special: Throws a disease cloud",
+                "coordinates": [2145, 6279],
+                "icon": "icons/boss.png"
+            }
+        ]           
+        },
+        "Runes": {
+            "Knock": [
+                {
+                    "id": "knock",
+                    "title": "Knock",
+                    "container": ["Crate (50/50)", "Barrel"],
+                    "icon": "icons/runes/timerune-knock.png",
+                    "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
+                    "coordinates": [[1992, 2156], [3872, 1304]]
+                }
+            ]
+        },
+        "Misc": {
+            "Community Chests": [
+                {
+                    "id": 1,
+                    "title": "Community Chests",
+                    "description": "These chests are free for anyone to store items in. Take what you need; leave what you can..",
+                    "coordinates": [[2159, 1551], [2107, 1493]],
+                    "icon": "icons/gray_chest.png"
+                }
+            ],
+            "Voidball": [
+                {
+                    "id": 1,
+                    "title": "Voidball",
+                    "description": "A field to play Voidball on. Traps are optional. There is a friendly Exothrugg nearby...",
+                    "coordinates": [1268, 417],
+                    "icon": "icons/voidball.png"
+                }
+            ]
+        }
+    }
+}

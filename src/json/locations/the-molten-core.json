@@ -1,0 +1,33 @@
+{
+    "the molten core": {
+        "Passage": {
+            "Cave": [
+                {
+                    "id": 1,
+                    "title": "Cave",
+                    "description": "Exit to the Blood Forest.",
+                    "coordinates": [[1789, 1682]],
+                    "icon": "icons/cave.png"
+                }
+            ],
+            "Locked Doors": [],
+            "Portals": [],
+            "Rel Por Stones": [],
+            "Stairs": [],
+            "Teleport Tiles": [],
+            "Waystar": [
+            ]
+         },
+         "Quest": {
+            "Quest Items": [
+                {
+                    "id": "Emberheart",
+                    "title": "Emberheart",
+                    "description": "Approach the sparkling magic with an ancient coin and recite 'Fate and fortune, fire and tide, reveal the gift that you now hide'; This will spawn a miniboss that will drop the quest item.",
+                    "coordinates": [2193, 1401],
+                    "icon": "icons/dragon.png"
+                }
+            ]
+        }
+    }
+}

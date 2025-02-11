@@ -1,0 +1,43 @@
+{
+    "stonegate": {
+        "Passage": {
+            "Portals": [
+                {
+                    "id": 1,
+                    "title": "Entrance from Level 1",
+                    "description": "This is one of five locations you can spawn into when entering the area.",
+                    "coordinates": [[528, 2281], [1178, 4320], [2089, 2694], [2679, 3838], [1530, 4423]],
+                    "icon": "icons/portal.png"
+                }
+            ],
+            "Locked Doors": [],
+            "Rel Por Stones": [],
+            "Stairs": [
+                {
+                "id": 1,
+                "title": "Stairs to the Excavation Site",
+                "description": "This leads to the Excavation Site",
+                "coordinates": [1567, 3819],
+                "icon": "icons/Stairs.png"
+            },
+            {
+                "id": 1,
+                "title": "Stairs to Stonegate",
+                "description": "This leads to the middle of Stonegate",
+                "coordinates": [2677, 1379],
+                "icon": "icons/Stairs.png"
+            },
+            {
+                "id": 1,
+                "title": "Stairs to the Upper Reaches",
+                "description": "This leads to the middle of the Upper Reaches",
+                "coordinates": [2597, 367],
+                "icon": "icons/Stairs.png"
+            }
+        ],
+            "Teleport Tiles": [],
+            "Waystar": [
+            ]
+         }
+    }
+}

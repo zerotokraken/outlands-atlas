@@ -1,0 +1,57 @@
+{
+    "Level 2 Upper":  {
+        "Passage": {
+            "Stairs": [
+                {
+                    "id": 1,
+                    "title": "Stairs to Level 3",
+                    "description": "This leads to the north part of level 3.",
+                    "coordinates": [1376, 903],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 2,
+                    "title": "Stairs to Level 1",
+                    "description": "This leads to the south east part of level 1.",
+                    "coordinates": [1948, 1088],
+                    "icon": "icons/Stairs.png"
+                }
+            ],
+            "Portals": [],
+            "Teleport Tiles": [],
+            "Waystar": [
+                {
+                    "id": 1,
+                    "title": "Waystar",
+                    "requirements": "1 Tri Time Gem",
+                    "icon": "icons/waystar.png",
+                    "description": "Summons a moongate to Colony for a short duration. Say 'Vas Rel Por' to use.",
+                    "coordinates": [1259, 2813]
+                }
+            ]
+         },
+         "Runes": {
+             "Knock": [
+                 {
+                     "id": "knock",
+                     "title": "Knock",
+                     "container": ["Strong Box", "Metal Chest", "Wooden Box"],
+                     "icon": "icons/runes/timerune-knock.png",
+                     "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
+                     "coordinates": [[1346, 1222], [1482, 1267], [1556, 2843]]
+                 }
+             ]
+         },
+         "Entities": {
+            "Bosses": [
+                {
+                    "id": "bosses",
+                    "title": "Tox",
+                    "description": "Special: Unknown.",
+                    "coordinates": [1426, 1248],
+                    "icon": "icons/boss.png"
+                }
+            ]           
+         }
+     }
+}

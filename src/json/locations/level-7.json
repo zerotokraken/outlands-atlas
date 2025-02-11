@@ -1,0 +1,30 @@
+{
+    "Level 7": {
+        "Passage": {
+            "Locked Doors": [],
+            "Portals": [],
+            "Rel Por Stones": [
+                {
+                    "id": "rel_por",
+                    "title": "Rel Por Stone",
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/rel-por.png",
+                    "description": "Teleports you to a nearby area. Say 'Vas Rel Por' to use.",
+                    "coordinates": [[467, 834], [461, 1100], [2642, 1994], [2834, 2028], [3114, 2198], [3698, 2046]]
+                }
+            ],
+            "Stairs": [],
+            "Teleport Tiles": [],
+            "Waystar": [
+            ]
+         },
+         "NPCs": {
+            "Gem Vendor": [
+            ]
+        },
+        "Runes": {
+            "Knock": [
+            ]
+        }
+    }
+}
