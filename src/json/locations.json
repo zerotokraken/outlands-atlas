@@ -105,6 +105,13 @@
                     "description": "Special: Places explosive spike traps.",
                     "coordinates": [5892, 3756],
                     "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "River Tribe Bozz",
+                    "description": "Special: Shoots projectile flames.",
+                    "coordinates": [761, 2214],
+                    "icon": "icons/boss.png"
                 }
             ]           
          },
