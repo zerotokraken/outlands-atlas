@@ -75,6 +75,15 @@
             ]
         },
         "Entities": {
+            "NPCs": [
+                {
+                    "id": 1,
+                    "title": "Gem Vendor",
+                    "description": "Sells Precious Time gems only.",
+                    "coordinates": [787, 2571],
+                    "icon": "icons/treasure.png"
+                }
+            ],
             "Bosses": [
                 {
                     "id": "bosses",
@@ -92,7 +101,7 @@
                 },
                 {
                     "id": "bosses",
-                    "title": "King Muk",
+                    "title": "King Muc",
                     "description": "Special: Unknown",
                     "coordinates": [2036, 1532],
                     "icon": "icons/boss.png"

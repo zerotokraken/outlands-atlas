@@ -15,7 +15,7 @@
                     "id": 1,
                     "title": "Locked Door",
                     "description": "Requires a knock rune.",
-                    "coordinates": [3466, 3342],
+                    "coordinates": [[3466, 3342], [3808, 3815], [3122, 3786], [3765, 2801], [3845, 2799], [3885, 2828], [1917, 1093], [1782, 775], [2283, 1268], [624, 3336]],
                     "icon": "icons/lock.png"
                 }
             ],
@@ -162,16 +162,9 @@
                 },
                 {
                     "id": "bosses",
-                    "title": "Pirate ship boss 1",
-                    "description": "Special: none",
+                    "title": "Old Friend Of Captain Johne",
+                    "description": "Special: Casts spells. There are a few of these mobs throughout the ship",
                     "coordinates": [952, 5198],
-                    "icon": "icons/boss.png"
-                },
-                {
-                    "id": "bosses",
-                    "title": "Pirate ship boss 2",
-                    "description": "Special: none",
-                    "coordinates": [906, 6014],
                     "icon": "icons/boss.png"
                 },
                 {
@@ -211,13 +204,20 @@
                 }
             ]           
          },
-        "Traps":{
-            "Crystal Trap": [
+        "Misc":{
+            "Traps": [
                 {
                     "id": 1,
                     "title": "Crystal Trap",
                     "description": "Beware. When you step deep enough in the room the doorway will fill with crystals and two powerful revealing wisps will spawn. You can rope through the crystals.",
                     "coordinates": [[2356, 1544]],
+                    "icon": "icons/trap.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Treasure Room Trap",
+                    "description": "There is a Greater Smoke Dragon inside!",
+                    "coordinates": [[3815, 3935]],
                     "icon": "icons/trap.png"
                 }
             ] 

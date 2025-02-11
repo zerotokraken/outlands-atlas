@@ -24,8 +24,8 @@
                 {
                     "id": 1,
                     "title": "Stairs to Level 6",
-                    "description": "This leads back to Level 6",
-                    "coordinates": [4201, 4119],
+                    "description": "This leads to Level 6",
+                    "coordinates": [4291, 4115],
                     "icon": "icons/Stairs.png"
                 },
                 {
@@ -73,14 +73,30 @@
                 }
             ]
          },
-         "NPCs": {
-            "Gem Vendor": [
+         "Entities": {
+            "NPCs": [
                 {
                     "id": 1,
                     "title": "Gem Vendor",
                     "description": "Sells Time gems.",
                     "coordinates": [[3343, 744]],
                     "icon": "icons/treasure.png"
+                }
+            ],
+            "Bosses": [
+                {
+                    "id": 1,
+                    "title": "Abyssal Executioner",
+                    "description": "Special: Does multiple dashes that does heavy damage. It also applies bleed and poison. He will in addition spawn waves of mobs.",
+                    "coordinates": [[3900, 4150]],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "The Barrier Warden",
+                    "description": "Special: Does a pontiff style bomb",
+                    "coordinates": [4184, 4141],
+                    "icon": "icons/boss.png"
                 }
             ]
         },
