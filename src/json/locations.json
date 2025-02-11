@@ -320,7 +320,7 @@
                     "id": 1,
                     "title": "The Greed Room",
                     "description": "Speak the words in the book to enter. Great wealth is in your future...",
-                    "coordinates": [2219, 5301],
+                    "coordinates": [1954, 5314],
                     "icon": "icons/hidden_passage.png"
                 },
                 {
@@ -353,14 +353,14 @@
                     "id": 1,
                     "title": "Portal back to the model ship",
                     "description": "This returns you to the model ship.",
-                    "coordinates": [914, 5568],
+                    "coordinates": [665, 5564],
                     "icon": "icons/Gates_Silver.png"
                 },
                 {
                     "id": 1,
                     "title": "Portal back to Level 3",
                     "description": "This takes you to the west side of the Ettin area.",
-                    "coordinates": [2110, 5199],
+                    "coordinates": [1836, 5206],
                     "icon": "icons/Gates_Silver.png"
                 },
                 {
@@ -464,14 +464,14 @@
                     "id": "bosses",
                     "title": "Pirate ship boss 1",
                     "description": "Special: none",
-                    "coordinates": [1242, 5197],
+                    "coordinates": [952, 5198],
                     "icon": "icons/boss.png"
                 },
                 {
                     "id": "bosses",
                     "title": "Pirate ship boss 2",
                     "description": "Special: none",
-                    "coordinates": [1157, 6014],
+                    "coordinates": [906, 6014],
                     "icon": "icons/boss.png"
                 },
                 {
