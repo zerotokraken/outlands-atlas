@@ -63,17 +63,6 @@
                 }
             ]
         },
-        "NPCs": {
-            "Gem Vendor": [
-                {
-                    "id": 1,
-                    "title": "Gem Vendor",
-                    "description": "Sells Precious Time gems only.",
-                    "coordinates": [787, 2571],
-                    "icon": "icons/treasure.png"
-                }
-            ]
-        },
         "Entities": {
             "NPCs": [
                 {
@@ -104,6 +93,13 @@
                     "title": "King Muc",
                     "description": "Special: Unknown",
                     "coordinates": [2036, 1532],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Headless Fred & His Head",
+                    "description": "Special: Unknown",
+                    "coordinates": [2714, 3063],
                     "icon": "icons/boss.png"
                 }
             ]

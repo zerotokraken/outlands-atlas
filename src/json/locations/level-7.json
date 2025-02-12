@@ -1,8 +1,31 @@
 {
     "Level 7": {
         "Passage": {
-            "Locked Doors": [],
-            "Portals": [],
+            "Locked Doors": [
+                {
+                    "id": 1,
+                    "title": "Locked Door",
+                    "description": "Requires a knock rune.",
+                    "coordinates": [[3608, 1718], [3631, 2091]],
+                    "icon": "icons/lock.png"
+                }
+            ],
+            "Portals": [
+                {
+                    "id": 1,
+                    "title": "Portal to Cursed Prev",
+                    "description": "Leads to Level 5 on the West Side near the NPCs",
+                    "coordinates": [2847, 965],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Portal",
+                    "description": "???",
+                    "coordinates": [[3760, 1966], [3850, 2049]],
+                    "icon": "icons/Gates_Silver.png"
+                }
+            ],
             "Rel Por Stones": [
                 {
                     "id": "rel_por",
@@ -13,14 +36,31 @@
                     "coordinates": [[467, 834], [461, 1100], [2642, 1994], [2834, 2028], [3114, 2198], [3698, 2046]]
                 }
             ],
-            "Stairs": [],
+            "Stairs": [
+                {
+                    "id": 1,
+                    "title": "Stairs to the Level 6",
+                    "description": "This leads back to Level 6.",
+                    "coordinates": [4033, 885],
+                    "icon": "icons/Stairs.png"
+                }
+            ],
             "Teleport Tiles": [],
             "Waystar": [
             ]
          },
-         "NPCs": {
+         "Entities": {
             "Gem Vendor": [
-            ]
+            ],
+            "Bosses": [
+                {
+                    "id": "bosses",
+                    "title": "The Sovereign",
+                    "description": "Special: Heavy single target burst",
+                    "coordinates": [4281, 1658],
+                    "icon": "icons/boss.png"
+                }
+            ]  
         },
         "Runes": {
             "Knock": [

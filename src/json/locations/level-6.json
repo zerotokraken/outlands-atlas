@@ -8,6 +8,13 @@
                     "description": "This leads back to Level 5.",
                     "coordinates": [107, 1048],
                     "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to the Level 7",
+                    "description": "This leads to Level 7.",
+                    "coordinates": [973, 3038],
+                    "icon": "icons/Stairs.png"
                 }
             ],
             "Breakable Wall": [
@@ -61,6 +68,13 @@
                     "description": "This is where you appear if you go through the Chronos Gate.",
                     "coordinates": [2263, 3926],
                     "icon": "icons/portal.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Portal to 6.5",
+                    "description": "This goes to and from the second half of level 6.",
+                    "coordinates": [[3304, 888], [3401, 1593], [379, 2710], [385, 3315]],
+                    "icon": "icons/hidden_passage.png"
                 }
             ],
             "Teleport Tiles": [
@@ -90,7 +104,7 @@
                 },
                 {
                     "id": 1,
-                    "title": "Waystar Quest",
+                    "title": "Graham the legendary tinker",
                     "description": "The NPC here will craft a Waystar if you bring him the following: Exodus Chains, A Broken Waystar & 75000 Colonial Marks",
                     "coordinates": [-10, 2586],
                     "icon": "icons/exclamation-mark.png"
