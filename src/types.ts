@@ -44,6 +44,9 @@ const AVAILABLE_ICONS = {
     WATER: { path: "icons/water.png", scale: 150},
     DRAGON: { path: "icons/dragon.png", scale: 150},
     BOSS: { path: "icons/boss.png", scale: 200},
+    SHACKLES: { path: "icons/shackles.png", scale: 200},
+    EXCLAMATION_MARK: { path: "icons/exclamation-mark.png", scale: 200},
+    WALL: { path: "icons/brick-wall.png", scale: 150},
     // Time runes
     RUNE_KNOCK: { path: "icons/runes/timerune-knock.png", scale: 100 },
     RUNE_MEND: { path: "icons/runes/timerune-mendtime.png", scale: 100 },

@@ -1,4 +1,122 @@
 {
     "Level 6": {
+        "Passage": {
+            "Stairs": [
+                {
+                    "id": 1,
+                    "title": "Stairs to the Level 5",
+                    "description": "This leads back to Level 5.",
+                    "coordinates": [107, 1048],
+                    "icon": "icons/Stairs.png"
+                }
+            ],
+            "Breakable Wall": [
+                {
+                    "id": 1,
+                    "title": "Breakable Walls",
+                    "description": "Left click to break the wall.",
+                    "coordinates": [300, 1037],
+                    "icon": "icons/brick-wall.png"
+                }
+            ],
+            "Locked Doors": [
+            ],
+            "Secret Passageways": [
+                {
+                    "id": 1,
+                    "title": "Chronos Portal",
+                    "description": "Say 'Chronos' and a portal will appear. This leads to a secret floor.",
+                    "coordinates": [2045, 108],
+                    "icon": "icons/hidden_passage.png"
+                }
+            ],
+            "Rel Por Stones": [
+                {
+                    "id": "rel_por",
+                    "title": "Rel Por Stone",
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/rel-por.png",
+                    "description": "Teleports you to a nearby area. Say 'Vas Rel Por' to use.",
+                    "coordinates": [[3042, 392], [32, 2686]]
+                }
+            ],            
+            "Portals": [
+                {
+                    "id": 1,
+                    "title": "Portal to Mars",
+                    "description": "Leads to and from Mars. The mobs drop the Martian Rock required for the Ward",
+                    "coordinates": [[2036, 3996], [3016, 3088]],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Portal back to Chronos",
+                    "description": "This takes you back to the Chronos platform.",
+                    "coordinates": [1842, 2852],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Exit from Chronos",
+                    "description": "This is where you appear if you go through the Chronos Gate.",
+                    "coordinates": [2263, 3926],
+                    "icon": "icons/portal.png"
+                }
+            ],
+            "Teleport Tiles": [
+            ],
+            "Waystar": [
+                {
+                    "id": 1,
+                    "title": "Waystar",
+                    "requirements": "1 Tri Time Gem",
+                    "icon": "icons/waystar.png",
+                    "description": "Summons a moongate to Colony for a short duration. Say 'Vas Rel Por' to use.",
+                    "coordinates": [[1794, 1241]]
+                }
+            ]
+         },
+         "Runes": {
+            "Knock": []
+        },        
+        "Entities": {
+            "NPCs": [
+                {
+                    "id": 1,
+                    "title": "Gem Vendor",
+                    "description": "Sells Time gems.",
+                    "coordinates": [19, 2814],
+                    "icon": "icons/treasure.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Waystar Quest",
+                    "description": "The NPC here will craft a Waystar if you bring him the following: Exodus Chains, A Broken Waystar & 75000 Colonial Marks",
+                    "coordinates": [-10, 2586],
+                    "icon": "icons/exclamation-mark.png"
+                }
+            ],
+            "Bosses": [
+                {
+                    "id": "bosses",
+                    "title": "Damsel",
+                    "description": "Special: ",
+                    "coordinates": [2156, 3000],
+                    "icon": "icons/boss.png"
+                }
+            ]           
+         },
+        "Misc":{
+            "Traps": [],
+            "Quest Items": [
+                {
+                    "id": "shackles",
+                    "title": "Shackles",
+                    "description": "Required item to create a Ward.",
+                    "coordinates": [603, 371],
+                    "icon": "icons/shackles.png"
+                }
+            ]
+        }
     }
 }
