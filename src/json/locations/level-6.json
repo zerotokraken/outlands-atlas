@@ -72,8 +72,15 @@
                 {
                     "id": 1,
                     "title": "Portal to 6.5",
-                    "description": "This goes to and from the second half of level 6.",
-                    "coordinates": [[3304, 888], [3401, 1593], [379, 2710], [385, 3315]],
+                    "description": "This goes to the second part of level 6.",
+                    "coordinates": [[3304, 888], [3401, 1593]],
+                    "icon": "icons/hidden_passage.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Portal to 6",
+                    "description": "This goes back to level 6.",
+                    "coordinates": [[379, 2710], [385, 3315]],
                     "icon": "icons/hidden_passage.png"
                 }
             ],

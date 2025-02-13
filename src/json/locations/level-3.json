@@ -8,6 +8,55 @@
                     "description": "This leads to the west part of the Upper Reaches.",
                     "coordinates": [4788, 2490],
                     "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to the Lower Reaches",
+                    "description": "This leads to the south-east part of the Lower Reaches.",
+                    "coordinates": [[2940, 508], [3831, 1107]],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Tomb of the Avatar",
+                    "description": "This leads to the Tomb of the Avatar.",
+                    "coordinates": [626, 4036],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Passage to Level 3",
+                    "description": "This leads back to Level 3.",
+                    "coordinates": [3124, 5400],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Marble Steps",
+                    "description": "This leads to the Marble Steps.",
+                    "coordinates": [[1238, 4060], [1120, 3525], [1352, 7161], [1372, 7501]],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Marble Boss Room",
+                    "description": "This leads to the Marble Boss Room.",
+                    "coordinates": [[2149, 8170], [2139, 8520]],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Anhk Room",
+                    "description": "This leads to the Anhk Room.",
+                    "coordinates": [1261, 8263],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Back to Level 3",
+                    "description": "This leads back to the south-east part of Level 3.",
+                    "coordinates": [1251, 8729],
+                    "icon": "icons/Stairs.png"
                 }
             ],
             "Locked Doors": [
@@ -15,7 +64,7 @@
                     "id": 1,
                     "title": "Locked Door",
                     "description": "Requires a knock rune.",
-                    "coordinates": [[3466, 3342], [3808, 3815], [3122, 3786], [3765, 2801], [3845, 2799], [3885, 2828], [1917, 1093], [1782, 775], [2283, 1268], [624, 3336]],
+                    "coordinates": [[3466, 3342], [3808, 3815], [3122, 3786], [3765, 2801], [3845, 2799], [3885, 2828], [1917, 1093], [1782, 775], [2283, 1268], [624, 3336], [885, 675]],
                     "icon": "icons/lock.png"
                 }
             ],
@@ -49,7 +98,7 @@
                     "requirements": "1 Precious Time Gem",
                     "icon": "icons/rel-por.png",
                     "description": "Teleports you to a nearby area. Say 'Vas Rel Por' to use.",
-                    "coordinates": [[2521, 766], [1979, 561], [696, 2472], [690, 2624], [3543, 1367], [3521, 1574], [3991, 844], [3854, 745]]
+                    "coordinates": [[2521, 766], [1979, 561], [696, 2472], [690, 2624], [3543, 1367], [3521, 1574], [3991, 844], [3854, 745], [1946, 3902], [1818, 3876]]
                 }
             ],            
             "Portals": [
@@ -80,6 +129,55 @@
                     "description": "This returns you to the upper area.",
                     "coordinates": [2990, 7578],
                     "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Living Weapons Area",
+                    "description": "This takes you to a room with Living Weapons and another portal to go deeper.",
+                    "coordinates": [4027, 2609],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Return to Level 3",
+                    "description": "This takes you back to the top of Level 3",
+                    "coordinates": [2546, 1068],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Anhk Portal",
+                    "description": "This takes you near the Anhk room.",
+                    "coordinates": [2178, 596],
+                    "icon": "icons/Gates_Silver.png"
+                },                
+                {
+                    "id": 1,
+                    "title": "Return to Living Weapons area",
+                    "description": "This takes you back to where the Living Weapons are.",
+                    "coordinates": [1401, 2946],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Sea Serpent Grotto",
+                    "description": "This takes you to the Sea Serpent Grotto.",
+                    "coordinates": [923, 4129],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "East of Anhk Room",
+                    "description": "This takes you back to east side of Level 3.",
+                    "coordinates": [993, 617],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Gold Room",
+                    "description": "This is where you appear if you speak the magic words in the book. Grab the gold!",
+                    "coordinates": [2503, 5166],
+                    "icon": "icons/portal.png"
                 }
             ],
             "Teleport Tiles": [
@@ -219,6 +317,15 @@
                     "description": "There is a Greater Smoke Dragon inside!",
                     "coordinates": [[3815, 3935]],
                     "icon": "icons/trap.png"
+                }
+            ],
+            "Anhks": [
+                {
+                    "id": 1,
+                    "title": "Anhk",
+                    "description": "This will bring you back to life. Hide immediatly upon use.",
+                    "coordinates": [3889, 2284],
+                    "icon": "icons/ankh.png"
                 }
             ] 
         },

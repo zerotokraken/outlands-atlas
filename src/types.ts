@@ -21,7 +21,7 @@ interface IconConfig {
 // Available icons with their configurations
 const AVAILABLE_ICONS = {
     // Default icons
-    STAIRS: { path: "icons/Stairs.png", scale: 300 },
+    STAIRS: { path: "icons/Stairs.png", scale: 250 },
     SKULL: { path: "icons/skull2.png", scale: 100 },
     STAR: { path: "icons/star.png", scale: 100 },
     GATE_RED: { path: "icons/Gates_Red.png", scale: 100 },
@@ -47,6 +47,7 @@ const AVAILABLE_ICONS = {
     SHACKLES: { path: "icons/shackles.png", scale: 200},
     EXCLAMATION_MARK: { path: "icons/exclamation-mark.png", scale: 200},
     WALL: { path: "icons/brick-wall.png", scale: 150},
+    ANKH: { path: "icons/ankh.png", scale: 200},
     // Time runes
     RUNE_KNOCK: { path: "icons/runes/timerune-knock.png", scale: 100 },
     RUNE_MEND: { path: "icons/runes/timerune-mendtime.png", scale: 100 },
