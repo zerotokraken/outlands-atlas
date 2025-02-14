@@ -85,16 +85,16 @@
                 }
             ],
             "Teleport Tiles": [
-            ],
-            "Waystar": [
                 {
                     "id": 1,
-                    "title": "Waystar",
-                    "requirements": "1 Tri Time Gem",
-                    "icon": "icons/waystar.png",
-                    "description": "Summons a moongate to Colony for a short duration. Say 'Vas Rel Por' to use.",
+                    "title": "Teleport Tile",
+                    "requirements": "1 Tripartite Time Gem",
+                    "icon": "icons/teleport-rune.png",
+                    "description": "Teleports you directly to Colony. Say 'Vas Rel Por' to use.",
                     "coordinates": [[1794, 1241]]
                 }
+            ],
+            "Waystar": [
             ]
          },
          "Runes": {
@@ -121,8 +121,22 @@
                 {
                     "id": "bosses",
                     "title": "Damsel",
+                    "description": "Special: Sends out some projectiles wildly and casts spells. Summons additional monsters.",
+                    "coordinates": [2187, 3282],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "The One Who Wanders",
                     "description": "Special: ",
-                    "coordinates": [2156, 3000],
+                    "coordinates": [1154, 3016],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "The One Who Left Behind",
+                    "description": "Special: ",
+                    "coordinates": [2913, 1012],
                     "icon": "icons/boss.png"
                 }
             ]           
