@@ -3,6 +3,7 @@ import { Location, LocationsData, CategoryData, AVAILABLE_ICONS, Route, RoutesDa
 import { TileService } from './services/tileService.js';
 import { InfoMenu } from './components/InfoMenu.js';
 import { LanguageInfoMenu } from './components/LanguageInfoMenu.js';
+import { RuneAssignmentsMenu } from './components/RuneAssignmentsMenu.js';
 
 interface TileConfig {
     startDir: number;
@@ -41,6 +42,7 @@ export class MapManager {
     private tileService: TileService;
     private infoMenu: InfoMenu;
     private languageInfoMenu: LanguageInfoMenu;
+    private runeAssignmentsMenu: RuneAssignmentsMenu;
     private routes: RoutesData = {};
     private locationsData: LocationsData = {};
 
@@ -48,6 +50,7 @@ export class MapManager {
         this.tileService = new TileService();
         this.infoMenu = new InfoMenu();
         this.languageInfoMenu = new LanguageInfoMenu();
+        this.runeAssignmentsMenu = new RuneAssignmentsMenu();
         this.loadRoutes();
     }
 
@@ -620,6 +623,7 @@ export class MapManager {
         mapContainerElement.appendChild(mapContainer);
         this.infoMenu.mount(mapContainerElement);
         this.languageInfoMenu.mount(mapContainerElement);
+        this.runeAssignmentsMenu.mount(mapContainerElement);
 
         onProgress?.(40, 'Loading routes...');
         await this.loadRoutes();
