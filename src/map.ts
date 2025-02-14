@@ -4,6 +4,7 @@ import { TileService } from './services/tileService.js';
 import { InfoMenu } from './components/InfoMenu.js';
 import { LanguageInfoMenu } from './components/LanguageInfoMenu.js';
 import { RuneAssignmentsMenu } from './components/RuneAssignmentsMenu.js';
+import { SpoilerWarning } from './components/SpoilerWarning.js';
 
 interface TileConfig {
     startDir: number;
@@ -713,6 +714,8 @@ export class MapManager {
         onProgress?.(80, 'Loading map layer...');
         await this.loadMapLayer("Level 1");
         this.initializeSidebar(); // Make sure sidebar is initialized after data is loaded
+        onProgress?.(95, 'Checking first visit...');
+        SpoilerWarning.show();
         onProgress?.(100, 'Ready!');
 
         const mapLinks = document.querySelectorAll('.map-link');
