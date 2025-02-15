@@ -1,8 +1,15 @@
 import { IconSizes } from './types/InfoMenuTypes.js';
 
+type Role = 'Tank' | 'Melee DPS' | 'Ranged DPS' | 'Support' | 'Bard';
+
 interface RuneAssignment {
     playerName: string;
+    role: Role;
     runes: [string, string, string];
+}
+
+interface RuneCount {
+    [key: string]: number;
 }
 
 export class RuneAssignmentsMenu {
@@ -10,6 +17,7 @@ export class RuneAssignmentsMenu {
     private menu: HTMLElement | null = null;
     private escapeListener: ((e: KeyboardEvent) => void) | null = null;
     private assignments: RuneAssignment[] = [];
+    private statsRow: HTMLElement | null = null;
 
     private static readonly ICON_SIZES: IconSizes = {
         small: '36px',
@@ -90,6 +98,42 @@ export class RuneAssignmentsMenu {
             console.error('Failed to load runes:', error);
             return [];
         }
+    }
+
+    private getAssignedRuneCounts(): RuneCount {
+        const counts: RuneCount = {};
+        this.assignments.forEach(assignment => {
+            assignment.runes.forEach(rune => {
+                if (rune) {
+                    counts[rune] = (counts[rune] || 0) + 1;
+                }
+            });
+        });
+        return counts;
+    }
+
+    private async updateRuneStats() {
+        if (!this.statsRow) return;
+
+        const allRunes = await this.loadRuneOptions();
+        const assignedRunes = this.getAssignedRuneCounts();
+        const unassignedRunes = allRunes.filter(rune => !assignedRunes[rune]);
+        const assignedRunesList = Object.entries(assignedRunes)
+            .map(([rune, count]) => `${rune}(${count})`)
+            .join(', ');
+
+        this.statsRow.innerHTML = `
+            <td colspan="6" style="padding: 10px; background: #1a1a1a;">
+                <div style="margin-bottom: 10px;">
+                    <strong style="color: #90EE90;">Unassigned Runes:</strong> 
+                    <span style="color: #ccc;">${unassignedRunes.join(', ') || 'None'}</span>
+                </div>
+                <div>
+                    <strong style="color: #90EE90;">Assigned Runes:</strong> 
+                    <span style="color: #ccc;">${assignedRunesList || 'None'}</span>
+                </div>
+            </td>
+        `;
     }
 
     private async createMenu() {
@@ -173,15 +217,23 @@ export class RuneAssignmentsMenu {
         `;
 
         const thead = document.createElement('thead');
-        thead.innerHTML = `
-            <tr>
-                <th style="text-align: left; padding: 10px; border-bottom: 1px solid #90EE90;">Player Name</th>
-                <th style="text-align: left; padding: 10px; border-bottom: 1px solid #90EE90;">Rune 1</th>
-                <th style="text-align: left; padding: 10px; border-bottom: 1px solid #90EE90;">Rune 2</th>
-                <th style="text-align: left; padding: 10px; border-bottom: 1px solid #90EE90;">Rune 3</th>
-                <th style="text-align: center; padding: 10px; border-bottom: 1px solid #90EE90;">Actions</th>
-            </tr>
+
+        // Create stats row
+        this.statsRow = document.createElement('tr');
+        thead.appendChild(this.statsRow);
+        await this.updateRuneStats();
+
+        // Create header row
+        const headerRow = document.createElement('tr');
+        headerRow.innerHTML = `
+            <th style="text-align: left; padding: 10px; border-bottom: 1px solid #90EE90;">Player Name</th>
+            <th style="text-align: left; padding: 10px; border-bottom: 1px solid #90EE90;">Role</th>
+            <th style="text-align: left; padding: 10px; border-bottom: 1px solid #90EE90;">Rune 1</th>
+            <th style="text-align: left; padding: 10px; border-bottom: 1px solid #90EE90;">Rune 2</th>
+            <th style="text-align: left; padding: 10px; border-bottom: 1px solid #90EE90;">Rune 3</th>
+            <th style="text-align: center; padding: 10px; border-bottom: 1px solid #90EE90;">Actions</th>
         `;
+        thead.appendChild(headerRow);
         table.appendChild(thead);
 
         const tbody = document.createElement('tbody');
@@ -205,7 +257,10 @@ export class RuneAssignmentsMenu {
             font-size: 0.9em;
             transition: all 0.2s ease;
         `;
-        addButton.addEventListener('click', () => this.addNewAssignment());
+        addButton.addEventListener('click', async () => {
+            await this.addNewAssignment();
+            await this.updateRuneStats();
+        });
         addButton.addEventListener('mouseover', () => {
             addButton.style.backgroundColor = '#A8F9A8';
         });
@@ -244,6 +299,28 @@ export class RuneAssignmentsMenu {
         });
         nameCell.appendChild(nameInput);
 
+        // Role selection cell
+        const roleCell = document.createElement('td');
+        roleCell.style.padding = '10px';
+        const roleSelect = document.createElement('select');
+        roleSelect.style.cssText = `
+            background: #333;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            width: 150px;
+        `;
+        const roles: Role[] = ['Tank', 'Melee DPS', 'Ranged DPS', 'Support', 'Bard'];
+        roleSelect.innerHTML = '<option value="">Select Role</option>' +
+            roles.map(role => `<option value="${role}" ${role === assignment.role ? 'selected' : ''}>${role}</option>`).join('');
+        roleSelect.value = assignment.role || '';
+        roleSelect.addEventListener('change', () => {
+            assignment.role = roleSelect.value as Role;
+            this.saveAssignments();
+        });
+        roleCell.appendChild(roleSelect);
+
         // Rune selection cells
         const runes = await this.loadRuneOptions();
         const runeSelects = assignment.runes.map((rune, runeIndex) => {
@@ -259,11 +336,14 @@ export class RuneAssignmentsMenu {
                 width: 150px;
             `;
             select.innerHTML = '<option value="">Select Rune</option>' +
-                runes.map(runeName => `<option value="${runeName}" ${runeName === rune ? 'selected' : ''}>${runeName}</option>`).join('');
+                runes.map(runeName => 
+                    `<option value="${runeName}" ${runeName === rune ? 'selected' : ''}>${runeName}</option>`
+                ).join('');
             select.value = rune;
-            select.addEventListener('change', () => {
+            select.addEventListener('change', async () => {
                 assignment.runes[runeIndex] = select.value as string;
                 this.saveAssignments();
+                await this.updateRuneStats();
             });
             cell.appendChild(select);
             return cell;
@@ -286,16 +366,18 @@ export class RuneAssignmentsMenu {
             padding: 4px 8px;
             transition: all 0.2s ease;
         `;
-        deleteButton.addEventListener('click', () => {
+        deleteButton.addEventListener('click', async () => {
             this.assignments.splice(index, 1);
             this.saveAssignments();
             tr.remove();
+            await this.updateRuneStats();
         });
         deleteButton.addEventListener('mouseover', () => deleteButton.style.color = '#ff4444');
         deleteButton.addEventListener('mouseout', () => deleteButton.style.color = '#999');
         actionsCell.appendChild(deleteButton);
 
         tr.appendChild(nameCell);
+        tr.appendChild(roleCell);
         runeSelects.forEach(cell => tr.appendChild(cell));
         tr.appendChild(actionsCell);
 
@@ -305,6 +387,7 @@ export class RuneAssignmentsMenu {
     private async addNewAssignment() {
         const newAssignment: RuneAssignment = {
             playerName: '',
+            role: '' as Role,
             runes: ['', '', '']
         };
         this.assignments.push(newAssignment);
