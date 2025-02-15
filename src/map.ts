@@ -508,22 +508,39 @@ export class MapManager {
             `;
         };
 
-        // Handle all categories dynamically
-        Object.entries(levelData).forEach(([mainCategory, categoryData]) => {
-            if (!categoryData) return;
+        // Sort and handle all categories dynamically
+        const sortedMainCategories = Object.entries(levelData)
+            .filter(([_, categoryData]) => categoryData !== null)
+            .sort(([a], [b]) => a.localeCompare(b));
+
+        for (const [mainCategory, categoryData] of sortedMainCategories) {
+            if (!categoryData) continue;
+            
+            // Sort subcategories and their locations
+            const sortedSubCategories = Object.entries(categoryData as CategoryData)
+                .sort(([a], [b]) => a.localeCompare(b))
+                .map(([subCategory, locations]) => {
+                    const sortedLocations = [...locations].sort((a, b) => 
+                        (a.title || '').localeCompare(b.title || '')
+                    );
+                    return [subCategory, sortedLocations] as [string, Location[]];
+                });
+            
             const categoryHtml = `
                 <div class="header">${mainCategory}</div>
                 <div class="group-categories">
-                    ${Object.entries(categoryData as CategoryData).map(([subCategory, locations]: [string, Location[]]) => 
+                    ${sortedSubCategories.map(([subCategory, locations]) => 
                         createCategoryItem(subCategory, getLocationCount(locations), mainCategory)
                     ).join('')}
                 </div>
             `;
             categoriesContainer.innerHTML += categoryHtml;
-        });
+        }
 
-        // Add routes to sidebar if there are any for this level
-        const routesForLevel = Object.entries(this.routes).reduce((acc, [category, routes]) => {
+        // Add routes to sidebar if there are any for this level (sorted alphabetically by category and route)
+        const routesForLevel = Object.entries(this.routes)
+            .sort(([a], [b]) => a.localeCompare(b))
+            .reduce((acc, [category, routes]) => {
             const levelRoutes = routes.filter(route => route.segments.some(segment => segment.level === this.currentLevel));
             if (levelRoutes.length > 0) {
                 // For each route, get all levels it appears on for the tooltip
@@ -536,7 +553,11 @@ export class MapManager {
                     return levels;
                 }, []);
                 
-                acc[category] = { routes: levelRoutes, levels: routeLevels };
+                // Sort routes by title
+                const sortedRoutes = [...levelRoutes].sort((a, b) => 
+                    (a.title || '').localeCompare(b.title || '')
+                );
+                acc[category] = { routes: sortedRoutes, levels: routeLevels };
             }
             return acc;
         }, {} as { [key: string]: { routes: Route[], levels: string[] } });
