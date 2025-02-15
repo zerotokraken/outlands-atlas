@@ -59,6 +59,15 @@
                     "icon": "icons/Stairs.png"
                 }
             ],
+            "Breakable Wall": [
+                {
+                    "id": 1,
+                    "title": "Breakable Walls",
+                    "description": "Left click to break the wall.",
+                    "coordinates": [[4034, 1058], [4355, 2478], [496, 4040]],
+                    "icon": "icons/brick-wall.png"
+                }
+            ],
             "Locked Doors": [
                 {
                     "id": 1,
@@ -86,7 +95,7 @@
                 {
                     "id": 1,
                     "title": "Lower Exodus Lair",
-                    "description": "Hit the switch in the room to the SE to trigger a portal leading down",
+                    "description": "Hit the lever in the room to the south east to trigger a portal leading down",
                     "coordinates": [2792, 3293],
                     "icon": "icons/hidden_passage.png"
                 }
@@ -196,7 +205,7 @@
                     "requirements": "1 Tri Time Gem",
                     "icon": "icons/waystar.png",
                     "description": "Summons a moongate to Colony for a short duration. Say 'Vas Rel Por' to use.",
-                    "coordinates": [[928, 1480], [3126, 4026]]
+                    "coordinates": [[928, 1480], [3185, 4299]]
                 }
             ]
          },
@@ -218,7 +227,7 @@
                     "id": 1,
                     "title": "Gem Vendor",
                     "description": "Sells Time gems.",
-                    "coordinates": [[1048, 1883], [3184, 4032]],
+                    "coordinates": [[1048, 1883], [3248, 4264]],
                     "icon": "icons/treasure.png"
                 }
             ],
@@ -276,7 +285,7 @@
                     "id": "bosses",
                     "title": "The Barrier Warden",
                     "description": "Special: Does a pontiff style bomb",
-                    "coordinates": [1876, 2700],
+                    "coordinates": [[1876, 2700], [2141, 3487]],
                     "icon": "icons/boss.png"
                 },
                 {
@@ -300,6 +309,15 @@
                     "coordinates": [3683, 6791],
                     "icon": "icons/boss.png"
                 }
+            ],
+            "Revealers": [
+                {
+                    "id": 1,
+                    "title": "Gazer",
+                    "description": "Reveals in a large radius. Does a heavy single target burst that bleeds.",
+                    "coordinates": [[2372, 3817], [1554, 693], [1265, 706], [1285, 1070], [2592, 2240]],
+                    "icon": "icons/eye.png"
+                }
             ]           
          },
         "Misc":{
@@ -317,6 +335,15 @@
                     "description": "There is a Greater Smoke Dragon inside!",
                     "coordinates": [[3815, 3935]],
                     "icon": "icons/trap.png"
+                }
+            ],
+            "Levers": [
+                {
+                    "id": 1,
+                    "title": "Exodus Lever",
+                    "description": "Opens the gate down to the inner Exodus area.",
+                    "coordinates": [[2661, 3647]],
+                    "icon": "icons/lever.png"
                 }
             ],
             "Anhks": [

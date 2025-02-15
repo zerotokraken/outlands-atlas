@@ -15,9 +15,49 @@
                     "description": "This leads to the south east part of level 1.",
                     "coordinates": [1948, 1088],
                     "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 2,
+                    "title": "Stairs to Level 2 Lower",
+                    "description": "This leads to the north west part of Level 2 Lower Reaches.",
+                    "coordinates": [417, 4534],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 2,
+                    "title": "Dig Site Stairs",
+                    "description": "This leads to the Dig Site in Stonegate.",
+                    "coordinates": [815, 2268],
+                    "icon": "icons/Stairs.png"
                 }
             ],
-            "Portals": [],
+            "Locked Doors": [
+                {
+                    "id": 1,
+                    "title": "Locked Door",
+                    "description": "Requires a knock rune.",
+                    "coordinates": [[655, 2290], [1867, 1288], [525, 558]],
+                    "icon": "icons/lock.png"
+                }
+            ],
+            "Cave": [
+                {
+                    "id": 1,
+                    "title": "Cave",
+                    "description": [["Passage in and out of the Cave on Level 2"]],
+                    "coordinates": [[1640, 4156], [935, 4901]],
+                    "icon": "icons/cave.png"
+                }
+            ],
+            "Portals": [
+                {
+                    "id": 1,
+                    "title": "Exit from Level 2 Lower Reaches",
+                    "description": "This is where you appear if you use the portal in the Lower Reaches.",
+                    "coordinates": [681, 3855],
+                    "icon": "icons/portal.png"
+                }
+            ],
             "Teleport Tiles": [],
             "Waystar": [
                 {

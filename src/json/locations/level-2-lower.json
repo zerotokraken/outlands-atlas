@@ -1,7 +1,38 @@
 {
     "Level 2 Lower": {
         "Passage": {
-            "Stairs": [],
+            "Stairs": [
+                {
+                    "id": 1,
+                    "title": "Stairs to Level 2 Upper",
+                    "description": "This leads to the east part of Level 2 Upper Reaches.",
+                    "coordinates": [4698, 438],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to Level 3",
+                    "description": "This leads to the north west part of level 3.",
+                    "coordinates": [616, 4218],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to Level 3",
+                    "description": "This leads to the north west part of level 3.",
+                    "coordinates": [1532, 4796],
+                    "icon": "icons/Stairs.png"
+                }
+            ],
+            "Cave": [
+                {
+                    "id": 1,
+                    "title": "Tunnel Shortcut",
+                    "description": [["Tunnel shortcut under the Colony Outpost"]],
+                    "coordinates": [[4661, 2625], [3842, 2752]],
+                    "icon": "icons/cave.png"
+                }
+            ],
             "Rel Por Stones": [],
             "Portals": [
                 {
@@ -30,6 +61,13 @@
                     "title": "Silver Gate",
                     "description": "Takes you to the Abyssal Core.",
                     "coordinates": [711, 3661],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Silver Gate",
+                    "description": "This takes you back to the Upper Reaches where the Ankh is.",
+                    "coordinates": [5722, 501],
                     "icon": "icons/Gates_Silver.png"
                 },
                 {
@@ -74,6 +112,33 @@
                     "description": "Summons a moongate to Colony for a short duration",
                     "coordinates": [2257, 3725]
                 }
+            ],
+            "Secret Passageways": [
+                {
+                    "id": 1,
+                    "title": "Pentagram Teleport",
+                    "description": "This teleports you to a treasure room with a boss. You cannot leave the room until you have slain it.",
+                    "coordinates": [[2876, 4453], [1853, 3999]],
+                    "icon": "icons/hidden_passage.png"
+                }
+            ],
+            "Breakable Wall": [
+                {
+                    "id": 1,
+                    "title": "Breakable Walls",
+                    "description": "Left click to break the wall.",
+                    "coordinates": [[3352, 4128], [2030, 4245], [1509, 4442]],
+                    "icon": "icons/brick-wall.png"
+                }
+            ],
+            "Locked Doors": [
+                {
+                    "id": 1,
+                    "title": "Locked Door",
+                    "description": "Requires a knock rune.",
+                    "coordinates": [[1519, 4236], [644, 4110], [2175, 4077], [2398, 4070], [2620, 4080], [3206, 4289], [1599, 2788], [2633, 4233]],
+                    "icon": "icons/lock.png"
+                }
             ]
          },
         "Doors": {
@@ -94,7 +159,7 @@
                     "id": "bosses",
                     "title": "A Forgotten Golem",
                     "description": "Special: Unknown.",
-                    "coordinates": [1849, 3996],
+                    "coordinates": [1810, 3946],
                     "icon": "icons/boss.png"
                 }
             ]           

@@ -5,8 +5,8 @@
                 {
                     "id": 1,
                     "title": "Cave",
-                    "description": "Exit to the Blood Forest.",
-                    "coordinates": [[1789, 1682]],
+                    "description": "Exit to Level 4.",
+                    "coordinates": [[1789, 1682], [2634, 575], [299, 1319]],
                     "icon": "icons/cave.png"
                 }
             ],

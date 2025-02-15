@@ -12,8 +12,22 @@
             {
                 "id": 1,
                 "title": "Cave",
-                "description": "Entrance to the Molten Core.",
+                "description": "West entrance to the Molten Core.",
                 "coordinates": [[4045, 3878]],
+                "icon": "icons/cave.png"
+            },
+            {
+                "id": 1,
+                "title": "Cave",
+                "description": "North entrance to the Molten Core.",
+                "coordinates": [[4667, 1635]],
+                "icon": "icons/cave.png"
+            },
+            {
+                "id": 1,
+                "title": "Cave",
+                "description": "South entrance to the Molten Core.",
+                "coordinates": [[3157, 3471]],
                 "icon": "icons/cave.png"
             },
             {
@@ -38,8 +52,25 @@
                 "icon": "icons/cave.png"
             }
         ],
-        "Locked Doors": [],
+        "Locked Doors": [
+            {
+                "id": 1,
+                "title": "Locked Door",
+                "description": "Requires a knock rune.",
+                "coordinates": [[5338, 729]],
+                "icon": "icons/lock.png"
+            }
+        ],
         "Portals": [],
+        "Breakable Wall": [
+            {
+                "id": 1,
+                "title": "Breakable Walls",
+                "description": "Left click to break the wall.",
+                "coordinates": [[6020, 2046]],
+                "icon": "icons/brick-wall.png"
+            }
+        ],
         "Rel Por Stones": [
             {
                 "id": "rel_por",
@@ -63,6 +94,20 @@
                 "title": "Stairs to the Colony",
                 "description": "This leads back up to the Colony",
                 "coordinates": [4370, 6664],
+                "icon": "icons/Stairs.png"
+            },
+            {
+                "id": 1,
+                "title": "Stairs to the Level 5",
+                "description": "This leads to the South West of Level 5",
+                "coordinates": [5634, 680],
+                "icon": "icons/Stairs.png"
+            },
+            {
+                "id": 1,
+                "title": "Stairs to the Level 5",
+                "description": "This leads to the South East of Level 5",
+                "coordinates": [5886, 3772],
                 "icon": "icons/Stairs.png"
             }
         ],
