@@ -142,6 +142,15 @@
             ]           
          },
         "Misc":{
+            "Ward Lines": [
+                {
+                    "id": 1,
+                    "title": "Ward Line",
+                    "description": "If you cross this line without a Ward you will continuously summon dangerous Ghasts.",
+                    "coordinates": [[1722, 178], [1722, 2016]],
+                    "color": "#ff0000"
+                }
+            ],
             "Traps": [],
             "Quest Items": [
                 {

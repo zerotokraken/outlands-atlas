@@ -348,23 +348,34 @@ export class MapManager {
                             ? loc.coordinates as [number, number][]
                             : [loc.coordinates as [number, number]];
                         
-                        coordinates.forEach((coord, index) => {
-                            const currentIcon = this.createMarkerIcon(mainCategory, categoryName, loc, currentSize);
-                            const iconSize = currentIcon.options.iconSize || [currentSize, currentSize];
-                            const marker = L.marker(coord, {
-                                icon: currentIcon,
-                                location: loc,
-                                category: categoryName,
-                                mainCategory: mainCategory,
-                                containerIndex: index,
-                                zIndexOffset: 1000,
-                                // Center the marker on the coordinates
-                                iconAnchor: [iconSize[0] / 2, iconSize[1] / 2]
-                            } as MarkerOptions);
-                            
-                            marker.bindPopup(() => this.createPopupContent(loc, marker.options as MarkerOptions));
-                            this.markersLayer?.addLayer(marker);
-                        });
+                        if (categoryName === 'Ward Lines') {
+                            // Draw a line for ward lines
+                            const line = L.polyline(coordinates, {
+                                color: '#ff0000',
+                                weight: 3,
+                                opacity: 0.8
+                            });
+                            line.bindPopup(() => this.createPopupContent(loc));
+                            this.markersLayer?.addLayer(line);
+                        } else {
+                            coordinates.forEach((coord, index) => {
+                                const currentIcon = this.createMarkerIcon(mainCategory, categoryName, loc, currentSize);
+                                const iconSize = currentIcon.options.iconSize || [currentSize, currentSize];
+                                const marker = L.marker(coord, {
+                                    icon: currentIcon,
+                                    location: loc,
+                                    category: categoryName,
+                                    mainCategory: mainCategory,
+                                    containerIndex: index,
+                                    zIndexOffset: 1000,
+                                    // Center the marker on the coordinates
+                                    iconAnchor: [iconSize[0] / 2, iconSize[1] / 2]
+                                } as MarkerOptions);
+                                
+                                marker.bindPopup(() => this.createPopupContent(loc, marker.options as MarkerOptions));
+                                this.markersLayer?.addLayer(marker);
+                            });
+                        }
                     });
                 }
             });
