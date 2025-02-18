@@ -1,4 +1,89 @@
 {
     "Level 8": {
+        "Passage": {
+            "Locked Doors": [
+                {
+                    "id": 1,
+                    "title": "Alabaster Door",
+                    "description": "Requires a knock rune.",
+                    "coordinates": [[2504, 3865]],
+                    "icon": "icons/lock.png"
+                }
+            ],
+            "Portals": [
+            ],
+            "Walls": [
+                {
+                    "id": 1,
+                    "title": "Breakable Wall",
+                    "description": "Left click to break the wall.",
+                    "coordinates": [[2476, 3940], [3238, 2903]],
+                    "icon": "icons/brick-wall.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Jade Wall",
+                    "description": "Requires Jade key?",
+                    "coordinates": [[1941, 3811], [2513, 4867], [3290, 5123], [4406, 4571]],
+                    "icon": "icons/brick-wall.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Barrier",
+                    "description": "Kill the Barrier Warden to Proceed",
+                    "coordinates": [[2034, 3006], [2238, 3328], [2982, 4506], [3434, 4560], [3720, 4182], [3900, 3964]],
+                    "icon": "icons/barrier.png"
+                }
+            ],
+            "Rel Por Stones": [
+                {
+                    "id": "rel_por",
+                    "title": "Rel Por Stone",
+                    "requirements": "1 Precious Time Gem",
+                    "icon": "icons/rel-por.png",
+                    "description": "Teleports you to a nearby area. Say 'Vas Rel Por' to use.",
+                    "coordinates": [[2267, 1815], [2222, 1614], [3837, 2608], [4011, 2702]]
+                }
+            ],
+            "Stairs": [
+                {
+                    "id": 1,
+                    "title": "Stairs to the Level 7",
+                    "description": "This leads back to Level 7.",
+                    "coordinates": [3276, 3200],
+                    "icon": "icons/Stairs.png"
+                }
+            ],
+            "Teleport Tiles": [],
+            "Waystar": [
+            ]
+         },
+         "Entities": {
+            "Bosses": [
+                {
+                    "id": "bosses",
+                    "title": "The Barrier Warden",
+                    "description": "Special: Does a pontiff style bomb",
+                    "coordinates": [[2168, 3140], [1966, 2992], [2220, 3432], [2915, 4537], [3217, 4455], [3528, 4550], [3803, 4021], [3697, 4270], [4001, 3952]],
+                    "icon": "icons/boss.png"
+                }
+            ]  
+        },
+        "Runes": {
+            "Knock": [
+            ]
+        },
+        "Misc": {
+            "Chests": [
+                {
+                    "id": 1,
+                    "title": "Alabaster Chest",
+                    "description": "This chest is locked and trapped. Requires a Knock rune and you have to remove the trap to get the Alabaster Key",
+                    "coordinates": [2509, 3790],
+                    "icon": "icons/gray_chest.png"
+                }
+            ]
+        }
+
     }
 }

@@ -161,6 +161,13 @@
                     "description": "Special: Unknown.",
                     "coordinates": [1810, 3946],
                     "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Humunculus",
+                    "description": "Special: Unknown. Progressive spawn to summon the boss from killing nearby golems.",
+                    "coordinates": [1497, 3737],
+                    "icon": "icons/boss.png"
                 }
             ]           
          },

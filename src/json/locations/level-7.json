@@ -22,8 +22,24 @@
                     "id": 1,
                     "title": "Portal",
                     "description": "???",
-                    "coordinates": [[3760, 1966], [3850, 2049]],
+                    "coordinates": [[3760, 1966], [3850, 2049], [390, 238]],
                     "icon": "icons/Gates_Silver.png"
+                }
+            ],
+            "Walls": [
+                {
+                    "id": 1,
+                    "title": "Barrier",
+                    "description": "Kill the Barrier Warden to Proceed",
+                    "coordinates": [[1162, 847], [1115, 1056], [380, 276]],
+                    "icon": "icons/barrier.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Barrier",
+                    "description": "Use the levers to open the barriers",
+                    "coordinates": [[3596, 960], [3332, 954]],
+                    "icon": "icons/barrier.png"
                 }
             ],
             "Rel Por Stones": [
@@ -45,11 +61,26 @@
                     "icon": "icons/Stairs.png"
                 }
             ],
-            "Teleport Tiles": [],
-            "Waystar": [
+            "Levers": [
+                {
+                    "id": 1,
+                    "title": "Lever",
+                    "description": "Temporarily opens the barriers naerby.",
+                    "coordinates": [[3872, 909], [3789, 986], [3268, 1054]],
+                    "icon": "icons/lever.png"
+                }
             ]
          },
          "Entities": {
+            "Timekeeper's Eye":[
+                {
+                    "id": 1,
+                    "title": "The Timekeeper's Eye",
+                    "description": "This will paralyze you unless you have the Timekeeper's Lens to protect from it's gaze.",
+                    "coordinates": [996, 927],
+                    "icon": "icons/eye.png"
+                }
+            ],
             "Gem Vendor": [
             ],
             "Bosses": [
@@ -58,6 +89,13 @@
                     "title": "The Sovereign",
                     "description": "Special: Heavy single target burst",
                     "coordinates": [4281, 1658],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "The Barrier Warden",
+                    "description": "Special: Does a pontiff style bomb",
+                    "coordinates": [[914, 846], [313, 362]],
                     "icon": "icons/boss.png"
                 }
             ]  
