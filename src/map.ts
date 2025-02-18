@@ -800,7 +800,7 @@ export class MapManager {
         return `floor-${floorNumber}`;
     }
 
-    private async loadTileConfig(level: string): Promise<{ primary: TileSetConfig; secondaries?: TileSetConfig[] }> {
+    private async loadTileConfig(level: string): Promise<{ primary: TileSetConfig; secondaries?: TileSetConfig[]; secondaryColumns?: number }> {
         const floorPath = this.getFloorPath(level);
         const response = await fetch(`./floors/${floorPath}/required_tiles.json`);
         const config = await response.json();
@@ -814,10 +814,16 @@ export class MapManager {
                     secondaries: [config.tiles.secondary]
                 };
             }
-            return config.tiles;
+            return {
+                ...config.tiles,
+                secondaryColumns: config.secondaryColumns
+            };
         } else {
             // Convert old format to new format
-            return { primary: config.tiles };
+            return { 
+                primary: config.tiles,
+                secondaryColumns: config.secondaryColumns
+            };
         }
     }
 
@@ -894,12 +900,13 @@ export class MapManager {
             let totalWidth = primaryWidth;
             
             if (config.secondaries && config.secondaries.length > 0) {
-                // Split secondaries into columns of 4
-                const columnsNeeded = Math.ceil(config.secondaries.length / 4);
+                // Use specified number of columns or default to 4
+                const columnsPerRow = config.secondaryColumns || 4;
+                const columnsNeeded = Math.ceil(config.secondaries.length / columnsPerRow);
                 const columns: typeof config.secondaries[] = [];
                 
                 for (let i = 0; i < columnsNeeded; i++) {
-                    columns.push(config.secondaries.slice(i * 4, (i + 1) * 4));
+                    columns.push(config.secondaries.slice(i * columnsPerRow, (i + 1) * columnsPerRow));
                 }
 
                 // Calculate max width needed for each column

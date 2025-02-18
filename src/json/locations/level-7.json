@@ -69,6 +69,15 @@
                     "coordinates": [[3872, 909], [3789, 986], [3268, 1054]],
                     "icon": "icons/lever.png"
                 }
+            ],
+            "Breakable Walls": [
+                {
+                    "id": 1,
+                    "title": "Breakable Wall",
+                    "description": "Left click to break the wall.",
+                    "coordinates": [876, 578],
+                    "icon": "icons/brick-wall.png"
+                }
             ]
          },
          "Entities": {

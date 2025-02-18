@@ -1,4 +1,5 @@
 {
+    "secondaryColumns": 2,
     "tiles": {
         "primary": {
             "startDir": 423,
@@ -8,6 +9,12 @@
         },
         "secondaries": [
             {
+                "startDir": 458,
+                "endDir": 464,
+                "startTile": 68,
+                "endTile": 71
+            },
+            {
                 "startDir": 424,
                 "endDir": 428,
                 "startTile": 69,
@@ -16,14 +23,24 @@
             {
                 "startDir": 422,
                 "endDir": 428,
-                "startTile": 100,
-                "endTile": 104
+                "startTile": 95,
+                "endTile": 104,
+                "ignore": [
+                    {
+                        "dir": [423],
+                        "tile": [95]
+                    },
+                    {
+                        "dir": [422],
+                        "tile": [95, 96, 97, 98, 99]
+                    }
+                ]
             },
             {
-                "startDir": 458,
-                "endDir": 464,
-                "startTile": 68,
-                "endTile": 71
+                "startDir": 423,
+                "endDir": 425,
+                "startTile": 90,
+                "endTile": 93
             }
         ]
     }

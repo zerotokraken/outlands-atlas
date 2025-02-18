@@ -8,6 +8,13 @@
                     "description": "Requires a knock rune.",
                     "coordinates": [[2504, 3865]],
                     "icon": "icons/lock.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Jade Door",
+                    "description": "Requires a knock rune.",
+                    "coordinates": [[3272, 2901]],
+                    "icon": "icons/lock.png"
                 }
             ],
             "Portals": [
@@ -23,8 +30,15 @@
                 {
                     "id": 1,
                     "title": "Jade Wall",
-                    "description": "Requires Jade key?",
-                    "coordinates": [[1941, 3811], [2513, 4867], [3290, 5123], [4406, 4571]],
+                    "description": "Requires Jade key.",
+                    "coordinates": [[1941, 3811], [2513, 4867], [3290, 5123], [1776, 2536]],
+                    "icon": "icons/brick-wall.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Alabaster Wall",
+                    "description": "Requires Alabaster key.",
+                    "coordinates": [[2650, 2321], [3725, 2302], [4302, 3357], [4421, 4546]],
                     "icon": "icons/brick-wall.png"
                 },
                 {
@@ -80,6 +94,13 @@
                     "title": "Alabaster Chest",
                     "description": "This chest is locked and trapped. Requires a Knock rune and you have to remove the trap to get the Alabaster Key",
                     "coordinates": [2509, 3790],
+                    "icon": "icons/gray_chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Jade Chest",
+                    "description": "This chest is locked and trapped. Requires a Knock rune and you have to remove the trap to get the Jade Key",
+                    "coordinates": [3383, 2874],
                     "icon": "icons/gray_chest.png"
                 }
             ]

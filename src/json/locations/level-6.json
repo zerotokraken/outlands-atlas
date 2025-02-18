@@ -13,14 +13,14 @@
                     "id": 1,
                     "title": "Stairs to the Level 7",
                     "description": "This leads to Level 7.",
-                    "coordinates": [973, 3038],
+                    "coordinates": [2645, 3049],
                     "icon": "icons/Stairs.png"
                 }
             ],
-            "Breakable Wall": [
+            "Breakable Walls": [
                 {
                     "id": 1,
-                    "title": "Breakable Walls",
+                    "title": "Breakable Wall",
                     "description": "Left click to break the wall.",
                     "coordinates": [300, 1037],
                     "icon": "icons/brick-wall.png"
@@ -44,7 +44,7 @@
                     "requirements": "1 Precious Time Gem",
                     "icon": "icons/rel-por.png",
                     "description": "Teleports you to a nearby area. Say 'Vas Rel Por' to use.",
-                    "coordinates": [[3042, 392], [32, 2686]]
+                    "coordinates": [[3042, 392], [1696, 2683]]
                 }
             ],            
             "Portals": [
@@ -52,21 +52,21 @@
                     "id": 1,
                     "title": "Portal to Mars",
                     "description": "Leads to and from Mars. The mobs drop the Martian Rock required for the Ward",
-                    "coordinates": [[2036, 3996], [3016, 3088]],
+                    "coordinates": [[590, 3082], [494, 5919]],
                     "icon": "icons/Gates_Silver.png"
                 },
                 {
                     "id": 1,
                     "title": "Portal back to Chronos",
                     "description": "This takes you back to the Chronos platform.",
-                    "coordinates": [1842, 2852],
+                    "coordinates": [314, 4752],
                     "icon": "icons/Gates_Silver.png"
                 },
                 {
                     "id": 1,
                     "title": "Exit from Chronos",
                     "description": "This is where you appear if you go through the Chronos Gate.",
-                    "coordinates": [2263, 3926],
+                    "coordinates": [723, 5844],
                     "icon": "icons/portal.png"
                 },
                 {
@@ -80,7 +80,7 @@
                     "id": 1,
                     "title": "Portal to 6",
                     "description": "This goes back to level 6.",
-                    "coordinates": [[379, 2710], [385, 3315]],
+                    "coordinates": [[2051, 2712], [2047, 3315]],
                     "icon": "icons/hidden_passage.png"
                 }
             ],
@@ -106,14 +106,14 @@
                     "id": 1,
                     "title": "Gem Vendor",
                     "description": "Sells Time gems.",
-                    "coordinates": [19, 2814],
+                    "coordinates": [1692, 2800],
                     "icon": "icons/treasure.png"
                 },
                 {
                     "id": 1,
                     "title": "Graham the legendary tinker",
                     "description": "The NPC here will craft a Waystar if you bring him the following: Exodus Chains, A Broken Waystar & 75000 Colonial Marks",
-                    "coordinates": [-10, 2586],
+                    "coordinates": [1677, 2597],
                     "icon": "icons/exclamation-mark.png"
                 }
             ],
@@ -122,14 +122,14 @@
                     "id": "bosses",
                     "title": "Damsel",
                     "description": "Special: Sends out some projectiles wildly and casts spells. Summons additional monsters.",
-                    "coordinates": [2187, 3282],
+                    "coordinates": [640, 5210],
                     "icon": "icons/boss.png"
                 },
                 {
                     "id": "bosses",
                     "title": "The One Who Wanders",
                     "description": "Special: ",
-                    "coordinates": [1154, 3016],
+                    "coordinates": [2878, 3025],
                     "icon": "icons/boss.png"
                 },
                 {
