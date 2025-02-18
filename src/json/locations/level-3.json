@@ -313,7 +313,7 @@
             "Revealers": [
                 {
                     "id": 1,
-                    "title": "Gazer",
+                    "title": "Greater Gazer",
                     "description": "Reveals in a large radius. Does a heavy single target burst that bleeds.",
                     "coordinates": [[2372, 3817], [1554, 693], [1265, 706], [1285, 1070], [2592, 2240]],
                     "icon": "icons/eye.png"

@@ -83,6 +83,13 @@
                     "description": "This is where you appear if you use one of the teleports at Colony or the shortcut on Level 1.",
                     "coordinates": [4284, 2516],
                     "icon": "icons/portal.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Exit from Pentagram Room",
+                    "description": "This is where you appear take the teleport from the Pentagram room.",
+                    "coordinates": [2711, 1562],
+                    "icon": "icons/portal.png"
                 }
             ],
             "Teleport Tiles": [
@@ -100,6 +107,27 @@
                     "description": "This takes you to the Anhk room on Level 1. Say 'Vas Rel Por' to use.",
                     "coordinates": [4318, 2532],
                     "requirements": "1 Precious Time Gem",
+                    "icon": "icons/teleport-rune.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Teleport to Maze room",
+                    "description": "This takes you to the Maze room. There is a particular floor pattern you must follow to get out. Two invisible stalkers are in the room.",
+                    "coordinates": [1856, 3934],
+                    "icon": "icons/teleport-rune.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Teleport to Pentagram Room",
+                    "description": "This takes you back to the Pentagram Room.",
+                    "coordinates": [3110, 6378],
+                    "icon": "icons/teleport-rune.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Teleport to Level 2",
+                    "description": "This takes you to the west side of the Lower Reaches.",
+                    "coordinates": [3110, 6130],
                     "icon": "icons/teleport-rune.png"
                 }
             ],
@@ -136,7 +164,7 @@
                     "id": 1,
                     "title": "Locked Door",
                     "description": "Requires a knock rune.",
-                    "coordinates": [[1519, 4236], [644, 4110], [2175, 4077], [2398, 4070], [2620, 4080], [3206, 4289], [1599, 2788], [2633, 4233]],
+                    "coordinates": [[1519, 4236], [644, 4110], [2175, 4077], [2398, 4070], [2620, 4080], [3206, 4289], [1599, 2788], [2636, 4203]],
                     "icon": "icons/lock.png"
                 }
             ]

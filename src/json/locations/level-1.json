@@ -111,7 +111,16 @@
                     "coordinates": [761, 2214],
                     "icon": "icons/boss.png"
                 }
-            ]           
+            ],
+            "Revealers": [
+                {
+                    "id": 1,
+                    "title": "Mountain Tribe Scout",
+                    "description": "Reveals in a large radius. Snares current target with a net.",
+                    "coordinates": [[2192, 1552]],
+                    "icon": "icons/eye.png"
+                }
+            ]            
         },
         "Misc": {
             "Community Chests": [

@@ -10,7 +10,7 @@
                     "requirements": "1 Precious Time Gem",
                     "icon": "icons/rel-por.png",
                     "description": "Teleports you to a nearby area. Say 'Vas Rel Por' to use.",
-                    "coordinates": [[3038, 3216], [3340, 3216], [3096, 4677], [3094, 4675]]
+                    "coordinates": [[3038, 3216], [3340, 3216], [3096, 4677], [2924, 4672]]
                 }
             ],
             "Stairs": [
@@ -19,6 +19,34 @@
                     "title": "Stairs to Level 4",
                     "description": "This leads back to the Maze on Level 4",
                     "coordinates": [647, 4680],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Entrance to Blackrock Facility",
+                    "description": "This leads to the Blackrock Facility",
+                    "coordinates": [2827, 242],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to Cemetary",
+                    "description": "This leads to the Cemetary",
+                    "coordinates": [3244, 4977],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to Level 5",
+                    "description": "This leads to the west part of Level 5",
+                    "coordinates": [1662, 6864],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to Level 5",
+                    "description": "This leads to the east part of Level 5 ",
+                    "coordinates": [3137, 5751],
                     "icon": "icons/Stairs.png"
                 },
                 {
@@ -97,8 +125,24 @@
                     "description": "Special: Does a pontiff style bomb",
                     "coordinates": [4184, 4141],
                     "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Greater Blackrock Elemental",
+                    "description": "Special: Drops raining shards on the current target's location that inflict heavy bleeds. Easy to dodge. Very resistant to magic damage.",
+                    "coordinates": [1899, 6017],
+                    "icon": "icons/boss.png"
                 }
-            ]
+            ],
+            "Revealers": [
+                {
+                    "id": 1,
+                    "title": "Time Lurker",
+                    "description": "Reveals in a large radius. Casts spells and does a backstab melee attack occasionally.",
+                    "coordinates": [[774, 4682]],
+                    "icon": "icons/eye.png"
+                }
+            ]  
         },
         "Runes": {
             "Knock": [

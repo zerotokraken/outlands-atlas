@@ -109,8 +109,12 @@ export class MapManager {
             // Initialize empty routes object
             this.routes = {};
             
-            // Define known route files (can be expanded later)
-            const routeFiles = ['entrance-to-sewers.json', 'sewers-to-colony.json'];
+            // Load all route files
+            const routeFiles = [
+                'entrance-to-sewers.json',
+                'pentagram-route.json',
+                'sewers-to-colony.json'
+            ];
             
             // Load each route file
             for (const file of routeFiles) {

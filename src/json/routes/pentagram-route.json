@@ -1,0 +1,23 @@
+[
+    {
+        "id": "pentagram-route-1",
+        "title": "Pentagram Route",
+        "description": "Invisible Pentagram Route.",
+        "color": "#7CFC00",
+        "dashArray": "10, 5",
+        "segments": [
+            {
+                "level": "Level 2 Lower",
+                "points": [
+                    {
+                        "coordinates": [2635, 4237],
+                        "description": "You will not be able to see where to go in this area.",
+                        "pathPoints": [
+                            [2629, 4301]
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

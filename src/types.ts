@@ -49,7 +49,7 @@ const AVAILABLE_ICONS = {
     WALL: { path: "icons/brick-wall.png", scale: 150},
     ANKH: { path: "icons/ankh.png", scale: 200},
     LEVER: { path: "icons/lever.png", scale: 200},
-    REVEALER: { path: "icons/eye.png", scale: 200},
+    REVEALER: { path: "icons/eye.png", scale: 150},
     BARRIER: { path: "icons/barrier.png", scale: 200},
     // Time runes
     RUNE_KNOCK: { path: "icons/runes/timerune-knock.png", scale: 100 },

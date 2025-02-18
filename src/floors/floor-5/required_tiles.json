@@ -1,16 +1,30 @@
 {
     "tiles": {
-        "startDir": 375,
-        "endDir": 395,
-        "startTile": 86,
-        "endTile": 103,
-        "ignore": [
+        "primary": {
+            "startDir": 375,
+            "endDir": 395,
+            "startTile": 86,
+            "endTile": 103,
+            "ignore": [
+                {
+                    "dir": [375, 376],
+                    "tile": [86, 87, 88]
+                }
+            ]
+        },
+        "secondaries": [
             {
-                "dir": [375, 376],
-                "tile": [86, 87, 88]
+                "startDir": 409,
+                "endDir": 414,
+                "startTile": 66,
+                "endTile": 70
+            },
+            {
+                "startDir": 397,
+                "endDir": 401,
+                "startTile": 100,
+                "endTile": 104
             }
         ]
     }
 }
-
-

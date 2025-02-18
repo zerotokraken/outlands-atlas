@@ -85,7 +85,7 @@
                 {
                     "id": 1,
                     "title": "The Timekeeper's Eye",
-                    "description": "This will paralyze you unless you have the Timekeeper's Lens to protect from it's gaze.",
+                    "description": "This will paralyze you unless you have the Timekeeper's Lens to protect from it's gaze. Only one player is paralyzed at a time. It is currently possible to bypass this area by sacrificing one party member. You can hand off his loot and revive him on the other side.",
                     "coordinates": [996, 927],
                     "icon": "icons/eye.png"
                 }
