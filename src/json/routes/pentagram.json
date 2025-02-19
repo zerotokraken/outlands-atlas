@@ -1,0 +1,118 @@
+[
+    {
+        "id": "pentagram-route-1",
+        "title": "Pentagram Route",
+        "description": "Invisible Pentagram Route.",
+        "color": "#7CFC00",
+        "dashArray": "10, 5",
+        "straightLines": true,
+        "segments": [
+            {
+                "level": "Level 2 Lower",
+                "points": [
+                    {
+                        "coordinates": [2635, 4237],
+                        "description": "You will not be able to see where to go in this area.",
+                        "pathPoints": [
+                            [2635, 4301]
+                        ]
+                    },
+                    {
+                        "coordinates": [2635, 4301],
+                        "gap": true,
+                        "pathPoints": [
+                            [2596, 4301]  
+                        ]
+                    },
+                    {
+                        "coordinates": [2635, 4301],
+                        "gap": true,
+                        "pathPoints": [
+                            [2635, 4389]   
+                        ]
+                    },
+                    {
+                        "coordinates": [2596, 4301],
+                        "gap": true,
+                        "pathPoints": [
+                            [2580, 4301],
+                            [2580, 4243],
+                            [2525, 4243]    
+                        ]
+                    },
+                    {
+                        "coordinates": [2635, 4301],
+                        "gap": true,
+                        "pathPoints": [
+                            [2844, 4301]   
+                        ]
+                    },
+                    {
+                        "coordinates": [2844, 4301],
+                        "gap": true,
+                        "pathPoints": [
+                            [2844, 4105],
+                            [2779, 4105],
+                            [2779, 4301]   
+                        ]
+                    },
+                    {
+                        "coordinates": [2844, 4301],
+                        "gap": true,
+                        "pathPoints": [
+                            [2844, 4451],
+                            [2876, 4453] 
+                        ]
+                    },
+                    {
+                        "coordinates": [2844, 4416],
+                        "gap": true,
+                        "pathPoints": [
+                            [2852, 4416] 
+                        ]
+                    },
+                    {
+                        "coordinates": [2844, 4355] ,
+                        "gap": true,
+                        "pathPoints": [
+                            [2963, 4355],
+                            [2963, 4484],
+                            [2879, 4484] 
+                        ]
+                    },
+                    {
+                        "coordinates": [2635, 4323],
+                        "gap": true,
+                        "pathPoints": [
+                            [2821, 4323]
+                        ]
+                    },
+                    {
+                        "coordinates": [2635, 4389],
+                        "gap": true,
+                        "pathPoints": [
+                            [2804, 4389],
+                            [2804, 4476],
+                            [2843, 4476]    
+                        ]
+                    },
+                    {
+                        "coordinates": [2596, 4301],
+                        "gap": true,
+                        "pathPoints": [
+                            [2596, 4389]  
+                        ]
+                    },
+                    {
+                        "coordinates": [2844, 4342],
+                        "gap": true,
+                        "pathPoints": [
+                            [2653, 4342],
+                            [2653, 4360]
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -112,8 +112,9 @@ export class MapManager {
             // Load all route files
             const routeFiles = [
                 'entrance-to-sewers.json',
-                'pentagram-route.json',
-                'sewers-to-colony.json'
+                'pentagram.json',
+                'sewers-to-colony.json',
+                'invisible-maze.json'
             ];
             
             // Load each route file
@@ -203,10 +204,10 @@ export class MapManager {
                     // Create a polyline for each path segment
                     pathSegments.forEach(segmentPoints => {
                         if (segmentPoints.length > 0) {
-                            // Create curved path using spline interpolation
-                            const curvedPoints = this.createCurvedPath(segmentPoints);
+                            // Use straight lines if specified, otherwise create curved path
+                            const linePoints = route.straightLines ? segmentPoints : this.createCurvedPath(segmentPoints);
                             
-                            const routeLine = L.polyline(curvedPoints, {
+                            const routeLine = L.polyline(linePoints, {
                                 color: route.color || '#3388ff',
                                 weight: 3,
                                 opacity: 0.8,

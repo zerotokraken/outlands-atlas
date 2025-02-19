@@ -123,6 +123,7 @@ interface Route {
     segments: RouteSegment[];  // Array of floor-specific segments
     color?: string;  // Optional color for the route line, defaults to a standard color if not specified
     dashArray?: string;  // Optional dash pattern for the line
+    straightLines?: boolean;  // If true, don't apply curve interpolation to the route lines
 }
 
 interface RoutesData {
