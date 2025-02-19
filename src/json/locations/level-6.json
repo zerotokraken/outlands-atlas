@@ -44,7 +44,7 @@
                     "requirements": "1 Precious Time Gem",
                     "icon": "icons/rel-por.png",
                     "description": "Teleports you to a nearby area. Say 'Vas Rel Por' to use.",
-                    "coordinates": [[3042, 392], [1696, 2683]]
+                    "coordinates": [[3042, 392], [1696, 2683], [3286, 1182], [1623, 3213]]
                 }
             ],            
             "Portals": [
