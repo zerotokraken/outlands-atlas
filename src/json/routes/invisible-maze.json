@@ -1,0 +1,46 @@
+[
+    {
+        "id": "invisible-maze-route-1",
+        "title": "Invisible Maze Route",
+        "description": "Invisible Maze Route.",
+        "color": "#7CFC00",
+        "dashArray": "10, 5",
+        "straightLines": true,
+        "segments": [
+            {
+                "level": "Level 2 Lower",
+                "points": [
+                    {
+                        "coordinates": [3130, 6362],
+                        "description": "You will not be able to see the walls in this area. There are two invisible stalkers in here.",
+                        "pathPoints": [
+                            [3175, 6362],
+                            [3175, 6318],
+                            [3311, 6320],
+                            [3311, 6365],
+                            [3279, 6365],
+                            [3279, 6398],
+                            [3356, 6398],
+                            [3356, 6347],
+                            [3342, 6347],
+                            [3342, 6304],
+                            [3408, 6303],
+                            [3408, 6337],
+                            [3467, 6337],
+                            [3467, 6301],
+                            [3438, 6301],
+                            [3438, 6192],
+                            [3482, 6193],
+                            [3482, 6165],
+                            [3433, 6165],
+                            [3433, 6099],
+                            [3191, 6099],
+                            [3191, 6132],
+                            [3110, 6132]
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
