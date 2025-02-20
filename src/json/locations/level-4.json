@@ -192,7 +192,7 @@
                 "id": 1,
                 "title": "Time Lurker",
                 "description": "Reveals in a large radius. Casts spells and does a backstab melee attack occasionally.",
-                "coordinates": [[5186, 756], [5476, 708], [5202, 1276], [5518, 3836], [1504, 4338], [6074, 2046]],
+                "coordinates": [[5476, 708], [5202, 1276], [5518, 3836], [1504, 4338], [6074, 2046], [4849, 395]],
                 "icon": "icons/eye.png"
             }
         ]             

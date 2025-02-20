@@ -73,7 +73,7 @@
                     "id": 1,
                     "title": "Locked Door",
                     "description": "Requires a knock rune.",
-                    "coordinates": [[3466, 3342], [3808, 3815], [3122, 3786], [3765, 2801], [3845, 2799], [3885, 2828], [1917, 1093], [1782, 775], [2283, 1268], [624, 3336], [885, 675]],
+                    "coordinates": [[3466, 3342], [3808, 3815], [3122, 3786], [3765, 2801], [3845, 2799], [3885, 2828], [1917, 1093], [1782, 775], [2283, 1268], [624, 3336], [885, 675], [845, 1586]],
                     "icon": "icons/lock.png"
                 }
             ],
@@ -308,6 +308,27 @@
                     "description": "Special: Unknown",
                     "coordinates": [3683, 6791],
                     "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "The Wailing King",
+                    "description": "Special: Unknown",
+                    "coordinates": [675, 1766],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "The Howling King",
+                    "description": "Special: Unknown",
+                    "coordinates": [798, 1871],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "The Sobbing King",
+                    "description": "Special: Unknown",
+                    "coordinates": [672, 1980],
+                    "icon": "icons/boss.png"
                 }
             ],
             "Revealers": [
@@ -357,12 +378,42 @@
             ] 
         },
         "Quest": {
+            "Quest NPCs": [
+                {
+                    "id": 1,
+                    "title": "Stew Quest Start",
+                    "description": "Say stew to get the recipe from the goblins.",
+                    "coordinates": [3321, 4076],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stew Quest Turn-in",
+                    "description": "Double click the pot repeatedly to cook the stew. You can then turn into the troll with the right phrase",
+                    "coordinates": [3793, 2871],
+                    "icon": "icons/exclamation-mark.png"
+                }
+            ],
             "Quest Items": [
                 {
                     "id": "port",
                     "title": "Port",
                     "description": "The bottle of port for the stew.",
                     "coordinates": [2268, 1698],
+                    "icon": "icons/wooden-box.png"
+                },
+                {
+                    "id": "krompf",
+                    "title": "Stew Ingredient",
+                    "description": "Say Krompf to get the goblin to appear. You must have one bloom rune to trade for what you need",
+                    "coordinates": [368, 966],
+                    "icon": "icons/wooden-box.png"
+                },
+                {
+                    "id": "rotworm",
+                    "title": "Rotworm Flesh",
+                    "description": "This a common drop off the Rotworms in the area.",
+                    "coordinates": [3503, 2947],
                     "icon": "icons/wooden-box.png"
                 },
                 {

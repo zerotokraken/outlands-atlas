@@ -15,14 +15,14 @@
                     "id": 1,
                     "title": "Locked Door",
                     "description": "Requires a knock rune.",
-                    "coordinates": [[2186, 1703], [2570, 1246], [1051, 2151], [908, 3066], [3044, 2006], [3047, 2223], [2901, 2346], [2669, 2341], [5123, 2876]],
+                    "coordinates": [[2186, 1703], [2570, 1246], [1051, 2151], [908, 3066], [3044, 2006], [3047, 2223], [2901, 2346], [2669, 2341], [5123, 2876], [4384, 2535], [4383, 2669], [4385, 2750]],
                     "icon": "icons/lock.png"
                 },
                 {
                     "id": 1,
                     "title": "Secret Door",
                     "description": "Requires a knock rune.",
-                    "coordinates": [[4447, 2671], [4673, 2556], [4863, 1847], [4902, 1431], [4961, 1476], [5148, 1636]],
+                    "coordinates": [[4447, 2671], [4673, 2556], [4863, 1847], [4902, 1431], [4961, 1476], [5148, 1636], [3673, 1251]],
                     "icon": "icons/secret-door.png"
                 }
             ],
@@ -117,7 +117,14 @@
                     "id": 1,
                     "title": "Mountain Tribe Scout",
                     "description": "Reveals in a large radius. Snares current target with a net.",
-                    "coordinates": [[2192, 1552]],
+                    "coordinates": [[2192, 1552], [5334, 2206], [5091, 3604], [2230, 949]],
+                    "icon": "icons/eye.png"
+                },
+                {
+                    "id": 1,
+                    "title": "River Tribe Oracle",
+                    "description": "Reveals in a large radius. Cast spells.",
+                    "coordinates": [[599, 3027], [885, 2815], [2089, 3538], [905, 1749], [989, 1413]],
                     "icon": "icons/eye.png"
                 }
             ]            
@@ -137,8 +144,40 @@
                     "id": 1,
                     "title": "Metal Chest",
                     "description": "This chest is locked and requires a knock rune to open. Can contain special/rare loot.",
-                    "coordinates": [[2420, 5308], [3221, 4955], [4294, 4574], [1727, 5311], [2059, 3948], [2056, 3917]],
-                    "icon": "icons/gray_chest.png"
+                    "coordinates": [[2420, 5308], [3221, 4955], [4294, 4574], [1727, 5311], [2059, 3948], [2056, 3917], [4043, 982], [3704, 1217], [4879, 2152], [4510, 3420], [2896, 3269], [2970, 2418], [3138, 2045]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Wooden Chest",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[3703, 1169], [1935, 3916], [2229, 4182], [1974, 4326]],
+                    "icon": "icons/treasure-chest.png"
+                }
+            ],
+            "Crystal Pedestals": [
+                {
+                    "id": 1,
+                    "title": "Leper's Curse",
+                    "description": "This curse increase's damage taken. Left click to break the crystal.",
+                    "coordinates": [[2071, 5235]],
+                    "icon": "icons/crystal.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Pilgrim's Curse",
+                    "description": "This curse reduces damage dealt. Left click to break the crystal.",
+                    "coordinates": [[3296, 1308]],
+                    "icon": "icons/crystal.png"
+                }
+            ],
+            "Traps": [
+                {
+                    "id": 1,
+                    "title": "Mongbat Ambush",
+                    "description": "3 Feral Mongbats will emerge from the ground to attack you when crossing this point. There is a cooldown.",
+                    "coordinates": [[1730, 4766]],
+                    "icon": "icons/swords.png"
                 }
             ]
         }
