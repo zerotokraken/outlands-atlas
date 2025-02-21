@@ -139,7 +139,14 @@
                     "id": 1,
                     "title": "Time Lurker",
                     "description": "Reveals in a large radius. Casts spells and does a backstab melee attack occasionally.",
-                    "coordinates": [[774, 4682]],
+                    "coordinates": [[3027, 526], [774, 4682], [1431, 4695], [2742, 4556], [2434, 4538], [2420, 4144], [2426, 3692], [2430, 3226],[2766, 3194], [1998, 3190], [1982, 2738], [1976, 2340], [1972, 2006], [1978, 1596], [3294, 4652]],
+                    "icon": "icons/eye.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Timeless Cursed",
+                    "description": "Reveals in a large radius. Casts spells.",
+                    "coordinates": [[3119, 5947]],
                     "icon": "icons/eye.png"
                 }
             ]  

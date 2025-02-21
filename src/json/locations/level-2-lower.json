@@ -138,7 +138,7 @@
                     "requirements": "1 Tri Time Gem",
                     "icon": "icons/waystar.png",
                     "description": "Summons a moongate to Colony for a short duration",
-                    "coordinates": [2257, 3725]
+                    "coordinates": [[2257, 3725], [3768, 1570]]
                 }
             ],
             "Secret Passageways": [
@@ -155,23 +155,20 @@
                     "id": 1,
                     "title": "Breakable Walls",
                     "description": "Left click to break the wall.",
-                    "coordinates": [[3352, 4128], [2030, 4245], [1509, 4442]],
+                    "coordinates": [[3352, 4128], [2030, 4245], [1509, 4442], [4299, 1162]],
                     "icon": "icons/brick-wall.png"
                 }
             ],
-            "Locked Doors": [
+            "Doors": [
                 {
                     "id": 1,
                     "title": "Locked Door",
                     "description": "Requires a knock rune.",
-                    "coordinates": [[1519, 4236], [644, 4110], [2175, 4077], [2398, 4070], [2620, 4080], [3206, 4289], [1599, 2788], [2636, 4203]],
+                    "coordinates": [[1519, 4236], [644, 4110], [2175, 4077], [2398, 4070], [2620, 4080], [3206, 4289], [1599, 2788], [2636, 4203], [4689, 1719]],
                     "icon": "icons/lock.png"
                 }
             ]
          },
-        "Doors": {
-            "Locked": []
-        },
         "Entities": {
             "Gem Vendor": [
                 {
@@ -194,7 +191,7 @@
                     "id": "bosses",
                     "title": "Humunculus",
                     "description": "Special: Unknown. Progressive spawn to summon the boss from killing nearby golems.",
-                    "coordinates": [1497, 3737],
+                    "coordinates": [1457, 3780],
                     "icon": "icons/boss.png"
                 }
             ]           
@@ -208,6 +205,47 @@
                     "icon": "icons/runes/timerune-knock.png",
                     "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
                     "coordinates": [[1880, 3980], [2748, 3628], [3012, 3884], [2288, 1780], [3440, 1944], [4104, 1924], [4252, 2064], [6188, 1344]]
+                }
+            ]
+        },
+        "Misc": {
+            "Chests": [
+                {
+                    "id": 1,
+                    "title": "Metal Chest",
+                    "description": "This chest is locked and requires a knock rune to open. Can contain special/rare loot.",
+                    "coordinates": [[3028, 4446], [4154, 1169], [3657, 1713], [3456, 1602], [5590, 2233], [5991, 1784], [6197, 1419], [1176, 3274], [701, 3273], [279, 4064], [1911, 4009], [1974, 3209], [2456, 4180]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Wooden Chest",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[4816, 972], [4035, 1924], [4204, 1441], [3458, 1544], [5878, 2270], [5617, 1065], [6070, 1140], [5148, 3348], [429, 3927], [1908, 4025], [1943, 3155], [3081, 4123]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Rusty Chest",
+                    "description": "This chest is locked and requires a key in one the nearby corpses. Can contain special/rare loot.",
+                    "coordinates": [[5930, 2386], [1836, 4031], [1919, 3222]],
+                    "icon": "icons/treasure-chest.png"
+                }
+            ],
+            "Crystal Pedestals": [
+                {
+                    "id": 1,
+                    "title": "Leper's Curse",
+                    "description": "This curse increase's damage taken. Left click to break the crystal.",
+                    "coordinates": [[6038, 1268], [3287, 4286]],
+                    "icon": "icons/crystal.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Pilgrim's Curse",
+                    "description": "This curse reduces damage dealt. Left click to break the crystal.",
+                    "coordinates": [[4342, 953], [631, 4064], [1810, 3946], [2613, 4144]],
+                    "icon": "icons/crystal.png"
                 }
             ]
         }

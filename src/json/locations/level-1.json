@@ -10,7 +10,7 @@
                     "icon": "icons/Stairs.png"
                 }
             ],
-            "Locked Doors": [
+            "Doors": [
                 {
                     "id": 1,
                     "title": "Locked Door",
@@ -139,7 +139,7 @@
                     "icon": "icons/gray_chest.png"
                 }
             ],
-            "Metal Chests": [
+            "Chests": [
                 {
                     "id": 1,
                     "title": "Metal Chest",
