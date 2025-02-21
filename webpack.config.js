@@ -58,7 +58,8 @@ export default {
         { from: 'src/json', to: 'json' },
         { from: 'src/floors', to: 'floors' },
         { from: 'src/favicon', to: 'favicon' },
-        { from: 'site.webmanifest', to: '.' }
+        { from: 'site.webmanifest', to: '.' },
+        { from: 'src/service-worker.js', to: '.' }
       ],
     }),
   ],

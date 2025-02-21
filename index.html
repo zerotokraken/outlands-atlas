@@ -72,17 +72,42 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="bundle.js"></script>
     <script>
+        // Service worker status indicator
+        const swStatus = document.createElement('div');
+        swStatus.style.cssText = 'position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px; font-size: 12px;';
+        document.body.appendChild(swStatus);
+
         // Register service worker for image caching
         if ('serviceWorker' in navigator) {
+            swStatus.textContent = 'Installing service worker...';
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
+                navigator.serviceWorker.register('service-worker.js')
                     .then(registration => {
-                        console.log('ServiceWorker registration successful');
+                        console.log('ServiceWorker registration successful with scope:', registration.scope);
+                        swStatus.textContent = 'Service worker active - Images will be cached';
+                        
+                        // Listen for service worker updates
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                swStatus.textContent = `Service worker state: ${newWorker.state}`;
+                            });
+                        });
                     })
                     .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
+                        console.error('ServiceWorker registration failed:', err);
+                        swStatus.textContent = 'Service worker failed to load';
                     });
+
+                // Check if service worker is already controlling the page
+                if (navigator.serviceWorker.controller) {
+                    console.log('Service worker is already controlling the page');
+                    swStatus.textContent = 'Service worker active - Using cached images';
+                }
             });
+        } else {
+            console.log('Service workers are not supported');
+            swStatus.textContent = 'Service workers not supported';
         }
     </script>
 </body>
