@@ -244,7 +244,7 @@
                     "id": 1,
                     "title": "Pilgrim's Curse",
                     "description": "This curse reduces damage dealt. Left click to break the crystal.",
-                    "coordinates": [[4342, 953], [631, 4064], [1810, 3946], [2613, 4144]],
+                    "coordinates": [[4342, 953], [631, 4064], [1508, 3738], [2613, 4144]],
                     "icon": "icons/crystal.png"
                 }
             ]
