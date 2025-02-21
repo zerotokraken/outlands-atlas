@@ -155,6 +155,31 @@
                     "coordinates": [[3042, 752], [718, 2154], [1171, 2466], [1283, 2464]]
                 }
             ]
+        },
+        "Quest": {
+            "Shrine": [            
+                {
+                    "id": 1,
+                    "title": "Valor Shrine",
+                    "description": "Bring the Valor Sword to this location. You can find the sword at randoms encounters on levels 1-4 containing two Ratmen and a body. Waves of enemies will spawn and a key will spawn on the ground. You take this to the Hall of Virtue on Level 4 for your reward.",
+                    "coordinates": [2715, 3576],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Compassion Shrine",
+                    "description": "Bring the Unstable Time Crystal to Tatters. He will give you a key to take to the Hall of Virtue on Level 4 for your reward.",
+                    "coordinates": [3314, 517],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Honor Shrine",
+                    "description": "Bring Gwenno's Urn to the Cemetary. This can be found on Level 3 in a chest in the Forgotten Kings room. Defend against waves of monsters and you will get a key to take to the Hall of Virtue on Level 4 for your reward.",
+                    "coordinates": [2974, 6227],
+                    "icon": "icons/exclamation-mark.png"
+                }
+            ]
         }
     }
 }

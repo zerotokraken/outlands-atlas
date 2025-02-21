@@ -161,6 +161,17 @@
                     "icon": "icons/shackles.png"
                 }
             ]
+        },
+        "Quest": {
+            "Shrine": [            
+                {
+                    "id": 1,
+                    "title": "Spirituality Shrine",
+                    "description": "Bring the Crumbling Ankh to this location. You can find the ankh at randoms encounters containing a Timeless Cursed, a Time Lurker and a chest of the avatar. Turn in the ankh and you will get a key to take to the Hall of Virtue on Level 4 for your reward.",
+                    "coordinates": [2908, 1741],
+                    "icon": "icons/exclamation-mark.png"
+                }
+            ]
         }
     }
 }

@@ -74,6 +74,27 @@ export interface TabletsContent {
     tablets: TabletData[];
 }
 
+export interface LootItemData {
+    name: string;
+    icon: string[];
+    sources: string;
+    description: string[];
+}
+
+export interface LootContent {
+    loot: LootItemData[];
+}
+
+export interface GeneralItemData {
+    name: string;
+    location: string;
+    description: string[];
+}
+
+export interface GeneralContent {
+    [category: string]: GeneralItemData[];
+}
+
 // Empty content type for pages without data
 export type EmptyContent = Record<string, never>;
 

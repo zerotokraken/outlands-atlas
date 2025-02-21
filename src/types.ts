@@ -80,7 +80,6 @@ const AVAILABLE_ICONS = {
     // Bosses
     POISON_FINGER: { path: "icons/bosses/poison-finger.png", scale: 200},
     EXOTHRUGG: { path: "images/exothrugg.png", scale: 300 },
-    
 };
 
 interface CategoryData {

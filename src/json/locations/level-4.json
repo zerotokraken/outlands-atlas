@@ -209,6 +209,24 @@
                 }
             ]
         },
+        "Quest": {
+            "Shrine": [            
+                {
+                    "id": 1,
+                    "title": "Honesty Shrine",
+                    "description": "Bring the Unstable Time Crystal to this location. You can find the crystal at randoms encounters containing two Bedlam Gazers and a bag on the ground. Turn in the crystal and you will get a key to take to the Hall of Virtue on Level 4 for your reward.",
+                    "coordinates": [5736, 4399],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Shrine Keys",
+                    "description": "Bring any Shrine Keys to the appropiate section of the Hall of Virtue for a reward.",
+                    "coordinates": [4158, 6614],
+                    "icon": "icons/exclamation-mark.png"
+                }
+            ]
+        },
         "Misc": {
             "Community Chests": [
                 {

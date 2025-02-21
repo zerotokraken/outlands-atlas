@@ -417,6 +417,13 @@
                     "icon": "icons/wooden-box.png"
                 },
                 {
+                    "id": "soap",
+                    "title": "Goblin Soap",
+                    "description": "Spawns in the chest on the table. This is for a quest at Colony.",
+                    "coordinates": [3472, 3373],
+                    "icon": "icons/wooden-box.png"
+                },
+                {
                     "id": "Tear of the Tides",
                     "title": "Tear of the Tides",
                     "description": "Approach the sparkling magic with an ancient coin and recite 'Fate and fortune, fire and tide, reveal the gift that you now hide'; This will spawn a miniboss that will drop the quest item.",

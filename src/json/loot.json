@@ -1,67 +1,43 @@
 {
     "loot": [
       {
-        "name": "",
-        "icon": [""],
-        "sources": "",
+        "name": "Time Coins",
+        "icon": ["images/loot/coin.png"],
+        "sources": "Anywhere",
         "description": [
-          "fill in here"
+          "Used in one quest. Can be traded for colonial marks. Randomized hue."
         ]
       },
       {
-        "name": "",
-        "icon": [""],
-        "sources": "",
+        "name": "Time Vase",
+        "icon": ["images/loot/vase.png"],
+        "sources": "Anywhere",
         "description": [
-          "fill in here"
+          "Can be traded for colonial marks. Randomized hue."
         ]
       },
       {
-        "name": "",
-        "icon": [""],
-        "sources": "",
+        "name": "Time Reagents",
+        "icon": ["images/loot/reagents.png"],
+        "sources": "Anywhere",
         "description": [
-          "fill in here"
+          "Can be traded for colonial marks. Randomized hue."
         ]
       },
       {
-        "name": "",
-        "icon": [""],
-        "sources": "",
+        "name": "Temporal Imprints",
+        "icon": ["images/loot/imprint.png"],
+        "sources": "Anywhere",
         "description": [
-          "fill in here"
+          "Used to create time menageries. These can drop off any monster in the entire dungeon."
         ]
       },
       {
-        "name": "",
-        "icon": [""],
-        "sources": "",
+        "name": "Blackrock Fragments",
+        "icon": ["images/loot/blackrock.png"],
+        "sources": "Anywhere",
         "description": [
-          "fill in here"
-        ]
-      },
-      {
-        "name": "",
-        "icon": [""],
-        "sources": "",
-        "description": [
-          "fill in here"
-        ]
-      },
-      {
-        "name": "",
-        "icon": [""],
-        "sources": "",
-        "description": [
-          "fill in here"
-        ]
-      },
-      {
-        "name": "",
-        "icon": [""],
-        "sources": "",
-        "description": [
-          "fill in here"
+          "Used to create time menageries. Not confirmed but likely higher drop rate off Blackrock Elementals."
         ]
       }
     ]

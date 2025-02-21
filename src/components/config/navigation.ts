@@ -1,11 +1,11 @@
 import { NavButton } from '../types/InfoMenuTypes.js';
 
 export const navigationButtons: NavButton[] = [
+    { text: 'General', page: 'general' },
     { text: 'Time Runes', page: 'runes' },
     { text: 'Time Relics', page: 'relics' },
     { text: 'Hazards', page: 'hazards' },
     { text: 'Encounters', page: 'encounters' },
-    { text: 'Entities', page: 'entities' },
     { text: 'Loot', page: 'loot' },
     { text: 'NPCs', page: 'npcs' },
     { text: 'Quests', page: 'quests' },
@@ -13,14 +13,14 @@ export const navigationButtons: NavButton[] = [
     { text: 'Tablets', page: 'tablets' }
 ];
 
-export const defaultPage = 'runes';
+export const defaultPage = 'general';
 
 export const contentMapping: { [key: string]: string } = {
+    'general': '/json/general.json',
     'runes': '/json/runes.json',
     'relics': '/json/relics.json',
     'hazards': '/json/hazards.json',
     'encounters': '/json/encounters.json',
-    'entities': '/json/entities.json',
     'loot': '/json/loot.json',
     'npcs': '/json/npcs.json',
     'quests': '/json/quests.json',

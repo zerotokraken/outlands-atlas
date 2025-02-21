@@ -112,6 +112,17 @@
         "Runes": {
             "Knock": [
             ]
+        },
+        "Quest": {
+            "Shrine": [            
+                {
+                    "id": 1,
+                    "title": "Humility Shrine",
+                    "description": "Description to be added later.",
+                    "coordinates": [576, 1398],
+                    "icon": "icons/exclamation-mark.png"
+                }
+            ]
         }
     }
 }

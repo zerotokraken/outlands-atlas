@@ -1,19 +1,38 @@
 {
-    "Teleporation & Portals": [
+    "Words of Power & Key Phrases": [
       {
-        "name": "Teleportation Stones",
-        "icon": ["rel-por.png", "teleport-rune.png"],
-        "location": "Anywhere",
+        "name": "Vas Rel Por",
+        "location": "All floors",
         "description": [
           "Stand on the tile or rune and speak 'Vas Rel Por' and teleport the other end. Sometimes you can see the other stone and sometimes it's much farther away. Must have the required time gem."
         ]
       },
       {
-        "name": "Waystar Teleport Tile",
-        "icon": ["waystar.png"],
-        "location": "Floor 3 and lower",
+        "name": "ahm amo bal beh cah cor lum mu om ra summ ver",
+        "location": "Floors 4, 5, 6, 7",
         "description": [
-          "If one possesses a Waystar and required time gem then one can transport their entire party through a temporary gate. This is not an easy to attain item."
+          "When interacting with Shrines you need to say the appropiate word in the Gargish language. These words will cover all Shrines for starting or turning in."
+        ]
+      },
+      {
+        "name": "Garoo Garoo",
+        "location": "Prevalia Zoo",
+        "description": [
+          "Say the phrase a few times to trigger the portal. This will take you the portal crossroads on Level 3."
+        ]
+      },
+      {
+        "name": "Chronos",
+        "location": "Level 6",
+        "description": [
+          "Say the phrase a few times to trigger the portal. This will take you the Damsel's Lair."
+        ]
+      },
+      {
+        "name": "Krompf",
+        "location": "Level 3",
+        "description": [
+          "Say the phrase to summon Krompf. He will trade you a quest item for a Bloom rune."
         ]
       }
     ]
