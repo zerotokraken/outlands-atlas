@@ -1,0 +1,77 @@
+{
+    "the abyssal core": {
+        "Passage": {
+            "Stairs": [
+                {
+                    "id": 1,
+                    "title": "Stairs to the Level 4",
+                    "description": "This leads back to north side of Level 4.",
+                    "coordinates": [1817, 205],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to the Level 4",
+                    "description": "This leads back to center island of Level 4.",
+                    "coordinates": [438, 882],
+                    "icon": "icons/Stairs.png"
+                }
+            ],
+            "Breakable Walls": [
+                {
+                    "id": 1,
+                    "title": "Breakable Wall",
+                    "description": "Left click to break the wall.",
+                    "coordinates": [[353, 274], [220, 269]],
+                    "icon": "icons/brick-wall.png"
+                }
+            ],
+            "Locked Doors": [
+            ],   
+            "Waystar": [
+                {
+                    "id": 1,
+                    "title": "Waystar",
+                    "requirements": "1 Tripartite Time Gem",
+                    "icon": "icons/waystar.png",
+                    "description": "Summons a moongate to Colony for a short duration",
+                    "coordinates": [[595, 1062]]
+                }
+            ]
+         },       
+        "Entities": {
+            "Bosses": [
+                {
+                    "id": "bosses",
+                    "title": "The Leper",
+                    "description": "Special: ?",
+                    "coordinates": [854, 1583],
+                    "icon": "icons/boss.png"
+                }
+            ]           
+         },
+        "Quest": {
+            "Shrine": [            
+                {
+                    "id": 1,
+                    "title": "Justice Shrine",
+                    "description": "Bring the Justice Staff to the Druid here. You can find the staff at randoms encounters containing two Ratmen and a corpse. Turn in the staff and you will get a key to take to the Hall of Virtue on Level 4 for your reward.",
+                    "coordinates": [90, 466],
+                    "icon": "icons/exclamation-mark.png"
+                }
+            ]
+        },
+        "Misc": {
+            "Traps": [
+                {
+                    "id": 1,
+                    "title": "Justice Ambush",
+                    "description": "You will be ambushed by many Apostate soldiers here if you are carrying the Justice staff. This will leave you unable to move from some time.",
+                    "coordinates": [1039, 284],
+                    "icon": "icons/swords.png"
+                }
+            ]
+        }
+
+    }
+}

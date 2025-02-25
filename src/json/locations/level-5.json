@@ -187,6 +187,40 @@
                     "icon": "icons/exclamation-mark.png"
                 }
             ]
+        },
+        "Misc": {
+            "Chests": [
+                {
+                    "id": 1,
+                    "title": "Metal Chest",
+                    "description": "This chest is locked and requires a knock rune to open. Can contain special/rare loot.",
+                    "coordinates": [[632, 5170], [3472, 1227], [3515, 720], [863, 2163]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Wooden Chest",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[546, 5086], [975, 4894], [3431, 1272], [3370, 513], [3403, 675], [715, 2177]],
+                    "icon": "icons/treasure-chest.png"
+                }
+            ],
+            "Crystal Pedestals": [
+                {
+                    "id": 1,
+                    "title": "Leper's Curse",
+                    "description": "This curse increase's damage taken. Left click to break the crystal.",
+                    "coordinates": [[602, 5119]],
+                    "icon": "icons/crystal.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Pilgrim's Curse",
+                    "description": "This curse reduces damage dealt. Left click to break the crystal.",
+                    "coordinates": [[3428, 2980]],
+                    "icon": "icons/crystal.png"
+                }
+            ]
         }
     }
 }

@@ -57,7 +57,7 @@
                 "id": 1,
                 "title": "Locked Door",
                 "description": "Requires a knock rune.",
-                "coordinates": [[5338, 729]],
+                "coordinates": [[5338, 729], [5713, 1734], [5779, 2434]],
                 "icon": "icons/lock.png"
             }
         ],
@@ -108,6 +108,20 @@
                 "title": "Stairs to the Level 5",
                 "description": "This leads to the South East of Level 5",
                 "coordinates": [5886, 3772],
+                "icon": "icons/Stairs.png"
+            },
+            {
+                "id": 1,
+                "title": "Stairs to the Abyssal Core",
+                "description": "This leads back to north side of the Abyssal Core.",
+                "coordinates": [5845, 1850],
+                "icon": "icons/Stairs.png"
+            },
+            {
+                "id": 1,
+                "title": "Stairs to the Abyssal Core",
+                "description": "This leads back to south side of the Abyssal Core.",
+                "coordinates": [3759, 2781],
                 "icon": "icons/Stairs.png"
             }
         ],
@@ -260,6 +274,15 @@
                     "description": "This chest is unlocked and can contain special/rare loot.",
                     "coordinates": [[5090, 4376]],
                     "icon": "icons/treasure-chest.png"
+                }
+            ],
+            "Traps": [
+                {
+                    "id": 1,
+                    "title": "Justice Ambush",
+                    "description": "You will be ambushed by many Apostate soldiers here if you are carrying the Justice staff. This will leave you unable to move from some time.",
+                    "coordinates": [[5258, 1537], [5480, 1529]],
+                    "icon": "icons/swords.png"
                 }
             ]
         }

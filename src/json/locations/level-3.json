@@ -388,7 +388,7 @@
                 },
                 {
                     "id": 1,
-                    "title": "Stew Quest Turn-in",
+                    "title": "Sether Strongarm (Stew Quest)",
                     "description": "Double click the pot repeatedly to cook the stew. You can then turn into the troll with the right phrase",
                     "coordinates": [3793, 2871],
                     "icon": "icons/exclamation-mark.png"
@@ -422,6 +422,27 @@
                     "description": "Spawns in the chest on the table. This is for a quest at Colony.",
                     "coordinates": [3472, 3373],
                     "icon": "icons/wooden-box.png"
+                },
+                {
+                    "id": "avatar",
+                    "title": "Book of Truth",
+                    "description": "Hold in thy hands the Rune of Honesty, Rune of Justice, Rune of Honor and Rune of Spirituality. Speak the word of Honesty (Ver) and receive the Book of Truth.",
+                    "coordinates": [4025, 4959],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": "avatar",
+                    "title": "Candle of Love",
+                    "description": "Hold in thy hands the Rune of Compassion, Rune of Sacrifice, Rune of Justice and Rune of Spirituality. Speak the word of Love (Amo) and receive the Candle of Love.",
+                    "coordinates": [4438, 5376],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": "avatar",
+                    "title": "Bell of Courage",
+                    "description": "Hold in thy hands the Rune of Valor, Rune of Sacrifice, Rune of Honor and Rune of Spirituality. Speak the word of Courage (Cor) and receive the Bell of Courage.",
+                    "coordinates": [4025, 5807],
+                    "icon": "icons/exclamation-mark.png"
                 },
                 {
                     "id": "Tear of the Tides",
