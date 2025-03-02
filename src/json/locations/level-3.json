@@ -403,7 +403,7 @@
                     "icon": "icons/wooden-box.png"
                 },
                 {
-                    "id": "krompf",
+                    "id": "Kropf",
                     "title": "Stew Ingredient",
                     "description": "Say Kropf! to get the goblin to appear. You must have one bloom rune to trade for what you need",
                     "coordinates": [368, 966],
