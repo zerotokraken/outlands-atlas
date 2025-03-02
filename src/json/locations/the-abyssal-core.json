@@ -67,7 +67,7 @@
                     "id": 1,
                     "title": "Justice Ambush",
                     "description": "You will be ambushed by many Apostate soldiers here if you are carrying the Justice staff. This will leave you unable to move from some time.",
-                    "coordinates": [1039, 284],
+                    "coordinates": [[1039, 284], [521, 425]],
                     "icon": "icons/swords.png"
                 }
             ]

@@ -10,6 +10,15 @@
                     "icon": "icons/Stairs.png"
                 }
             ],
+            "Bridge": [
+                {
+                "id": 1,
+                "title": "Bridge",
+                "description": "You can cross the river here.",
+                "coordinates": [3983, 4232],
+                "icon": "icons/bridge.png"
+            }
+        ],
             "Doors": [
                 {
                     "id": 1,

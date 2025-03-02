@@ -37,6 +37,14 @@
         ],
             "Teleport Tiles": [],
             "Waystar": [
+                {
+                    "id": 1,
+                    "title": "Waystar",
+                    "requirements": "1 Tri Time Gem",
+                    "icon": "icons/waystar.png",
+                    "description": "Summons a moongate to Colony for a short duration. Say 'Vas Rel Por' to use.",
+                    "coordinates": [[622, 2925]]
+                }
             ]
          }
     }
