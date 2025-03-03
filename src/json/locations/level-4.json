@@ -61,7 +61,15 @@
                 "icon": "icons/lock.png"
             }
         ],
-        "Portals": [],
+        "Portals": [
+            {
+                "id": 1,
+                "title": "Gate to Level 7",
+                "description": "This pocket area is can only be accessed by Level 7. This gate takes you back to the point of entry",
+                "coordinates": [[6051, 1522], [5605, 3505]],
+                "icon": "icons/Gates_Silver.png"
+            }
+        ],
         "Breakable Wall": [
             {
                 "id": 1,
@@ -234,9 +242,30 @@
                 },
                 {
                     "id": 1,
+                    "title": "Sacrifice Shrine",
+                    "description": "Bring the Bowl of Tears to this location. You can find the bowl randomly on the ground throughout the dungeon. Turn in the bowl with one other player here and you will get a key to take to the Hall of Virtue on Level 4 for your reward. The entrance to this location is on Level 7.",
+                    "coordinates": [5975, 1422],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
                     "title": "Shrine Keys",
                     "description": "Bring any Shrine Keys to the appropiate section of the Hall of Virtue for a reward.",
                     "coordinates": [4158, 6614],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Gromgur Wisehead the mage",
+                    "description": "Bring him the Timekeeper's Hourglass, a Martian Rock, Ancient Shackles and 10k Colonial marks to make a Timekeeper's Ward. Say trade when you have the items.",
+                    "coordinates": [1472, 1179],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Clevertail the lenscrafter",
+                    "description": "Bring him a Glass Sword, a Piece of Magic Marble, a Cataract Lens and 10k Colonial marks to make a refactory Lens. Say trade when you have the items.",
+                    "coordinates": [2915, 1756],
                     "icon": "icons/exclamation-mark.png"
                 }
             ]

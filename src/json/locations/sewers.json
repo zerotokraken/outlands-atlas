@@ -8,6 +8,48 @@
                     "description": "This leads back to Level 5",
                     "coordinates": [1140, 2556],
                     "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to Worlds End",
+                    "description": "This leads a relatively safe area with goblin vendors",
+                    "coordinates": [875, 1127],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to Sewers Level 1",
+                    "description": "This leads to the south side of Sewers level 1",
+                    "coordinates": [676, 2467],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to Sewers Level 1",
+                    "description": "This leads to the north side of Sewers level 1",
+                    "coordinates": [1379, 3261],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to Sewers Level 2",
+                    "description": "This leads to the south side of Sewers level 2",
+                    "coordinates": [3442, 1953],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to Sewers Level 2",
+                    "description": "This leads to the middle of Sewers Level 2 on the lower area.",
+                    "coordinates": [3398, 2737],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to Sewers Middle",
+                    "description": "This leads to the middle canal of Sewers. This entrance is the lower area of Level 2",
+                    "coordinates": [2408, 3244],
+                    "icon": "icons/Stairs.png"
                 }
             ],
             "Ladders": [
@@ -19,7 +61,25 @@
                     "icon": "icons/ladder.png"
                 }
             ],
+            "Breakable Wall": [
+                {
+                    "id": 1,
+                    "title": "Breakable Walls",
+                    "description": "Left click to break the wall. This under the floor where the icon is.",
+                    "coordinates": [[2332, 3336]],
+                    "icon": "icons/brick-wall.png"
+                }
+            ],
             "Teleport Tiles": [
+            ],
+            "Portals": [
+                {
+                    "id": 1,
+                    "title": "Exit from Level 3",
+                    "description": "This is where you appear if you go into the jail cell on Level 3",
+                    "coordinates": [1418, 999],
+                    "icon": "icons/portal.png"
+                }
             ],
             "Rel Por Stones": [
                 {
@@ -46,7 +106,7 @@
                     "id": 1,
                     "title": "Locked Door",
                     "description": "Requires a knock rune.",
-                    "coordinates": [[2721, 998], [1225, 2547]],
+                    "coordinates": [[2721, 998], [1225, 2547], [2414, 3262], [1890, 2998], [2274, 3334], [3098, 3337], [3097, 3250], [3097, 3149], [3012, 3701]],
                     "icon": "icons/lock.png"
                 }
             ]
@@ -101,6 +161,24 @@
                     "description": "Special: Unknown",
                     "coordinates": [2714, 3063],
                     "icon": "icons/boss.png"
+                }
+            ]
+        },
+        "Misc": {
+            "Chests": [
+                {
+                    "id": 1,
+                    "title": "Metal Chest",
+                    "description": "This chest is locked and requires a knock rune to open. Can contain special/rare loot.",
+                    "coordinates": [[806, 2353], [2427, 1847], [1389, 2674]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Wooden Chest",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[1757, 1030], [2839, 932], [2730, 954]],
+                    "icon": "icons/treasure-chest.png"
                 }
             ]
         }

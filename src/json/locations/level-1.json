@@ -126,7 +126,7 @@
                     "id": 1,
                     "title": "Mountain Tribe Scout",
                     "description": "Reveals in a large radius. Snares current target with a net.",
-                    "coordinates": [[2192, 1552], [5334, 2206], [5091, 3604], [2230, 949]],
+                    "coordinates": [[2192, 1552], [5334, 2206], [5091, 3604], [2230, 949], [5043, 4936], [5663, 3309], [5564, 4155]],
                     "icon": "icons/eye.png"
                 },
                 {

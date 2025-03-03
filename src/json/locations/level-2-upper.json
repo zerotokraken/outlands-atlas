@@ -36,8 +36,15 @@
                     "id": 1,
                     "title": "Locked Door",
                     "description": "Requires a knock rune.",
-                    "coordinates": [[655, 2290], [1867, 1288], [525, 558]],
+                    "coordinates": [[655, 2290], [1867, 1288], [525, 558], [599, 4383]],
                     "icon": "icons/lock.png"
+                },
+                {
+                    "id": 1,
+                    "title": "The Red Doors",
+                    "description": "Seek the tablets to unravel the mystery... Leads somewhere..",
+                    "coordinates": [[950, 519]],
+                    "icon": "icons/red-doors.png"
                 }
             ],
             "Cave": [
@@ -90,6 +97,22 @@
                     "description": "Special: Unknown.",
                     "coordinates": [1426, 1248],
                     "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Captain Reginald",
+                    "description": "Special: Unknown.",
+                    "coordinates": [1388, 4848],
+                    "icon": "icons/boss.png"
+                }
+            ],
+            "Revealers": [
+                {
+                    "id": 1,
+                    "title": "Apostate Rangers",
+                    "description": "Reveals in a large radius. Shoots a volley of heavy damage arrows.",
+                    "coordinates": [[1270, 4140], [1496, 4148], [1470, 4768], [1472, 4980], [1104, 4986], [1120, 4774], [718, 882]],
+                    "icon": "icons/eye.png"
                 }
             ]           
          }

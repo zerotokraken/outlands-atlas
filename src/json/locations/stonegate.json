@@ -4,6 +4,13 @@
             "Portals": [
                 {
                     "id": 1,
+                    "title": "Portal",
+                    "description": "This teleports you down from this cliff area. Uncertain where exactly.",
+                    "coordinates": [2473, 3083],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
                     "title": "Entrance from Level 1",
                     "description": "This is one of five locations you can spawn into when entering the area.",
                     "coordinates": [[528, 2281], [1178, 4320], [2089, 2694], [2679, 3838], [1530, 4423]],

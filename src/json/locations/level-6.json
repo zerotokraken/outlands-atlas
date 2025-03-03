@@ -115,6 +115,13 @@
                     "description": "The NPC here will craft a Waystar if you bring him the following: Exodus Chains, A Broken Waystar & 75000 Colonial Marks",
                     "coordinates": [1677, 2597],
                     "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Gloam the colony smuggler",
+                    "description": "The NPC here will sell a variety of rare goods for colonial marks: Glass Sword 15k, Martian Rock 20k, Infinity Coin 50k, Claw Machine Token 80k",
+                    "coordinates": [1739, 2499],
+                    "icon": "icons/exclamation-mark.png"
                 }
             ],
             "Bosses": [

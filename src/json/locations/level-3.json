@@ -64,7 +64,7 @@
                     "id": 1,
                     "title": "Breakable Walls",
                     "description": "Left click to break the wall.",
-                    "coordinates": [[4034, 1058], [4355, 2478], [496, 4040]],
+                    "coordinates": [[4034, 1058], [4355, 2478], [496, 4040], [561, 2384]],
                     "icon": "icons/brick-wall.png"
                 }
             ],
@@ -73,7 +73,7 @@
                     "id": 1,
                     "title": "Locked Door",
                     "description": "Requires a knock rune.",
-                    "coordinates": [[3466, 3342], [3808, 3815], [3122, 3786], [3765, 2801], [3845, 2799], [3885, 2828], [1917, 1093], [1782, 775], [2283, 1268], [624, 3336], [885, 675], [845, 1586]],
+                    "coordinates": [[4107, 5771], [4110, 4993],[3466, 3342], [3808, 3815], [3122, 3786], [3765, 2801], [3845, 2799], [3885, 2828], [1917, 1093], [1782, 775], [2283, 1268], [624, 3336], [885, 675], [845, 1586]],
                     "icon": "icons/lock.png"
                 }
             ],
@@ -111,6 +111,13 @@
                 }
             ],            
             "Portals": [
+                {
+                    "id": 1,
+                    "title": "Portal to Gazers",
+                    "description": "Takes you to the room in the south.",
+                    "coordinates": [1930, 460],
+                    "icon": "icons/Gates_Silver.png"
+                },
                 {
                     "id": 1,
                     "title": "Portal to the ship",
@@ -187,6 +194,13 @@
                     "description": "This is where you appear if you speak the magic words in the book. Grab the gold!",
                     "coordinates": [2503, 5166],
                     "icon": "icons/portal.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Gate to Level 7",
+                    "description": "This pocket area is can only be accessed by Level 7. This gate takes you back to the point of entry",
+                    "coordinates": [[1266, 1704], [249, 1536], [761, 3006]],
+                    "icon": "icons/Gates_Silver.png"
                 }
             ],
             "Teleport Tiles": [
@@ -375,7 +389,37 @@
                     "coordinates": [3889, 2284],
                     "icon": "icons/ankh.png"
                 }
-            ] 
+            ],
+            "Chests": [
+                {
+                    "id": 1,
+                    "title": "Metal Chest",
+                    "description": "This chest is locked and requires a knock rune to open. Can contain special/rare loot.",
+                    "coordinates": [[3691, 1614], [2468, 2753], [4157, 4994], [4827, 1987], [4113, 986], [3286, 679], [1632, 1218], [614, 1546], [793, 2384], [4158, 5746], [4163, 5795]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Wooden Chest",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[3753, 3931], [3871, 3936], [3711, 1679], [2947, 4148], [4158, 4978], [4157, 5023], [4094, 846], [3732, 605], [3227, 640], [2518, 621], [2096, 974], [2886, 1522], [653, 2614], [4159, 5762]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Unlocked Metal Chest",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[3442, 3179], [3775, 3100], [2400, 1542], [2866, 1488], [788, 1189], [874, 1689], [846, 1687], [824, 1687], [384, 2644], [307, 2641]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Key Chest",
+                    "description": "Search nearby corpses for the key. Can contain special/rare loot.",
+                    "coordinates": [[2240, 1083], [966, 2092]],
+                    "icon": "icons/treasure-chest.png"
+                }
+            ]
         },
         "Quest": {
             "Quest NPCs": [
@@ -404,7 +448,7 @@
                 },
                 {
                     "id": "Kropf",
-                    "title": "Stew Ingredient",
+                    "title": "Mushrooms",
                     "description": "Say Kropf! to get the goblin to appear. You must have one bloom rune to trade for what you need",
                     "coordinates": [368, 966],
                     "icon": "icons/wooden-box.png"

@@ -15,14 +15,6 @@
                     "tile": [106, 105, 104, 103, 102, 101, 100, 99, 98]
                 }
             ]
-        },
-        "secondaries": [
-            {
-                "startDir": 464,
-                "endDir": 467,
-                "startTile": 94,
-                "endTile": 97
-            }
-        ]
+        }
     }
 }
