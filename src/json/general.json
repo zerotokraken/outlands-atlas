@@ -34,7 +34,16 @@
         "description": [
           "Say the phrase to summon Kropf!. He will trade you a quest item for a Bloom rune."
         ]
+      },
+      {
+        "name": "Ancient Coin Bosses",
+        "location": "Level 3 & The Molten Core",
+        "description": [
+          "These bosses drop quest items to make the broken waystar. To summon the bosses you must have an Ancient Coin and type 'Fate and fortune, fire and tide, reveal the gift that you now hide'."
+        ]
       }
     ]
   }
+  
+
   

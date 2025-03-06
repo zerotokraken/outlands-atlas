@@ -98,6 +98,13 @@
                     "description": "Hit the lever in the room to the south east to trigger a portal leading down",
                     "coordinates": [2792, 3293],
                     "icon": "icons/hidden_passage.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Tyball's Lair",
+                    "description": "Click on the skull twice nearby to make the portal appear.",
+                    "coordinates": [104, 2378],
+                    "icon": "icons/hidden_passage.png"
                 }
             ],
             "Rel Por Stones": [
@@ -190,9 +197,30 @@
                 },
                 {
                     "id": 1,
+                    "title": "Tyball Exit",
+                    "description": "This takes you back to south area of Level 3.",
+                    "coordinates": [3609, 6709],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
                     "title": "Gold Room",
                     "description": "This is where you appear if you speak the magic words in the book. Grab the gold!",
                     "coordinates": [2503, 5166],
+                    "icon": "icons/portal.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Tyball Entrance",
+                    "description": "This is where you appear if you take the portal to Tyball.",
+                    "coordinates": [3496, 7213],
+                    "icon": "icons/portal.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Exodus Entrance",
+                    "description": "This is where you appear if you take the portal to Exodus.",
+                    "coordinates": [3013, 6907],
                     "icon": "icons/portal.png"
                 },
                 {
@@ -257,7 +285,7 @@
                     "id": "bosses",
                     "title": "Exodus Progressive Spawn",
                     "description": "Special: Teleports and drops void bombs. You must kill the Exodus MK1-5 to spawn the boss.",
-                    "coordinates": [3009, 7333],
+                    "coordinates": [2616, 7334],
                     "icon": "icons/boss.png"
                 },
                 {
@@ -270,7 +298,7 @@
                 {
                     "id": "bosses",
                     "title": "Alpha Shadow Wolf",
-                    "description": "Special: Revealer, Stealths and does a backstab",
+                    "description": "Special: Revealer, Stealths and does a backstab. Also does a charge.",
                     "coordinates": [3320, 2700],
                     "icon": "icons/boss.png"
                 },
@@ -319,29 +347,22 @@
                 {
                     "id": "bosses",
                     "title": "Tyball the Cursed",
-                    "description": "Special: Unknown",
+                    "description": "Special: Pontiff bomb. Does more damage the more targets are nearby each other.",
                     "coordinates": [3683, 6791],
                     "icon": "icons/boss.png"
                 },
                 {
                     "id": "bosses",
-                    "title": "The Wailing King",
-                    "description": "Special: Unknown",
-                    "coordinates": [675, 1766],
+                    "title": "The Sleeping Kings",
+                    "description": "Best not to wake them.",
+                    "coordinates": [690, 1881],
                     "icon": "icons/boss.png"
                 },
                 {
                     "id": "bosses",
-                    "title": "The Howling King",
-                    "description": "Special: Unknown",
-                    "coordinates": [798, 1871],
-                    "icon": "icons/boss.png"
-                },
-                {
-                    "id": "bosses",
-                    "title": "The Sobbing King",
-                    "description": "Special: Unknown",
-                    "coordinates": [672, 1980],
+                    "title": "The One Who Seeks",
+                    "description": "Special: Summons undead enemies and cast spells. Kill the elementals to summon the boss.",
+                    "coordinates": [1310, 2298],
                     "icon": "icons/boss.png"
                 }
             ],
@@ -350,7 +371,7 @@
                     "id": 1,
                     "title": "Greater Gazer",
                     "description": "Reveals in a large radius. Does a heavy single target burst that bleeds.",
-                    "coordinates": [[2372, 3817], [1554, 693], [1265, 706], [1285, 1070], [2592, 2240]],
+                    "coordinates": [[2372, 3817], [1554, 693], [1265, 706], [1285, 1070], [2592, 2240], [1016, 1442], [1655, 7326], [1463, 8234], [3580, 7100]],
                     "icon": "icons/eye.png"
                 }
             ]           
@@ -370,6 +391,13 @@
                     "description": "There is a Greater Smoke Dragon inside!",
                     "coordinates": [[3815, 3935]],
                     "icon": "icons/trap.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Ambush!",
+                    "description": "Two random monsters will spawn when running through this spot.",
+                    "coordinates": [[473, 1413]],
+                    "icon": "icons/swords.png"
                 }
             ],
             "Levers": [
@@ -447,6 +475,13 @@
                     "icon": "icons/wooden-box.png"
                 },
                 {
+                    "id": "urn",
+                    "title": "Gwenno's Urn",
+                    "description": "Required quest item to do the Honor Shrine Quest.",
+                    "coordinates": [2268, 1698],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
                     "id": "Kropf",
                     "title": "Mushrooms",
                     "description": "Say Kropf! to get the goblin to appear. You must have one bloom rune to trade for what you need",
@@ -494,6 +529,20 @@
                     "description": "Approach the sparkling magic with an ancient coin and recite 'Fate and fortune, fire and tide, reveal the gift that you now hide'; This will spawn a miniboss that will drop the quest item.",
                     "coordinates": [1493, 1695],
                     "icon": "icons/water.png"
+                },
+                {
+                    "id": "Marble Piece",
+                    "title": "Marble Piece",
+                    "description": "Marble Golems have a chance to drop this quest item required for the refractory lens.",
+                    "coordinates": [1670, 7854],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": "Glass Sword",
+                    "title": "Glass Sword",
+                    "description": "Deckhands here have a chance to drop this quest item required for the refractory lens.",
+                    "coordinates": [948, 5603],
+                    "icon": "icons/exclamation-mark.png"
                 }
             ]
         }
