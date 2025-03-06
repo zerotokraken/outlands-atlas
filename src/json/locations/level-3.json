@@ -477,8 +477,8 @@
                 {
                     "id": "urn",
                     "title": "Gwenno's Urn",
-                    "description": "Required quest item to do the Honor Shrine Quest.",
-                    "coordinates": [2268, 1698],
+                    "description": "Required quest item to do the Honor Shrine Quest. You must unlock the chest and remove the trap. You will have to clear the bosses in this room before attempting this.",
+                    "coordinates": [1414, 3352],
                     "icon": "icons/exclamation-mark.png"
                 },
                 {
