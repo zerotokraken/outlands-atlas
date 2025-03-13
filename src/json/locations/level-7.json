@@ -24,6 +24,13 @@
                     "description": "???",
                     "coordinates": [[3760, 1966], [3850, 2049], [390, 238]],
                     "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Portal",
+                    "description": "Leads to the Sacrifice Shrine on Level 4",
+                    "coordinates": [[390, 238]],
+                    "icon": "icons/Gates_Silver.png"
                 }
             ],
             "Walls": [

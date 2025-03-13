@@ -15,6 +15,20 @@
                     "description": "This leads back to center island of Level 4.",
                     "coordinates": [438, 882],
                     "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to the Shrine of Time",
+                    "description": "This leads to the Shrine of Time.",
+                    "coordinates": [844, 2311],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to the Abyssal Core",
+                    "description": "This leads back to the Abyssal Core.",
+                    "coordinates": [-192, 3007],
+                    "icon": "icons/Stairs.png"
                 }
             ],
             "Breakable Walls": [
@@ -27,6 +41,13 @@
                 }
             ],
             "Locked Doors": [
+                {
+                    "id": 1,
+                    "title": "Gate to the Shrine of Time",
+                    "description": "Opens for a period after the Leper is defeated.",
+                    "coordinates": [[845, 1865]],
+                    "icon": "icons/lock.png"
+                }
             ],   
             "Waystar": [
                 {

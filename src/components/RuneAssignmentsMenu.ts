@@ -69,7 +69,18 @@ export class RuneAssignmentsMenu {
         const saved = localStorage.getItem('runeAssignments');
         if (saved) {
             try {
-                this.assignments = JSON.parse(saved);
+                const parsed = JSON.parse(saved);
+                // Filter out invalid entries
+                this.assignments = parsed.filter((assignment: RuneAssignment) => 
+                    assignment && 
+                    assignment.playerName && 
+                    assignment.playerName.trim() !== '' &&
+                    assignment.role &&
+                    Array.isArray(assignment.runes) &&
+                    assignment.runes.length === 3
+                );
+                // Save filtered assignments back
+                this.saveAssignments();
             } catch (e) {
                 console.error('Failed to load rune assignments:', e);
                 this.assignments = [];
@@ -269,6 +280,39 @@ export class RuneAssignmentsMenu {
         });
         this.menu.appendChild(addButton);
 
+        // Add Clear All button
+        const clearAllButton = document.createElement('button');
+        clearAllButton.textContent = 'Clear All';
+        clearAllButton.style.cssText = `
+            background: #ff4444;
+            border: none;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+            margin-left: 10px;
+        `;
+        clearAllButton.addEventListener('click', async () => {
+            if (confirm('Are you sure you want to clear all assignments?')) {
+                this.assignments = [];
+                this.saveAssignments();
+                const tbody = this.menu?.querySelector('tbody');
+                if (tbody) {
+                    tbody.innerHTML = '';
+                }
+                await this.updateRuneStats();
+            }
+        });
+        clearAllButton.addEventListener('mouseover', () => {
+            clearAllButton.style.backgroundColor = '#ff6666';
+        });
+        clearAllButton.addEventListener('mouseout', () => {
+            clearAllButton.style.backgroundColor = '#ff4444';
+        });
+        this.menu.appendChild(clearAllButton);
+
         backdrop.appendChild(this.menu);
         document.body.appendChild(backdrop);
     }
@@ -278,6 +322,10 @@ export class RuneAssignmentsMenu {
         tr.style.cssText = `
             border-bottom: 1px solid #333;
         `;
+        
+        // Store assignment data for reliable deletion
+        const assignmentId = `${assignment.playerName}-${assignment.role}-${assignment.runes.join('-')}-${Date.now()}`;
+        tr.dataset.assignmentId = assignmentId;
 
         // Player name cell
         const nameCell = document.createElement('td');
@@ -367,10 +415,26 @@ export class RuneAssignmentsMenu {
             transition: all 0.2s ease;
         `;
         deleteButton.addEventListener('click', async () => {
-            this.assignments.splice(index, 1);
-            this.saveAssignments();
-            tr.remove();
-            await this.updateRuneStats();
+            const assignmentId = tr.dataset.assignmentId;
+            if (assignmentId) {
+                const [name, role, ...runesParts] = assignmentId.split('-');
+                const timestamp = runesParts.pop(); // Remove timestamp
+                const runes = runesParts;
+                
+                // Find and remove the assignment
+                const idx = this.assignments.findIndex(a => 
+                    a.playerName === name && 
+                    a.role === role && 
+                    JSON.stringify(a.runes) === JSON.stringify(runes)
+                );
+                
+                if (idx !== -1) {
+                    this.assignments.splice(idx, 1);
+                    this.saveAssignments();
+                    tr.remove();
+                    await this.updateRuneStats();
+                }
+            }
         });
         deleteButton.addEventListener('mouseover', () => deleteButton.style.color = '#ff4444');
         deleteButton.addEventListener('mouseout', () => deleteButton.style.color = '#999');

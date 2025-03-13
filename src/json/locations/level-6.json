@@ -51,7 +51,7 @@
                 {
                     "id": 1,
                     "title": "Portal to Mars",
-                    "description": "Leads to and from Mars. The mobs drop the Martian Rock required for the Ward",
+                    "description": "Leads to and from Mars. A ward is required for this area.",
                     "coordinates": [[590, 3082], [494, 5919]],
                     "icon": "icons/Gates_Silver.png"
                 },
@@ -162,9 +162,23 @@
             "Quest Items": [
                 {
                     "id": "shackles",
-                    "title": "Shackles",
-                    "description": "Required item to create a Ward.",
+                    "title": "Ancient shackles",
+                    "description": "Located in the skeleton corpse. Required item to create a Ward.",
                     "coordinates": [603, 371],
+                    "icon": "icons/shackles.png"
+                },
+                {
+                    "id": "hourglass",
+                    "title": "A timekeeper's hourglass",
+                    "description": "Located in the metal chest. This will not appear until the Damsel is dead. Required item to create a Ward.",
+                    "coordinates": [689, 5187],
+                    "icon": "icons/shackles.png"
+                },
+                {
+                    "id": "rock",
+                    "title": "A martian rock",
+                    "description": "Random drop from Dust Devils. Required item to create a Ward.",
+                    "coordinates": [933, 3315],
                     "icon": "icons/shackles.png"
                 }
             ]

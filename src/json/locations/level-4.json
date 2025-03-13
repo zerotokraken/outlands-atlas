@@ -267,10 +267,54 @@
                     "description": "Bring him a Glass Sword, a Piece of Magic Marble, a Cataract Lens and 10k Colonial marks to make a refactory Lens. Say trade when you have the items.",
                     "coordinates": [2915, 1756],
                     "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Libram the beggar",
+                    "description": "Bring him the Tear of the Tide and the Emberheart to get a broken waystar. Say trade when you have the items.",
+                    "coordinates": [2126, 968],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Iolanthe the knight",
+                    "description": "Bring her the complete collection of small virtue stones from the Mirrors in the Ankh room. Say trade when you have the items.",
+                    "coordinates": [2134, 1720],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Jeanette the priestess",
+                    "description": "Bring her the complete collection of the anti-virtue stones. You must collect the virtue stones from the mirrors and take them to Level 8. Complete the anti-virtue bosses to receive the anti-virtue stones. Say trade when you have the items.",
+                    "coordinates": [4221, 6478],
+                    "icon": "icons/exclamation-mark.png"
                 }
             ]
         },
         "Misc": {
+            "Books": [
+                {
+                    "id": 1,
+                    "title": "Tear of the Tide and Ember Heart",
+                    "description": "Important lore book for a nearby quest.",
+                    "coordinates": [2526, 1104],
+                    "icon": "icons/book.png"
+                },
+                {
+                    "id": 1,
+                    "title": "The Colonial Waystar",
+                    "description": "Important lore book for the whereabouts of Graham.",
+                    "coordinates": [2534, 1052],
+                    "icon": "icons/book.png"
+                },
+                {
+                    "id": 1,
+                    "title": "The Garoo at the Zoo",
+                    "description": "Important lore book for the Prevalia Zoo.",
+                    "coordinates": [2540, 978],
+                    "icon": "icons/book.png"
+                }
+            ],
             "Community Chests": [
                 {
                     "id": 1,

@@ -238,6 +238,14 @@
                     "description": "Teleports you into Sewers. This is tile is not visible. Simple open the door with knock and then run straight into the cell and you will be teleported. No gems are required",
                     "coordinates": [3474, 3320],
                     "icon": "icons/teleport-rune.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Colony Teleport",
+                    "requirements": "1 Bipartite Time Gem",
+                    "icon": "icons/teleport-rune.png",
+                    "description": "Teleports you to Colony. Say 'Vas Rel Por' to use.",
+                    "coordinates": [[2485, 4107]]
                 }
             ],
             "Waystar": [
@@ -247,7 +255,7 @@
                     "requirements": "1 Tri Time Gem",
                     "icon": "icons/waystar.png",
                     "description": "Summons a moongate to Colony for a short duration. Say 'Vas Rel Por' to use.",
-                    "coordinates": [[928, 1480], [3185, 4299]]
+                    "coordinates": [[928, 1480], [3185, 4299], [4490, 2677]]
                 }
             ]
          },
@@ -256,10 +264,10 @@
                 {
                     "id": "knock",
                     "title": "Knock",
-                    "container": ["Armoire", "Dead Orc", "Crate", "Crate", "Crate", "Crate", "Strongbox"],
+                    "container": ["Barrel", "Armoire", "Dead Orc", "Crate", "Crate", "Crate", "Crate", "Strongbox"],
                     "icon": "icons/runes/timerune-knock.png",
                     "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
-                    "coordinates": [[2868, 1052], [3394, 2755], [3705, 2817], [3086, 3816], [3070, 3825], [1131, 4033], [339, 2710]]
+                    "coordinates": [[1549, 1134], [2868, 1052], [3394, 2755], [3705, 2817], [3086, 3816], [3070, 3825], [1131, 4033], [339, 2710]]
                 }
             ]
         },        
