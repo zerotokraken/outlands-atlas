@@ -57,6 +57,13 @@
                     "description": "This leads back to the south-east part of Level 3.",
                     "coordinates": [1251, 8729],
                     "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Stairs to Level 4",
+                    "description": "This leads to east side of Level 4.",
+                    "coordinates": [1986, 2578],
+                    "icon": "icons/Stairs.png"
                 }
             ],
             "Breakable Wall": [

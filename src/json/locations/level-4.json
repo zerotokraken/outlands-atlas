@@ -106,14 +106,21 @@
             },
             {
                 "id": 1,
-                "title": "Stairs to the Level 5",
+                "title": "Stairs to Level 5",
                 "description": "This leads to the South West of Level 5",
                 "coordinates": [5634, 680],
                 "icon": "icons/Stairs.png"
             },
             {
                 "id": 1,
-                "title": "Stairs to the Level 5",
+                "title": "Stairs to Level 3",
+                "description": "This leads to the middle of Level 3",
+                "coordinates": [4053, 4519],
+                "icon": "icons/Stairs.png"
+            },
+            {
+                "id": 1,
+                "title": "Stairs to Level 5",
                 "description": "This leads to the South East of Level 5",
                 "coordinates": [5886, 3772],
                 "icon": "icons/Stairs.png"
@@ -287,6 +294,34 @@
                     "title": "Jeanette the priestess",
                     "description": "Bring her the complete collection of the anti-virtue stones. You must collect the virtue stones from the mirrors and take them to Level 8. Complete the anti-virtue bosses to receive the anti-virtue stones. Say trade when you have the items.",
                     "coordinates": [4221, 6478],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Billingsly the strange alchemist",
+                    "description": "Bring him a vial of ancient blood and an inert magic rune. Say trade when you have the items.",
+                    "coordinates": [2362, 2207],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Nimblefinger the fine craftsman",
+                    "description": "Bring him a void slime, precious time gem and a chunk of goblin soap. Say trade when you have the items.",
+                    "coordinates": [1881, 2690],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Lora the gate pass holder",
+                    "description": "Bring him a bounty notice to exchange for a colony gate pass. Say trade when you have the items.",
+                    "coordinates": [2741, 1032],
+                    "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Quicktail the garrison commander",
+                    "description": "Bring him a bounty notice to exchange for a reward. Say trade when you have the items.",
+                    "coordinates": [2764, 869],
                     "icon": "icons/exclamation-mark.png"
                 }
             ]
