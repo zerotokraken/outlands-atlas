@@ -22,7 +22,7 @@
                     "id": 1,
                     "title": "Breakable Wall",
                     "description": "Left click to break the wall.",
-                    "coordinates": [300, 1037],
+                    "coordinates": [[300, 1037], [661, 490], [1049, 1539], [1737, 1665], [2728, 1642], [2639, 1590], [2790, 758]],
                     "icon": "icons/brick-wall.png"
                 }
             ],
@@ -154,7 +154,7 @@
                     "id": 1,
                     "title": "Ward Line",
                     "description": "If you cross this line without a Ward you will continuously summon dangerous Ghasts.",
-                    "coordinates": [[1722, 178], [1722, 2016]],
+                    "coordinates": [[1783, 178], [1783, 2016]],
                     "color": "#ff0000"
                 }
             ],
