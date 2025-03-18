@@ -6,7 +6,7 @@
                     "id": 1,
                     "title": "Locked Door",
                     "description": "Requires a knock rune.",
-                    "coordinates": [[3608, 1718], [3631, 2091]],
+                    "coordinates": [[3608, 1718], [3631, 2091], [2539, 854]],
                     "icon": "icons/lock.png"
                 }
             ],
@@ -38,7 +38,7 @@
                     "id": 1,
                     "title": "Barrier",
                     "description": "Kill the Barrier Warden to Proceed",
-                    "coordinates": [[1162, 847], [1115, 1056], [380, 276]],
+                    "coordinates": [[1162, 847], [1115, 1056], [380, 276], [1973, 365]],
                     "icon": "icons/barrier.png"
                 },
                 {
@@ -68,12 +68,22 @@
                     "icon": "icons/Stairs.png"
                 }
             ],
+            "Confluence": [
+                {
+                    "id": 1,
+                    "title": "Confluence",
+                    "requirements": "?",
+                    "icon": "icons/compass.png",
+                    "description": "Future location for the 'Confluence' mechanic. Will require the Timekeeper's Compass to utilize.",
+                    "coordinates": [2282, 372]
+                }
+            ],
             "Levers": [
                 {
                     "id": 1,
                     "title": "Lever",
-                    "description": "Temporarily opens the barriers naerby.",
-                    "coordinates": [[3872, 909], [3789, 986], [3268, 1054]],
+                    "description": "Temporarily opens the barriers nearby.",
+                    "coordinates": [[3872, 909], [3789, 986], [3263, 1088], [3088, 926]],
                     "icon": "icons/lever.png"
                 }
             ],
@@ -82,7 +92,7 @@
                     "id": 1,
                     "title": "Breakable Wall",
                     "description": "Left click to break the wall.",
-                    "coordinates": [876, 578],
+                    "coordinates": [[876, 578], [2127, 443], [1008, 1546]],
                     "icon": "icons/brick-wall.png"
                 }
             ]
@@ -111,7 +121,7 @@
                     "id": "bosses",
                     "title": "The Barrier Warden",
                     "description": "Special: Does a pontiff style bomb",
-                    "coordinates": [[914, 846], [313, 362]],
+                    "coordinates": [[914, 846], [313, 362], [2038, 356]],
                     "icon": "icons/boss.png"
                 }
             ]  
@@ -128,6 +138,33 @@
                     "description": "Bring the Robe of Humility here. You can find the robe laying on the ground in dungeon. Withstand the trial of humility and you will get a key to take to the Hall of Virtue on Level 4 for your reward.",
                     "coordinates": [576, 1398],
                     "icon": "icons/exclamation-mark.png"
+                }
+            ]
+        },
+        "Misc": {
+            "Chests": [
+                {
+                    "id": 1,
+                    "title": "Metal Chest",
+                    "description": "This chest is locked and requires a knock rune to open. Can contain special/rare loot.",
+                    "coordinates": [[3560, 641], [2971, 601], [828, 863]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Wooden Chest",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[1554, 650]],
+                    "icon": "icons/treasure-chest.png"
+                }
+            ],
+            "Crystal Pedestals": [
+                {
+                    "id": 1,
+                    "title": "Pilgrim's Curse",
+                    "description": "This curse reduces damage dealt. Left click to break the crystal.",
+                    "coordinates": [[3426, 588]],
+                    "icon": "icons/crystal.png"
                 }
             ]
         }

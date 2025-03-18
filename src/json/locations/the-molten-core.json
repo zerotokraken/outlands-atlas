@@ -18,6 +18,28 @@
             "Waystar": [
             ]
          },
+         "Entities": {
+            "NPCs": [
+                {
+                    "id": 1,
+                    "title": "Gem Vendor",
+                    "description": "Sells Time gems.",
+                    "coordinates": [[3343, 744]],
+                    "icon": "icons/treasure.png"
+                }
+            ],
+            "Bosses": [
+                {
+                    "id": 1,
+                    "title": "The Ancient Wyrm",
+                    "description": "Special: ???.",
+                    "coordinates": [1208, 602],
+                    "icon": "icons/boss.png"
+                }
+            ],
+            "Revealers": [
+            ]  
+        },
          "Quest": {
             "Quest Items": [
                 {

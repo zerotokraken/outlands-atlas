@@ -327,6 +327,15 @@
             ]
         },
         "Misc": {
+            "Rare Spawns": [
+                {
+                    "id": 1,
+                    "title": "Shrieking Mandrake",
+                    "description": "Spawns in the metal chest. Long respawn.",
+                    "coordinates": [[6162, 1909]],
+                    "icon": "icons/treasure-chest.png"
+                }
+            ],
             "Books": [
                 {
                     "id": 1,

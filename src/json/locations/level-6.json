@@ -15,6 +15,27 @@
                     "description": "This leads to Level 7.",
                     "coordinates": [2645, 3049],
                     "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Secret Room Stairs",
+                    "description": "This leads to a secret staircase.",
+                    "coordinates": [2884, 943],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Secret Room Stairs",
+                    "description": "This leads back up to the middle of Level 6.",
+                    "coordinates": [3301, 4550],
+                    "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Secret Room Stairs",
+                    "description": "This leads to ???.",
+                    "coordinates": [2829, 4605],
+                    "icon": "icons/Stairs.png"
                 }
             ],
             "Breakable Walls": [
@@ -22,11 +43,18 @@
                     "id": 1,
                     "title": "Breakable Wall",
                     "description": "Left click to break the wall.",
-                    "coordinates": [[300, 1037], [661, 490], [1049, 1539], [1737, 1665], [2728, 1642], [2639, 1590], [2790, 758]],
+                    "coordinates": [[3096, 1630], [422, 1039], [552, 1041], [661, 490], [1049, 1539], [1737, 1665], [2728, 1642], [2639, 1590], [2790, 758], [2582, 498], [2709, 3032]],
                     "icon": "icons/brick-wall.png"
                 }
             ],
             "Locked Doors": [
+                {
+                    "id": 1,
+                    "title": "Locked Door",
+                    "description": "Requires a knock rune.",
+                    "coordinates": [[2701, 3281], [2545, 2958], [2731, 1039], [3038, 1179], [596, 443], [700, 539], [986, 540], [2790, 1414]],
+                    "icon": "icons/lock.png"
+                }
             ],
             "Secret Passageways": [
                 {
@@ -95,6 +123,24 @@
                 }
             ],
             "Waystar": [
+                {
+                    "id": 1,
+                    "title": "Waystar",
+                    "requirements": "1 Tri Time Gem",
+                    "icon": "icons/waystar.png",
+                    "description": "Summons a moongate to Colony for a short duration. Say 'Vas Rel Por' to use.",
+                    "coordinates": [[3245, 1185]]
+                }
+            ],
+            "Confluence": [
+                {
+                    "id": 1,
+                    "title": "Confluence",
+                    "requirements": "?",
+                    "icon": "icons/compass.png",
+                    "description": "Future location for the 'Confluence' mechanic. Will require the Timekeeper's Compass to utilize.",
+                    "coordinates": [2449, 1044]
+                }
             ]
          },
          "Runes": {
@@ -142,7 +188,7 @@
                 {
                     "id": "bosses",
                     "title": "The One Who Left Behind",
-                    "description": "Special: ",
+                    "description": "Special: AOE disease in melee range.",
                     "coordinates": [2913, 1012],
                     "icon": "icons/boss.png"
                 }
@@ -158,28 +204,73 @@
                     "color": "#ff0000"
                 }
             ],
-            "Traps": [],
+            "Chests": [
+                {
+                    "id": 1,
+                    "title": "Metal Chest",
+                    "description": "This chest is locked and requires a knock rune to open. Can contain special/rare loot.",
+                    "coordinates": [[675, 1541], [3290, 1119], [344, 1203], [651, 376], [1010, 572], [2160, 2974]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Metal Box",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[1631, 1722], [2942, 1404], [2256, 3047], [2551, 3032]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Wooden Chest",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[606, 1633], [636, 1636], [1144, 1619], [2923, 3041], [1342, 626], [3241, 1061], [287, 871], [637, 330], [744, 564], [746, 593]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Key Chest",
+                    "description": "Search nearby corpses for the key. Can contain special/rare loot.",
+                    "coordinates": [[1558, 1706], [2841, 3205], [3228, 1211]],
+                    "icon": "icons/treasure-chest.png"
+                }
+            ],
+            "Crystal Pedestals": [
+                {
+                    "id": 1,
+                    "title": "Leper's Curse",
+                    "description": "This curse increase's damage taken. Left click to break the crystal.",
+                    "coordinates": [[2297, 626], [497, 1188], [364, 506], [2480, 3049]],
+                    "icon": "icons/crystal.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Pilgrim's Curse",
+                    "description": "This curse reduces damage dealt. Left click to break the crystal.",
+                    "coordinates": [[3296, 1308], [505, 860]],
+                    "icon": "icons/crystal.png"
+                }
+            ],
             "Quest Items": [
                 {
                     "id": "shackles",
                     "title": "Ancient shackles",
                     "description": "Located in the skeleton corpse. Required item to create a Ward.",
-                    "coordinates": [603, 371],
-                    "icon": "icons/shackles.png"
+                    "coordinates": [546, 337],
+                    "icon": "icons/exclamation-mark.png"
                 },
                 {
                     "id": "hourglass",
                     "title": "A timekeeper's hourglass",
                     "description": "Located in the metal chest. This will not appear until the Damsel is dead. Required item to create a Ward.",
                     "coordinates": [689, 5187],
-                    "icon": "icons/shackles.png"
+                    "icon": "icons/exclamation-mark.png"
                 },
                 {
                     "id": "rock",
                     "title": "A martian rock",
                     "description": "Random drop from Dust Devils. Required item to create a Ward.",
                     "coordinates": [933, 3315],
-                    "icon": "icons/shackles.png"
+                    "icon": "icons/exclamation-mark.png"
                 }
             ]
         },

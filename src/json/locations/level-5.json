@@ -1,7 +1,15 @@
 {
     "Level 5": {
         "Passage": {
-            "Locked Doors": [],
+            "Locked Doors": [
+                {
+                    "id": 1,
+                    "title": "Locked Door",
+                    "description": "Requires a knock rune.",
+                    "coordinates": [[3374, 715], [2232, 1234], [1474, 2956], [2400, 4957], [2443, 1991], [3810, 3412], [3059, 1735]],
+                    "icon": "icons/lock.png"
+                }
+            ],
             "Portals": [
                 {
                     "id": 1,
@@ -30,7 +38,7 @@
                     "id": 1,
                     "title": "Breakable Walls",
                     "description": "Left click to break the wall.",
-                    "coordinates": [[1076, 2346], [4043, 2956], [4067, 3140], [3338, 655]],
+                    "coordinates": [[1076, 2346], [4043, 2956], [4067, 3140], [3338, 655], [2543, 5930], [2229, 962]],
                     "icon": "icons/brick-wall.png"
                 }
             ],
@@ -137,6 +145,16 @@
                     "description": "Summons a moongate to Colony for a short duration. Say 'Vas Rel Por' to use.",
                     "coordinates": [[3454, 3256]]
                 }
+            ],
+            "Confluence": [
+                {
+                    "id": 1,
+                    "title": "Confluence",
+                    "requirements": "?",
+                    "icon": "icons/compass.png",
+                    "description": "Future location for the 'Confluence' mechanic. Will require the Timekeeper's Compass to utilize.",
+                    "coordinates": [4247, 3176]
+                }
             ]
          },
          "Entities": {
@@ -162,6 +180,13 @@
                     "title": "The Barrier Warden",
                     "description": "Special: Does a pontiff style bomb",
                     "coordinates": [4184, 4141],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "The Book Wyrm",
+                    "description": "Special: Does a large cone breath attack as well as targeted explosions at player locations. Will also summon additional dragons on many types.",
+                    "coordinates": [4186, 638],
                     "icon": "icons/boss.png"
                 },
                 {
@@ -232,14 +257,23 @@
                     "id": 1,
                     "title": "Metal Chest",
                     "description": "This chest is locked and requires a knock rune to open. Can contain special/rare loot.",
-                    "coordinates": [[632, 5170], [3472, 1227], [3515, 720], [863, 2163], [1316, 2338], [4187, 2516], [1618, 3231]],
+                    "coordinates": [[632, 5170], [3472, 1227], [3515, 720], [863, 2163], [1316, 2338], [4187, 2516], [1618, 3231], [4224, 3745]],
                     "icon": "icons/treasure-chest.png"
                 },
                 {
                     "id": 1,
                     "title": "Wooden Chest",
                     "description": "This chest is unlocked and can contain special/rare loot.",
-                    "coordinates": [[546, 5086], [975, 4894], [3431, 1272], [3370, 513], [3403, 675], [715, 2177], [2634, 4861], [1334, 2307], [1433, 2916]],
+                    "coordinates": [[546, 5086], [975, 4894], [3431, 1272], [3370, 513], [715, 2177], [2634, 4861], [1334, 2307], [1433, 2916], [2446, 4971]],
+                    "icon": "icons/treasure-chest.png"
+                }
+            ],
+            "Rare Spawns": [
+                {
+                    "id": 1,
+                    "title": "Dirty Plate",
+                    "description": "Spawns in a container in this locked room..",
+                    "coordinates": [[3715, 3424]],
                     "icon": "icons/treasure-chest.png"
                 }
             ],
