@@ -1,6 +1,33 @@
 {
     "encounters": [
       {
+        "name": "Time Flux & Rifts",
+        "icon": "/icons/time-flux.png",
+        "secondaryIcon": "/icons/time-rift.png",
+        "location": "Anywhere",
+        "description": [
+          "Drain health, stamina & mana. The flux are the lesser versions that are blue vortexs near to the floor. The rifts are the greater variations that extend much higher into the air and are more deadly. Negate time is useful if a number of these appear at once."
+        ]
+      },
+      {
+        "name": "Bleeding Sands of Time",
+        "icon": "/images/bleeding-sands.png",
+        "location": "Anywhere",
+        "scale": 500,
+        "description": [
+          "Applies a bleed effect to the player. This can stack up to lethal ranges quickly. If you are in the Warding Parry stance and have someone to heal you then you can destroy it by double clicking it like other destructibles. A Mend rune is helpeful as well."
+        ]
+      },
+      {
+        "name": "Miasma",
+        "icon": "/images/miasma.png",
+        "location": "Anywhere",
+        "scale": 500,
+        "description": [
+          "Applies a disease effect to the player. This can stack up to lethal ranges quickly. Completely avoid this if possible."
+        ]
+      },
+      {
         "name": "ExoThrugg",
         "icon": "images/exothrugg.png",
         "scale": 400,
@@ -15,13 +42,13 @@
         "scale": 400,
         "location": "Specific Locations",
         "description": [
-          "fill in here"
+          "The Pilgrim will dash between players doing heavy damage. He will also spawn unique enemies to attack you."
         ]
       },
       {
         "name": "Rifts in Time",
-        "icon": "images/portal-spawn.png",
-        "scale": 300,
+        "icon": "images/time-rift.png",
+        "scale": 400,
         "location": "Anywhere",
         "description": [
           "The player will detect a rift in Time and three silver moongates will appear. Various monsters will appear out of these gates and attack the player. This monsters are highly varied and this could easily result in death."
@@ -29,8 +56,8 @@
       },
       {
         "name": "Fallen Expeditions & Adventurer Parties",
-        "icon": "images/dead-expedition.png",
-        "scale": 300,
+        "icon": "images/fallen-camp.png",
+        "scale": 400,
         "location": "Anywhere",
         "description": [
           "There will be camps of fallen adventurers that may or may not be guarded by monsters. There can be various loot found amoung the dead."
@@ -39,7 +66,7 @@
       {
         "name": "Monster Camps",
         "icon": "images/enemy-camps.png",
-        "scale": 300,
+        "scale": 400,
         "location": "Anywhere",
         "description": [
           "Creatures may travel to certain floors and establish temporary camps. They will have treasure amoung them and the leader will generally carry a key to a locked chest."
@@ -65,28 +92,56 @@
       },
       {
         "name": "Blackrock Meteors",
-        "icon": "images/blackrock-meteor.png",
-        "location": "Anywhere",
+        "icon": "images/blackrocks.png",
+        "scale": 550,
+        "location": "Level 4 and Below",
         "description": [
-          "addhere"
+          "A greater blackrock elemental as well as normal blackrock elementals will spawn with a meteorite. You can find a blackrock fragment on the ground."
         ]
       },
       {
         "name": "Nexus Warden",
         "icon": "images/nexus-warden.png",
-        "scale": 300,
-        "location": "Anywhere",
+        "scale": 500,
+        "location": "Floors 3 and Below",
         "description": [
-            "addhere"
+            "When killed it will spawn a silver or a red gate. A silver gate can lead anywhere on the current floor or one floor up or down. A red gate will lead to Colony."
         ]
       },
       {
-        "name": "Items of Virtue",
-        "icon": "images/virtue-items.png",
-        "scale": 300,
-        "location": "Anywhere",
+        "name": "The Chest of an Avatar",
+        "icon": "images/spirituality.png",
+        "scale": 500,
+        "location": "Levels 2 and Below",
         "description": [
-          "addhere"
+          "This chest will spawn with a Timeless Cursed and a Time Lurker. The chest contains a symbol of the avatar (decaying) which can be taken to the Shrine of Spirituality on Level 6."
+        ]
+      },
+      {
+        "name": "The Corpse of a Knight of Valor",
+        "icon": "images/valor.png",
+        "scale": 500,
+        "location": "Levels 1-4",
+        "description": [
+          "The corpse will contain a ruined sword of valor (decaying) guarded by two Ratmen of a random type. This sword can be taken to the Valor shrine on Level 5."
+        ]
+      },
+      {
+        "name": "The Corpse of an Unjust Thief",
+        "icon": "images/justice.png",
+        "scale": 500,
+        "location": "Levels 5 or below",
+        "description": [
+          "The corpse will contain a druid's staff (decaying) guarded by three Ratmen rogues. This staff can be taken to the Justice shrine in The Abyssal Core."
+        ]
+      },
+      {
+        "name": "An Unstable Bag",
+        "icon": "images/bedlams.png",
+        "scale": 500,
+        "location": "Levels 3 and Below",
+        "description": [
+          "The bag will contain an unstable time crystal (decaying) guarded by two Bedlam Gazers. This crystal can be taken to the Honesty Shrine on Level 4 or the Compassion Shrine on Level 5."
         ]
       }
     ]

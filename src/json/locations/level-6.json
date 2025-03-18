@@ -272,6 +272,15 @@
                     "coordinates": [933, 3315],
                     "icon": "icons/exclamation-mark.png"
                 }
+            ],
+            "Levers": [
+                {
+                    "id": 1,
+                    "title": "Lever",
+                    "description": "A series of levers that do.. something?",
+                    "coordinates": [[2973, 857]],
+                    "icon": "icons/lever.png"
+                }
             ]
         },
         "Quest": {

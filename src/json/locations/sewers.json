@@ -151,7 +151,7 @@
                 {
                     "id": "bosses",
                     "title": "King Muc",
-                    "description": "Special: Unknown",
+                    "description": "Special: Regeneration. Kill the mucks to spawn the boss.",
                     "coordinates": [2036, 1532],
                     "icon": "icons/boss.png"
                 },

@@ -57,7 +57,7 @@
                 "id": 1,
                 "title": "Locked Door",
                 "description": "Requires a knock rune.",
-                "coordinates": [[5338, 729], [5713, 1734], [5779, 2434]],
+                "coordinates": [[5338, 729], [5713, 1734], [5779, 2434], [3981, 4085], [3585, 3926]],
                 "icon": "icons/lock.png"
             }
         ],
@@ -382,14 +382,28 @@
                     "id": 1,
                     "title": "Metal Chest",
                     "description": "This chest is locked and requires a knock rune to open. Can contain special/rare loot.",
-                    "coordinates": [[4991, 4635]],
+                    "coordinates": [[4991, 4635], [5947, 2522], [5787, 4388]],
                     "icon": "icons/treasure-chest.png"
                 },
                 {
                     "id": 1,
                     "title": "Wooden Chest",
                     "description": "This chest is unlocked and can contain special/rare loot.",
-                    "coordinates": [[5090, 4376]],
+                    "coordinates": [[5090, 4376], [5330, 3499], [5063, 3558], [4991, 2829], [4636, 3364]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Metal Box",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[5959, 2428]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Wooden Box",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[5837, 2518]],
                     "icon": "icons/treasure-chest.png"
                 }
             ],
@@ -399,6 +413,13 @@
                     "title": "Justice Ambush",
                     "description": "You will be ambushed by many Apostate soldiers here if you are carrying the Justice staff. This will leave you unable to move from some time.",
                     "coordinates": [[5258, 1537], [5480, 1529]],
+                    "icon": "icons/swords.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Reflection Trap",
+                    "description": "You will be ambushed by three reflections here.",
+                    "coordinates": [[5367, 2371]],
                     "icon": "icons/swords.png"
                 }
             ]

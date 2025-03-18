@@ -292,6 +292,15 @@
                     "coordinates": [[3428, 2980]],
                     "icon": "icons/crystal.png"
                 }
+            ],
+            "Traps": [
+                {
+                    "id": 1,
+                    "title": "Reflection Trap",
+                    "description": "You will be ambushed by three reflections here.",
+                    "coordinates": [[1655, 4682], [3317, 4245], [2393, 1112]],
+                    "icon": "icons/swords.png"
+                }
             ]
         }
     }
