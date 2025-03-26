@@ -9,6 +9,7 @@ export interface CardData {
     location?: string;
     additionalInfo?: { [key: string]: string };
     customIcons?: string;
+    scale?: number;
 }
 
 export function createCard(
@@ -34,7 +35,7 @@ export function createCard(
                 <div style="display: flex; justify-content: center; gap: 10px;">
                     ${customIcons || (icon ? `
                         <div style="${createIconContainer('large', '0', scale)}">
-                            <img src="${icon}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                            <img src="${icon}" style="width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated;">
                         </div>
                     ` : '')}
                 </div>

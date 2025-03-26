@@ -1,17 +1,87 @@
 {
     "Words of Power & Key Phrases": [
       {
+        "name": "Amo",
+        "location": "The Tomb of the Avatar",
+        "description": [
+          "Hold in thy hands the Rune of Compassion, Rune of Sacrifice, Rune of Justice and Rune of Spirituality. Speak the word of Love (Amo) and receive the Candle of Love."
+        ]
+      },
+      {
+        "name": "Ahm",
+        "location": "Honesty Shrine",
+        "description": [
+          "Bring the Unstable Time Crystal and say this word to claim a Key of Honesty. The same word is used in Hall of Virtue to get your reward."
+        ]
+      },
+      {
+        "name": "Beh",
+        "location": "Justice Shrine",
+        "description": [
+          "Bring the Druid's Staff and say this word to claim a Key of Justice. The same word is used in Hall of Virtue to get your reward."
+        ]
+      },
+      {
+        "name": "Cah",
+        "location": "Sacrifice Shrine",
+        "description": [
+          "Bring the Bowl of Tears and say this word to sacrifice yourself for someone else to claim a Key of Sacrifice. The same word is used in Hall of Virtue to get your reward."
+        ]
+      },
+      {
+        "name": "Cor",
+        "location": "The Tomb of the Avatar",
+        "description": [
+          "Hold in thy hands the Rune of Valor, Rune of Sacrifice, Rune of Honor and Rune of Spirituality. Speak the word of Courage (Cor) and receive the Bell of Courage."
+        ]
+      },
+      {
+        "name": "Lum",
+        "location": "Humility Shrine",
+        "description": [
+          "Bring the Robe of Humility and say this word to undergo the Trial of Humility. Complete this to claim a Key of Honesty. The same word is used in Hall of Virtue to get your reward."
+        ]
+      },
+      {
+        "name": "Mu",
+        "location": "Compassion Shrine",
+        "description": [
+          "Bring the Unstable Time Crystal and say this word to claim a Key of Compassion. The same word is used in Hall of Virtue to get your reward."
+        ]
+      },
+      {
+        "name": "Om",
+        "location": "Spirituality Shrine",
+        "description": [
+          "Bring the Symbol of the Avatar and say this word to claim a Key of Spirituality. The same word is used in Hall of Virtue to get your reward."
+        ]
+      },
+      {
+        "name": "Ra",
+        "location": "Valor Shrine",
+        "description": [
+          "Bring the Ruined Sword of Valor and say this word to undergo the Trial of Valor. Defeat the waves of enemies to claim a Key of Valor. The same word is used in Hall of Virtue to get your reward."
+        ]
+      },
+      {
+        "name": "Summ",
+        "location": "Honor Shrine",
+        "description": [
+          "Bring Gwenno's Urn and say this word to undergo the Trial of Honor. Survive for five minutes to claim a Key of Honor. The same word is used in Hall of Virtue to get your reward."
+        ]
+      },
+      {
+        "name": "Ver",
+        "location": "The Tomb of the Avatar",
+        "description": [
+          "Hold in thy hands the Rune of Honesty, Rune of Justice, Rune of Honor and Rune of Spirituality. Speak the Word of Truth (Ver) and receive the Book of Truth."
+        ]
+      },
+      {
         "name": "Vas Rel Por",
         "location": "All floors",
         "description": [
           "Stand on the tile or rune and speak 'Vas Rel Por' and teleport the other end. Sometimes you can see the other stone and sometimes it's much farther away. Must have the required time gem."
-        ]
-      },
-      {
-        "name": "ahm amo bal beh cah cor lum mu om ra summ ver",
-        "location": "Floors 4, 5, 6, 7",
-        "description": [
-          "When interacting with Shrines you need to say the appropiate word in the Gargish language. These words will cover all Shrines for starting or turning in."
         ]
       },
       {
@@ -36,10 +106,10 @@
         ]
       },
       {
-        "name": "Ancient Coin Bosses",
+        "name": "Fate and fortune, fire and tide, reveal the gift that you now hide",
         "location": "Level 3 & The Molten Core",
         "description": [
-          "These bosses drop quest items to make the broken waystar. To summon the bosses you must have an Ancient Coin and type 'Fate and fortune, fire and tide, reveal the gift that you now hide'."
+          "The Ancient Coin bosses drop quest items to make the broken waystar. To summon the bosses you must have an Ancient Coin and type 'Fate and fortune, fire and tide, reveal the gift that you now hide'."
         ]
       }
     ]

@@ -1,4 +1,5 @@
 {
+  "defaultScale": 150,
   "circles": [
     {
       "name": "Circle 1",

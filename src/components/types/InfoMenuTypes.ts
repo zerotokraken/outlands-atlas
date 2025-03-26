@@ -19,6 +19,7 @@ export interface RuneData {
     wordsOfPower: string;
     description: string[];
     upgrades: string[];
+    scale?: number;
 }
 
 export interface RelicData {
@@ -27,6 +28,7 @@ export interface RelicData {
     charges: string;
     cooldown: string;
     description: string[];
+    scale?: number;
 }
 
 export interface TabletData {

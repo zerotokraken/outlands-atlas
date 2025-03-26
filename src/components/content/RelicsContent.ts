@@ -10,10 +10,11 @@ export function createRelicsContent(data: RelicsContent, createIconContainer: Cr
         additionalInfo: {
             'Charges': relic.charges,
             'Cooldown': relic.cooldown
-        }
+        },
+        scale: relic.scale
     });
 
-    const cards = data.relics.map(relic => createCard(createRelicCard(relic), createIconContainer));
+    const cards = data.relics.map(relic => createCard(createRelicCard(relic), createIconContainer, relic.scale));
     const grid = createGrid(cards);
     const section = createSection('Time Relics', grid);
 

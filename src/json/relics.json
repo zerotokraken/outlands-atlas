@@ -1,4 +1,5 @@
-{
+{ 
+  "defaultScale": 150,
   "relics": [
     {
       "name": "Apothecary Wheel",

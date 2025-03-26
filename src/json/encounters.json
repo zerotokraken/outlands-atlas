@@ -2,9 +2,9 @@
     "encounters": [
       {
         "name": "Time Flux & Rifts",
-        "icon": "/icons/time-flux.png",
-        "secondaryIcon": "/icons/time-rift.png",
+        "icon": "/images/vortexes.png",
         "location": "Anywhere",
+        "scale": 500,
         "description": [
           "Drain health, stamina & mana. The flux are the lesser versions that are blue vortexs near to the floor. The rifts are the greater variations that extend much higher into the air and are more deadly. Negate time is useful if a number of these appear at once."
         ]
@@ -74,8 +74,8 @@
       },
       {
         "name": "Lost Colony Camps",
-        "icon": "images/friendly-camp.png",
-        "scale": 300,
+        "icon": "images/colony-camp.png",
+        "scale": 500,
         "location": "Anywhere",
         "description": [
           "Members of the Lost Colony may travel to certain floors and establish temporary camps. There may be some containers to loot. There will be a healer and some guards to defend you. This can be used to your advantage in certain areas."

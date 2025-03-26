@@ -9,16 +9,16 @@ export function createRunesContent(data: RunesContent, createIconContainer: Crea
             subtitle: rune.wordsOfPower,
             description: [
                 ...rune.description.map(desc => desc),
-                '',
-                'Upgrades:',
+                'Codex Upgrade:',
                 ...rune.upgrades.map(upgrade => upgrade)
             ],
-            icon: `/icons/runes/timerune-${iconName}.png`
+            icon: `/icons/runes/timerune-${iconName}.png`,
+            scale: rune.scale
         };
     };
 
     const sections = data.circles.map(circle => {
-        const cards = circle.runes.map(rune => createCard(createRuneCard(rune), createIconContainer));
+        const cards = circle.runes.map(rune => createCard(createRuneCard(rune), createIconContainer, rune.scale));
         const grid = createGrid(cards);
         return createSection(circle.name, grid);
     });
