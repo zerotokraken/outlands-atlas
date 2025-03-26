@@ -450,6 +450,13 @@
                 },
                 {
                     "id": 1,
+                    "title": "Metal Box",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[861, 3008]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
                     "title": "Unlocked Metal Chest",
                     "description": "This chest is unlocked and can contain special/rare loot.",
                     "coordinates": [[3442, 3179], [3775, 3100], [2400, 1542], [2866, 1488], [788, 1189], [874, 1689], [846, 1687], [824, 1687], [384, 2644], [307, 2641]],

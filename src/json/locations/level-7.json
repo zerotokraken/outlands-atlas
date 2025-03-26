@@ -20,14 +20,28 @@
                 },
                 {
                     "id": 1,
-                    "title": "Portal",
-                    "description": "???",
-                    "coordinates": [[3760, 1966], [3850, 2049], [390, 238]],
+                    "title": "Portal to Level 4",
+                    "description": "Leads to Level 4 on top of the maze building",
+                    "coordinates": [3763, 1965],
                     "icon": "icons/Gates_Silver.png"
                 },
                 {
                     "id": 1,
-                    "title": "Portal",
+                    "title": "Portal to Level 5",
+                    "description": "Leads inside the guard tower on Level 5 outside Prev Castle",
+                    "coordinates": [3851, 2038],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Portal to Level 3",
+                    "description": "Leads to Level 3 near the Living Weapons.",
+                    "coordinates": [[1978, 746]],
+                    "icon": "icons/Gates_Silver.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Portal to Level 4",
                     "description": "Leads to the Sacrifice Shrine on Level 4",
                     "coordinates": [[390, 238]],
                     "icon": "icons/Gates_Silver.png"
@@ -38,7 +52,7 @@
                     "id": 1,
                     "title": "Barrier",
                     "description": "Kill the Barrier Warden to Proceed",
-                    "coordinates": [[1162, 847], [1115, 1056], [380, 276], [1973, 365]],
+                    "coordinates": [[1162, 847], [1115, 1056], [380, 276], [1973, 365], [1993, 797]],
                     "icon": "icons/barrier.png"
                 },
                 {
@@ -121,7 +135,7 @@
                     "id": "bosses",
                     "title": "The Barrier Warden",
                     "description": "Special: Does a pontiff style bomb",
-                    "coordinates": [[914, 846], [313, 362], [2038, 356]],
+                    "coordinates": [[914, 846], [313, 362], [2038, 356], [2022, 835]],
                     "icon": "icons/boss.png"
                 }
             ]  
