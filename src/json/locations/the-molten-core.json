@@ -67,32 +67,32 @@
                     "coordinates": [[2180, 1038], [563, 610]],
                     "icon": "icons/crystal.png"
                 }
+            ],
+            "Chests": [
+                {
+                    "id": 1,
+                    "title": "Metal Chest",
+                    "description": "This chest is locked and requires a knock rune to open. Can contain special/rare loot.",
+                    "coordinates": [[2270, 1056], [638, 525]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Wooden Chest",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[2687, 1378], [2242, 580], [1525, 1010], [749, 1097]],
+                    "icon": "icons/treasure-chest.png"
+                }
+            ],
+            "Traps": [
+                {
+                    "id": 1,
+                    "title": "Reflection Trap",
+                    "description": "You will be ambushed by three reflections here.",
+                    "coordinates": [[1881, 1104]],
+                    "icon": "icons/swords.png"
+                }
             ]
-        },
-        "Chests": [
-            {
-                "id": 1,
-                "title": "Metal Chest",
-                "description": "This chest is locked and requires a knock rune to open. Can contain special/rare loot.",
-                "coordinates": [[2270, 1056], [638, 525]],
-                "icon": "icons/treasure-chest.png"
-            },
-            {
-                "id": 1,
-                "title": "Wooden Chest",
-                "description": "This chest is unlocked and can contain special/rare loot.",
-                "coordinates": [[2687, 1378], [2242, 580], [1525, 1010], [749, 1097]],
-                "icon": "icons/treasure-chest.png"
-            }
-        ],
-        "Traps": [
-            {
-                "id": 1,
-                "title": "Reflection Trap",
-                "description": "You will be ambushed by three reflections here.",
-                "coordinates": [[1881, 1104]],
-                "icon": "icons/swords.png"
-            }
-        ]
+        }
     }
 }
