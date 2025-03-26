@@ -43,7 +43,7 @@
                     "id": 1,
                     "title": "Breakable Wall",
                     "description": "Left click to break the wall.",
-                    "coordinates": [[3096, 1630], [422, 1039], [552, 1041], [661, 490], [1049, 1539], [1737, 1665], [2728, 1642], [2639, 1590], [2790, 758], [2582, 498], [2709, 3032]],
+                    "coordinates": [[2885, 2879], [2883, 3184], [3096, 1630], [422, 1039], [552, 1041], [661, 490], [1049, 1539], [1737, 1665], [2728, 1642], [2639, 1590], [2790, 758], [2582, 498], [2709, 3032]],
                     "icon": "icons/brick-wall.png"
                 }
             ],
@@ -181,7 +181,7 @@
                 {
                     "id": "bosses",
                     "title": "The One Who Wanders",
-                    "description": "Special: ",
+                    "description": "Special: Applies single target heavy bleed.",
                     "coordinates": [2878, 3025],
                     "icon": "icons/boss.png"
                 },
@@ -216,7 +216,7 @@
                     "id": 1,
                     "title": "Metal Box",
                     "description": "This chest is unlocked and can contain special/rare loot.",
-                    "coordinates": [[1631, 1722], [2942, 1404], [2256, 3047], [2551, 3032]],
+                    "coordinates": [[1631, 1722], [2942, 1404], [2256, 3047], [2551, 3032], [3278, 1083]],
                     "icon": "icons/treasure-chest.png"
                 },
                 {

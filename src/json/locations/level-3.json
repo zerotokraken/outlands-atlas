@@ -413,6 +413,20 @@
                     "description": "Two random monsters will spawn when running through this spot.",
                     "coordinates": [[473, 1413]],
                     "icon": "icons/swords.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Reflection Trap",
+                    "description": "You will be ambushed by one reflection here.",
+                    "coordinates": [[3337, 3178]],
+                    "icon": "icons/swords.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Undead Trap",
+                    "description": "You will be ambushed by undead monsters here.",
+                    "coordinates": [[3268, 5387]],
+                    "icon": "icons/swords.png"
                 }
             ],
             "Levers": [
