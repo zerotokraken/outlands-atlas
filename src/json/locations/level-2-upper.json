@@ -29,6 +29,13 @@
                     "description": "This leads to the Dig Site in Stonegate.",
                     "coordinates": [815, 2268],
                     "icon": "icons/Stairs.png"
+                },
+                {
+                    "id": 2,
+                    "title": "Stairs to the Red Doors",
+                    "description": "This leads back to the Red Doors.",
+                    "coordinates": [1177, 6134],
+                    "icon": "icons/Stairs.png"
                 }
             ],
             "Locked Doors": [
@@ -42,7 +49,7 @@
                 {
                     "id": 1,
                     "title": "The Red Doors",
-                    "description": "Seek the tablets to unravel the mystery... Leads somewhere..",
+                    "description": "Seek the tablets to unravel the mystery. Leads to a secret area with a boss.",
                     "coordinates": [[950, 519]],
                     "icon": "icons/red-doors.png"
                 }
@@ -104,7 +111,14 @@
                     "description": "Special: Unknown.",
                     "coordinates": [1388, 4848],
                     "icon": "icons/boss.png"
-                }
+                },
+                {
+                    "id": "bosses",
+                    "title": "The One From Beyond The Stars",
+                    "description": "Special: ?",
+                    "coordinates": [1180, 5565],
+                    "icon": "icons/boss.png"
+                }  
             ],
             "Revealers": [
                 {

@@ -1,24 +1,35 @@
 {
     "tiles": {
-        "startDir": 403,
-        "endDir": 422,
-        "startTile": 71,
-        "endTile": 79,
-        "ignore": [
+        "primary": {
+            "startDir": 403,
+            "endDir": 422,
+            "startTile": 71,
+            "endTile": 79,
+            "ignore": [
+                {
+                    "dir": [420, 419, 418, 417],
+                    "tile": [71, 72]
+                },
+                {
+                    "dir": [422, 421],
+                    "tile": [71, 72]
+                },
+                {
+                    "dir": [417, 410, 409, 408, 407, 406],
+                    "tile": [79]
+                }
+            ]
+        },
+        "secondaries": [
             {
-                "dir": [420, 419, 418, 417],
-                "tile": [71, 72]
-            },
-            {
-                "dir": [422, 421],
-                "tile": [71, 72]
-            },
-            {
-                "dir": [417, 410, 409, 408, 407, 406],
-                "tile": [79]
+                "startDir": 406,
+                "endDir": 408,
+                "startTile": 102,
+                "endTile": 105
             }
         ]
     }
 }
+
 
 
