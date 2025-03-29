@@ -629,7 +629,7 @@
             ],
             "steps": [
                 {
-                    "title": "Retrieve the Ruined Sword of Valor Urn",
+                    "title": "Retrieve the Ruined Sword of Valor",
                     "icon": "/images/quest-items/.png",
                     "scale": 500,
                     "location": "Levels 1-4",
