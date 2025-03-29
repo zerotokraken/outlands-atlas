@@ -1,1 +1,778 @@
-{}
+{
+    "quests": [
+        {
+            "name": "Rotworm Stew",
+            "description": [
+                "Within the ruins of the second colony thou may encounter Lanugo, the chef for the green goblins that still dwell within those halls. Should you inquire about his rotworm stew, he may be inclined to give you his recipe. Following this recipe is important, for any deviation will result in a spoiled stew. Is it said that the troll jailkeeper that lives in the same area very much enjoys this stew."
+            ],
+            "steps": [
+                {
+                    "title": "Retrieve the recipe",
+                    "location": "Level 3",
+                    "description": [
+                        "Say 'stew' next to Lanugo to get the recipe."
+                    ],
+                    "icon": "/images/quest-items/recipe.png",
+                    "rewards": [
+                        "Stew Recipe"
+                    ],
+                    "scale": 500
+                },
+                {
+                    "title": "Kill Rotworms for their flesh",
+                    "location": "Level 3",
+                    "description": [
+                        "Drops off Rotworms on Level 3."
+                    ],
+                    "icon": "/images/quest-items/flesh.png",
+                    "rewards": [
+                        "Rotworm Flesh (decaying)"
+                    ],
+                    "scale": 500
+                },
+                {
+                    "title": "Retrieve the Bottle of Port",
+                    "location": "Level 3",
+                    "description": [
+                        "Found in a crate on Level 3."
+                    ],
+                    "icon": "/images/quest-items/port.png",
+                    "rewards": [
+                        "Bottle of Port (decaying)"
+                    ],
+                    "scale": 500
+                },
+                {
+                    "title": "Retrieve the Mushrroms",
+                    "location": "Level 3",
+                    "description": [
+                        "You must trade a bloom rune for the mushrooms on Level 3. Say 'Kropf!' at the correct location near the bottom left of Level 3."
+                    ],
+                    "icon": "/images/quest-items/kropf.png",
+                    "rewards": [
+                        "Green Mushrooms (decaying)"
+                    ],
+                    "scale": 500
+                },
+                {
+                    "title": "Create the Stew",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "Level 3)",
+                    "description": [
+                        "Interact with the cauldron near the troll jailkeeper to create the stew. Once you have the stew bring it to him to complete the quest."
+                    ],
+                    "requirements": [
+                        "Stew Recipe",
+                        "Rotworm Flesh (decaying)",
+                        "Bottle of Port (decaying)",
+                        "Green Mushrooms (decaying)"
+                    ],
+                    "rewards": [
+                        "A hobby horse"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "The Timekeeper's Ward",
+            "description": [
+                "A quest to obtain the Timekeeper's Ward, which protects you from Ghasts on Level 6."
+            ],
+            "steps": [
+                {
+                    "title": "Collect Ancient Shackles",
+                    "location": "Level 5 and 6",
+                    "description": [
+                        "Found on a skeleton on Level 6 and drops off the Abyssal Executioner."
+                    ],
+                    "icon": "/images/quest-items/shackles.png",
+                    "scale": 500
+                },
+                {
+                    "title": "Obtain Martian Rock",
+                    "location": "Level 6",
+                    "description": [
+                        "Drops off Dust Devils on Mars."
+                    ],
+                    "icon": "/images/quest-items/rock.png",
+                    "scale": 500
+                },
+                {
+                    "title": "Acquire Timekeeper's Hourglass",
+                    "location": "Level 6",
+                    "description": [
+                        "Found in a metal box in the Timekeeper's Sanctum after defeating the Damsel."
+                    ],
+                    "icon": "/images/quest-items/hourglass.png",
+                    "scale": 500
+                },
+                {
+                    "title": "Create the Ward",
+                    "icon": "/images/quest-items/ward.png",
+                    "scale": 500,
+                    "location": "Colony (Level 4)",
+                    "description": [
+                        "Speak with Gromgur at colony to create the Timekeeper's Ward."
+                    ],
+                    "requirements": [
+                        "10,000 Colonial Marks",
+                        "Ancient Shackles",
+                        "Martian Rock",
+                        "Timekeeper's Hourglass"
+                    ],
+                    "rewards": [
+                        "Timekeeper's Ward (Protects from Ghasts on Level 6)"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "The Refractory Lens",
+            "description": [
+                "A quest to obtain the Refractory Lens, which protects you from the Timekeeper's Gaze on Level 7."
+            ],
+            "steps": [
+                {
+                    "title": "Obtain Glass Sword",
+                    "location": "Level 3 and 6",
+                    "description": [
+                        "Drops off the red names on the ship or can be bought on Level 6."
+                    ],
+                    "icon": "/images/quest-items/sword.png",
+                    "scale": 500
+                },
+                {
+                    "title": "Collect Marble Piece",
+                    "location": "Level 3",
+                    "description": [
+                        "Drops off Marble Golems on Level 3."
+                    ],
+                    "icon": "/images/quest-items/marble.png",
+                    "scale": 500
+                },
+                {
+                    "title": "Acquire Cataract Lens",
+                    "location": "Level 3",
+                    "description": [
+                        "Drops off the Cataract's summoned gazers when he dies.",
+                        "Note: The item is decaying."
+                    ],
+                    "icon": "/images/quest-items/cataract-lens.png",
+                    "scale": 500
+                },
+                {
+                    "title": "Create the Lens",
+                    "icon": "/images/quest-items/lens.png",
+                    "scale": 500,
+                    "location": "Level 4",
+                    "description": [
+                        "Speak with Clevertail to create the Refractory Lens."
+                    ],
+                    "requirements": [
+                        "10,000 Colonial Marks",
+                        "Cataract Lens",
+                        "Glass Sword",
+                        "Marble Piece"
+                    ],
+                    "rewards": [
+                        "Refractory Lens (Protects from Timekeeper's Gaze on Level 7)"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Colonial Waystar",
+            "description": [
+                "A quest to obtain the Colonial Waystar, which allows quick travel between locations."
+            ],
+            "steps": [
+                {
+                    "title": "Obtain Broken Waystar",
+                    "location": "Colony",
+                    "description": [
+                        "Complete the quest at Colony to receive a Broken Waystar."
+                    ],
+                    "icon": "/images/quest-items/broken-waystar.png",
+                    "scale": 500
+                },
+                {
+                    "title": "Collect Exodus Parts",
+                    "location": "Level 3",
+                    "description": [
+                        "Defeat the Exodus progressive boss to obtain the parts."
+                    ],
+                    "icon": "/images/quest-items/exodus.png",
+                    "scale": 500
+                },
+                {
+                    "title": "Create the Waystar",
+                    "icon": "/images/quest-items/waystar.png",
+                    "scale": 500,
+                    "location": "Level 6",
+                    "description": [
+                        "Speak with Graham to create the Colonial Waystar."
+                    ],
+                    "requirements": [
+                        "75,000 Colonial Marks",
+                        "Exodus Parts",
+                        "Broken Waystar"
+                    ],
+                    "rewards": [
+                        "Colonial Waystar"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "The Avatar of Time",
+            "description": [
+                "Journey to the Virtue Shrines littered about Time and Satisfy their conditions to become the Avatar of Time!"
+            ],
+            "steps": [
+                {
+                    "title": "Book of Truth",
+                    "icon": "/images/quest-items/book.png",
+                    "scale": 500,
+                    "location": "Tomb of the Avatar",
+                    "description": [
+                        "Hold in thy hands the Rune of Honesty, Rune of Justice, Rune of Honor and Rune of Spirituality. Speak the word of Honesty (Ver) and receive the Book of Truth."
+                    ],
+                    "requirements": [
+                        "Rune of Honesty",
+                        "Rune of Justice",
+                        "Rune of Honor",
+                        "Rune of Spirituality"
+                    ],
+                    "rewards": [
+                        "Book of Truth"
+                    ]
+                },
+                {
+                    "title": "Candle of Love",
+                    "icon": "/images/quest-items/candle.png",
+                    "scale": 500,
+                    "location": "Tomb of the Avatar",
+                    "description": [
+                        "Hold in thy hands the Rune of Compassion, Rune of Sacrifice, Rune of Justice and Rune of Spirituality. Speak the word of Love (Amo) and receive the Candle of Love."
+                    ],
+                    "requirements": [
+                        "Rune of Compassion",
+                        "Rune of Sacrifice",
+                        "Rune of Justice",
+                        "Rune of Spirituality"
+                    ],
+                    "rewards": [
+                        "Candle of Love"
+                    ]
+                },
+                {
+                    "title": "Bell of Courage",
+                    "icon": "/images/quest-items/bell.png",
+                    "scale": 500,
+                    "location": "Tomb of the Avatar",
+                    "description": [
+                        "Hold in thy hands the Rune of Valor, Rune of Sacrifice, Rune of Honor and Rune of Spirituality. Speak the word of Courage (Cor) and receive the Bell of Courage."
+                    ],
+                    "requirements": [
+                        "Rune of Valor",
+                        "Rune of Sacrifice",
+                        "Rune of Honor",
+                        "Rune of Spirituality"
+                    ],
+                    "rewards": [
+                        "Bell of Courage"
+                    ]
+                },
+                {
+                    "title": "Defeat the Leper",
+                    "icon": "/images/quest-items/leper.png",
+                    "scale": 500,
+                    "location": "The Abyssal Core",
+                    "description": [
+                        "Defeat the Leper in the Abyssal Core to gain access to the Shrine of Time."
+                    ]
+                },
+                {
+                    "title": "Become the Avatar of Time",
+                    "icon": "/images/quest-items/avatar.png",
+                    "scale": 500,
+                    "location": "The Shrine of Time",
+                    "description": [
+                        "Bring the three required items and the Rune of Humility. Approach the altar and speak the tripartite words of power Ver Amo Cor to combine the three items of Principle and become the Avatar of Time."
+                    ],
+                    "requirements": [
+                        "Book of Truth",
+                        "Candle of Love",
+                        "Bell of Courage",
+                        "Rune of Humility"
+                    ],
+                    "rewards": [
+                        "???"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "The Shrine of Compassion",
+            "description": [
+                "Located in the library within Cursed Prevalia, seek out Tatters, the ratmen who is indebted to a goblin merchant. Locate an unstable time crystal and bring it to Tatters and not the goblin merchant in order to retrieve the Key of Compassion."
+            ],
+            "steps": [
+                {
+                    "title": "Retrieve an Unstable Time Crystal",
+                    "icon": "/images/bedlams.png",
+                    "scale": 500,
+                    "location": "Sewers, Level 3, Level 5, Level 6",
+                    "description": [
+                        "A bag will contain an Unstable Time Crystal (decaying) guarded by two Bedlam Gazers. Retrieve the crystal."
+                    ],
+                    "rewards": [
+                        "An Unstable Time Crystal (decaying)"
+                    ]
+                },
+                {
+                    "title": "Bring the Unstable Time Crystal to Tatters",
+                    "icon": "/images/quest-items/tatters.png",
+                    "scale": 500,
+                    "location": "Level 5",
+                    "description": [
+                        "Bring the Unstable Time Crystal to Tatters at the Shrine of Compassion. Speak the words 'mu' to receive the Key of Compassion."
+                    ],
+                    "requirements": [
+                        "An Unstable Time Crystal (decaying)"
+                    ],
+                    "rewards": [
+                        "The Key of Compassion"
+                    ]
+                },
+                {
+                    "title": "Claim the Chest of Compassion",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "The Hall of Virtue",
+                    "description": [
+                        "Stand on the symbol for Compassion in the Hall of Virtue. Speak the words 'mu' to claim the Chest of Compassion. There is a chance to receive the Rune of Compassion in addition to other rewards."
+                    ],
+                    "requirements": [
+                        "The Key of Compassion"
+                    ],
+                    "rewards": [
+                        "Rune of Compassion",
+                        "Various special loot"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "The Shrine of Honesty",
+            "description": [
+                "Thou shall find the goblin merchant that Tatters is indebted to at the Shrine of Honesty in the hedgemaze of the abyss. If thou bring the unstable ot this merchant instead of Tatters, thou shall be given the Key of Honesty."
+            ],
+            "steps": [
+                {
+                    "title": "Retrieve an Unstable Time Crystal",
+                    "icon": "/images/bedlams.png",
+                    "scale": 500,
+                    "location": "Sewers, Level 3, Level 5, Level 6",
+                    "description": [
+                        "A bag will contain an Unstable Time Crystal (decaying) guarded by two Bedlam Gazers. Retrieve the crystal."
+                    ],
+                    "rewards": [
+                        "An Unstable Time Crystal (decaying)"
+                    ]
+                },
+                {
+                    "title": "Bring the Unstable Time Crystal to the Goblin Merchant",
+                    "icon": "/images/quest-items/goblin-merchant.png",
+                    "scale": 500,
+                    "location": "Level 4",
+                    "description": [
+                        "Bring the Unstable Time Crystal to the Goblin Merchant at the Shrine of Honesty. Speak the words 'ahm' to receive the Key of Honesty."
+                    ],
+                    "requirements": [
+                        "An Unstable Time Crystal (decaying)"
+                    ],
+                    "rewards": [
+                        "The Key of Honesty"
+                    ]
+                },
+                {
+                    "title": "Claim the Chest of Honesty",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "The Hall of Virtue",
+                    "description": [
+                        "Stand on the symbol for Honesty in the Hall of Virtue. Speak the words 'ahm' to claim the Chest of Honesty. There is a chance to receive the Rune of Honesty in addition to other rewards."
+                    ],
+                    "requirements": [
+                        "The Key of Honesty"
+                    ],
+                    "rewards": [
+                        "Rune of Honesty",
+                        "Various special loot"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "The Shrine of Honor",
+            "description": [
+                "Locate first Gwenno's Urn (yes, the same that was wife to the famous bard Iolo!) and bring it to the Shrine of Honor in the graveyard east of Cursed Prevalia. Thou will be required to defend the site for some time from the horrors that dwell in this area. In the end, should thou prevail, thou will be granted the Key of Honor."
+            ],
+            "steps": [
+                {
+                    "title": "Retrieve Gwenno's Urn",
+                    "icon": "/images/quest-items/.png",
+                    "scale": 500,
+                    "location": "Level 3",
+                    "description": [
+                        "One must defeat the Mirror of the Avatar and his companions to make their way to the urn. Remove the trap and unlock the chest to claim the urn."
+                    ],
+                    "requirements": [
+                        "The ability to unlock and remove traps from a container"
+                    ],
+                    "rewards": [
+                        "Gwenno's Urn (decaying)"
+                    ]
+                },
+                {
+                    "title": "Survive the Trial of Honor",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "Prevalia Graveyard",
+                    "description": [
+                        "Bring the urn to the Shrine of Honor at Prevalia Graveyard (on the east side of Level 5 down the stairs). Speak the words 'summ' to begin the Trial of Honor. Survive for 5 minutes against waves of relentless undead. A member of your party must be present at all times near the Shrine otherwise you will fail. Upon completion of the event the Key of Honor will be found on the ground."
+                    ],
+                    "requirements": [
+                        "Gwenno's Urn (decaying)"
+                    ],
+                    "rewards": [
+                        "The Key of Honor"
+                    ]
+                },
+                {
+                    "title": "Claim the Chest of Honor",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "The Hall of Virtue",
+                    "description": [
+                        "Stand on the symbol for Honor in the Hall of Virtue. Speak the words 'summ' to claim the Chest of Honor. There is a chance to receive the Rune of Honor in addition to other rewards."
+                    ],
+                    "requirements": [
+                        "The Key of Honor"
+                    ],
+                    "rewards": [
+                        "Rune of Honor",
+                        "Various special loot"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "The Shrine of Justice",
+            "description": [
+                "In the abyssal core thou will find the Shrine of Justice and there thou will find the spirit of a druid in search of his stolen staff. Seek and find this staff and return it for the Key of Justice."
+            ],
+            "steps": [
+                {
+                    "title": "Retrieve the Justice Staff",
+                    "icon": "images/justice.png",
+                    "scale": 500,
+                    "location": "Levels 5 and 6",
+                    "description": [
+                        "Found on a corpse of an unjust thief guarded by three Ratmen rogues."
+                    ],
+                    "rewards": [
+                        "Justice Staff (decaying)"
+                    ]
+                },
+                {
+                    "title": "Bring the Justice Staff to the Spirit of a Druid ",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "The Abyssal Core",
+                    "description": [
+                        "Bring the Justice Staff to the Spirit of a Druid. He is located at the Shrine of Justice in the Abyssal Core. Speak the words 'beh' to receive the Key of Justice."
+                    ],
+                    "requirements": [
+                        "Justice Staff (decaying)"
+                    ],
+                    "rewards": [
+                        "The Key of Justice"
+                    ]
+                },
+                {
+                    "title": "Claim the Chest of Justice",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "The Hall of Virtue",
+                    "description": [
+                        "Stand on the symbol for Justice in the Hall of Virtue. Speak the words 'beh' to claim the Chest of Justice. There is a chance to receive the Rune of Justice in addition to other rewards."
+                    ],
+                    "requirements": [
+                        "The Key of Justice"
+                    ],
+                    "rewards": [
+                        "Rune of Justice",
+                        "Various special loot"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "The Shrine of Sacrifice",
+            "description": [
+                "This is a strange task for it will require that thou bring a loyal friend with thee. Seek the Shrine of Sacrifice in the abyss (though thou will need to locate the entrance much further below) and freely give thy life. Thou will not receive the Key of Sacrifice, buy thy loyal companion shall be able to retrieve it."
+            ],
+            "steps": [
+                {
+                    "title": "Retrieve the Bowl of Tears",
+                    "icon": "/images/quest-items/.png",
+                    "scale": 500,
+                    "location": "Anywhere",
+                    "description": [
+                        "Find the Bowl of Tears on the ground throughout the dungeon. This can appear in many locations."
+                    ],
+                    "rewards": [
+                        "Bowl of Tears (decaying)"
+                    ]
+                },
+                {
+                    "title": "Bring the Bowl of Tears to the Shrine of Sacrifice",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "Level 4/7",
+                    "description": [
+                        "Bring the Bowl of Tears to Shrine of Sacrifice. The Shrine is located on Level 4 but the entrance is near the end of Level 7. One must sacrifice himself (and be removed from the dungeon entirely) by saying the words 'cah'. Another player may retrieve the Key of Sacrifice from the ground."
+                    ],
+                    "requirements": [
+                        "Bowl of Tears (decaying)"
+                    ],
+                    "rewards": [
+                        "The Key of Sacrifice"
+                    ]
+                },
+                {
+                    "title": "Claim the Chest of Sacrifice",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "The Hall of Virtue",
+                    "description": [
+                        "Stand on the symbol for Sacrifice in the Hall of Virtue. Speak the words 'cah' to claim the Chest of Sacrifice. There is a chance to receive the Rune of Sacrifice in addition to other rewards."
+                    ],
+                    "requirements": [
+                        "The Key of Sacrifice"
+                    ],
+                    "rewards": [
+                        "Rune of Sacrifice",
+                        "Various special loot"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "The Shrine of Spirtiuality",
+            "description": [
+                "Seek the ancient blessing of the Avatar, a crumbling ankh, and bring it to cleanse the Shrine of Spirituality. Doing so will grant thee the Key of Spirtiuality."
+            ],
+            "steps": [
+                {
+                    "title": "Retrieve The Symbol of the Avatar",
+                    "icon": "/images/quest-items/.png",
+                    "scale": 500,
+                    "location": "Level 2-6",
+                    "description": [
+                        "Find a chest that will spawn with a Timeless Cursed and a Time Lurker. The chest contains a Symbol of the Avatar (decaying)."
+                    ],
+                    "rewards": [
+                        "The Symbol of the Avatar (decaying)"
+                    ]
+                },
+                {
+                    "title": "Bring the Symbol of the Avatar to the Shrine of Spirituality",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "Level 6",
+                    "description": [
+                        "Bring the Symbol of the Avatar to the Shrine of Spirituality. Speak the words 'om' to receive the Key of Spirituality."
+                    ],
+                    "requirements": [
+                        "Symbol of the Avatar (decaying)"
+                    ],
+                    "rewards": [
+                        "The Key of Spirituality"
+                    ]
+                },
+                {
+                    "title": "Claim the Chest of Spirituality",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "The Hall of Virtue",
+                    "description": [
+                        "Stand on the symbol for Spirituality in the Hall of Virtue. Speak the words 'om' to claim the Chest of Spirituality. There is a chance to receive the Rune of Spirituality in addition to other rewards."
+                    ],
+                    "requirements": [
+                        "The Key of Spirituality"
+                    ],
+                    "rewards": [
+                        "Rune of Spirituality",
+                        "Various special loot"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "The Shrine of Valor",
+            "description": [
+                "Locate the Shrine of Valor in the colosseum of Cursed Prevalia. Thou will undertake an arduous battle against fiends but should thou prevail then thou will find the Key of Valor."
+            ],
+            "steps": [
+                {
+                    "title": "Retrieve the Ruined Sword of Valor Urn",
+                    "icon": "/images/quest-items/.png",
+                    "scale": 500,
+                    "location": "Levels 1-4",
+                    "description": [
+                        "Found on a corpse of a knight of valor guarded by two Ratmen of a random type."
+                    ],
+                    "rewards": [
+                        "Ruined Sword of Valor (decaying)"
+                    ]
+                },
+                {
+                    "title": "Survive the Trial of Valor",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "Level 5",
+                    "description": [
+                        "Bring the Ruined Sword of Valor to the Shrine of Valor at Prevalia Colosseum. Speak the words 'ra' to begin the Trial of Valor. Defeat all the waves of monsters to complete the Trial of Valor. Upon completion of the event the Key of Valor will be found on the ground."
+                    ],
+                    "requirements": [
+                        "Ruined Sword of Valor (decaying)"
+                    ],
+                    "rewards": [
+                        "The Key of Valor"
+                    ]
+                },
+                {
+                    "title": "Claim the Chest of Valor",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "The Hall of Virtue",
+                    "description": [
+                        "Stand on the symbol for Valor in the Hall of Virtue. Speak the words 'ra' to claim the Chest of Valor. There is a chance to receive the Rune of Valor in addition to other rewards."
+                    ],
+                    "requirements": [
+                        "The Key of Valor"
+                    ],
+                    "rewards": [
+                        "Rune of Valor",
+                        "Various special loot"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "The Shrine of Humility",
+            "description": [
+                "The final and most difficult Virtue for first thou must find a simple Robe of Humility, which appears as a death shroud and easily confused for such. Bring this to the Shrine of Humility at the precipice of the Nameless Place to begin thy Trial of Humility. I know not what occurs during this trial, but should thou be succesful thou will be given the Key of Humility."
+            ],
+            "steps": [
+                {
+                    "title": "Retrieve the Robe of Humility",
+                    "icon": "/images/quest-items/.png",
+                    "scale": 500,
+                    "location": "Anywhere",
+                    "description": [
+                        "Find the Robe of Humility on the ground throughout the dungeon. This can appear in many locations."
+                    ],
+                    "rewards": [
+                        "Robe of Humility (decaying)"
+                    ]
+                },
+                {
+                    "title": "Compelte the Trial of Humility",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "Level 7",
+                    "description": [
+                        "Bring the Robe of Humility to the Shrine of Humility at the end of Level 7. Speak the words 'lum' to begin the Trial of Humility. You will shed your belongings and be resurrected inside the Trial of Humility. There will be a small amount of supplies to undertake and defeat three rooms of enemies. Upon completion of the event the Key of Honor will be found on the ground."
+                    ],
+                    "requirements": [
+                        "Robe of Humility (decaying)"
+                    ],
+                    "rewards": [
+                        "The Key of Humility"
+                    ]
+                },
+                {
+                    "title": "Claim the Chest of Humility",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "The Hall of Virtue",
+                    "description": [
+                        "Stand on the symbol for Humility in the Hall of Virtue. Speak the words 'lum' to claim the Chest of Humility. There is a chance to receive the Rune of Humility in addition to other rewards."
+                    ],
+                    "requirements": [
+                        "The Key of Humility"
+                    ],
+                    "rewards": [
+                        "Rune of Humility",
+                        "Various special loot"
+                    ]
+                }
+            ]
+        },     
+        {
+            "name": "The Key of Time",
+            "description": [
+                "Within the hall of Virtue thou will come across a priestess by the name of Jeanette. In her meditations upon the nature of the Virtues, she has discovered the importance to also meditate upon the nature of the Anti-Virtues well. She seeks the Anti-Virtue Stones for this task. This is no simple thing she asks for; it involves traveling to the Ankh room amid the ruins of the second colony and retrieving one of each Virtue Stone. Next, should thou choose not to give these Virtue Stones to Iolanthe the Knight, thou must travel deep down into the Nameless place where the Shrines of Anti-Virtue lie. Speak the word sof power at each shrine while holding the Virtue Stone aloft. Note that the words of power are not the same as the mantras used at the Virtue Shrines. Retrieve the Anti-Virtue stone from each Anti-Virtue Shrine (thou will lose thy Virtue Stone in the process) and bring them back up to Jeanette in the Hall of Virtue. She will bestoy upon Thee a Key of Time, which thou can use in the Hall of Virtue to summon a Time Chest."
+            ],
+            "steps": [
+                {
+                    "title": "Retrieve the Virtue Stones",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "Level 3",
+                    "description": [
+                        "Defeat the companions of the Mirror of the Avatar to retrieve each Virtue Stone. They do not drop everytime."
+                    ],
+                    "rewards": [
+                        "Virtue Stones"
+                    ]
+                },
+                {
+                    "title": "Retrieve the Anti-Virtue Stones",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "Level 8",
+                    "description": [
+                        "At the end of each leg of Level 8 you must under each Anti-Virtue trial. This will teleport you to an Arena for each different Virtue. Upon completition of the event you will get the corresponding Anti-Virtue stone."
+                    ],
+                    "requirements": [
+                        "Virtue Stones"
+                    ],
+                    "rewards": [
+                        "Anti-Virtue Stones"
+                    ]
+                },
+                {
+                    "title": "Claim the Key of Time",
+                    "icon": "/images/quest-items/?.png",
+                    "scale": 500,
+                    "location": "The Hall of Virtue",
+                    "description": [
+                        "Once you have collected all of the Anti-Virtue Stones you must bring them to Jeanette in the Hall of Virtue. She will give you the Key of Time which can be used to summon a Time Chest."
+                    ],
+                    "requirements": [
+                        "Anti-Virtue Stones"
+                    ],
+                    "rewards": [
+                        "The Key of Time"
+                    ]
+                }
+            ]
+        }
+    ]
+}

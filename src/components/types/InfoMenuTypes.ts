@@ -87,6 +87,40 @@ export interface LootContent {
     loot: LootItemData[];
 }
 
+export interface QuestItemData {
+    name: string;
+    icon: string;
+    location: string;
+    description: string[];
+    scale?: number;
+}
+
+export interface QuestItemsContent {
+    'quest-items': QuestItemData[];
+}
+
+export interface QuestStep {
+    title: string;
+    description: string[];
+    location: string;
+    rewards?: string[];
+    requirements?: string[];
+    icon?: string;
+    scale?: number;
+}
+
+export interface Quest {
+    name: string;
+    icon?: string;
+    description: string[];
+    steps: QuestStep[];
+    scale?: number;
+}
+
+export interface QuestsContent {
+    quests: Quest[];
+}
+
 export interface GeneralItemData {
     name: string;
     location: string;

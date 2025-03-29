@@ -39,6 +39,14 @@
         "description": [
           "Used to create time menageries. Not confirmed but likely higher drop rate off Blackrock Elementals."
         ]
+      },
+      {
+        "name": "Infinity Coins",
+        "icon": ["images/loot/infinity-coin.png"],
+        "sources": "Anywhere",
+        "description": [
+          "Exchange these for items at the vendor in Colony."
+        ]
       }
     ]
   }
