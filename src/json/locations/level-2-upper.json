@@ -43,7 +43,7 @@
                     "id": 1,
                     "title": "Locked Door",
                     "description": "Requires a knock rune.",
-                    "coordinates": [[655, 2290], [1867, 1288], [525, 558], [599, 4383]],
+                    "coordinates": [[655, 2290], [1867, 1288], [525, 558], [599, 4383], [1227, 3096]],
                     "icon": "icons/lock.png"
                 },
                 {
@@ -129,6 +129,40 @@
                     "icon": "icons/eye.png"
                 }
             ]           
-         }
+         },
+         "Misc": {
+            "Chests": [
+                {
+                    "id": 1,
+                    "title": "Metal Chest",
+                    "description": "This chest is locked and requires a knock rune to open. Can contain special/rare loot.",
+                    "coordinates": [[710, 4444], [998, 1683], [1514, 1282]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Wooden Chest",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[276, 4491], [388, 2660], [386, 2656], [1227, 3147], [1259, 3146], [1315, 2811], [1571, 1420], [1403, 1634], [1634, 2832], [589, 3806]],
+                    "icon": "icons/treasure-chest.png"
+                },
+                {
+                    "id": 1,
+                    "title": "Wooden Box",
+                    "description": "This chest is unlocked and can contain special/rare loot.",
+                    "coordinates": [[1540, 2810]],
+                    "icon": "icons/treasure-chest.png"
+                }
+            ],
+            "Crystal Pedestals": [
+                {
+                    "id": 1,
+                    "title": "Pilgrim's Curse",
+                    "description": "This curse reduces damage dealt. Left click to break the crystal.",
+                    "coordinates": [[1593, 2901]],
+                    "icon": "icons/crystal.png"
+                }
+            ]
+        }
      }
 }
