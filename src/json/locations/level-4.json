@@ -313,7 +313,7 @@
                 {
                     "id": 1,
                     "title": "Lora the gate pass holder",
-                    "description": "Bring him a bounty notice to exchange for a colony gate pass. Say trade when you have the items.",
+                    "description": "Bring him a bounty notice to exchange for a colony gate pass. Say 'gate pass' when you have the item.",
                     "coordinates": [2741, 1032],
                     "icon": "icons/exclamation-mark.png"
                 },
