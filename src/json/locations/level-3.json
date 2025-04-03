@@ -265,19 +265,7 @@
                     "coordinates": [[928, 1480], [3185, 4299], [4490, 2677]]
                 }
             ]
-         },
-         "Runes": {
-            "Knock": [
-                {
-                    "id": "knock",
-                    "title": "Knock",
-                    "container": ["Barrel", "Armoire", "Dead Orc", "Crate", "Crate", "Crate", "Crate", "Strongbox"],
-                    "icon": "icons/runes/timerune-knock.png",
-                    "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
-                    "coordinates": [[1549, 1134], [2868, 1052], [3394, 2755], [3705, 2817], [3086, 3816], [3070, 3825], [1131, 4033], [339, 2710]]
-                }
-            ]
-        },        
+         },     
         "Entities": {
             "Gem Vendor": [
                 {

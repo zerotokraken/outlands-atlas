@@ -111,18 +111,6 @@
                 }
             ]
         },
-        "Runes": {
-            "Knock": [
-                {
-                    "id": "knock",
-                    "title": "Knock",
-                    "container": ["Backpack", "Crate", "Strong Box"],
-                    "icon": "icons/runes/timerune-knock.png",
-                    "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
-                    "coordinates": [[1380, 504], [1267, 1225], [2775, 914]]
-                }
-            ]
-        },
         "Entities": {
             "NPCs": [
                 {

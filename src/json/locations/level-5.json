@@ -214,18 +214,6 @@
                 }
             ]  
         },
-        "Runes": {
-            "Knock": [
-                {
-                    "id": "knock",
-                    "title": "Knock",
-                    "container": ["Crate", "Container", "Crate", "Crate"],
-                    "icon": "icons/runes/timerune-knock.png",
-                    "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
-                    "coordinates": [[3042, 752], [718, 2154], [1171, 2466], [1283, 2464]]
-                }
-            ]
-        },
         "Quest": {
             "Shrine": [            
                 {

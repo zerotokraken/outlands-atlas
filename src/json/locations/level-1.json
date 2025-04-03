@@ -78,18 +78,6 @@
                 }
             ]
             },
-        "Runes": {
-            "Knock": [
-                {
-                    "id": "knock",
-                    "title": "Knock",
-                    "container": ["Crate", "Bag", "Metal Chest", "Bag", "Chest"],
-                    "icon": "icons/runes/timerune-knock.png",
-                    "description": "All Doors within 3 tiles become opened and stay unlocked for 15 seconds\nEach Chest within 3 tiles has a 50% chance to become unlocked",
-                    "coordinates": [[1855, 1734], [3252, 4144], [3228, 4932], [4412, 4948], [2158, 757]]
-                }
-            ]
-        },
         "Entities": {
             "Bosses": [
                 {
@@ -153,7 +141,7 @@
                     "id": 1,
                     "title": "Metal Chest",
                     "description": "This chest is locked and requires a knock rune to open. Can contain special/rare loot.",
-                    "coordinates": [[2420, 5308], [3221, 4955], [4294, 4574], [1727, 5311], [2059, 3948], [2056, 3917], [4043, 982], [3704, 1217], [4879, 2152], [4510, 3420], [2896, 3269], [2970, 2418], [3138, 2045]],
+                    "coordinates": [[2420, 5308], [3221, 4955], [4294, 4574], [1727, 5311], [4043, 982], [3704, 1217], [4879, 2152], [4510, 3420], [2896, 3269], [2970, 2418], [3138, 2045]],
                     "icon": "icons/treasure-chest.png"
                 },
                 {
