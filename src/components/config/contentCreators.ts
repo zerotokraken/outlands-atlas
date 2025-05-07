@@ -1,4 +1,4 @@
-import { ContentCreators, EmptyContent, RunesContent, RelicsContent, HazardsContent, EncountersContent, TabletsContent, GeneralContent, LootContent, QuestItemsContent, QuestsContent } from '../types/InfoMenuTypes.js';
+import { ContentCreators, EmptyContent, RunesContent, RelicsContent, HazardsContent, EncountersContent, TabletsContent, GeneralContent, LootContent, QuestItemsContent, QuestsContent, ScriptsContent } from '../types/InfoMenuTypes.js';
 import { createLanguageContent } from '../content/LanguageContent.js';
 import { createRunesContent } from '../content/RunesContent.js';
 import { createRelicsContent } from '../content/RelicsContent.js';
@@ -7,6 +7,7 @@ import { createEncountersContent } from '../content/EncountersContent.js';
 import { createGeneralContent } from '../content/GeneralContent.js';
 import { createLootContent } from '../content/LootContent.js';
 import { createQuestsContent } from '../content/QuestsContent.js';
+import { createScriptsContent } from '../content/ScriptsContent.js';
 
 export const contentCreators: ContentCreators = {
     'language': (data: EmptyContent, createIconContainer) => createLanguageContent(data, createIconContainer),
@@ -16,5 +17,6 @@ export const contentCreators: ContentCreators = {
     'encounters': (data: EncountersContent, createIconContainer) => createEncountersContent(data, createIconContainer),
     'general': (data: GeneralContent, createIconContainer) => createGeneralContent(data, createIconContainer),
     'loot': (data: LootContent, createIconContainer) => createLootContent(data, createIconContainer),
-    'quests': (data: QuestsContent, createIconContainer) => createQuestsContent(data, createIconContainer)
+    'quests': (data: QuestsContent, createIconContainer) => createQuestsContent(data, createIconContainer),
+    'scripts': (data: ScriptsContent, createIconContainer) => createScriptsContent(data, createIconContainer)
 };

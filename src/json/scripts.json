@@ -1,0 +1,41 @@
+{
+    "scripts": [
+        {
+            "title": "Quest Track",
+            "description": [
+                "A script that uses tracking skill to detect specific quest mobs in the area.",
+                "Shows overhead messages for Traitors, Bedlam Gazers, Timeless Cursed, and Ratmen."
+            ],
+            "code": "@setvar! traitor_found 0\n@setvar! bedlam_found 0\n@setvar! ratman_found 0\n@setvar! timeless_found 0\n\nskill \"tracking\"\ngetlabel backpack pingcheck\nif insysmsg \"You must wait a few moments to use another skill\"\n    overhead \"Tracking on cooldown, try again...\" 54\n    stop\nendif\nwaitforgump 4267467659\n#Response 2 = Aggresive, Response 3 = Passive. Check Both!\ngumpresponse 2 4267467659\ngetlabel backpack pingcheck\nif insysmsg \"You are unable to detect signs\"\n    overhead \"Failed to track anything, try again...\" 34\n    stop\nendif\nwaitforgump 4267467659\nif ingump \"traitor\" 4267467659\n    @setvar! traitor_found 1\nendif\n\nif ingump \"bedlam gazer\" 4267467659\n    @setvar! bedlam_found 1\nendif\n\nif ingump \"timeless cursed\" 4267467659\n    @setvar! timeless_found 1\nendif\n\nif ingump \"ratman\" 4267467659\n    @setvar! ratman_found 1\nendif\n\nwhile ingump \"Next\" 4267467659\n    gumpresponse 3 4267467659\n    waitforgump 4267467659\n    if ingump \"traitor\" 4267467659\n        @setvar! traitor_found 1\n    endif\n    \n    if ingump \"timeless cursed\" 4267467659\n        @setvar! timeless_found 1\n    endif\n    \n    if ingump \"bedlam gazer\" 4267467659\n        @setvar! bedlam_found 1\n    endif\n\n    if ingump \"ratman\" 4267467659\n        @setvar! ratman_found 1\n    endif\nendwhile\n\nif traitor_found = 0 and bedlam_found = 0 and ratman_found = 0 and timeless_found = 0\n    overhead \"[FOUND NOTHING]\" 95\n    gumpclose 4267467659\nendif\n\nif traitor_found = 1\n    overhead \"[—▶ TRAITOR ◀—]\" 95\nendif\n\nif bedlam_found = 1\n    overhead \"[—▶ BEDLAM GAZER ◀—]\" 95\nendif\n\nif timeless_found = 1\n    overhead \"[—▶ TIMELESS CURSED ◀—]\" 95\nendif\n\nif ratman_found = 1\n    overhead \"[—▶ RATMAN ◀—]\" 95\nendif\n\ngumpclose 4267467659"
+        },
+        {
+            "title": "Quest Item Finder",
+            "description": [
+                "Automatically scans the area for important quest items and corpses.",
+                "Highlights items like the chest of an avatar, corpse of a knight of valor, bowl of tears, robe of humility, and corpse of an unjust thief.",
+                "Shows overhead messages when quest items are found."
+            ],
+            "code": "if not listexists QuestItem\n    createlist QuestItem\n    pushlist QuestItem 'the chest of an avatar'\n    pushlist QuestItem 'the corpse of a knight of valor'\n    pushlist QuestItem 'a bowl of tears'\n    pushlist QuestItem 'robe of humility'\n    pushlist QuestItem 'the corpse of an unjust thief'\nendif\nif not listexists rangefinderQuestItem\n    createlist rangefinderQuestItem\n    pushlist rangefinderQuestItem 2\n    pushlist rangefinderQuestItem 3\n    pushlist rangefinderQuestItem 4\n    pushlist rangefinderQuestItem 5\n    pushlist rangefinderQuestItem 6\n    pushlist rangefinderQuestItem 7\n    pushlist rangefinderQuestItem 8\n    pushlist rangefinderQuestItem 9\n    pushlist rangefinderQuestItem 10\n    pushlist rangefinderQuestItem 11\n    pushlist rangefinderQuestItem 12\n    pushlist rangefinderQuestItem 13\n    pushlist rangefinderQuestItem 14\n    pushlist rangefinderQuestItem 15\n    pushlist rangefinderQuestItem 16\n    pushlist rangefinderQuestItem 17\n    pushlist rangefinderQuestItem 18\nendif\nif findtype 2472|7939|45521|45575|29834|45580 ground any any 18\n    foreach range in rangefinderQuestItem\n        if findtype 2472|7939|45521|45575|29834|45580 ground any any range as QuestCheck\n            getlabel QuestCheck label            \n            foreach item in QuestItem\n                if item in label           \n                    overhead label 2760 QuestCheck\n                    overhead '{{item}} found!'\n                    wait 100\n                    overhead label 2760 QuestCheck\n                    overhead '{{item}} found!'\n                    wait 100\n                    overhead label 2760 QuestCheck\n                    overhead '{{item}} found!'\n                    stop\n                endif\n            endfor\n        endif\n    endfor\nendif\nloop"
+        },
+        {
+            "title": "Fiddle Mass Sleep",
+            "description": [
+                "Activates in sequence:",
+                "• Checks and applies Frost Aspect Armor if not active",
+                "• Uses Prodigy Fiddle if available in backpack",
+                "• Casts Mass Sleep if available in backpack"
+            ],
+            "code": "if not dead\n    if findlayer self 'head' as checkitem\n        getlabel checkitem checklabel\n        if \"frost\" in checklabel\n            overhead \"FROST ALREADY ACTIVE\"\n        else\n            say \"[aspectarmor frost\"\n            cooldown \"Aspect\" 30000\n            overhead \"FROST ACTIVATED\"\n        endif\n    endif\n    if findtype 54601 backpack as fiddle\n        dclick fiddle\n        overhead 'FIDDLE ACTIVATED'\n        wait 650\n    else\n        overhead 'NO FIDDLE FOUND'\n    endif\n    if findtype 19995 backpack as sleep\n        dclick sleep\n        overhead 'MASS SLEEP ACTIVATED'\n        wait 650\n        cooldown \"Mass Sleep\" 30000\n    else\n        overhead 'NO SLEEP FOUND'\n    endif\nendif"
+        },
+        {
+            "title": "Vas Rel Por",
+            "description": [
+                "Teleports using Rel Por tiles on the ground:",
+                "• Yells 'VAS REL POR' to activate the teleport",
+                "• If you have followers, waits and clicks any statue found",
+                "• Uses Hiding skill if over 80"
+            ],
+            "code": "if findtype 24402|3051|3052|6178 ground as relpor\n    yell \"VAS REL POR\"\n    if followers > 0\n        wait 1500\n        if findtype 47796 ground as statue  \n            dclick statue\n        endif\n    endif\n    if skill \"Hiding\" > 80\n        wait 500\n        useskill \"Hiding\"\n    endif\nendif"
+        }
+    ]
+}

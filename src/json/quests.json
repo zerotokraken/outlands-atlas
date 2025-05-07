@@ -43,7 +43,7 @@
                     "scale": 500
                 },
                 {
-                    "title": "Retrieve the Mushrroms",
+                    "title": "Retrieve the Mushrooms",
                     "location": "Level 3",
                     "description": [
                         "You must trade a bloom rune for the mushrooms on Level 3. Say 'Kropf!' at the correct location near the bottom left of Level 3."
@@ -399,7 +399,7 @@
                 },
                 {
                     "title": "Claim the Chest of Honesty",
-                    "icon": "/images/quest-items/?.png",
+                    "icon": "/images/quest-items/honesty-chest.png",
                     "scale": 500,
                     "location": "The Hall of Virtue",
                     "description": [
@@ -438,7 +438,7 @@
                 },
                 {
                     "title": "Survive the Trial of Honor",
-                    "icon": "/images/quest-items/?.png",
+                    "icon": "/images/quest-items/trial-of-honor.png",
                     "scale": 500,
                     "location": "Prevalia Graveyard",
                     "description": [
@@ -504,7 +504,7 @@
                 },
                 {
                     "title": "Claim the Chest of Justice",
-                    "icon": "/images/quest-items/?.png",
+                    "icon": "/images/quest-items/justice-chest.png",
                     "scale": 500,
                     "location": "The Hall of Virtue",
                     "description": [
@@ -681,7 +681,7 @@
             "steps": [
                 {
                     "title": "Retrieve the Robe of Humility",
-                    "icon": "/images/quest-items/.png",
+                    "icon": "/images/quest-items/robe.png",
                     "scale": 500,
                     "location": "Anywhere",
                     "description": [

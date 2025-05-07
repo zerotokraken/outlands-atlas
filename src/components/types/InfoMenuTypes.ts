@@ -121,6 +121,18 @@ export interface QuestsContent {
     quests: Quest[];
 }
 
+export interface Script {
+    title: string;
+    description: string[];
+    code: string;
+    icon?: string;
+    scale?: number;
+}
+
+export interface ScriptsContent {
+    scripts: Script[];
+}
+
 export interface GeneralItemData {
     name: string;
     location: string;
