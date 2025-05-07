@@ -80,10 +80,44 @@
                     "description": "Special: Does a pontiff style bomb",
                     "coordinates": [[2168, 3140], [1966, 2992], [2220, 3432], [2915, 4537], [3217, 4455], [3528, 4550], [3803, 4021], [3697, 4270], [4001, 3952]],
                     "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Anti-Virtue Bosses",
+                    "description": "Special: ?",
+                    "coordinates": [[2228, 7705], [860, 7701], [856, 9070], [3594, 9070], [3596, 7698], [4964, 7698], [4965, 9073]],
+                    "icon": "icons/boss.png"
+                },
+                {
+                    "id": "bosses",
+                    "title": "Rgrundrthag the Swarm",
+                    "description": "Special: ?",
+                    "coordinates": [[2226, 9071]],
+                    "icon": "icons/boss.png"
                 }
             ]  
         },
+        "Quest": {
+            "Anti-Virtues": [            
+                {
+                    "id": 1,
+                    "title": "Anti-Virtue Shrines",
+                    "description": "Bring the corresponding Virtue stone to open a portal to the arena for that Anti-Virtue.",
+                    "coordinates": [[522, 2326], [1799, 4220], [2598, 5900], [4082, 6190], [5354, 5602], [5264, 3574], [3629, 1450], [1796, 613]],
+                    "icon": "icons/exclamation-mark.png"
+                }
+            ]
+        },
         "Misc": {
+            "Pilgrim Spawns": [
+                {
+                    "id": 1,
+                    "title": "Pilgrim Spawn",
+                    "description": "Potenial spawn location for the Pilgrim",
+                    "coordinates": [[3248, 3364]],
+                    "icon": "icons/pilgrim.png"
+                }
+            ],
             "Chests": [
                 {
                     "id": 1,

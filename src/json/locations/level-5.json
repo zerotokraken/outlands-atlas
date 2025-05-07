@@ -240,6 +240,15 @@
             ]
         },
         "Misc": {
+            "Pilgrim Spawns": [
+                {
+                    "id": 1,
+                    "title": "Pilgrim Spawn",
+                    "description": "Potenial spawn location for the Pilgrim",
+                    "coordinates": [[2793, 4842], [3750, 4452], [3270, 490]],
+                    "icon": "icons/pilgrim.png"
+                }
+            ],
             "Chests": [
                 {
                     "id": 1,

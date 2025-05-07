@@ -43,7 +43,7 @@
                     "id": 1,
                     "title": "Breakable Wall",
                     "description": "Left click to break the wall.",
-                    "coordinates": [[2885, 2879], [2883, 3184], [3096, 1630], [422, 1039], [552, 1041], [661, 490], [1049, 1539], [1737, 1665], [2728, 1642], [2639, 1590], [2790, 758], [2582, 498], [2709, 3032]],
+                    "coordinates": [[2983, 649], [2885, 2879], [2883, 3184], [3096, 1630], [422, 1039], [552, 1041], [661, 490], [1049, 1539], [1737, 1665], [2728, 1642], [2639, 1590], [2790, 758], [2582, 498], [2709, 3032]],
                     "icon": "icons/brick-wall.png"
                 }
             ],
@@ -192,6 +192,15 @@
             ]           
          },
         "Misc":{
+            "Pilgrim Spawns": [
+                {
+                    "id": 1,
+                    "title": "Pilgrim Spawn",
+                    "description": "Potenial spawn location for the Pilgrim",
+                    "coordinates": [[3089, 666], [3231, 1601], [2257, 1041]],
+                    "icon": "icons/pilgrim.png"
+                }
+            ],
             "Ward Lines": [
                 {
                     "id": 1,

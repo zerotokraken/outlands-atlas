@@ -58,6 +58,7 @@ const AVAILABLE_ICONS = {
     RED_DOORS: { path: "icons/red-doors.png", scale: 175},
     BOOKS: { path: "icons/book.png", scale: 175},
     COMPASS: { path: "icons/compass.png", scale: 150},
+    PILGRIM: { path: "icons/pilgrim.png", scale: 150},
     // Time runes
     RUNE_KNOCK: { path: "icons/runes/timerune-knock.png", scale: 100 },
     RUNE_MEND: { path: "icons/runes/timerune-mendtime.png", scale: 100 },

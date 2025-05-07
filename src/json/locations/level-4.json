@@ -315,6 +315,15 @@
             ]
         },
         "Misc": {
+            "Pilgrim Spawns": [
+                {
+                    "id": 1,
+                    "title": "Pilgrim Spawn",
+                    "description": "Potenial spawn location for the Pilgrim",
+                    "coordinates": [[5863, 2057], [5217, 3872]],
+                    "icon": "icons/pilgrim.png"
+                }
+            ],
             "Rare Spawns": [
                 {
                     "id": 1,
