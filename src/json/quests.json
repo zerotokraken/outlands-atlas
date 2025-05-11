@@ -232,7 +232,7 @@
             "steps": [
                 {
                     "title": "Book of Truth",
-                    "icon": "/images/quest-items/book.png",
+                    "icon": "/images/quest-items/bookoftruth.png",
                     "scale": 500,
                     "location": "Tomb of the Avatar",
                     "description": [
@@ -250,7 +250,7 @@
                 },
                 {
                     "title": "Candle of Love",
-                    "icon": "/images/quest-items/candle.png",
+                    "icon": "/images/quest-items/candleoflove.png",
                     "scale": 500,
                     "location": "Tomb of the Avatar",
                     "description": [
@@ -268,7 +268,7 @@
                 },
                 {
                     "title": "Bell of Courage",
-                    "icon": "/images/quest-items/bell.png",
+                    "icon": "/images/quest-items/bellofcourage.png",
                     "scale": 500,
                     "location": "Tomb of the Avatar",
                     "description": [
@@ -308,7 +308,7 @@
                         "Rune of Humility"
                     ],
                     "rewards": [
-                        "???"
+                        "Symbol of Avatarhood"
                     ]
                 }
             ]
@@ -692,8 +692,8 @@
                     ]
                 },
                 {
-                    "title": "Compelte the Trial of Humility",
-                    "icon": "/images/quest-items/?.png",
+                    "title": "Complete the Trial of Humility",
+                    "icon": "/images/quest-items/humility-trial.png",
                     "scale": 500,
                     "location": "Level 7",
                     "description": [
@@ -708,7 +708,7 @@
                 },
                 {
                     "title": "Claim the Chest of Humility",
-                    "icon": "/images/quest-items/?.png",
+                    "icon": "/images/quest-items/humility-chest.png",
                     "scale": 500,
                     "location": "The Hall of Virtue",
                     "description": [
@@ -719,6 +719,7 @@
                     ],
                     "rewards": [
                         "Rune of Humility",
+                        "Ring of Humility",
                         "Various special loot"
                     ]
                 }

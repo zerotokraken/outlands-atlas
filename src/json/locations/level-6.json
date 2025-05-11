@@ -297,6 +297,13 @@
                     "description": "Bring the Crumbling Ankh to this location. You can find the ankh at randoms encounters containing a Timeless Cursed, a Time Lurker and a chest of the avatar. Turn in the ankh and you will get a key to take to the Hall of Virtue on Level 4 for your reward.",
                     "coordinates": [2908, 1741],
                     "icon": "icons/exclamation-mark.png"
+                },
+                {
+                    "id": "robebowl",
+                    "title": "Robe/Bowl Spawn",
+                    "description": "Robe of Humility and Bowl of Sacrifice have a chance to spawn here. The timer is 3 hours from the moment it spawns. These items must be turned in on level 7,",
+                    "coordinates": [[2354, 1010], [2773, 1642], [2216, 2842], [2871, 2771]],
+                    "icon": "icons/robe-bowl-spawn.png"
                 }
             ]
         }

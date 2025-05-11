@@ -227,7 +227,14 @@
         ]             
         },
         "Quest": {
-            "Shrine": [            
+            "Shrine": [   
+                {
+                    "id": 1,
+                    "title": "Shrine Keys",
+                    "description": "Bring any Shrine Keys to the appropiate section of the Hall of Virtue for a reward.",
+                    "coordinates": [4158, 6614],
+                    "icon": "icons/exclamation-mark.png"
+                },         
                 {
                     "id": 1,
                     "title": "Honesty Shrine",
@@ -243,12 +250,14 @@
                     "icon": "icons/exclamation-mark.png"
                 },
                 {
-                    "id": 1,
-                    "title": "Shrine Keys",
-                    "description": "Bring any Shrine Keys to the appropiate section of the Hall of Virtue for a reward.",
-                    "coordinates": [4158, 6614],
-                    "icon": "icons/exclamation-mark.png"
-                },
+                    "id": "robebowl",
+                    "title": "Robe/Bowl Spawn",
+                    "description": "Robe of Humility and Bowl of Sacrifice have a chance to spawn here. The timer is 3 hours from the moment it spawns. These items must be turned in on level 7,",
+                    "coordinates": [[1048, 242], [960, 1218], [2616, 1170], [5087, 4457], [5203, 3507]],
+                    "icon": "icons/robe-bowl-spawn.png"
+                }
+            ],
+            "General": [
                 {
                     "id": 1,
                     "title": "Gromgur Wisehead the mage",

@@ -568,6 +568,15 @@
                     "coordinates": [948, 5603],
                     "icon": "icons/exclamation-mark.png"
                 }
+            ],
+            "Shrine": [
+                {
+                    "id": "robebowl",
+                    "title": "Robe/Bowl Spawn",
+                    "description": "Robe of Humility and Bowl of Sacrifice have a chance to spawn here. The timer is 3 hours from the moment it spawns. These items must be turned in on level 7,",
+                    "coordinates": [[2893, 1460]],
+                    "icon": "icons/robe-bowl-spawn.png"
+                }
             ]
         }
     }
