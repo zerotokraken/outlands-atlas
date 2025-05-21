@@ -1,7 +1,7 @@
 {
     "loot": [
       {
-        "name": "Time Coins",
+        "name": "time coins",
         "icon": ["images/loot/coin.png"],
         "sources": "Anywhere",
         "description": [
@@ -9,7 +9,7 @@
         ]
       },
       {
-        "name": "Time Vase",
+        "name": "time vases",
         "icon": ["images/loot/vase.png"],
         "sources": "Anywhere",
         "description": [
@@ -17,7 +17,7 @@
         ]
       },
       {
-        "name": "Time Reagents",
+        "name": "time reagents",
         "icon": ["images/loot/reagents.png"],
         "sources": "Anywhere",
         "description": [
@@ -25,7 +25,7 @@
         ]
       },
       {
-        "name": "Temporal Imprints",
+        "name": "a temporal imprint",
         "icon": ["images/loot/imprint.png"],
         "sources": "Anywhere",
         "description": [
@@ -33,7 +33,7 @@
         ]
       },
       {
-        "name": "Blackrock Fragments",
+        "name": "a blackrock fragment",
         "icon": ["images/loot/blackrock.png"],
         "sources": "Anywhere",
         "description": [
@@ -41,11 +41,59 @@
         ]
       },
       {
-        "name": "Infinity Coins",
+        "name": "infinity coin",
         "icon": ["images/loot/infinity-coin.png"],
         "sources": "Anywhere",
         "description": [
           "Exchange these for items at the vendor in Colony."
+        ]
+      },
+      {
+        "name": "a colony gate pass",
+        "icon": ["images/loot/gate-pass.png"],
+        "sources": "Quest Reward",
+        "description": [
+          "Required to access shortcuts to and from Colony. A reward for turning in a bounty notice at Colony."
+        ]
+      },
+      {
+        "name": "a tablet fragment",
+        "icon": ["images/loot/tablet.png"],
+        "sources": "Random spawn corpses",
+        "description": [
+          "Gargish tablets related to the Red Doors on Level 2. Found on corpses of random encounters."
+        ]
+      },
+      {
+        "name": "a clump of offal",
+        "icon": ["images/loot/offal-clump.png"],
+        "sources": "Monster drop: Offals",
+        "description": [
+          "The offal emits a powerful and terrible stench."
+        ]
+      },
+      {
+        "name": "a hunk of vile muscle",
+        "icon": ["images/loot/muscle.png"],
+        "sources": "Monster drop: Blood Forest",
+        "description": [
+          "The chunk of meat is crawling with maggots."
+        ]
+      },
+      {
+        "name": "sewer slime",
+        "icon": ["images/loot/sewer-slime.png"],
+        "sources": "Monster drop: Sewers",
+        "description": [
+          "Splooch!"
+        ]
+      },
+      {
+        "name": "a segment of silk stolen from navrey night-eyes",
+        "icon": ["images/loot/spider-silk.png"],
+        "sources": "Boss drop: Navrey Night-Eyes",
+        "description": [
+          "This silk is so strong it simply cannot be cut!"
         ]
       }
     ]
