@@ -13,6 +13,10 @@ export function initViewer() {
 
     if (!viewer || !image) return;
 
+    // Tell TypeScript from here on, `viewer` and `image` are definitely not null
+    const viewerEl = viewer;
+    const imageEl = image;
+
     const state: ViewerState = {
         scale: 1,
         translateX: 0,
@@ -23,7 +27,7 @@ export function initViewer() {
     };
 
     function updateTransform() {
-        image.style.transform = `translate(${state.translateX}px, ${state.translateY}px) scale(${state.scale})`;
+        imageEl.style.transform = `translate(${state.translateX}px, ${state.translateY}px) scale(${state.scale})`;
     }
 
     function handleMouseDown(e: MouseEvent) {
@@ -32,7 +36,7 @@ export function initViewer() {
         state.isDragging = true;
         state.lastX = e.clientX;
         state.lastY = e.clientY;
-        viewer?.classList.add('grabbing');
+        viewerEl.classList.add('grabbing');
     }
 
     function handleMouseMove(e: MouseEvent) {
@@ -51,14 +55,14 @@ export function initViewer() {
     function handleMouseUp(e: MouseEvent) {
         e.stopPropagation();
         state.isDragging = false;
-        viewer?.classList.remove('grabbing');
+        viewerEl.classList.remove('grabbing');
     }
 
     function handleWheel(e: WheelEvent) {
         e.preventDefault();
         e.stopPropagation();
 
-        const rect = viewer!.getBoundingClientRect();
+        const rect = viewerEl.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
 
@@ -77,14 +81,14 @@ export function initViewer() {
     }
 
     function handleImageLoad() {
-        const viewerRect = viewer!.getBoundingClientRect();
+        const viewerRect = viewerEl.getBoundingClientRect();
 
-        const scaleX = viewerRect.width / image!.naturalWidth;
-        const scaleY = viewerRect.height / image!.naturalHeight;
-        state.scale = Math.min(scaleX, scaleY); // Fit to container
+        const scaleX = viewerRect.width / imageEl.naturalWidth;
+        const scaleY = viewerRect.height / imageEl.naturalHeight;
+        state.scale = Math.min(scaleX, scaleY);
 
-        const scaledWidth = image.naturalWidth * state.scale;
-        const scaledHeight = image.naturalHeight * state.scale;
+        const scaledWidth = imageEl.naturalWidth * state.scale;
+        const scaledHeight = imageEl.naturalHeight * state.scale;
 
         state.translateX = (viewerRect.width - scaledWidth) / 2;
         state.translateY = (viewerRect.height - scaledHeight) / 2;
@@ -93,12 +97,12 @@ export function initViewer() {
     }
 
     // Event listeners
-    viewer.addEventListener('mousedown', handleMouseDown);
+    viewerEl.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
-    viewer.addEventListener('wheel', handleWheel, { passive: false });
+    viewerEl.addEventListener('wheel', handleWheel, { passive: false });
 
-    // Image load
-    image.onload = handleImageLoad;
-    if (image.complete) handleImageLoad();
+    imageEl.onload = handleImageLoad;
+    if (imageEl.complete) handleImageLoad();
 }
+
