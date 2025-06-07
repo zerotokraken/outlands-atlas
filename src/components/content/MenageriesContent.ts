@@ -35,7 +35,7 @@ export function createMenageriesContent(_: any, _createIconContainer: CreateIcon
         </style>
         <div class="menageries-content">
             <div class="menageries-viewer" id="menageriesViewer">
-                <img src="/src/images/menageries.png" class="menageries-image" id="menageriesImage" />
+                <img src="/images/menageries.png" class="menageries-image" id="menageriesImage" />
             </div>
         </div>
     `;
