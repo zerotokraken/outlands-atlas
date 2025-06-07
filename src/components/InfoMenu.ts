@@ -2,6 +2,7 @@ import { IconSizes, IconSize, CreateIconContainer } from './types/InfoMenuTypes.
 import { navigationButtons, defaultPage, contentMapping } from './config/navigation.js';
 import { contentCreators } from './config/contentCreators.js';
 import { createErrorMessage, createLoadingMessage, createComingSoonMessage } from './utils/errorHandling.js';
+import { initViewer } from './utils/imageViewer.js';
 
 export class InfoMenu {
     private container: HTMLElement;
@@ -236,6 +237,11 @@ export class InfoMenu {
                         const data = await fetch(jsonPath).then(res => res.json());
                         const html = await creator(data, this.createIconContainer.bind(this));
                         content.innerHTML = html;
+                        
+                        // Initialize viewer for menageries page
+                        if (page === 'menageries') {
+                            initViewer();
+                        }
                     } else {
                         content.innerHTML = createComingSoonMessage(page);
                     }

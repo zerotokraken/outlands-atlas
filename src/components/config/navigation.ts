@@ -8,7 +8,8 @@ export const navigationButtons: NavButton[] = [
     { text: 'Loot', page: 'loot' },
     { text: 'Quests', page: 'quests' },
     { text: 'Scripts', page: 'scripts' },
-    { text: 'Tablets', page: 'tablets' }
+    { text: 'Tablets', page: 'tablets' },
+    { text: 'Menageries', page: 'menageries' }
 ];
 
 export const defaultPage = 'general';
@@ -21,5 +22,6 @@ export const contentMapping: { [key: string]: string } = {
     'loot': '/json/loot.json',
     'quests': '/json/quests.json',
     'scripts': '/json/scripts.json',
-    'tablets': '/json/language/gargish_tablets.json'
+    'tablets': '/json/language/gargish_tablets.json',
+    'menageries': '/json/menageries.json'
 };
